@@ -29,3 +29,40 @@ nav a:hover {
 p {
   max-width: 65ch;
 }
+:root {
+  --sand-orange: #c65b1a;
+  --deep-navy: #011e2d;
+  --off-white: #f2f4f4;
+}
+
+.hero {
+  padding: 6rem 2rem;
+  background-color: var(--off-white);
+  background-image: url("assets/hero-texture.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.hero h1 {
+  color: var(--deep-navy);
+  font-size: 3rem;
+  max-width: 20ch;
+}
+
+.hero-intro {
+  font-size: 1.2rem;
+  max-width: 50ch;
+}
+
+section {
+  padding: 3rem 2rem;
+}
+
+.what-we-do ul {
+  list-style: none;
+  padding: 0;
+}
+
+.what-we-do li {
+  margin-bottom: 0.75rem;
+}
