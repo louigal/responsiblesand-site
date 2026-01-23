@@ -116,6 +116,13 @@ nav a:hover{
   max-width: 55ch;
 }
 
+.hero-logo{
+  width: min(560px, 92%);
+  height: auto;
+  display: block;
+  margin-bottom: 1.5rem;
+}
+
 /* =========================
    Sections
    ========================= */
