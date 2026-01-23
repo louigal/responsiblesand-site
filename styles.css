@@ -16,23 +16,11 @@ body{
   color: var(--deep-navy);
   line-height: 1.6;
 
-  /* Site-wide texture test */
+  /* Site-wide texture */
   background-color: #ffffff;
   background-image: url("assets/page-texture.svg");
   background-repeat: repeat;
-  background-size: 700px auto;
-}
-/* Layout helpers */
-.container{
-  max-width: 1100px;
-  margin: 0 auto;
-}
-
-.site-header .container,
-section .container,
-footer .container{
-  padding-left: 2rem;
-  padding-right: 2rem;
+  background-size: 700px auto; /* slightly more prominent than 900px */
 }
 
 /* =========================
@@ -49,30 +37,53 @@ p{
   max-width: 65ch;
 }
 
+/* Links (site-wide) */
+a{
+  color: var(--sand-orange);
+  text-decoration: none;
+}
+
+a:hover{
+  text-decoration: underline;
+}
+
+/* =========================
+   Layout helpers
+   ========================= */
+.container{
+  max-width: 1100px;
+  margin: 0 auto;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
 /* =========================
    Header / Navigation
    ========================= */
 header{
   padding: 1rem 0;
-  background: rgba(255,255,255,0.65);
+  background: var(--deep-navy);
+  border-bottom: 3px solid var(--sand-orange);
 }
 
 nav a{
   margin-right: 0.75rem;
+  color: #ffffff;
+  opacity: 0.92;
   text-decoration: none;
-  color: var(--deep-navy);
 }
 
 nav a:hover{
   text-decoration: underline;
+  opacity: 1;
 }
 
 /* =========================
    Hero
    ========================= */
 .hero{
-  padding: 6rem 0;
   position: relative;
+  padding: 6rem 0;
   background: var(--off-white);
   overflow: hidden;
 }
@@ -102,7 +113,7 @@ nav a:hover{
 
 .hero-intro{
   font-size: 1.2rem;
-  max-width: 50ch;
+  max-width: 55ch;
 }
 
 /* =========================
@@ -110,6 +121,11 @@ nav a:hover{
    ========================= */
 section{
   padding: 3rem 0;
+  background: rgba(255,255,255,0.72);
+}
+
+/* Optional page-title section */
+.page-title{
   background: rgba(255,255,255,0.72);
 }
 
@@ -122,7 +138,7 @@ section{
 .section-textured{
   background-image: url("assets/page-texture.svg");
   background-repeat: repeat;
-  background-size: 900px auto;
+  background-size: 700px auto;
   background-color: var(--off-white);
   padding-top: 4rem;
   padding-bottom: 4rem;
@@ -134,8 +150,32 @@ section{
 .what-we-do ul{
   list-style: none;
   padding: 0;
+  margin: 0;
 }
 
 .what-we-do li{
   margin-bottom: 0.75rem;
+}
+
+/* =========================
+   Footer
+   ========================= */
+footer{
+  padding: 2.5rem 0;
+  background: var(--deep-navy);
+  border-top: 3px solid var(--sand-orange);
+  color: #ffffff;
+}
+
+.footer-links a,
+footer a{
+  color: #ffffff;
+  opacity: 0.92;
+  text-decoration: none;
+}
+
+.footer-links a:hover,
+footer a:hover{
+  text-decoration: underline;
+  opacity: 1;
 }
