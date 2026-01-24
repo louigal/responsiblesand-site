@@ -281,8 +281,9 @@ footer{
   position: relative;
   padding: 2.75rem 0;
 
-  /* Let the page texture flow through (no extra tint) */
-  background: transparent;
+  /* MATCH section overlay exactly */
+  background: rgba(255,255,255,0.45);
+
   color: var(--deep-navy);
 }
 
