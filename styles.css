@@ -350,17 +350,17 @@ footer .container{
   transform: scale(1.5);
   transform-origin: center;
 }
-/* Footer brand mark */
+/* Footer sandcastle mark */
 .footer-mark{
   position: absolute;
-  right: clamp(16px, 3vw, 32px);
-  bottom: clamp(16px, 3vw, 28px);
+  right: 1.5rem;
+  bottom: 1.25rem;
 
-  height: 42px;            /* tuned for visual balance */
-  width: auto;
+  width: 64px;          /* START HERE */
+  height: auto;
 
-  opacity: 0.85;           /* calm, not decorative noise */
-  pointer-events: none;    /* avoids accidental hover focus */
+  opacity: 0.35;        /* calm, watermark-like */
+  pointer-events: none;
 }
 
 /* =========================
