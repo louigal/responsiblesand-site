@@ -356,8 +356,8 @@ footer a:hover{
   align-items: center;
 
   /* tighter overall spacing */
-  margin-left: 8px;
-  margin-right: 6px;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 /* Icon: keep size, but optically trim left edge */
