@@ -356,10 +356,10 @@ footer .container{
   right: 1.5rem;
   bottom: 1.25rem;
 
-  width: 64px;          /* START HERE */
+  width: 32px;          /* smaller icon */
   height: auto;
 
-  opacity: 0.35;        /* calm, watermark-like */
+  opacity: 0.25;        /* calm, watermark-like */
   pointer-events: none;
 }
 
