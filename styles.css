@@ -11,8 +11,12 @@
   --gutter: clamp(16px, 3vw, 32px);
 
   /* Texture control */
-  --page-texture-opacity: 0.18;
-  --footer-texture-opacity: 0.12;
+  --page-texture-opacity: 0.28;   /* increased so it’s actually visible */
+  --footer-texture-opacity: 0.16; /* footer slightly calmer than page */
+
+  /* Lines */
+  --rule-thickness: 2px;
+  --rule-length: 75%;
 }
 
 /* =========================
@@ -92,29 +96,45 @@ a:hover{
   background: transparent;
 }
 
+/* The single header rule you asked for:
+   bottom of header, left→right, 75% across */
+.site-header::after{
+  content:"";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: var(--rule-thickness);
+  width: var(--rule-length);
+  background: var(--sand-orange);
+  pointer-events: none;
+}
+
 .site-nav{
   display: flex;
+  flex-wrap: wrap;
   gap: 0.75rem;
   padding: 1rem 0;
 }
 
+/* Nav links: clean, no boxes */
 .site-nav a{
   color: var(--deep-navy);
-  padding: 8px 10px;
-  border-radius: 10px;
   opacity: 0.9;
+  padding: 6px 0;
+  text-decoration: none;
 }
 
 .site-nav a:hover{
-  background: rgba(255,255,255,0.45);
-  text-decoration: none;
   opacity: 1;
+  text-decoration: underline;
 }
 
+/* Active page: subtle emphasis, NO box */
 .site-nav a[aria-current="page"]{
-  background: rgba(198,91,26,0.12);
-  border: 1px solid rgba(198,91,26,0.45);
   opacity: 1;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 6px;
 }
 
 /* =========================
@@ -124,11 +144,14 @@ a:hover{
   position: relative;
   overflow: hidden;
   min-height: clamp(420px, 60vh, 640px);
-  padding: clamp(96px, 9vw, 140px) 0 clamp(64px, 7vw, 112px);
+
+  /* extra top padding so hero content clears the overlay header */
+  padding: clamp(110px, 10vw, 160px) 0 clamp(64px, 7vw, 112px);
+
   background: var(--off-white);
 }
 
-/* Hero texture */
+/* Hero texture — more vibrant */
 .hero::before{
   content: "";
   position: absolute;
@@ -137,16 +160,16 @@ a:hover{
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  opacity: 0.42;
+  opacity: 0.58; /* was 0.42 */
   pointer-events: none;
 }
 
-/* Contrast veil */
+/* Veil — lighter so texture reads as “real” */
 .hero::after{
   content:"";
   position: absolute;
   inset: 0;
-  background: rgba(242,244,244,0.28);
+  background: rgba(242,244,244,0.14); /* was 0.28 */
   pointer-events:none;
 }
 
@@ -188,7 +211,7 @@ a:hover{
   display: block;
 }
 
-/* Wordmark text */
+/* Wordmark text — matched feel */
 .hero-wordmark{
   line-height: 1.05;
 }
@@ -212,7 +235,6 @@ a:hover{
   margin-top: 6px;
 }
 
-/* Hero intro text */
 .hero-intro{
   font-size: clamp(1.05rem, 1.4vw, 1.25rem);
   max-width: 58ch;
@@ -224,7 +246,9 @@ a:hover{
    ========================= */
 section{
   padding: 3rem 0;
-  background: rgba(255,255,255,0.72);
+
+  /* Less “white wash” so the page texture is visible */
+  background: rgba(255,255,255,0.52); /* was 0.72 */
 }
 
 .intro{
@@ -269,34 +293,22 @@ footer::before{
   z-index: 0;
 }
 
-/* Top orange rule */
+/* The single footer rule you asked for:
+   top of footer, right→left, 75% across */
 footer::after{
   content:"";
   position:absolute;
-  left: 0;
+  right: 0;
   top: 0;
-  height: 3px;
-  width: 75%;
+  height: var(--rule-thickness);
+  width: var(--rule-length);
   background: var(--sand-orange);
   z-index: 1;
 }
 
-/* Footer content above layers */
 footer .container{
   position: relative;
   z-index: 2;
-}
-
-/* Bottom orange rule */
-footer .container::after{
-  content:"";
-  position:absolute;
-  right: 0;
-  bottom: -2.75rem;
-  height: 3px;
-  width: 75%;
-  background: var(--sand-orange);
-  z-index: 1;
 }
 
 /* Footer links */
