@@ -278,8 +278,8 @@ footer{
   position: relative;
   padding: 2.75rem 0;
 
-  /* same material language; do not override page texture */
-  background: rgba(255,255,255,0.30);
+  /* match the page background texture exactly */
+  background: transparent;
   color: var(--deep-navy);
 }
 
