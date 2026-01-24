@@ -305,6 +305,45 @@ footer a:hover{
   text-decoration: underline;
   opacity: 1;
 }
+.footer-follow{
+  margin-top: 0.75rem;
+}
+
+.linkedin-link{
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--deep-navy);
+  opacity: 0.95;
+}
+
+.linkedin-link:hover{
+  opacity: 1;
+}
+
+/* Simple LinkedIn “icon” without adding image assets */
+.linkedin-icon{
+  width: 18px;
+  height: 18px;
+  display: inline-block;
+  border-radius: 4px;
+  background: var(--deep-navy);
+  position: relative;
+}
+
+.linkedin-icon::after{
+  content: "in";
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-family: "Barlow Condensed", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  color: #ffffff;
+  transform: translateY(-0.5px);
+}
+
 
 /* =========================
    Mobile
