@@ -9,8 +9,8 @@
   --max-width: 1100px;
   --gutter: clamp(16px, 3vw, 32px);
 
-  --page-texture-opacity: 0.30;  /* increase/decrease once it’s visible */
-  --hero-texture-opacity: 0.65;  /* make hero “real” */
+  --page-texture-opacity: 0.30;  /* currently not used with direct backgrounds */
+  --hero-texture-opacity: 0.65;  /* currently not used with direct backgrounds */
   --rule-thickness: 2px;
   --rule-length: 75%;
 }
@@ -184,16 +184,18 @@ a:hover{ text-decoration: underline; }
   display:block;
 }
 
-.hero-wordmark{ line-height: 1.0; }
+/* Safer than 1.0 to prevent collisions across renderers */
+.hero-wordmark{ line-height: 1.05; }
 
 .hero-org{
   font-family: "Barlow Condensed", system-ui, -apple-system, "Segoe UI", sans-serif;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.14em;
-  font-size: clamp(26px, 2.2vw, 20px);
+  font-size: clamp(18px, 2.2vw, 26px); /* FIXED: min < max */
   color: var(--sand-orange);
 }
+
 .hero-name{
   font-family: "Barlow Condensed", system-ui, -apple-system, "Segoe UI", sans-serif;
   font-weight: 700;
@@ -203,18 +205,17 @@ a:hover{ text-decoration: underline; }
   color: var(--deep-navy);
   margin-top: 6px;
 }
+
 .hero-intro{
   font-family: "Barlow Condensed", system-ui, -apple-system, "Segoe UI", sans-serif;
-  font-weight: 500;                 /* one notch calmer */
+  font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 0.045em;          /* slightly reduced */
-
-  color: rgba(1,30,45,0.85);        /* softened navy */
+  letter-spacing: 0.045em;
+  color: rgba(1,30,45,0.85);
 
   font-size: clamp(1.05rem, 1.3vw, 1.25rem);
   line-height: 1.1;
 
-  /* tighten relationship to title */
   margin-top: clamp(8px, 1.5vh, 14px);
 
   /* keep exact alignment with wordmark */
@@ -241,11 +242,6 @@ a:hover{ text-decoration: underline; }
   .hero-intro{
     margin-left: 0;
   }
-}
-
-  background: rgba(242,244,244,0.22); /* lighter, less “card-like” */
-  padding: 14px 18px;
-  border-radius: 14px;
 }
 
 /* =========================
