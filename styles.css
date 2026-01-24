@@ -138,7 +138,7 @@ a:hover{ text-decoration: underline; }
   content:"";
   position:absolute;
   inset:0;
-  background: rgba(242,244,244, 0.20);
+  background: rgba(242,244,244, 0.25);
   pointer-events:none;
 }
 
