@@ -73,7 +73,9 @@ a:hover{ text-decoration: underline; }
   position: absolute;
   top: 0; left: 0; right: 0;
   z-index: 10;
-  background: transparent;
+  background: rgba(255,255,255,0.55);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
 }
 
 /* Header rule: bottom of header, left→right 75% */
@@ -96,7 +98,7 @@ a:hover{ text-decoration: underline; }
 
 .site-nav a{
   color: var(--deep-navy);
-  opacity: 0.9;
+  opacity: 1;
   padding: 6px 0;
 }
 
@@ -153,7 +155,7 @@ a:hover{ text-decoration: underline; }
 .hero-lockup{
   display:flex;
   align-items:center;
-  gap: clamp(28px, 4vw, 56px);
+  gap: clamp(16px, 2vw, 26px);
   flex-wrap: wrap;
 
   /* pushes the block down a bit so it’s not cramped */
@@ -162,7 +164,7 @@ a:hover{ text-decoration: underline; }
 
 .hero-mark{
   position: relative;
-  padding-right: clamp(26px, 4vw, 44px);
+  padding-right: clamp(14px, 1.6vw, 20px);
 }
 
 .hero-mark::after{
@@ -177,7 +179,7 @@ a:hover{ text-decoration: underline; }
 }
 
 .hero-mark img{
-  height: clamp(64px, 7.2vw, 104px);
+  height: clamp(72px, 7.8vw, 112px);
   width: auto;
   display:block;
 }
@@ -210,9 +212,13 @@ a:hover{ text-decoration: underline; }
 
   font-size: clamp(1.35rem, 2vw, 1.7rem);
   line-height: 1.2;
-  max-width: 40ch;
-
+  max-width: 42ch;
+  margin-left: clamp(92px, 10vw, 140px);
   margin-top: clamp(44px, 10vh, 96px);
+}
+   
+   @media (max-width: 720px){
+  .hero-intro{ margin-left: 0; }
 
   background: rgba(242,244,244,0.22); /* lighter, less “card-like” */
   padding: 14px 18px;
