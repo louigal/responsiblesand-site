@@ -254,6 +254,9 @@ section{
   background: var(--surface-veil);
 }
 
+.page-title{
+  background: var(--surface-veil);
+   
 .intro{
   border-top: 1px solid rgba(1,30,45,0.12);
 }
