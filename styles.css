@@ -6,14 +6,16 @@
   --deep-navy:  #011e2d;
   --off-white:  #f2f4f4;
 
+  /* Layout */
   --max-width: 1100px;
   --gutter: clamp(16px, 3vw, 32px);
 
-  --page-texture-opacity: 0.30;  /* currently not used with direct backgrounds */
-  --hero-texture-opacity: 0.65;  /* currently not used with direct backgrounds */
+  /* Unified “veil” (single source of truth for sections + footer) */
+  --surface-veil: rgba(255,255,255,0.45);
+
+  /* Lines */
   --rule-thickness: 2px;
   --rule-length: 75%;
-  --surface-veil: rgba(255,255,255,0.45);
 }
 
 /* =========================
@@ -27,38 +29,47 @@ body{
   color: var(--deep-navy);
   line-height: 1.6;
 
-  /* Page texture as a direct background (robust) */
+  /* Site-wide texture */
   background-color: #ffffff;
   background-image: url("assets/page-texture.svg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  background-attachment: fixed; /* ok on desktop; mobile may ignore */
+  background-attachment: fixed;
 }
 
-/* If mobile glitches with fixed backgrounds, uncomment this:
+/* Mobile Safari can ignore / glitch fixed backgrounds */
 @media (max-width: 900px){
   body{ background-attachment: scroll; }
 }
-*/
 
 /* =========================
    Typography
    ========================= */
 h1, h2, h3, h4{
-  font-family: "Barlow Condensed", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-family: "Barlow Condensed", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   font-weight: 700;
   letter-spacing: 0.02em;
-  margin-top: 1.5rem;
+  margin: 0 0 0.75rem 0;
 }
 
-p{ max-width: 65ch; }
+p{
+  margin: 0 0 1rem 0;
+  max-width: 65ch;
+}
 
-a{ color: var(--sand-orange); text-decoration: none; }
-a:hover{ text-decoration: underline; }
+/* Links (global) */
+a{
+  color: var(--sand-orange);
+  text-decoration: none;
+}
+
+a:hover{
+  text-decoration: underline;
+}
 
 /* =========================
-   Layout
+   Layout helpers
    ========================= */
 .container{
   max-width: var(--max-width);
@@ -74,6 +85,8 @@ a:hover{ text-decoration: underline; }
   position: absolute;
   top: 0; left: 0; right: 0;
   z-index: 10;
+
+  /* readable on texture */
   background: rgba(255,255,255,0.55);
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
@@ -88,12 +101,13 @@ a:hover{ text-decoration: underline; }
   height: var(--rule-thickness);
   width: var(--rule-length);
   background: var(--sand-orange);
+  z-index: 2;
 }
 
 .site-nav{
-  display:flex;
+  display: flex;
   flex-wrap: wrap;
-  gap: 0.75rem;
+  gap: 0.9rem;
   padding: 1rem 0;
 }
 
@@ -103,14 +117,8 @@ a:hover{ text-decoration: underline; }
   padding: 6px 0;
 }
 
-.site-nav a:hover{
-  opacity: 1;
-  text-decoration: underline;
-}
-
-/* Active page: underline only, no box */
+/* Active page: underline only (no box) */
 .site-nav a[aria-current="page"]{
-  opacity: 1;
   text-decoration: underline;
   text-decoration-thickness: 2px;
   text-underline-offset: 6px;
@@ -126,17 +134,14 @@ a:hover{ text-decoration: underline; }
   min-height: clamp(420px, 60vh, 640px);
   padding: clamp(110px, 10vw, 160px) 0 clamp(64px, 7vw, 112px);
 
-  /* Base */
   background-color: var(--off-white);
-
-  /* Hero texture as direct background (robust) */
   background-image: url("assets/hero-texture.svg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
 }
 
-/* Optional: add a subtle veil without killing the texture */
+/* Subtle veil (calms highlights without killing texture) */
 .hero::after{
   content:"";
   position:absolute;
@@ -159,7 +164,7 @@ a:hover{ text-decoration: underline; }
   gap: clamp(16px, 2vw, 26px);
   flex-wrap: wrap;
 
-  /* pushes the block down a bit so it’s not cramped */
+  /* Push down slightly so it’s not cramped under the nav */
   margin-top: clamp(36px, 8vh, 96px);
 }
 
@@ -185,15 +190,14 @@ a:hover{ text-decoration: underline; }
   display:block;
 }
 
-/* Safer than 1.0 to prevent collisions across renderers */
-.hero-wordmark{ line-height: 1.05; }
+.hero-wordmark{ line-height: 1.0; }
 
 .hero-org{
   font-family: "Barlow Condensed", system-ui, -apple-system, "Segoe UI", sans-serif;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.14em;
-  font-size: clamp(18px, 2.2vw, 26px); /* FIXED: min < max */
+  font-size: clamp(1.25rem, 2.2vw, 1.65rem);
   color: var(--sand-orange);
 }
 
@@ -207,19 +211,19 @@ a:hover{ text-decoration: underline; }
   margin-top: 6px;
 }
 
+/* Strapline – aligned under the text (not under the icon) */
 .hero-intro{
   font-family: "Barlow Condensed", system-ui, -apple-system, "Segoe UI", sans-serif;
-  font-weight: 500;
+  font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.045em;
   color: rgba(1,30,45,0.85);
-
   font-size: clamp(1.05rem, 1.3vw, 1.25rem);
   line-height: 1.1;
 
   margin-top: clamp(8px, 1.5vh, 14px);
 
-  /* keep exact alignment with wordmark */
+  /* align to start of wordmark text (icon + gap + divider + gap) */
   margin-left: calc(
     clamp(72px, 7.8vw, 112px) +
     clamp(14px, 1.6vw, 20px) +
@@ -228,8 +232,6 @@ a:hover{ text-decoration: underline; }
   );
 
   white-space: nowrap;
-  background: transparent;
-  padding: 0;
 }
 
 @media (max-width: 900px){
@@ -240,9 +242,7 @@ a:hover{ text-decoration: underline; }
 }
 
 @media (max-width: 720px){
-  .hero-intro{
-    margin-left: 0;
-  }
+  .hero-intro{ margin-left: 0; }
 }
 
 /* =========================
@@ -255,13 +255,15 @@ section{
 
 .page-title{
   background: var(--surface-veil);
-   
+}
+
+/* Intro divider */
 .intro{
   border-top: 1px solid rgba(1,30,45,0.12);
 }
 
 /* =========================
-   Lists
+   Lists / utilities
    ========================= */
 .what-we-do ul{
   list-style: none;
@@ -279,13 +281,11 @@ section{
 footer{
   position: relative;
   padding: 2.75rem 0;
-
-  /* MUST match sections for continuous texture/veil */
   background: var(--surface-veil);
   color: var(--deep-navy);
 }
 
-/* Orange rule: top of footer, right→left 75% */
+/* Footer rule: top of footer, right→left 75% */
 footer::before{
   content:"";
   position:absolute;
@@ -294,12 +294,10 @@ footer::before{
   height: var(--rule-thickness);
   width: var(--rule-length);
   background: var(--sand-orange);
-
-  /* ensure it sits above the veil and is not hidden */
   z-index: 2;
 }
 
-/* keep footer content above the rule */
+/* Keep footer content above the rule */
 footer .container{
   position: relative;
   z-index: 3;
@@ -311,6 +309,7 @@ footer .container{
   opacity: 0.9;
   text-decoration: none;
 }
+
 .footer-links a:hover{
   text-decoration: underline;
   opacity: 1;
@@ -330,30 +329,27 @@ footer .container{
   opacity: 0.95;
   text-decoration: none;
 }
+
 .linkedin-link:hover{
   opacity: 1;
   text-decoration: underline;
 }
 
-/* Keep icon unit together */
 .linkedin-brand{
   display: inline-flex;
   align-items: center;
   white-space: nowrap;
 }
 
-/* Icon sizing (safe even if SVG has a big viewBox) */
+/* SVG icon (Canva viewBox padding compensated) */
 .linkedin-icon{
   height: 20px;
   width: auto;
   display: inline-block;
   flex: 0 0 auto;
-
-  /* if you’re using the padded Canva SVG, this is the value that worked */
   transform: scale(1.5);
   transform-origin: center;
 }
-
 
 /* =========================
    Mobile
