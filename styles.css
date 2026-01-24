@@ -274,9 +274,7 @@ section{
 /* =========================
    Footer
    ========================= */
-/* =========================
-   Footer
-   ========================= */
+
 footer{
   position: relative;
   padding: 2.75rem 0;
@@ -317,11 +315,15 @@ footer a:hover{
   margin-top: 1rem;
 }
 
-/* LinkedIn link (make underline behaviour consistent) */
+.footer-follow{
+  margin-top: 1rem;
+}
+
 .linkedin-link{
   display: inline-flex;
   align-items: center;
   gap: 10px;
+
   color: var(--deep-navy);
   opacity: 0.95;
   text-decoration: none;
@@ -332,29 +334,13 @@ footer a:hover{
   text-decoration: underline;
 }
 
-/* LinkedIn icon: robust text-in-box (no pseudo-element dependency) */
+/* SVG icon */
 .linkedin-icon{
   width: 22px;
-  height: 22px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-
-  border-radius: 5px;
-  background: var(--deep-navy);
-
-  /* Force the text to show */
-  color: #f2f4f4 !important;
-  font-family: "Barlow Condensed", system-ui, -apple-system, "Segoe UI", sans-serif !important;
-  font-weight: 700;
-  font-size: 13px;
-  line-height: 1;
-  letter-spacing: -0.02em;
-
-  /* Nudge baseline to look optically centred */
-  transform: translateY(-1px);
+  height: auto;
+  display: inline-block;
+  flex: 0 0 auto;
 }
-
 
 /* =========================
    Mobile
