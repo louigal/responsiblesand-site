@@ -326,6 +326,11 @@ footer::before{
   display: inline-block;
   flex: 0 0 auto;
 }
+.linkedin-brand{
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
 
 /* =========================
    Mobile
