@@ -321,11 +321,12 @@ footer::before{
 
 /* SVG icon */
 .linkedin-icon{
-  width: 22px;
-  height: auto;
+  width: 18px;      /* tuned to body text size */
+  height: 18px;
   display: inline-block;
   flex: 0 0 auto;
 }
+
 .linkedin-brand{
   display: inline-flex;
   align-items: center;
