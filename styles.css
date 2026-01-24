@@ -274,14 +274,12 @@ section{
 /* =========================
    Footer
    ========================= */
-
 footer{
   position: relative;
   padding: 2.75rem 0;
 
   /* MATCH section overlay exactly */
   background: rgba(255,255,255,0.45);
-
   color: var(--deep-navy);
 }
 
@@ -298,14 +296,14 @@ footer::before{
 
 /* Footer links */
 .footer-links a,
-footer a{
+.linkedin-link{
   color: var(--deep-navy);
   opacity: 0.9;
   text-decoration: none;
 }
 
 .footer-links a:hover,
-footer a:hover{
+.linkedin-link:hover{
   text-decoration: underline;
   opacity: 1;
 }
@@ -315,23 +313,10 @@ footer a:hover{
   margin-top: 1rem;
 }
 
-.footer-follow{
-  margin-top: 1rem;
-}
-
 .linkedin-link{
   display: inline-flex;
   align-items: center;
   gap: 10px;
-
-  color: var(--deep-navy);
-  opacity: 0.95;
-  text-decoration: none;
-}
-
-.linkedin-link:hover{
-  opacity: 1;
-  text-decoration: underline;
 }
 
 /* SVG icon */
