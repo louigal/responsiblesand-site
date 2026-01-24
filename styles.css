@@ -321,10 +321,14 @@ footer::before{
 
 /* SVG icon */
 .linkedin-icon{
-  width: 18px;      /* tuned to body text size */
-  height: 18px;
+  height: 20px;     /* control by height (more stable inline) */
+  width: auto;
   display: inline-block;
-  flex: 0 0 auto;
+  vertical-align: middle;
+
+  /* Compensate for Canva SVG padding */
+  transform: scale(1.35);
+  transform-origin: center;
 }
 
 .linkedin-brand{
