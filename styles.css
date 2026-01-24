@@ -165,7 +165,7 @@ a:hover{
 }
 
 /* Hero texture — more vibrant */
-.hero::before{
+.hero::before { opacity: 0.62; }
   content: "";
   position: absolute;
   inset: 0;
@@ -178,7 +178,7 @@ a:hover{
 }
 
 /* Veil — lighter so texture reads as “real” */
-.hero::after{
+.hero::after { background: rgba(242,244,244,0.10); }
   content:"";
   position: absolute;
   inset: 0;
@@ -200,6 +200,8 @@ a:hover{
   align-items: center; /* was flex-start */
   gap: clamp(22px, 3vw, 44px);
   flex-wrap: wrap;
+  margin-top: clamp(18px, 5vh, 64px);
+}
 }
 
 /* Icon + vertical line */
@@ -251,9 +253,15 @@ a:hover{
 }
 
 .hero-intro{
-  font-size: clamp(1.05rem, 1.4vw, 1.25rem);
-  max-width: 58ch;
-  margin-top: 2rem;
+  font-size: clamp(1.15rem, 1.6vw, 1.45rem);
+  line-height: 1.35;
+  max-width: 52ch;
+  margin-top: clamp(22px, 4vh, 44px);
+
+  /* subtle readability lift; does not “box in” the design */
+  background: rgba(242,244,244,0.42);
+  padding: 14px 16px;
+  border-radius: 12px;
 }
 
 /* =========================
