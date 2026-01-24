@@ -342,36 +342,32 @@ footer a:hover{
   opacity: 0.6; /* optional: makes it feel structural, not content */
 }
 
-/* Follow link spacing fix (robust) */
+/* Follow link: spacing controlled, not dependent on HTML whitespace */
 .linkedin-link{
   display: inline-flex;
   align-items: center;
   line-height: 1;
-  opacity: 0.95;
-  text-decoration: none;
-  gap: 0;                 /* IMPORTANT: we control spacing explicitly */
+  gap: 0;
 }
 
-.linkedin-link:hover{
-  opacity: 1;
-  text-decoration: underline;
-}
-
+/* Wrapper that acts like a word token */
 .linkedin-brand{
   display: inline-flex;
   align-items: center;
 
-  /* asymmetrical, optical spacing */
-  margin-left: 10px;
+  /* tighter overall spacing */
+  margin-left: 8px;
   margin-right: 6px;
 }
 
+/* Icon: keep size, but optically trim left edge */
 .linkedin-icon{
   height: 20px;
   width: auto;
-  display: inline-block;
+  display: block; /* removes inline image baseline quirks */
 
-  transform: scale(1.5) translateY(0.5px);
+  /* keep your known-good scale, then nudge left + slight baseline tweak */
+  transform: scale(1.5) translate(-2px, 0.5px);
   transform-origin: center;
 }
 
