@@ -138,7 +138,7 @@ a:hover{ text-decoration: underline; }
   content:"";
   position:absolute;
   inset:0;
-  background: rgba(242,244,244, 0.12);
+  background: rgba(242,244,244, 0.20);
   pointer-events:none;
 }
 
@@ -204,14 +204,20 @@ a:hover{ text-decoration: underline; }
 }
 
 .hero-intro{
-  font-size: clamp(1.15rem, 1.6vw, 1.45rem);
-  line-height: 1.35;
-  max-width: 52ch;
-  margin-top: clamp(22px, 4vh, 44px);
+  font-family: "Barlow Condensed", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-weight: 600;
+  text-transform: none;
+  letter-spacing: 0.01em;
 
-  background: rgba(242,244,244,0.38);
-  padding: 14px 16px;
-  border-radius: 12px;
+  font-size: clamp(1.25rem, 1.8vw, 1.55rem);
+  line-height: 1.25;
+  max-width: 46ch;
+
+  margin-top: clamp(28px, 5vh, 56px);
+
+  background: rgba(242,244,244,0.32);
+  padding: 16px 18px;
+  border-radius: 14px;
 }
 
 /* =========================
