@@ -274,11 +274,14 @@ section{
 /* =========================
    Footer
    ========================= */
+/* =========================
+   Footer
+   ========================= */
 footer{
   position: relative;
   padding: 2.75rem 0;
 
-  /* match the page background texture exactly */
+  /* Let the page texture flow through (no extra tint) */
   background: transparent;
   color: var(--deep-navy);
 }
@@ -294,10 +297,12 @@ footer::before{
   background: var(--sand-orange);
 }
 
+/* Footer links */
 .footer-links a,
 footer a{
   color: var(--deep-navy);
   opacity: 0.9;
+  text-decoration: none;
 }
 
 .footer-links a:hover,
@@ -305,45 +310,45 @@ footer a:hover{
   text-decoration: underline;
   opacity: 1;
 }
+
+/* Follow line */
 .footer-follow{
-  margin-top: 0.75rem;
+  margin-top: 1rem;
 }
 
+/* LinkedIn link (make underline behaviour consistent) */
 .linkedin-link{
   display: inline-flex;
   align-items: center;
   gap: 10px;
   color: var(--deep-navy);
   opacity: 0.95;
+  text-decoration: none;
 }
 
 .linkedin-link:hover{
   opacity: 1;
+  text-decoration: underline;
 }
 
-/* Simple LinkedIn “icon” without adding image assets */
+/* LinkedIn icon: robust text-in-box (no pseudo-element dependency) */
 .linkedin-icon{
   width: 18px;
   height: 18px;
-  display: inline-block;
-  border-radius: 4px;
-  background: var(--deep-navy);
-  position: relative;
-}
-
-.linkedin-icon::after{
-  content: "in";
-  position: absolute;
-  inset: 0;
-  display: grid;
+  display: inline-grid;
   place-items: center;
+  border-radius: 4px;
+
+  background: var(--deep-navy);
+  color: #ffffff;
+
   font-family: "Barlow Condensed", system-ui, -apple-system, "Segoe UI", sans-serif;
   font-weight: 700;
   font-size: 12px;
-  color: #ffffff;
+  line-height: 1;
+
   transform: translateY(-0.5px);
 }
-
 
 /* =========================
    Mobile
