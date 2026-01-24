@@ -336,7 +336,12 @@ footer a:hover{
   opacity: 1;
 }
 
-/* Follow link spacing fix */
+.footer-separator{
+  margin-left: 0.5rem;
+  margin-right: 0.6rem;
+  opacity: 0.6; /* optional: makes it feel structural, not content */
+}
+
 /* Follow link spacing fix (robust) */
 .linkedin-link{
   display: inline-flex;
