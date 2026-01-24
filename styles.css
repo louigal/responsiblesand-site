@@ -195,32 +195,26 @@ a:hover{ text-decoration: underline; }
   color: var(--sand-orange);
 }
 
-.hero-name{
-  font-family: "Barlow Condensed", system-ui, -apple-system, "Segoe UI", sans-serif;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  font-size: clamp(24px, 4vw, 40px);
-  color: var(--deep-navy);
-  margin-top: 6px;
-}
 .hero-intro{
   font-family: "Barlow Condensed", system-ui, -apple-system, "Segoe UI", sans-serif;
-  font-weight: 600;
+  font-weight: 500;                 /* one notch calmer */
   text-transform: uppercase;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.045em;          /* slightly reduced */
 
-  color: rgba(198,91,26,0.92);
-  font-size: clamp(1.05rem, 1.35vw, 1.25rem);
+  color: rgba(1,30,45,0.85);        /* softened navy */
+
+  font-size: clamp(1.05rem, 1.3vw, 1.25rem);
   line-height: 1.1;
 
-  /* KEY FIXES */
-  margin-top: clamp(12px, 2vh, 18px);   /* bring it closer vertically */
+  /* tighten relationship to title */
+  margin-top: clamp(8px, 1.5vh, 14px);
+
+  /* keep exact alignment with wordmark */
   margin-left: calc(
-    clamp(72px, 7.8vw, 112px)           /* sandcastle width */
-    + clamp(14px, 1.6vw, 20px)           /* gap before line */
-    + 3px                                /* line width */
-    + clamp(16px, 2vw, 26px)             /* gap after line */
+    clamp(72px, 7.8vw, 112px) +
+    clamp(14px, 1.6vw, 20px) +
+    3px +
+    clamp(16px, 2vw, 26px)
   );
 
   white-space: nowrap;
@@ -228,7 +222,6 @@ a:hover{ text-decoration: underline; }
   padding: 0;
 }
 
-   
 @media (max-width: 900px){
   .hero-intro{
     white-space: normal;
