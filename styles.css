@@ -278,13 +278,15 @@ section{
    Footer
    ========================= */
 footer{
-v  position: relative;
+  position: relative;
   padding: 2.75rem 0;
+
+  /* MUST match sections for continuous texture/veil */
   background: var(--surface-veil);
   color: var(--deep-navy);
 }
 
-/* Footer rule: top of footer, right→left 75% */
+/* Orange rule: top of footer, right→left 75% */
 footer::before{
   content:"";
   position:absolute;
@@ -293,18 +295,24 @@ footer::before{
   height: var(--rule-thickness);
   width: var(--rule-length);
   background: var(--sand-orange);
+
+  /* ensure it sits above the veil and is not hidden */
+  z-index: 2;
+}
+
+/* keep footer content above the rule */
+footer .container{
+  position: relative;
+  z-index: 3;
 }
 
 /* Footer links */
-.footer-links a,
-.linkedin-link{
+.footer-links a{
   color: var(--deep-navy);
   opacity: 0.9;
   text-decoration: none;
 }
-
-.footer-links a:hover,
-.linkedin-link:hover{
+.footer-links a:hover{
   text-decoration: underline;
   opacity: 1;
 }
@@ -314,29 +322,39 @@ footer::before{
   margin-top: 1rem;
 }
 
+/* LinkedIn link */
 .linkedin-link{
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  gap: 6px;
+  color: var(--deep-navy);
+  opacity: 0.95;
+  text-decoration: none;
+}
+.linkedin-link:hover{
+  opacity: 1;
+  text-decoration: underline;
 }
 
-/* SVG icon */
+/* Keep icon unit together */
+.linkedin-brand{
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+}
+
+/* Icon sizing (safe even if SVG has a big viewBox) */
 .linkedin-icon{
-  height: 20px;     /* control by height (more stable inline) */
+  height: 20px;
   width: auto;
   display: inline-block;
-  vertical-align: middle;
+  flex: 0 0 auto;
 
-  /* Compensate for Canva SVG padding */
+  /* if you’re using the padded Canva SVG, this is the value that worked */
   transform: scale(1.5);
   transform-origin: center;
 }
 
-.linkedin-brand{
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-}
 
 /* =========================
    Mobile
