@@ -327,7 +327,7 @@ footer::before{
   vertical-align: middle;
 
   /* Compensate for Canva SVG padding */
-  transform: scale(1.35);
+  transform: scale(1.5);
   transform-origin: center;
 }
 
