@@ -350,6 +350,18 @@ footer .container{
   transform: scale(1.5);
   transform-origin: center;
 }
+/* Footer brand mark */
+.footer-mark{
+  position: absolute;
+  right: clamp(16px, 3vw, 32px);
+  bottom: clamp(16px, 3vw, 28px);
+
+  height: 42px;            /* tuned for visual balance */
+  width: auto;
+
+  opacity: 0.85;           /* calm, not decorative noise */
+  pointer-events: none;    /* avoids accidental hover focus */
+}
 
 /* =========================
    Mobile
