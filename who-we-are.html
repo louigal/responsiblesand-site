@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8">
   <title>Who we are</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,10 +16,10 @@
 
   <header class="site-header">
     <div class="container">
-      <nav>
-        <a href="index.html">Home</a> |
-        <a href="who-we-are.html">Who we are</a> |
-        <a href="what-we-offer.html">What we offer</a> |
+      <nav class="site-nav" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="who-we-are.html" aria-current="page">Who we are</a>
+        <a href="what-we-offer.html">What we offer</a>
         <a href="get-involved.html">Get involved</a>
       </nav>
     </div>
@@ -54,8 +55,21 @@
         <a href="what-we-offer.html">What we offer</a> ·
         <a href="get-involved.html">Get involved</a>
       </div>
-      <p style="margin-top:0.75rem;">
-        Contact: <a href="mailto:louise@responsiblesand.org">louise@responsiblesand.org</a>
+
+      <p class="footer-follow">
+        <a class="linkedin-link"
+           href="https://www.linkedin.com/company/110141953/"
+           target="_blank"
+           rel="noopener noreferrer">
+          Follow us on
+          <span class="linkedin-brand">
+            <img
+              src="assets/icons/linkedin-mark.svg"
+              class="linkedin-icon"
+              alt="LinkedIn">
+          </span>
+          for updates
+        </a>
       </p>
     </div>
   </footer>
