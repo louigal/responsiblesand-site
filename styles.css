@@ -355,17 +355,20 @@ footer a:hover{
 .linkedin-brand{
   display: inline-flex;
   align-items: center;
-  margin: 0 8px;          /* creates consistent space around the icon */
+
+  /* asymmetrical, optical spacing */
+  margin-left: 10px;
+  margin-right: 6px;
 }
 
 .linkedin-icon{
   height: 20px;
   width: auto;
   display: inline-block;
-  transform: scale(1.5);  /* your known-good scale */
+
+  transform: scale(1.5) translateY(0.5px);
   transform-origin: center;
 }
-
 
 /* Footer sandcastle mark:
    - darker (less watermark)
