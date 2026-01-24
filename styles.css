@@ -206,24 +206,41 @@ a:hover{ text-decoration: underline; }
 }
 .hero-intro{
   font-family: "Barlow Condensed", system-ui, -apple-system, "Segoe UI", sans-serif;
-  font-weight: 500;                     /* reduce weight */
-  letter-spacing: 0.02em;
-  color: rgba(1,30,45,0.90);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
 
-  font-size: clamp(1.15rem, 1.6vw, 1.4rem);
-  line-height: 1.25;
-  max-width: 44ch;
+  color: rgba(198,91,26,0.92); /* brand orange, slightly softened */
+  font-size: clamp(1.05rem, 1.35vw, 1.25rem);
+  line-height: 1.1;
 
-  margin-top: clamp(40px, 8vh, 72px);
+  /* Tighten to title */
+  margin-top: clamp(14px, 2.5vh, 22px);
+
+  /* Align under the wordmark (not under the sandcastle) */
   margin-left: clamp(92px, 10vw, 140px);
 
-  background: rgba(242,244,244,0.18);   /* lighter so it doesn’t look like a “card” */
-  padding: 12px 14px;
-  border-radius: 14px;
+  /* Encourage single line */
+  white-space: nowrap;
+  max-width: none;
+
+  /* Remove “paragraph box” feeling */
+  background: transparent;
+  padding: 0;
+  border-radius: 0;
 }
    
+@media (max-width: 820px){
+  .hero-intro{
+    white-space: normal;
+    max-width: 42ch;
+  }
    @media (max-width: 720px){
-  .hero-intro{ margin-left: 0; }
+  .hero-intro{
+    margin-left: 0;
+    max-width: 46ch;
+  }
+}
 
   background: rgba(242,244,244,0.22); /* lighter, less “card-like” */
   padding: 14px 18px;
