@@ -206,15 +206,21 @@ a:hover{ text-decoration: underline; }
 }
 
 .hero-intro{
-  font-family: "Barlow Condensed", system-ui, -apple-system, "Segoe UI", sans-serif;
-  font-weight: 600;
-  letter-spacing: 0.02em;
+  font-family: "Barlow", system-ui, -apple-system, "Segoe UI", sans-serif; /* switch back to body font */
+  font-weight: 500;                     /* calmer than 600 */
+  letter-spacing: 0.005em;
+  color: rgba(1,30,45,0.92);
 
-  font-size: clamp(1.35rem, 2vw, 1.7rem);
-  line-height: 1.2;
-  max-width: 42ch;
+  font-size: clamp(1.05rem, 1.35vw, 1.25rem);
+  line-height: 1.35;
+  max-width: 48ch;
+
+  margin-top: clamp(40px, 8vh, 72px);
   margin-left: clamp(92px, 10vw, 140px);
-  margin-top: clamp(44px, 10vh, 96px);
+
+  background: rgba(242,244,244,0.22);
+  padding: 14px 16px;
+  border-radius: 14px;
 }
    
    @media (max-width: 720px){
