@@ -194,7 +194,15 @@ a:hover{ text-decoration: underline; }
   font-size: clamp(24px, 2.2vw, 20px);
   color: var(--sand-orange);
 }
-
+.hero-name{
+  font-family: "Barlow Condensed", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: clamp(2.4rem, 4vw, 3.2rem);
+  color: var(--deep-navy);
+  margin-top: 6px;
+}
 .hero-intro{
   font-family: "Barlow Condensed", system-ui, -apple-system, "Segoe UI", sans-serif;
   font-weight: 500;                 /* one notch calmer */
