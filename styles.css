@@ -107,6 +107,49 @@ nav a:hover{
   text-decoration: underline;
   opacity: 1;
 }
+/* Make the hero read as the first material surface */
+.site-header{
+  background: transparent;
+  border-bottom: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+}
+
+/* Ensure hero content doesn’t sit under the overlay header */
+.hero{
+  padding-top: clamp(96px, 9vw, 140px);
+}
+
+/* Cleaner nav layout without manual | separators */
+.site-nav{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  padding: 0.75rem 0;
+}
+
+.site-nav a{
+  color: var(--deep-navy);
+  opacity: 0.9;
+  text-decoration: none;
+  padding: 8px 10px;
+  border-radius: 10px;
+}
+
+.site-nav a:hover{
+  background: rgba(255,255,255,0.45);
+  opacity: 1;
+  text-decoration: none;
+}
+
+.site-nav a[aria-current="page"]{
+  border: 1px solid rgba(198,91,26,0.45);
+  background: rgba(198,91,26,0.12);
+  opacity: 1;
+}
 
 /* =========================
    Hero
