@@ -194,32 +194,34 @@ a:hover{
 /* =========================
    Hero identity lock-up
    ========================= */
+
 .hero-lockup{
   display: flex;
-  align-items: flex-start;
-  gap: clamp(18px, 2.5vw, 32px);
+  align-items: center; /* was flex-start */
+  gap: clamp(22px, 3vw, 44px);
   flex-wrap: wrap;
 }
 
 /* Icon + vertical line */
 .hero-mark{
   position: relative;
-  padding-right: clamp(18px, 2.5vw, 28px);
+  padding-right: clamp(22px, 3vw, 36px);
 }
 
 .hero-mark::after{
   content:"";
   position: absolute;
   right: 0;
-  top: 8%;
-  height: 84%;
+  top: 6%;
+  height: 88%;
   width: 3px;
   background: var(--sand-orange);
   border-radius: 2px;
 }
 
+/* Make the sandcastle a touch more “heroic” */
 .hero-mark img{
-  height: clamp(44px, 6vw, 72px);
+  height: clamp(64px, 7.2vw, 104px);  /* bigger than before */
   width: auto;
   display: block;
 }
