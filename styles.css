@@ -164,32 +164,78 @@ a:hover{
 /* =========================
    Hero identity lock-up (alignment correction)
    ========================= */
-
-/* Control the geometry in one place */
-.hero{
-  --hero-mark-h: clamp(72px, 7.8vw, 112px);      /* keep logo size */
-  --hero-mark-pad: clamp(10px, 1.2vw, 14px);     /* reduced (was 14–20) */
-  --hero-gap: clamp(8px, 1.2vw, 16px);           /* reduced (was 16–26) */
-
-  /* KEY: stronger left shift for the text column */
-  --hero-wordmark-shift: -54px;                  /* adjust -44 to -70 if needed */
-}
+/* =========================
+   Hero identity lock-up (single left-aligned column)
+   ========================= */
 
 .hero-lockup{
-  display:flex;
-  align-items:center;
-  gap: var(--hero-gap);
-  flex-wrap: wrap;
+  display: flex;
+  flex-direction: column;     /* KEY: stack, not side-by-side */
+  align-items: flex-start;    /* KEY: same left edge for all */
+  gap: 14px;
   margin-top: clamp(36px, 8vh, 96px);
 }
 
+/* Sandcastle mark */
 .hero-mark{
   position: relative;
-  padding-right: var(--hero-mark-pad);
+  padding-right: 0;           /* no right padding in stacked layout */
 }
 
-/* Divider remains, but spacing around it is tighter now */
-.hero-mar
+/* Remove the vertical divider line (it belongs to the side-by-side lock-up) */
+.hero-mark::after{
+  display: none;
+}
+
+.hero-mark img{
+  height: clamp(72px, 7.8vw, 112px) !important;  /* prevents accidental blow-up */
+  width: auto !important;
+  display: block;
+}
+
+/* Wordmark sits below the icon, aligned to same left edge */
+.hero-wordmark{
+  line-height: 1.0;
+  margin-left: 0;
+}
+
+/* ===== HERO TEXT (keep your existing sizes) ===== */
+.hero-org{
+  font-family: "Barlow Condensed", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-size: clamp(30px, 3.2vw, 42px);
+  color: var(--sand-orange);
+}
+
+.hero-name{
+  font-family: "Barlow Condensed", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.085em;
+  font-size: clamp(3.2rem, 5.4vw, 4.6rem);
+  color: var(--deep-navy);
+  margin-top: 6px;
+}
+
+/* Intro: stacked under the wordmark, same left edge */
+.hero-intro{
+  font-family: "Barlow Condensed", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.045em;
+  color: rgba(1,30,45,0.85);
+
+  font-size: clamp(1.4rem, 1.9vw, 1.7rem);
+  line-height: 1.1;
+  margin-top: 0;              /* spacing handled by hero-lockup gap */
+  margin-left: 0 !important;  /* KEY: remove offset so it aligns */
+  white-space: normal;        /* avoid forced single-line drift */
+  max-width: 70ch;
+  background: transparent;
+  padding: 0;
+}
 
 /* =========================
    Sections
