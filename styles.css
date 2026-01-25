@@ -195,7 +195,11 @@ a:hover{
   display:block;
 }
 
-.hero-wordmark{ line-height: 1.0; }
+/* Wordmark (slightly shifted left to align with sandcastle flag) */
+.hero-wordmark{
+  line-height: 1.0;
+  margin-left: var(--hero-wordmark-shift, -14px);
+}
 
 /* ===== HERO TEXT (UPDATED – larger, more prominent) ===== */
 .hero-org{
@@ -230,12 +234,13 @@ a:hover{
 
   margin-top: clamp(8px, 1.5vh, 14px);
 
-  /* keep exact alignment with wordmark */
+  /* keep exact alignment with (shifted) wordmark */
   margin-left: calc(
     clamp(72px, 7.8vw, 112px) +
     clamp(14px, 1.6vw, 20px) +
     3px +
-    clamp(16px, 2vw, 26px)
+    clamp(16px, 2vw, 26px) +
+    var(--hero-wordmark-shift, -14px)
   );
 
   white-space: nowrap;
@@ -251,10 +256,14 @@ a:hover{
 }
 
 @media (max-width: 720px){
+  .hero-wordmark{
+    margin-left: 0;
+  }
   .hero-intro{
     margin-left: 0;
   }
 }
+
 
 /* =========================
    Sections
