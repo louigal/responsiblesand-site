@@ -187,8 +187,10 @@ a:hover{
    border-radius: 2px; }
 
 .hero-mark img{ 
-   height: clamp(72px, 7.8vw, 112px); 
-   width: auto; display:block; }
+  height: clamp(60px, 6.2vw, 96px); 
+  width: auto;
+  display: block;
+}
 
 .hero-wordmark{ 
    line-height: 1.0; }
