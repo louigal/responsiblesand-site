@@ -162,104 +162,34 @@ a:hover{
 }
 
 /* =========================
-   Hero identity lock-up
+   Hero identity lock-up (alignment correction)
    ========================= */
+
+/* Control the geometry in one place */
+.hero{
+  --hero-mark-h: clamp(72px, 7.8vw, 112px);      /* keep logo size */
+  --hero-mark-pad: clamp(10px, 1.2vw, 14px);     /* reduced (was 14–20) */
+  --hero-gap: clamp(8px, 1.2vw, 16px);           /* reduced (was 16–26) */
+
+  /* KEY: stronger left shift for the text column */
+  --hero-wordmark-shift: -54px;                  /* adjust -44 to -70 if needed */
+}
+
 .hero-lockup{
   display:flex;
   align-items:center;
-  gap: clamp(16px, 2vw, 26px);
+  gap: var(--hero-gap);
   flex-wrap: wrap;
   margin-top: clamp(36px, 8vh, 96px);
 }
 
-/* Move sandcastle + divider left so text starts under the flag */
 .hero-mark{
   position: relative;
-  padding-right: clamp(14px, 1.6vw, 20px);
-
-  /* KEY FIX: nudge the mark left */
-  margin-left: -28px; /* adjust -22 to -36 until flag aligns with text start */
+  padding-right: var(--hero-mark-pad);
 }
 
-.hero-mark::after{
-  content:"";
-  position:absolute;
-  right: 0;
-  top: 6%;
-  height: 88%;
-  width: 3px;
-  background: var(--sand-orange);
-  border-radius: 2px;
-}
-
-.hero-mark img{
-  height: clamp(72px, 7.8vw, 112px); /* keep sandcastle size as-is */
-  width: auto;
-  display:block;
-}
-
-.hero-wordmark{
-  line-height: 1.0;
-}
-
-/* ===== HERO TEXT (UPDATED – larger, more prominent) ===== */
-.hero-org{
-  font-family: "Barlow Condensed", system-ui, -apple-system, "Segoe UI", sans-serif;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-  font-size: clamp(30px, 3.2vw, 42px);
-  color: var(--sand-orange);
-}
-
-.hero-name{
-  font-family: "Barlow Condensed", system-ui, -apple-system, "Segoe UI", sans-serif;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.085em;
-  font-size: clamp(3.2rem, 5.4vw, 4.6rem);
-  color: var(--deep-navy);
-  margin-top: 6px;
-}
-
-.hero-intro{
-  font-family: "Barlow Condensed", system-ui, -apple-system, "Segoe UI", sans-serif;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.045em;
-  color: rgba(1,30,45,0.85);
-
-  font-size: clamp(1.4rem, 1.9vw, 1.7rem);
-  line-height: 1.1;
-  margin-top: clamp(8px, 1.5vh, 14px);
-
-  /* Align intro with the start of the wordmark text column */
-  margin-left: calc(
-    clamp(72px, 7.8vw, 112px) +
-    clamp(14px, 1.6vw, 20px) +
-    3px +
-    clamp(16px, 2vw, 26px)
-  );
-
-  white-space: nowrap;
-  background: transparent;
-  padding: 0;
-}
-
-@media (max-width: 900px){
-  .hero-intro{
-    white-space: normal;
-    max-width: 46ch;
-  }
-}
-
-@media (max-width: 720px){
-  /* On small screens remove the nudge so nothing risks clipping */
-  .hero-mark{ margin-left: 0; }
-  .hero-intro{ margin-left: 0; }
-}
-
-
+/* Divider remains, but spacing around it is tighter now */
+.hero-mar
 
 /* =========================
    Sections
