@@ -239,7 +239,9 @@ white-space: nowrap; }
    Sections
    ========================= */
 section{
-  padding: 3rem 0;
+  section {
+  padding: 1.75rem 2rem;
+}
   background: var(--surface-veil);
 }
 
