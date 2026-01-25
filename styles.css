@@ -223,7 +223,13 @@ a:hover{
    margin-top: clamp(8px, 1.5vh, 14px);
    
 /* align to start of wordmark text (icon + gap + divider + gap) and adjust for mobile */ 
-   margin-left: calc( clamp(72px, 7.8vw, 112px) + clamp(14px, 1.6vw, 20px) + 3px + clamp(16px, 2vw, 26px) );
+margin-left: calc(
+  clamp(72px, 7.8vw, 112px)
++ clamp(14px, 1.6vw, 20px)
++ 3px
++ clamp(16px, 2vw, 26px)
+- 10px
+);
 white-space: nowrap; }
 @media (max-width: 900px){ .hero-intro{ white-space: normal; max-width: 46ch; } }
 @media (max-width: 720px){ .hero-intro{ margin-left: 0; } }
