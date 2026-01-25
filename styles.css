@@ -162,17 +162,66 @@ a:hover{
 }
 
 
-/* ========================= Hero identity lock-up ========================= */ .hero-lockup{ display:flex; align-items:center; gap: clamp(16px, 2vw, 26px); flex-wrap: wrap;
-/* Push down slightly so it’s not cramped under the nav */ margin-top: clamp(36px, 8vh, 96px); }
-.hero-mark{ position: relative; padding-right: clamp(14px, 1.6vw, 20px); }
-.hero-mark::after{ content:""; position:absolute; right: 0; top: 6%; height: 88%; width: 3px; background: var(--sand-orange); border-radius: 2px; }
-.hero-mark img{ height: clamp(72px, 7.8vw, 112px); width: auto; display:block; }
-.hero-wordmark{ line-height: 1.0; }
-.hero-org{ font-family: "Barlow Condensed", system-ui, -apple-system, "Segoe UI", sans-serif; font-weight: 700; text-transform: uppercase; letter-spacing: 0.14em; font-size: clamp(1.25rem, 2.2vw, 1.65rem); color: var(--sand-orange); }
-.hero-name{ font-family: "Barlow Condensed", system-ui, -apple-system, "Segoe UI", sans-serif; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; font-size: clamp(2.4rem, 4vw, 3.2rem); color: var(--deep-navy); margin-top: 6px; }
-/* Strapline – aligned under the text (not under the icon) */ .hero-intro{ font-family: "Barlow Condensed", system-ui, -apple-system, "Segoe UI", sans-serif; font-weight: 600; text-transform: uppercase; letter-spacing: 0.045em; color: rgba(1,30,45,0.85); font-size: clamp(1.05rem, 1.3vw, 1.25rem); line-height: 1.1;
-margin-top: clamp(8px, 1.5vh, 14px);
-/* align to start of wordmark text (icon + gap + divider + gap) */ margin-left: calc( clamp(72px, 7.8vw, 112px) + clamp(14px, 1.6vw, 20px) + 3px + clamp(16px, 2vw, 26px) );
+/* ========================= Hero identity lock-up ========================= 
+*/ .hero-lockup{ 
+   display:flex; 
+   align-items:center; 
+   gap: clamp(16px, 2vw, 26px); 
+   flex-wrap: wrap;
+   
+/* Push down slightly so it’s not cramped under the nav 
+   
+*/ margin-top: clamp(36px, 8vh, 96px); }
+.hero-mark{ 
+ position: relative; 
+ padding-right: 
+ clamp(14px, 1.6vw, 20px); }
+
+.hero-mark::after{ 
+   content:""; 
+   position:absolute; 
+   right: 0; top: 6%; 
+   height: 88%; 
+   width: 3px; 
+   background: var(--sand-orange); 
+   border-radius: 2px; }
+
+.hero-mark img{ 
+   height: clamp(72px, 7.8vw, 112px); 
+   width: auto; display:block; }
+
+.hero-wordmark{ 
+   line-height: 1.0; }
+
+.hero-org{ 
+   font-family: "Barlow Condensed", system-ui, -apple-system, "Segoe UI", sans-serif; 
+   font-weight: 700; 
+   text-transform: uppercase; 
+   letter-spacing: 0.14em; 
+   font-size: clamp(1.3rem, 1.4vw, 1.7rem); 
+   color: var(--sand-orange); }
+
+.hero-name{ 
+   font-family: "Barlow Condensed", system-ui, -apple-system, "Segoe UI", sans-serif; 
+   font-weight: 700; 
+   text-transform: uppercase; 
+   letter-spacing: 0.08em; 
+   font-size: clamp(2.6rem, 3.2vw, 3.4rem); 
+   color: var(--deep-navy); margin-top: 6px; }
+
+/* Strapline – aligned under the text (not under the icon) */ 
+.hero-intro{ 
+   font-family: "Barlow Condensed", system-ui, -apple-system, "Segoe UI", sans-serif; 
+   font-weight: 600; 
+   text-transform: uppercase; 
+   letter-spacing: 0.045em; 
+   color: rgba(1,30,45,0.85); 
+   font-size: clamp(1.1rem, 1.0vw, 1.3rem); 
+   line-height: 1.1;
+   margin-top: clamp(8px, 1.5vh, 14px);
+   
+/* align to start of wordmark text (icon + gap + divider + gap) and adjust for mobile */ 
+   margin-left: calc( clamp(72px, 7.8vw, 112px) + clamp(14px, 1.6vw, 20px) + 3px + clamp(16px, 2vw, 26px) );
 white-space: nowrap; }
 @media (max-width: 900px){ .hero-intro{ white-space: normal; max-width: 46ch; } }
 @media (max-width: 720px){ .hero-intro{ margin-left: 0; } }
