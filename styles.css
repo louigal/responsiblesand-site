@@ -182,7 +182,7 @@ a:hover{
 }
 
 .hero-mark img{
-  height: clamp(64px, 6.6vw, 98px); /* slightly larger than your current */
+  height: clamp(58px, 6.6vw, 94px); /* slightly smaller than your current */
   width: auto;
   display: block;
 }
