@@ -172,11 +172,11 @@ a:hover{
   gap: 14px;
   margin-top: clamp(36px, 8vh, 96px);
 }
-
-/* Sandcastle mark */
-.hero-mark{
-  position: relative;
-  padding-right: 0;           /* no right padding in stacked layout */
+/* Rebalance hero mark size (smaller, still prominent) */
+.hero-mark img{
+  height: clamp(60px, 6.6vw, 96px); /* reduced from 72–112 */
+  width: auto;
+  display: block;
 }
 
 /* Orange vertical rule aligned to sandcastle */
@@ -209,7 +209,7 @@ a:hover{
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.15em;
-  font-size: clamp(30px, 3.2vw, 42px);
+  font-size: clamp(26px, 2.8vw, 38px);
   color: var(--sand-orange);
 }
 
@@ -218,7 +218,7 @@ a:hover{
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.085em;
-  font-size: clamp(3.2rem, 5.4vw, 4.6rem);
+  font-size: clamp(2.9rem, 4.9vw, 4.2rem);
   color: var(--deep-navy);
   margin-top: 6px;
 }
@@ -231,7 +231,8 @@ a:hover{
   letter-spacing: 0.045em;
   color: rgba(1,30,45,0.85);
 
-  font-size: clamp(1.4rem, 1.9vw, 1.7rem);
+  font-size: clamp(1.25rem, 1.6vw, 1.55rem);
+  letter-spacing: 0.04em;
   line-height: 1.1;
 
   margin-top: 8px;
