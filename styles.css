@@ -208,7 +208,7 @@ a:hover{
    font-weight: 700; 
    text-transform: uppercase; 
    letter-spacing: 0.045em;
-   font-size: clamp(3.7rem, 4.1vw, 4.7rem);
+   font-size: clamp(3.6rem, 4.1vw, 4.6rem);
    color: var(--deep-navy); margin-top: 6px; }
 
 /* Strapline – aligned under the text (not under the icon) */ 
