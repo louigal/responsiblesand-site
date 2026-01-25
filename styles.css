@@ -6,16 +6,16 @@
   --deep-navy:  #011e2d;
   --off-white:  #f2f4f4;
 
-  /* Layout */
   --max-width: 1100px;
   --gutter: clamp(16px, 3vw, 32px);
 
-  /* Unified “veil” (single source of truth for sections + footer) */
-  --surface-veil: rgba(255,255,255,0.45);
-
-  /* Lines */
+  /* Texture / rules */
+  --page-texture-opacity: 0.30;
   --rule-thickness: 2px;
   --rule-length: 75%;
+
+  /* Surfaces */
+  --surface-veil: rgba(255,255,255,0.45);
 }
 
 /* =========================
@@ -29,7 +29,7 @@ body{
   color: var(--deep-navy);
   line-height: 1.6;
 
-  /* Site-wide texture */
+  /* Page texture as direct background (robust) */
   background-color: #ffffff;
   background-image: url("assets/page-texture.svg");
   background-repeat: no-repeat;
@@ -38,43 +38,39 @@ body{
   background-attachment: fixed;
 }
 
-/* Mobile Safari can ignore / glitch fixed backgrounds */
+/* If mobile glitches with fixed backgrounds, uncomment:
 @media (max-width: 900px){
   body{ background-attachment: scroll; }
 }
+*/
 
 /* =========================
    Typography
    ========================= */
 h1, h2, h3, h4{
-  font-family: "Barlow Condensed", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family: "Barlow Condensed", system-ui, -apple-system, "Segoe UI", sans-serif;
   font-weight: 700;
   letter-spacing: 0.02em;
-  margin: 0 0 0.75rem 0;
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
 }
 
 p{
-  margin: 0 0 1rem 0;
-   
-  /* Paragraphs: full container width by default */
-p{
-  max-width: none;
+  max-width: 65ch;
+  margin-top: 0;
+  margin-bottom: 1.1rem;
 }
 
-}
-
-/* Links (global) */
 a{
   color: var(--sand-orange);
   text-decoration: none;
 }
-
 a:hover{
   text-decoration: underline;
 }
 
 /* =========================
-   Layout helpers
+   Layout
    ========================= */
 .container{
   max-width: var(--max-width);
@@ -91,7 +87,6 @@ a:hover{
   top: 0; left: 0; right: 0;
   z-index: 10;
 
-  /* readable on texture */
   background: rgba(255,255,255,0.55);
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
@@ -106,13 +101,12 @@ a:hover{
   height: var(--rule-thickness);
   width: var(--rule-length);
   background: var(--sand-orange);
-  z-index: 2;
 }
 
 .site-nav{
-  display: flex;
+  display:flex;
   flex-wrap: wrap;
-  gap: 0.9rem;
+  gap: 0.75rem;
   padding: 1rem 0;
 }
 
@@ -122,7 +116,12 @@ a:hover{
   padding: 6px 0;
 }
 
-/* Active page: underline only (no box) */
+.site-nav a:hover{
+  text-decoration: underline;
+  opacity: 1;
+}
+
+/* Active page: underline only, no box */
 .site-nav a[aria-current="page"]{
   text-decoration: underline;
   text-decoration-thickness: 2px;
@@ -136,9 +135,8 @@ a:hover{
   position: relative;
   overflow: hidden;
 
-  /* reduced by ~1/3 */
-  min-height: clamp(280px, 40vh, 460px);
-  padding: clamp(80px, 7vw, 115px) 0 clamp(48px, 5vw, 72px);
+  min-height: clamp(420px, 60vh, 640px);
+  padding: clamp(110px, 10vw, 160px) 0 clamp(64px, 7vw, 112px);
 
   background-color: var(--off-white);
   background-image: url("assets/hero-texture.svg");
@@ -147,7 +145,7 @@ a:hover{
   background-size: cover;
 }
 
-/* Subtle veil (calms highlights without killing texture) */
+/* Subtle veil to support readability */
 .hero::after{
   content:"";
   position:absolute;
@@ -170,7 +168,6 @@ a:hover{
   gap: clamp(16px, 2vw, 26px);
   flex-wrap: wrap;
 
-  /* Push down slightly so it’s not cramped under the nav */
   margin-top: clamp(36px, 8vh, 96px);
 }
 
@@ -191,19 +188,20 @@ a:hover{
 }
 
 .hero-mark img{
-  height: clamp(72px, 7.8vw, 112px);
+  height: clamp(72px, 7.8vw, 112px); /* keep sandcastle size as-is */
   width: auto;
   display:block;
 }
 
 .hero-wordmark{ line-height: 1.0; }
 
+/* ===== HERO TEXT (UPDATED – larger, more prominent) ===== */
 .hero-org{
   font-family: "Barlow Condensed", system-ui, -apple-system, "Segoe UI", sans-serif;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.14em;
-  font-size: clamp(1.25rem, 2.2vw, 1.65rem);
+  letter-spacing: 0.15em;
+  font-size: clamp(30px, 3.2vw, 42px);   /* increased */
   color: var(--sand-orange);
 }
 
@@ -211,25 +209,26 @@ a:hover{
   font-family: "Barlow Condensed", system-ui, -apple-system, "Segoe UI", sans-serif;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  font-size: clamp(2.4rem, 4vw, 3.2rem);
+  letter-spacing: 0.085em;
+  font-size: clamp(3.2rem, 5.4vw, 4.6rem); /* increased */
   color: var(--deep-navy);
   margin-top: 6px;
 }
 
-/* Strapline – aligned under the text (not under the icon) */
 .hero-intro{
   font-family: "Barlow Condensed", system-ui, -apple-system, "Segoe UI", sans-serif;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.045em;
+
   color: rgba(1,30,45,0.85);
-  font-size: clamp(1.05rem, 1.3vw, 1.25rem);
+
+  font-size: clamp(1.4rem, 1.9vw, 1.7rem); /* increased */
   line-height: 1.1;
 
   margin-top: clamp(8px, 1.5vh, 14px);
 
-  /* align to start of wordmark text (icon + gap + divider + gap) */
+  /* keep exact alignment with wordmark */
   margin-left: calc(
     clamp(72px, 7.8vw, 112px) +
     clamp(14px, 1.6vw, 20px) +
@@ -238,6 +237,8 @@ a:hover{
   );
 
   white-space: nowrap;
+  background: transparent;
+  padding: 0;
 }
 
 @media (max-width: 900px){
@@ -248,7 +249,9 @@ a:hover{
 }
 
 @media (max-width: 720px){
-  .hero-intro{ margin-left: 0; }
+  .hero-intro{
+    margin-left: 0;
+  }
 }
 
 /* =========================
@@ -259,17 +262,17 @@ section{
   background: var(--surface-veil);
 }
 
-.page-title{
-  background: var(--surface-veil);
-}
-
-/* Intro divider */
 .intro{
   border-top: 1px solid rgba(1,30,45,0.12);
 }
 
+/* Optional page-title section */
+.page-title{
+  background: var(--surface-veil);
+}
+
 /* =========================
-   Lists / utilities
+   Lists
    ========================= */
 .what-we-do ul{
   list-style: none;
@@ -286,7 +289,7 @@ section{
    ========================= */
 footer{
   position: relative;
-  padding: 1.75rem 0;             /* slightly tighter so the row reads as a unit */
+  padding: 2.75rem 0;
   background: var(--surface-veil);
   color: var(--deep-navy);
 }
@@ -300,34 +303,17 @@ footer::before{
   height: var(--rule-thickness);
   width: var(--rule-length);
   background: var(--sand-orange);
-  z-index: 2;
 }
 
-footer .container{
-  position: relative;
-  z-index: 3;
-}
-
-/* One-line footer layout */
+/* Footer layout */
 .footer-row{
   display: flex;
-  align-items: center;
-  gap: 1.25rem;
-  min-height: 44px;               /* gives us a stable “baseline” to align the mark to */
+  flex-wrap: wrap;
+  gap: 14px 22px;
+  align-items: baseline;
 }
 
-/* Left cluster */
-.footer-links{
-  flex: 0 1 auto;
-}
-
-/* Follow line: remove default paragraph margins that create awkward vertical drift */
-.footer-follow{
-  margin: 0;                      /* IMPORTANT: stops the line dropping */
-  flex: 1 1 auto;
-}
-
-/* Links */
+/* Footer links */
 .footer-links a,
 footer a{
   color: var(--deep-navy);
@@ -341,76 +327,60 @@ footer a:hover{
   opacity: 1;
 }
 
-.footer-separator{
-  margin-left: 0.5rem;
-  margin-right: 0.6rem;
-  opacity: 0.6; /* optional: makes it feel structural, not content */
+/* Follow line */
+.footer-follow{
+  margin: 0; /* keep it aligned with links in footer-row */
 }
 
-/* Follow link: spacing controlled, not dependent on HTML whitespace */
 .linkedin-link{
   display: inline-flex;
-  align-items: center;
-  line-height: 1;
+  align-items: baseline;
   gap: 0;
+  color: var(--deep-navy);
+  opacity: 0.95;
+  text-decoration: none;
 }
 
-/* Wrapper that acts like a word token */
+.linkedin-link:hover{
+  opacity: 1;
+  text-decoration: underline;
+}
+
+/* The "LinkedIn" wordmark image wrapper */
 .linkedin-brand{
   display: inline-flex;
-  align-items: center;
+  align-items: baseline;
+}
 
-  /* tighter overall spacing */
+/* SVG icon (wordmark) */
+.linkedin-icon{
+  height: 1em;
+  width: auto;
+  display: inline-block;
+  vertical-align: -0.08em;
+
+  /* spacing that you confirmed works */
   margin-left: 18px;
   margin-right: 8px;
 }
 
-/* Icon: keep size, but optically trim left edge */
-.linkedin-icon{
-  height: 20px;
-  width: auto;
-  display: block; /* removes inline image baseline quirks */
-
-  /* keep your known-good scale, then nudge left + slight baseline tweak */
-  transform: scale(1.5) translate(-2px, 0.5px);
-  transform-origin: center;
+/* Optional separator you added in HTML */
+.footer-separator{
+  opacity: 0.65;
+  margin-right: 10px;
 }
 
-/* Footer sandcastle mark:
-   - darker (less watermark)
-   - ~1/3 smaller
-   - aligned to the footer row (same “line” as text) */
+/* Footer sandcastle mark – UPDATED (smaller, full colour) */
 .footer-mark{
   position: absolute;
-  right: clamp(16px, 3vw, 32px);
+  right: 18px;
+  bottom: 14px;
 
-  /* Align vertically to the centre of the footer row */
-  top: 50%;
-  transform: translateY(-50%);
-
-  width: 42px;                    /* was 64px; ~1/3 smaller */
+  width: 68px;        /* ~20% reduction */
   height: auto;
 
-  opacity: 0.55;                  /* darker, less watermark */
+  opacity: 1;         /* full colour (no watermark) */
   pointer-events: none;
-}
-
-/* Mobile: stack so it never collides */
-@media (max-width: 620px){
-  .footer-row{
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.75rem;
-    min-height: auto;
-  }
-
-  .footer-mark{
-    position: static;
-    transform: none;
-    width: 38px;
-    margin-top: 0.25rem;
-    opacity: 0.55;
-  }
 }
 
 /* =========================
@@ -420,96 +390,10 @@ footer a:hover{
   .hero-lockup{ flex-direction: column; align-items: flex-start; }
   .hero-mark{ padding-right: 0; }
   .hero-mark::after{ display: none; }
-}
-/* =========================
-   Home page content blocks
-   ========================= */
 
-.home-section{
-  padding: 3rem 0;
-  background: rgba(255,255,255,0.45); /* matches your established “surface veil” */
+  .footer-mark{
+    width: 54px;
+    right: 14px;
+    bottom: 12px;
+  }
 }
-
-.home-section--final{
-  padding-top: 2rem;
-  padding-bottom: 3.25rem;
-}
-
-/* Keep headings visually anchored */
-.home-section h2{
-  margin-top: 0;
-}
-
-/* Montage images */
-.home-figure{
-  margin: 1.25rem 0 1.5rem;
-}
-
-/* Image blocks – scale down for editorial rhythm */
-.home-figure img{
-  width: 100%;
-  max-width: 720px;     /* ~50–60% of container */
-  margin: 0 auto;
-  display: block;
-  height: auto;
-  border-radius: 14px;
-}
-
-/* Slightly tighter version (materials montage) */
-.home-figure--tight img{
-  max-width: 680px;
-}
-
-/* Lists */
-.home-list{
-  margin: 1rem 0 0;
-  padding-left: 1.1rem;
-}
-
-.home-list li{
-  margin-bottom: 0.7rem;
-}
-
-/* Buttons */
-.home-cta{
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-  margin-top: 1.25rem;
-}
-
-.btn{
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 12px 16px;
-  border-radius: 14px;
-  background: var(--sand-orange);
-  color: #ffffff;
-  text-decoration: none;
-  font-family: "Barlow Condensed", system-ui, -apple-system, "Segoe UI", sans-serif;
-  font-weight: 700;
-  letter-spacing: 0.03em;
-  text-transform: uppercase;
-}
-
-.btn:hover{
-  text-decoration: none;
-  opacity: 0.95;
-}
-
-.btn--ghost{
-  background: transparent;
-  color: var(--deep-navy);
-  border: 2px solid rgba(1,30,45,0.18);
-}
-
-.btn--ghost:hover{
-  opacity: 1;
-  border-color: rgba(1,30,45,0.28);
-}
-
-.final-cta{
-  margin: 0;
-}
-
