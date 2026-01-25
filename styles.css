@@ -198,7 +198,7 @@ a:hover{
    font-weight: 700; 
    text-transform: uppercase; 
    letter-spacing: 0.14em; 
-   font-size: clamp(1.5rem, 1.45vw, 2.0rem); 
+   font-size: clamp(1.7rem, 1.7vw, 2.2rem);
    color: var(--sand-orange); }
 
 .hero-name{ 
@@ -206,7 +206,7 @@ a:hover{
    font-weight: 700; 
    text-transform: uppercase; 
    letter-spacing: 0.08em; 
-   font-size: clamp(3rem, 3.4vw, 3.8rem); 
+   font-size: clamp(3.4rem, 3.8vw, 4.2rem);
    color: var(--deep-navy); margin-top: 6px; }
 
 /* Strapline – aligned under the text (not under the icon) */ 
@@ -216,7 +216,7 @@ a:hover{
    text-transform: uppercase; 
    letter-spacing: 0.045em; 
    color: rgba(1,30,45,0.85); 
-   font-size: clamp(1.4rem, 1.25vw, 1.7rem); 
+   font-size: clamp(1.6rem, 1.4vw, 1.9rem);
    line-height: 1.1;
    margin-top: clamp(8px, 1.5vh, 14px);
    
