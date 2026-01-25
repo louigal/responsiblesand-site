@@ -175,7 +175,7 @@ a:hover{
 .hero-mark{ 
  position: relative; 
  padding-right: 
- clamp(14px, 1.6vw, 18px); }
+ clamp(12px, 1.4vw, 16px); }
 
 .hero-mark::after{ 
    content:""; 
