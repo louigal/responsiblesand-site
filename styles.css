@@ -344,6 +344,16 @@ a.btn:focus-visible,
   outline: 2px solid rgba(198,91,26,0.7);
   outline-offset: 3px;
 }
+/* =========================
+   CTA groups
+   ========================= */
+.home-cta{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;   /* ensures same vertical level */
+  margin-top: 1.5rem;
+}
 
 /* =========================
    Footer
