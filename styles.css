@@ -259,10 +259,10 @@ section{
 img[src*="assets/home/products-montage"],
 img[src*="assets/home/materials-montage"]{
   width: 100%;
-  max-width: 860px;          /* reduce dominance; adjust 820–900 if needed */
+  max-width: 1100px;          /* reduce dominance; adjust 820–900 if needed */
   height: auto;
   display: block;
-  margin: 1.25rem auto;      /* centres and keeps them integrated with text */
+  margin: 0 auto;      /* centres and keeps them integrated with text */
 }
 
 /* =========================
