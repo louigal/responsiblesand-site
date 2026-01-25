@@ -168,9 +168,9 @@ a:hover{
 
 .hero-lockup{
   display: flex;
-  flex-direction: row;             /* icon | rule | text */
-  align-items: center;             /* vertical alignment across the lockup */
-  gap: 16px;                       /* space between icon and text block */
+  flex-direction: row;
+  align-items: center;
+  gap: 16px;
   margin-top: clamp(36px, 8vh, 96px);
 }
 
@@ -182,36 +182,32 @@ a:hover{
 }
 
 .hero-mark img{
-  height: clamp(58px, 6.6vw, 94px); /* slightly smaller than your current */
+  height: clamp(58px, 6.6vw, 94px);
   width: auto;
   display: block;
 }
 
-/* Orange vertical rule as its own element via pseudo on lockup */
+/* Orange vertical rule */
 .hero-lockup::after{
   content:"";
-  order: 2;                        /* sits between mark and wordmark */
-  align-self: stretch;             /* match the height of the lockup */
+  align-self: stretch;
   width: 3px;
   background: var(--sand-orange);
   border-radius: 2px;
-  opacity: 1;
+  flex: 0 0 3px;
 }
-
-/* Ensure the rule is between mark and text */
-.hero-mark{ order: 1; }
-.hero-wordmark{ order: 3; }
 
 /* Wordmark block */
 .hero-wordmark{
-  line-height: 1.05;
   display: flex;
   flex-direction: column;
   gap: 6px;
+  line-height: 1.05;
   margin: 0;
+  max-width: 62ch; /* keeps rule height sensible and intro readable */
 }
 
-/* Slightly bigger text */
+/* Text */
 .hero-org{
   font-family: "Barlow Condensed", system-ui, -apple-system, "Segoe UI", sans-serif;
   font-weight: 700;
@@ -240,10 +236,15 @@ a:hover{
   color: #ffffff;
   opacity: 0.9;
   margin: 0;
-  white-space: nowrap;      /* KEY: single line */
-  max-width: none;          /* prevent accidental wrapping */
-   }
- 
+
+  /* controlled wrapping: looks aligned, avoids overflow */
+  max-width: 62ch;
+  white-space: normal;
+}
+@media (min-width: 900px){
+  .hero-intro{ white-space: nowrap; max-width: none; }
+}
+
 /* =========================
    Sections
    ========================= */
