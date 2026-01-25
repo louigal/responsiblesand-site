@@ -197,8 +197,8 @@ a:hover{
    font-family: "Barlow Condensed", system-ui, -apple-system, "Segoe UI", sans-serif; 
    font-weight: 700; 
    text-transform: uppercase; 
-   letter-spacing: 0.14em; 
-   font-size: clamp(2rem, 2.1vw, 2.7rem);
+   letter-spacing: 0.12em;
+   font-size: clamp(1.9rem, 2.0vw, 2.5rem);
    color: var(--sand-orange); }
 
 .hero-name{ 
