@@ -228,7 +228,7 @@ margin-left: calc(
 + clamp(14px, 1.6vw, 20px)
 + 3px
 + clamp(16px, 2vw, 26px)
-- 16px
+- 17px
 );
 white-space: nowrap; }
 @media (max-width: 900px){ .hero-intro{ white-space: normal; max-width: 46ch; } }
