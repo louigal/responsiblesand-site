@@ -238,13 +238,17 @@ white-space: nowrap; }
 /* =========================
    Sections
    ========================= */
-section{
-  section {
-  padding: 1.75rem 2rem;
-}
+
+section {
+  padding: 2rem 2rem;
+
   background: var(--surface-veil);
 }
-
+   
+section + section {
+  padding-top: 1.25rem;
+}
+   
 .intro{
   border-top: 1px solid rgba(1,30,45,0.12);
 }
