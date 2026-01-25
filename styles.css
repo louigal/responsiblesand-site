@@ -205,8 +205,8 @@ a:hover{
    font-family: "Barlow Condensed", system-ui, -apple-system, "Segoe UI", sans-serif; 
    font-weight: 700; 
    text-transform: uppercase; 
-   letter-spacing: 0.07em; 
-   font-size: clamp(3.7rem, 4.2vw, 4.7rem);
+   letter-spacing: 0.045em;
+   font-size: clamp(3.7rem, 4.1vw, 4.7rem);
    color: var(--deep-navy); margin-top: 6px; }
 
 /* Strapline – aligned under the text (not under the icon) */ 
