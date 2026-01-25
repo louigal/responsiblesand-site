@@ -27,9 +27,10 @@ body{
   margin: 0;
   font-family: "Barlow", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   color: var(--deep-navy);
-  line-height: 1.6;
 
-  /* Page texture as direct background (robust) */
+  font-size: 18px;        /* ↑ from default 16px */
+  line-height: 1.65;      /* slight increase for readability */
+
   background-color: #ffffff;
   background-image: url("assets/page-texture.svg");
   background-repeat: no-repeat;
