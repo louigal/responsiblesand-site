@@ -56,7 +56,8 @@ h1, h2, h3, h4{
 }
 
 p{
-  max-width: 65ch;
+  /* Let paragraphs follow the container width (less “essay-like”) */
+  max-width: none;
   margin-top: 0;
   margin-bottom: 1.1rem;
 }
@@ -272,6 +273,19 @@ section{
 }
 
 /* =========================
+   Homepage montage image sizing
+   (caps only these two files; keeps others responsive)
+   ========================= */
+img[src*="assets/home/products-montage"],
+img[src*="assets/home/materials-montage"]{
+  width: 100%;
+  max-width: 860px;          /* reduce dominance; adjust 820–900 if needed */
+  height: auto;
+  display: block;
+  margin: 1.25rem auto;      /* centres and keeps them integrated with text */
+}
+
+/* =========================
    Lists
    ========================= */
 .what-we-do ul{
@@ -282,6 +296,53 @@ section{
 
 .what-we-do li{
   margin-bottom: 0.75rem;
+}
+
+/* =========================
+   Buttons / CTAs (calm, editorial)
+   ========================= */
+a.button,
+a.btn,
+.button,
+.btn{
+  display: inline-block;
+  font-family: "Barlow Condensed", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-weight: 700;                 /* bolder label */
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+
+  color: var(--deep-navy);
+  background: transparent;
+  border: 1.5px solid rgba(1,30,45,0.35);
+  padding: 10px 14px;
+  border-radius: 0;                 /* hard corners to match your intent */
+  text-decoration: none;
+
+  transition: border-color 140ms ease, background 140ms ease, transform 140ms ease;
+}
+
+a.button:hover,
+a.btn:hover,
+.button:hover,
+.btn:hover{
+  border-color: rgba(198,91,26,0.75);
+  background: rgba(242,244,244,0.55);   /* restrained, non-gloss */
+  text-decoration: none;
+}
+
+a.button:active,
+a.btn:active,
+.button:active,
+.btn:active{
+  transform: translateY(1px);
+}
+
+a.button:focus-visible,
+a.btn:focus-visible,
+.button:focus-visible,
+.btn:focus-visible{
+  outline: 2px solid rgba(198,91,26,0.7);
+  outline-offset: 3px;
 }
 
 /* =========================
@@ -354,7 +415,7 @@ footer a:hover{
 
 /* SVG icon (wordmark) */
 .linkedin-icon{
-  height: 1em;
+  height: 1.2em;              /* was 1em; now +20% */
   width: auto;
   display: inline-block;
   vertical-align: -0.08em;
@@ -370,13 +431,13 @@ footer a:hover{
   margin-right: 10px;
 }
 
-/* Footer sandcastle mark – UPDATED (smaller, full colour) */
+/* Footer sandcastle mark – reduced by 20% */
 .footer-mark{
   position: absolute;
   right: 18px;
   bottom: 14px;
 
-  width: 68px;        /* ~20% reduction */
+  width: 54px;        /* was 68px; now -20% */
   height: auto;
 
   opacity: 1;         /* full colour (no watermark) */
@@ -392,7 +453,7 @@ footer a:hover{
   .hero-mark::after{ display: none; }
 
   .footer-mark{
-    width: 54px;
+    width: 44px;       /* was 54px; now -20% */
     right: 14px;
     bottom: 12px;
   }
