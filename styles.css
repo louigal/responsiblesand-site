@@ -162,88 +162,21 @@ a:hover{
 }
 
 
-/* =========================
-   Hero identity lock-up (aligned)
-   ========================= */
+/* ========================= Hero identity lock-up ========================= */ .hero-lockup{ display:flex; align-items:center; gap: clamp(16px, 2vw, 26px); flex-wrap: wrap;
+/* Push down slightly so it’s not cramped under the nav */ margin-top: clamp(36px, 8vh, 96px); }
+.hero-mark{ position: relative; padding-right: clamp(14px, 1.6vw, 20px); }
+.hero-mark::after{ content:""; position:absolute; right: 0; top: 6%; height: 88%; width: 3px; background: var(--sand-orange); border-radius: 2px; }
+.hero-mark img{ height: clamp(72px, 7.8vw, 112px); width: auto; display:block; }
+.hero-wordmark{ line-height: 1.0; }
+.hero-org{ font-family: "Barlow Condensed", system-ui, -apple-system, "Segoe UI", sans-serif; font-weight: 700; text-transform: uppercase; letter-spacing: 0.14em; font-size: clamp(1.25rem, 2.2vw, 1.65rem); color: var(--sand-orange); }
+.hero-name{ font-family: "Barlow Condensed", system-ui, -apple-system, "Segoe UI", sans-serif; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; font-size: clamp(2.4rem, 4vw, 3.2rem); color: var(--deep-navy); margin-top: 6px; }
+/* Strapline – aligned under the text (not under the icon) */ .hero-intro{ font-family: "Barlow Condensed", system-ui, -apple-system, "Segoe UI", sans-serif; font-weight: 600; text-transform: uppercase; letter-spacing: 0.045em; color: rgba(1,30,45,0.85); font-size: clamp(1.05rem, 1.3vw, 1.25rem); line-height: 1.1;
+margin-top: clamp(8px, 1.5vh, 14px);
+/* align to start of wordmark text (icon + gap + divider + gap) */ margin-left: calc( clamp(72px, 7.8vw, 112px) + clamp(14px, 1.6vw, 20px) + 3px + clamp(16px, 2vw, 26px) );
+white-space: nowrap; }
+@media (max-width: 900px){ .hero-intro{ white-space: normal; max-width: 46ch; } }
+@media (max-width: 720px){ .hero-intro{ margin-left: 0; } }
 
-.hero-lockup{
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 16px;
-  margin-top: clamp(36px, 8vh, 96px);
-}
-
-/* Sandcastle mark */
-.hero-mark{
-  display: flex;
-  align-items: center;
-  flex: 0 0 auto;
-}
-
-.hero-mark img{
-  height: clamp(58px, 6.6vw, 94px);
-  width: auto;
-  display: block;
-}
-
-/* Orange vertical rule */
-.hero-lockup::after{
-  content:"";
-  align-self: stretch;
-  width: 3px;
-  background: var(--sand-orange);
-  border-radius: 2px;
-  flex: 0 0 3px;
-}
-
-/* Wordmark block */
-.hero-wordmark{
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  line-height: 1.05;
-  margin: 0;
-  max-width: 62ch; /* keeps rule height sensible and intro readable */
-}
-
-/* Text */
-.hero-org{
-  font-family: "Barlow Condensed", system-ui, -apple-system, "Segoe UI", sans-serif;
-  font-weight: 700;
-  letter-spacing: 0.02em;
-  font-size: clamp(1.05rem, 1.2vw, 1.35rem);
-  color: #ffffff;
-  opacity: 0.92;
-  margin: 0;
-}
-
-.hero-name{
-  font-family: "Barlow Condensed", system-ui, -apple-system, "Segoe UI", sans-serif;
-  font-weight: 700;
-  letter-spacing: 0.01em;
-  font-size: clamp(2.0rem, 3.0vw, 3.0rem);
-  line-height: 0.95;
-  color: #ffffff;
-  margin: 0;
-}
-
-.hero-intro{
-  font-family: "Barlow", system-ui, -apple-system, "Segoe UI", sans-serif;
-  font-weight: 400;
-  font-size: clamp(1.05rem, 1.1vw, 1.25rem);
-  line-height: 1.35;
-  color: #ffffff;
-  opacity: 0.9;
-  margin: 0;
-
-  /* controlled wrapping: looks aligned, avoids overflow */
-  max-width: 62ch;
-  white-space: normal;
-}
-@media (min-width: 900px){
-  .hero-intro{ white-space: nowrap; max-width: none; }
-}
 
 /* =========================
    Sections
