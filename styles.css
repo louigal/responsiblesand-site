@@ -416,3 +416,91 @@ footer a:hover{
   .hero-mark{ padding-right: 0; }
   .hero-mark::after{ display: none; }
 }
+/* =========================
+   Home page content blocks
+   ========================= */
+
+.home-section{
+  padding: 3rem 0;
+  background: rgba(255,255,255,0.45); /* matches your established “surface veil” */
+}
+
+.home-section--final{
+  padding-top: 2rem;
+  padding-bottom: 3.25rem;
+}
+
+/* Keep headings visually anchored */
+.home-section h2{
+  margin-top: 0;
+}
+
+/* Montage images */
+.home-figure{
+  margin: 1.25rem 0 1.5rem;
+}
+
+.home-figure--tight{
+  margin-top: 1.1rem;
+}
+
+.home-figure img{
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 14px;
+}
+
+/* Lists */
+.home-list{
+  margin: 1rem 0 0;
+  padding-left: 1.1rem;
+}
+
+.home-list li{
+  margin-bottom: 0.7rem;
+}
+
+/* Buttons */
+.home-cta{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.25rem;
+}
+
+.btn{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 16px;
+  border-radius: 14px;
+  background: var(--sand-orange);
+  color: #ffffff;
+  text-decoration: none;
+  font-family: "Barlow Condensed", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.btn:hover{
+  text-decoration: none;
+  opacity: 0.95;
+}
+
+.btn--ghost{
+  background: transparent;
+  color: var(--deep-navy);
+  border: 2px solid rgba(1,30,45,0.18);
+}
+
+.btn--ghost:hover{
+  opacity: 1;
+  border-color: rgba(1,30,45,0.28);
+}
+
+.final-cta{
+  margin: 0;
+}
+
