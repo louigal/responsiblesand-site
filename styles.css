@@ -573,3 +573,20 @@ footer a:hover{
     max-width: 52ch;
   }
 }
+/* =========================
+   HERO NAME LINE CONTROL
+   ========================= */
+
+/* Keep hero name on one line on desktop */
+@media (min-width: 901px){
+  .hero-name{
+    white-space: nowrap;
+  }
+}
+
+/* Allow wrap on smaller screens */
+@media (max-width: 900px){
+  .hero-name{
+    white-space: normal;
+  }
+}
