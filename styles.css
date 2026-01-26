@@ -590,3 +590,19 @@ footer a:hover{
     white-space: normal;
   }
 }
+/* =========================
+   RESTORE EMPHASIS FOR <strong>
+   ========================= */
+
+/* Ensure strong text is visibly distinct */
+strong{
+  font-weight: 700;
+  color: var(--deep-navy);
+}
+
+/* Optional: slightly tighter tracking for emphasis in body copy */
+p strong,
+li strong{
+  letter-spacing: 0.01em;
+}
+
