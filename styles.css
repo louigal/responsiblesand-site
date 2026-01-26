@@ -27,7 +27,8 @@ body{
   margin: 0;
   font-family: "Barlow", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   color: var(--deep-navy);
-  line-height: 1.6;
+  line-height: 1.65;
+  font-size: 17px; /* slightly down, still readable */
 
   /* Page texture as direct background (robust) */
   background-color: #ffffff;
@@ -38,11 +39,9 @@ body{
   background-attachment: fixed;
 }
 
-/* If mobile glitches with fixed backgrounds, uncomment:
 @media (max-width: 900px){
   body{ background-attachment: scroll; }
 }
-*/
 
 /* =========================
    Typography
@@ -55,11 +54,13 @@ h1, h2, h3, h4{
   margin-bottom: 0.75rem;
 }
 
-/* Wider reading measure than before (less “essay-like”) */
 p{
-  max-width: 78ch;
   margin-top: 0;
-  margin-bottom: 1.1rem;
+  margin-bottom: 1.05rem;
+}
+
+strong{
+  font-weight: 700; /* make bold actually bold */
 }
 
 a{
@@ -68,12 +69,6 @@ a{
 }
 a:hover{
   text-decoration: underline;
-}
-
-/* FIX 1: restore visible emphasis site-wide */
-strong{
-  font-weight: 600; /* editorial emphasis, not shouty */
-  color: var(--deep-navy);
 }
 
 /* =========================
@@ -86,69 +81,88 @@ strong{
   padding-right: var(--gutter);
 }
 
-/* Two-column editorial section pattern (home right rail) */
+/* Two-column editorial section pattern (text + right rail) */
 .home-layout{
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 320px; /* scaled rail */
+  grid-template-columns: minmax(0, 1fr) 320px; /* scaled down from 360 */
   gap: clamp(18px, 2.4vw, 30px);
-  align-items: center; /* centre the rail relative to section */
+  align-items: center; /* centre the rail within the section */
 }
 
+/* Keep text starting at top (only the rail centres) */
 .home-content{
   min-width: 0;
-  align-self: start; /* keep text pinned to top */
+  align-self: start;
 }
 
+/* Right rail wrapper */
 .home-rail{
   min-width: 0;
   align-self: center;
   position: relative;
 }
 
+/* Optional: cap rail width on very wide screens */
+@media (min-width: 1200px){
+  .home-rail{ max-width: 320px; }
+}
+
+/* Remove default figure spacing */
+.home-figure{
+  margin: 0;
+}
+
+/* Images should behave consistently */
 .home-rail img{
   width: 100%;
   height: auto;
-  display: block;
+  display: block; /* avoids baseline “gap” */
 }
 
+/* Square crops for single-tile materials images */
 .home-rail--square img{
   aspect-ratio: 1 / 1;
   object-fit: cover;
 }
 
-/* 75% orange "L-frame" — touching corner, brand-consistent weight */
+/* =========================
+   Orange 75% “corner frame”
+   We draw the frame on the rail, then inset the figure slightly
+   so the image corner sits inside the 90° angle and the lines remain visible.
+   ========================= */
+.home-rail--ruled{
+  /* space for the frame to show */
+  --frame-inset: 10px;                 /* tweak 8–14px to taste */
+  --frame-weight: var(--rule-thickness);/* keep consistent with header/footer rules */
+}
+
+/* inset the image away from the top/left frame */
+.home-rail--ruled .home-figure{
+  padding-top: var(--frame-inset);
+  padding-left: var(--frame-inset);
+}
+
+/* draw the frame at the rail’s true top-left */
 .home-rail--ruled::before,
 .home-rail--ruled::after{
   content: "";
   position: absolute;
+  top: 0;
+  left: 0;
   pointer-events: none;
   background: var(--sand-orange);
-  z-index: 2;
 }
 
 /* Top rule: 75% across from top-left */
 .home-rail--ruled::before{
-  top: 0;
-  left: 0;
-  height: var(--rule-thickness);
+  height: var(--frame-weight);
   width: 75%;
 }
 
 /* Left rule: 75% down from top-left */
 .home-rail--ruled::after{
-  top: 0;
-  left: 0;
-  width: var(--rule-thickness);
+  width: var(--frame-weight);
   height: 75%;
-}
-
-/* Give the image a small inset so it “sits into” the corner but lines remain visible */
-.home-rail--ruled img{
-  position: relative;
-  z-index: 1;
-  padding-top: 8px;
-  padding-left: 8px;
-  box-sizing: border-box;
 }
 
 /* Mobile collapse */
@@ -158,6 +172,7 @@ strong{
   }
   .home-rail{
     order: 2; /* image below text */
+    max-width: none;
   }
 }
 
@@ -217,20 +232,15 @@ strong{
   position: relative;
   overflow: hidden;
 
-  min-height: clamp(420px, 60vh, 640px);
-  padding: clamp(110px, 10vw, 160px) 0 clamp(64px, 7vw, 112px);
+  /* reduced ~⅓ */
+  min-height: clamp(320px, 48vh, 520px);
+  padding: clamp(96px, 8vw, 132px) 0 clamp(48px, 6vw, 84px);
 
   background-color: var(--off-white);
   background-image: url("assets/hero-texture.svg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-
-  /* FIX: make alignment robust by driving everything from shared vars */
-  --hero-mark-size: clamp(60px, 6.6vw, 96px);
-  --hero-gap: clamp(16px, 2vw, 26px);
-  --hero-mark-pad: clamp(14px, 1.6vw, 20px);
-  --hero-rule-width: 3px;
 }
 
 /* Subtle veil to support readability */
@@ -238,7 +248,7 @@ strong{
   content:"";
   position:absolute;
   inset:0;
-  background: rgba(242,244,244, 0.25);
+  background: rgba(242,244,244, 0.22);
   pointer-events:none;
 }
 
@@ -251,16 +261,17 @@ strong{
    Hero identity lock-up
    ========================= */
 .hero-lockup{
-  display:flex;
-  align-items:flex-start;
-  gap: var(--hero-gap);
-  flex-wrap: wrap;
-  margin-top: clamp(36px, 8vh, 96px);
+  display: flex;
+  align-items: flex-start;
+  gap: clamp(16px, 2vw, 26px);
+  margin-top: clamp(28px, 6vh, 72px);
 }
 
+/* Icon + vertical rule */
 .hero-mark{
   position: relative;
-  padding-right: var(--hero-mark-pad);
+  display: inline-block; /* prevents rule drifting */
+  padding-right: clamp(14px, 1.6vw, 20px);
 }
 
 .hero-mark::after{
@@ -269,16 +280,19 @@ strong{
   right: 0;
   top: 6%;
   height: 88%;
-  width: var(--hero-rule-width);
+  width: 3px;
   background: var(--sand-orange);
   border-radius: 2px;
 }
 
-/* hero mark size (kept slightly reduced from earlier “too big” state) */
 .hero-mark img{
-  height: var(--hero-mark-size);
+  height: clamp(62px, 6.8vw, 98px); /* slightly smaller than the earlier largest */
   width: auto;
   display:block;
+}
+
+.hero-text{
+  min-width: 0;
 }
 
 .hero-wordmark{ line-height: 1.0; }
@@ -289,7 +303,7 @@ strong{
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.15em;
-  font-size: clamp(28px, 3.0vw, 40px);
+  font-size: clamp(26px, 2.9vw, 38px);
   color: var(--sand-orange);
 }
 
@@ -298,12 +312,11 @@ strong{
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.085em;
-  font-size: clamp(3.0rem, 5.0vw, 4.3rem);
+  font-size: clamp(2.8rem, 4.8vw, 4.1rem);
   color: var(--deep-navy);
   margin-top: 6px;
 }
 
-/* FIX (strapline alignment): lock to same left edge as hero-org/hero-name */
 .hero-intro{
   font-family: "Barlow Condensed", system-ui, -apple-system, "Segoe UI", sans-serif;
   font-weight: 600;
@@ -311,34 +324,34 @@ strong{
   letter-spacing: 0.045em;
   color: rgba(1,30,45,0.85);
 
-  font-size: clamp(1.25rem, 1.7vw, 1.55rem);
+  font-size: clamp(1.2rem, 1.6vw, 1.55rem);
   line-height: 1.1;
 
-  margin-top: clamp(8px, 1.5vh, 14px);
+  margin-top: clamp(10px, 1.8vh, 16px);
+  margin-bottom: 0;
 
-  /* This is the critical alignment rule */
-  margin-left: calc(
-    var(--hero-mark-size) +
-    var(--hero-mark-pad) +
-    var(--hero-rule-width) +
-    var(--hero-gap)
-  );
-
-  white-space: nowrap;
-  background: transparent;
-  padding: 0;
+  white-space: nowrap; /* keep one line on desktop */
 }
 
 @media (max-width: 900px){
   .hero-intro{
-    white-space: normal;
-    max-width: 46ch;
+    white-space: normal; /* allow wrap on smaller screens */
+    max-width: 52ch;
   }
 }
 
-@media (max-width: 720px){
-  .hero-intro{
-    margin-left: 0;
+@media (max-width: 520px){
+  .hero-lockup{
+    gap: 14px;
+  }
+  .hero-mark{
+    padding-right: 12px;
+  }
+  .hero-mark::after{
+    /* keep brand rule on mobile (do NOT hide) */
+    top: 8%;
+    height: 84%;
+    width: 3px;
   }
 }
 
@@ -346,7 +359,7 @@ strong{
    Sections
    ========================= */
 section{
-  padding: 2rem 0; /* tightened yesterday */
+  padding: 2rem 0; /* already tightened */
   background: var(--surface-veil);
 }
 
@@ -354,30 +367,61 @@ section{
   border-top: 1px solid rgba(1,30,45,0.12);
 }
 
-/* Optional page-title section */
-.page-title{
-  background: var(--surface-veil);
-}
-
 /* =========================
    Lists
    ========================= */
-.what-we-do ul{
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.what-we-do li{
-  margin-bottom: 0.75rem;
-}
-
-/* If you use the "home-list" class (index), keep it tidy */
 .home-list{
+  margin: 0;
   padding-left: 1.1rem;
 }
+
 .home-list li{
-  margin-bottom: 0.6rem;
+  margin-bottom: 0.7rem;
+}
+
+/* =========================
+   Buttons / CTAs
+   ========================= */
+.home-cta{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 12px;
+  margin-top: 1.15rem;
+  align-items: stretch; /* keep same height */
+}
+
+.btn{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 12px 18px;
+  border: 1px solid rgba(1,30,45,0.35);
+  background: rgba(255,255,255,0.35);
+  color: var(--deep-navy);
+  text-decoration: none;
+
+  font-family: "Barlow Condensed", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-weight: 700; /* bolder button label */
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+
+  line-height: 1;
+  border-radius: 0; /* hard corners */
+}
+
+.btn:hover{
+  background: rgba(255,255,255,0.55);
+  text-decoration: none;
+}
+
+.btn--ghost{
+  background: transparent;
+}
+
+/* Final CTA spacing */
+.final-cta{
+  margin: 0;
 }
 
 /* =========================
@@ -385,7 +429,7 @@ section{
    ========================= */
 footer{
   position: relative;
-  padding: 2.75rem 0;
+  padding: 2.5rem 0;
   background: var(--surface-veil);
   color: var(--deep-navy);
 }
@@ -425,7 +469,7 @@ footer a:hover{
 
 /* Follow line */
 .footer-follow{
-  margin: 0; /* keep it aligned with links in footer-row */
+  margin: 0;
 }
 
 .linkedin-link{
@@ -448,14 +492,14 @@ footer a:hover{
   align-items: baseline;
 }
 
-/* FIX 4: LinkedIn icon +33% */
+/* SVG icon (wordmark) */
 .linkedin-icon{
-  height: 1.33em; /* was 1em */
+  height: 1.2em; /* +20% for legibility */
   width: auto;
   display: inline-block;
-  vertical-align: -0.12em;
+  vertical-align: -0.08em;
 
-  /* spacing that you confirmed works */
+  /* confirmed spacing */
   margin-left: 18px;
   margin-right: 8px;
 }
@@ -466,37 +510,29 @@ footer a:hover{
   margin-right: 10px;
 }
 
-/* FIX 2: Footer sandcastle mark – reduce by half */
+/* Footer legal line */
+.footer-legal{
+  margin: 0.85rem 0 0;
+  opacity: 0.78;
+  font-size: 0.95rem;
+}
+
+/* Footer sandcastle mark – reduced again */
 .footer-mark{
   position: absolute;
   right: 18px;
   bottom: 14px;
 
-  width: 34px;        /* was ~68px */
+  width: 54px; /* reduced further */
   height: auto;
 
-  opacity: 1;         /* full colour */
+  opacity: 1;
   pointer-events: none;
 }
 
-/* FIX 3: Footer legal statement styling */
-.footer-legal{
-  font-size: 0.85rem;
-  opacity: 0.7;
-  margin: 0.75rem 0 0;
-  max-width: none;
-}
-
-/* =========================
-   Mobile
-   ========================= */
 @media (max-width: 520px){
-  .hero-lockup{ flex-direction: column; align-items: flex-start; }
-  .hero-mark{ padding-right: 0; }
-  .hero-mark::after{ display: none; } /* keep simple at very small widths */
-
   .footer-mark{
-    width: 28px;
+    width: 44px;
     right: 14px;
     bottom: 12px;
   }
