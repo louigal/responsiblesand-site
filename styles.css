@@ -517,26 +517,24 @@ footer a:hover{
   font-size: 0.95rem;
 }
 
-/* Footer sandcastle mark – reduced again */
 .footer-mark{
   position: absolute;
   right: 18px;
   bottom: 14px;
-
-  width: 54px; /* reduced further */
+  width: 34px;        /* half of previous size */
   height: auto;
-
   opacity: 1;
   pointer-events: none;
 }
 
 @media (max-width: 520px){
   .footer-mark{
-    width: 44px;
+    width: 28px;
     right: 14px;
     bottom: 12px;
   }
 }
+
 /* =========================
    HERO STRAPLINE ALIGNMENT — CSS-only
    Add at END of styles.css
