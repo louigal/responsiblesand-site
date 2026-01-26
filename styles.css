@@ -147,52 +147,41 @@ a:hover{
   .home-rail{ max-width: 320px; }
 }
 
-/* 3) Orange 75% "L-frame" for ruled rails */
+/* 75% orange "L-frame" — touching corner, lighter weight */
 .home-rail--ruled::before,
 .home-rail--ruled::after{
   content: "";
   position: absolute;
   pointer-events: none;
   background: var(--sand-orange);
-  opacity: 1;
+  opacity: 0.95;
 }
 
-/* Top rule: 75% across from top-left */
+/* Top rule: 75% across from top-left, touching the left rule */
 .home-rail--ruled::before{
-  top: -10px;         /* small offset to breathe */
+  top: 0;
   left: 0;
-  height: 2px;
+  height: 1px;   /* lighter than global 2px */
   width: 75%;
 }
 
-/* Left rule: 75% down from top-left */
+/* Left rule: 75% down from top-left, touching the top rule */
 .home-rail--ruled::after{
   top: 0;
-  left: -10px;        /* small offset to breathe */
-  width: 2px;
+  left: 0;
+  width: 1px;    /* lighter than global 2px */
   height: 75%;
 }
 
-/* On mobile (single column), keep rules but pull them in so they don't clip */
+/* Mobile: keep it inside the rail so it never clips */
 @media (max-width: 900px){
-  .home-layout{
-    align-items: start; /* go back to start for stacked layout */
-  }
-  .home-rail{
-    align-self: start;
-    margin-top: 10px;
-  }
-  .home-rail--ruled::before{
-    top: -8px;
-    left: 0;
-    width: 75%;
-  }
+  .home-rail--ruled::before,
   .home-rail--ruled::after{
-    left: 0;
     top: 0;
-    height: 75%;
+    left: 0;
   }
 }
+
 
 
 /* =========================
