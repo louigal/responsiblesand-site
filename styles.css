@@ -117,6 +117,83 @@ a:hover{
     order: 2; /* image below text */
   }
 }
+/* =========================
+   HOME RIGHT-RAIL patch: scale + centre + orange 75% frame
+   ========================= */
+
+/* 1) Reduce rail column so montage + squares scale down proportionally */
+.home-layout{
+  grid-template-columns: minmax(0, 1fr) 320px; /* was 360px */
+}
+
+/* 2) Centre the rail within the section vertically */
+.home-layout{
+  align-items: center; /* was start */
+}
+
+/* Keep text starting at top (so only the rail “moves”) */
+.home-content{
+  align-self: start;
+}
+
+/* Ensure the rail can centre itself nicely */
+.home-rail{
+  align-self: center;
+  position: relative;
+}
+
+/* Optional: cap rail width on very wide screens */
+@media (min-width: 1200px){
+  .home-rail{ max-width: 320px; }
+}
+
+/* 3) Orange 75% "L-frame" for ruled rails */
+.home-rail--ruled::before,
+.home-rail--ruled::after{
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  background: var(--sand-orange);
+  opacity: 1;
+}
+
+/* Top rule: 75% across from top-left */
+.home-rail--ruled::before{
+  top: -10px;         /* small offset to breathe */
+  left: 0;
+  height: 2px;
+  width: 75%;
+}
+
+/* Left rule: 75% down from top-left */
+.home-rail--ruled::after{
+  top: 0;
+  left: -10px;        /* small offset to breathe */
+  width: 2px;
+  height: 75%;
+}
+
+/* On mobile (single column), keep rules but pull them in so they don't clip */
+@media (max-width: 900px){
+  .home-layout{
+    align-items: start; /* go back to start for stacked layout */
+  }
+  .home-rail{
+    align-self: start;
+    margin-top: 10px;
+  }
+  .home-rail--ruled::before{
+    top: -8px;
+    left: 0;
+    width: 75%;
+  }
+  .home-rail--ruled::after{
+    left: 0;
+    top: 0;
+    height: 75%;
+  }
+}
+
 
 /* =========================
    Header / Navigation
