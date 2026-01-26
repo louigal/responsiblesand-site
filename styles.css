@@ -537,3 +537,21 @@ footer a:hover{
     bottom: 12px;
   }
 }
+/* =========================
+   HERO STRAPLINE ALIGNMENT — CSS-only
+   Add at END of styles.css
+   ========================= */
+
+/* Force strapline to use the same left edge as the hero wordmark */
+.hero-intro{
+  margin-left: 0 !important;
+  padding-left: 0 !important;
+}
+
+/* Keep one line on desktop, allow wrapping on small screens */
+@media (min-width: 901px){
+  .hero-intro{ white-space: nowrap; }
+}
+@media (max-width: 900px){
+  .hero-intro{ white-space: normal; }
+}
