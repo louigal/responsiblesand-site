@@ -606,3 +606,16 @@ li strong{
   letter-spacing: 0.01em;
 }
 
+/* =========================
+   FOOTER LEGAL / COPYRIGHT
+   ========================= */
+
+.footer-legal{
+  font-size: 0.85rem;
+  line-height: 1.4;
+  margin-top: 0.9rem;
+  margin-bottom: 0;
+  color: var(--deep-navy);
+  opacity: 0.65;
+  max-width: none;
+}
