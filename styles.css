@@ -27,10 +27,10 @@ body{
   margin: 0;
   font-family: "Barlow", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   color: var(--deep-navy);
+  line-height: 1.65;
+  font-size: 17px; /* slightly down, still readable */
 
-  font-size: 18px;        /* ↑ from default 16px */
-  line-height: 1.65;      /* slight increase for readability */
-
+  /* Page texture as direct background (robust) */
   background-color: #ffffff;
   background-image: url("assets/page-texture.svg");
   background-repeat: no-repeat;
@@ -39,11 +39,9 @@ body{
   background-attachment: fixed;
 }
 
-/* If mobile glitches with fixed backgrounds, uncomment:
 @media (max-width: 900px){
   body{ background-attachment: scroll; }
 }
-*/
 
 /* =========================
    Typography
@@ -57,10 +55,12 @@ h1, h2, h3, h4{
 }
 
 p{
-  /* Let paragraphs follow the container width (less “essay-like”) */
-  max-width: none;
   margin-top: 0;
-  margin-bottom: 1.1rem;
+  margin-bottom: 1.05rem;
+}
+
+strong{
+  font-weight: 700; /* make bold actually bold */
 }
 
 a{
@@ -79,6 +79,43 @@ a:hover{
   margin: 0 auto;
   padding-left: var(--gutter);
   padding-right: var(--gutter);
+}
+
+/* Two-column editorial section pattern */
+.home-layout{
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 360px; /* text + right rail */
+  gap: clamp(18px, 2.4vw, 30px);
+  align-items: start;
+}
+
+.home-content{
+  min-width: 0;
+}
+
+.home-rail{
+  min-width: 0;
+}
+
+.home-rail img{
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.home-rail--square img{
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+}
+
+/* Mobile collapse */
+@media (max-width: 900px){
+  .home-layout{
+    grid-template-columns: 1fr;
+  }
+  .home-rail{
+    order: 2; /* image below text */
+  }
 }
 
 /* =========================
@@ -137,8 +174,9 @@ a:hover{
   position: relative;
   overflow: hidden;
 
-  min-height: clamp(420px, 60vh, 640px);
-  padding: clamp(110px, 10vw, 160px) 0 clamp(64px, 7vw, 112px);
+  /* reduced ~⅓ */
+  min-height: clamp(320px, 48vh, 520px);
+  padding: clamp(96px, 8vw, 132px) 0 clamp(48px, 6vw, 84px);
 
   background-color: var(--off-white);
   background-image: url("assets/hero-texture.svg");
@@ -152,7 +190,7 @@ a:hover{
   content:"";
   position:absolute;
   inset:0;
-  background: rgba(242,244,244, 0.25);
+  background: rgba(242,244,244, 0.22);
   pointer-events:none;
 }
 
@@ -161,184 +199,171 @@ a:hover{
   z-index: 1;
 }
 
-
-/* ========================= Hero identity lock-up ========================= 
-*/ .hero-lockup{ 
-   display:flex; 
-   align-items:center; 
-   gap: clamp(16px, 2vw, 26px); 
-   flex-wrap: wrap;
-   
-/* Push down slightly so it’s not cramped under the nav 
-   
-*/ margin-top: clamp(36px, 8vh, 96px); }
-.hero-mark{ 
- position: relative; 
- padding-right: 
- clamp(12px, 1.4vw, 16px); }
-
-.hero-mark::after{ 
-   content:""; 
-   position:absolute; 
-   right: 0; top: 6%; 
-   height: 88%; 
-   width: 3px; 
-   background: var(--sand-orange); 
-   border-radius: 2px; }
-
-.hero-mark img{ 
-  height: clamp(60px, 6.2vw, 96px); 
-  width: auto;
-  display: block;
+/* =========================
+   Hero identity lock-up
+   ========================= */
+.hero-lockup{
+  display: flex;
+  align-items: flex-start;
+  gap: clamp(16px, 2vw, 26px);
+  margin-top: clamp(28px, 6vh, 72px);
 }
 
-.hero-wordmark{ 
-   line-height: 1.0; }
+/* Icon + vertical rule */
+.hero-mark{
+  position: relative;
+  display: inline-block; /* prevents rule drifting */
+  padding-right: clamp(14px, 1.6vw, 20px);
+}
 
-.hero-org{ 
-   font-family: "Barlow Condensed", system-ui, -apple-system, "Segoe UI", sans-serif; 
-   font-weight: 700; 
-   text-transform: uppercase; 
-   letter-spacing: 0.12em;
-   font-size: clamp(1.9rem, 2.0vw, 2.5rem);
-   color: var(--sand-orange); }
+.hero-mark::after{
+  content:"";
+  position:absolute;
+  right: 0;
+  top: 6%;
+  height: 88%;
+  width: 3px;
+  background: var(--sand-orange);
+  border-radius: 2px;
+}
 
-.hero-name{ 
-   font-family: "Barlow Condensed", system-ui, -apple-system, "Segoe UI", sans-serif; 
-   font-weight: 700; 
-   text-transform: uppercase; 
-   letter-spacing: 0.045em;
-   font-size: clamp(3.6rem, 4.1vw, 4.6rem);
-   color: var(--deep-navy); margin-top: 6px; }
+.hero-mark img{
+  height: clamp(62px, 6.8vw, 98px); /* slightly smaller than the earlier largest */
+  width: auto;
+  display:block;
+}
 
-/* Strapline – aligned under the text (not under the icon) */ 
-.hero-intro{ 
-   font-family: "Barlow Condensed", system-ui, -apple-system, "Segoe UI", sans-serif; 
-   font-weight: 600; 
-   text-transform: uppercase; 
-   letter-spacing: 0.045em; 
-   color: rgba(1,30,45,0.85); 
-   font-size: clamp(1.6rem, 1.4vw, 1.9rem);
-   line-height: 1.1;
-   margin-top: clamp(8px, 1.5vh, 14px);
-   
-/* align to start of wordmark text (icon + gap + divider + gap) and adjust for mobile */ 
-margin-left: calc(
-  clamp(72px, 7.8vw, 112px)
-+ clamp(14px, 1.6vw, 20px)
-+ 3px
-+ clamp(16px, 2vw, 26px)
-- 17px
-);
-white-space: nowrap; }
-@media (max-width: 900px){ .hero-intro{ white-space: normal; max-width: 46ch; } }
-@media (max-width: 720px){ .hero-intro{ margin-left: 0; } }
+.hero-text{
+  min-width: 0;
+}
 
+.hero-wordmark{ line-height: 1.0; }
+
+/* ===== HERO TEXT ===== */
+.hero-org{
+  font-family: "Barlow Condensed", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-size: clamp(26px, 2.9vw, 38px);
+  color: var(--sand-orange);
+}
+
+.hero-name{
+  font-family: "Barlow Condensed", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.085em;
+  font-size: clamp(2.8rem, 4.8vw, 4.1rem);
+  color: var(--deep-navy);
+  margin-top: 6px;
+}
+
+.hero-intro{
+  font-family: "Barlow Condensed", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.045em;
+  color: rgba(1,30,45,0.85);
+
+  font-size: clamp(1.2rem, 1.6vw, 1.55rem);
+  line-height: 1.1;
+
+  margin-top: clamp(10px, 1.8vh, 16px);
+  margin-bottom: 0;
+
+  white-space: nowrap; /* keep one line on desktop */
+}
+
+@media (max-width: 900px){
+  .hero-intro{
+    white-space: normal; /* allow wrap on smaller screens */
+    max-width: 52ch;
+  }
+}
+
+@media (max-width: 520px){
+  .hero-lockup{
+    gap: 14px;
+  }
+  .hero-mark{
+    padding-right: 12px;
+  }
+  .hero-mark::after{
+    /* keep brand rule on mobile (do NOT hide) */
+    top: 8%;
+    height: 84%;
+    width: 3px;
+  }
+}
 
 /* =========================
    Sections
    ========================= */
-
-section {
-  padding: 2rem 0rem;
-
+section{
+  padding: 2rem 0; /* already tightened */
   background: var(--surface-veil);
 }
-   
-section + section {
-  padding-top: 1.25rem;
-}
-   
+
 .intro{
   border-top: 1px solid rgba(1,30,45,0.12);
-}
-
-/* Optional page-title section */
-.page-title{
-  background: var(--surface-veil);
-}
-
-/* =========================
-   Homepage montage image sizing
-   (caps only these two files; keeps others responsive)
-   ========================= */
-img[src*="assets/home/products-montage"],
-img[src*="assets/home/materials-montage"]{
-  width: 100%;
-  max-width: 1200px;          /* reduce dominance; adjust 820–900 if needed */
-  height: auto;
-  display: block;
-  margin: 0 auto;    
 }
 
 /* =========================
    Lists
    ========================= */
-.what-we-do ul{
-  list-style: none;
-  padding: 0;
+.home-list{
   margin: 0;
+  padding-left: 1.1rem;
 }
 
-.what-we-do li{
-  margin-bottom: 0.75rem;
+.home-list li{
+  margin-bottom: 0.7rem;
 }
 
 /* =========================
-   Buttons / CTAs (calm, editorial)
-   ========================= */
-a.button,
-a.btn,
-.button,
-.btn{
-  display: inline-block;
-  font-family: "Barlow Condensed", system-ui, -apple-system, "Segoe UI", sans-serif;
-  font-weight: 700;                 /* bolder label */
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-
-  color: var(--deep-navy);
-  background: transparent;
-  border: 1.5px solid rgba(1,30,45,0.35);
-  padding: 10px 14px;
-  border-radius: 0;                 /* hard corners to match your intent */
-  text-decoration: none;
-
-  transition: border-color 140ms ease, background 140ms ease, transform 140ms ease;
-}
-
-a.button:hover,
-a.btn:hover,
-.button:hover,
-.btn:hover{
-  border-color: rgba(198,91,26,0.75);
-  background: rgba(242,244,244,0.55);   /* restrained, non-gloss */
-  text-decoration: none;
-}
-
-a.button:active,
-a.btn:active,
-.button:active,
-.btn:active{
-  transform: translateY(1px);
-}
-
-a.button:focus-visible,
-a.btn:focus-visible,
-.button:focus-visible,
-.btn:focus-visible{
-  outline: 2px solid rgba(198,91,26,0.7);
-  outline-offset: 3px;
-}
-/* =========================
-   CTA groups
+   Buttons / CTAs
    ========================= */
 .home-cta{
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
-  align-items: center;   /* ensures same vertical level */
-  margin-top: 1.5rem;
+  gap: 10px 12px;
+  margin-top: 1.15rem;
+  align-items: stretch; /* keep same height */
+}
+
+.btn{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 12px 18px;
+  border: 1px solid rgba(1,30,45,0.35);
+  background: rgba(255,255,255,0.35);
+  color: var(--deep-navy);
+  text-decoration: none;
+
+  font-family: "Barlow Condensed", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-weight: 700; /* bolder button label */
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+
+  line-height: 1;
+  border-radius: 0; /* hard corners */
+}
+
+.btn:hover{
+  background: rgba(255,255,255,0.55);
+  text-decoration: none;
+}
+
+.btn--ghost{
+  background: transparent;
+}
+
+/* Final CTA spacing */
+.final-cta{
+  margin: 0;
 }
 
 /* =========================
@@ -346,7 +371,7 @@ a.btn:focus-visible,
    ========================= */
 footer{
   position: relative;
-  padding: 2.75rem 0;
+  padding: 2.5rem 0;
   background: var(--surface-veil);
   color: var(--deep-navy);
 }
@@ -386,7 +411,7 @@ footer a:hover{
 
 /* Follow line */
 .footer-follow{
-  margin: 0; /* keep it aligned with links in footer-row */
+  margin: 0;
 }
 
 .linkedin-link{
@@ -411,12 +436,12 @@ footer a:hover{
 
 /* SVG icon (wordmark) */
 .linkedin-icon{
-  height: 1.2em;              /* was 1em; now +20% */
+  height: 1.2em; /* +20% for legibility */
   width: auto;
   display: inline-block;
   vertical-align: -0.08em;
 
-  /* spacing that you confirmed works */
+  /* confirmed spacing */
   margin-left: 18px;
   margin-right: 8px;
 }
@@ -427,29 +452,29 @@ footer a:hover{
   margin-right: 10px;
 }
 
-/* Footer sandcastle mark – reduced by 20% */
+/* Footer legal line */
+.footer-legal{
+  margin: 0.85rem 0 0;
+  opacity: 0.78;
+  font-size: 0.95rem;
+}
+
+/* Footer sandcastle mark – reduced again */
 .footer-mark{
   position: absolute;
   right: 18px;
   bottom: 14px;
 
-  width: 54px;        /* was 68px; now -20% */
+  width: 54px; /* reduced further */
   height: auto;
 
-  opacity: 1;         /* full colour (no watermark) */
+  opacity: 1;
   pointer-events: none;
 }
 
-/* =========================
-   Mobile
-   ========================= */
 @media (max-width: 520px){
-  .hero-lockup{ flex-direction: column; align-items: flex-start; }
-  .hero-mark{ padding-right: 0; }
-  .hero-mark::after{ display: none; }
-
   .footer-mark{
-    width: 44px;       /* was 54px; now -20% */
+    width: 44px;
     right: 14px;
     bottom: 12px;
   }
