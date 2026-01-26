@@ -81,63 +81,23 @@ a:hover{
   padding-right: var(--gutter);
 }
 
-/* Two-column editorial section pattern */
+/* Two-column editorial section pattern (text + right rail) */
 .home-layout{
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 360px; /* text + right rail */
+  grid-template-columns: minmax(0, 1fr) 320px; /* scaled down from 360 */
   gap: clamp(18px, 2.4vw, 30px);
-  align-items: start;
+  align-items: center; /* centre the rail within the section */
 }
 
+/* Keep text starting at top (only the rail centres) */
 .home-content{
   min-width: 0;
-}
-
-.home-rail{
-  min-width: 0;
-}
-
-.home-rail img{
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-.home-rail--square img{
-  aspect-ratio: 1 / 1;
-  object-fit: cover;
-}
-
-/* Mobile collapse */
-@media (max-width: 900px){
-  .home-layout{
-    grid-template-columns: 1fr;
-  }
-  .home-rail{
-    order: 2; /* image below text */
-  }
-}
-/* =========================
-   HOME RIGHT-RAIL patch: scale + centre + orange 75% frame
-   ========================= */
-
-/* 1) Reduce rail column so montage + squares scale down proportionally */
-.home-layout{
-  grid-template-columns: minmax(0, 1fr) 320px; /* was 360px */
-}
-
-/* 2) Centre the rail within the section vertically */
-.home-layout{
-  align-items: center; /* was start */
-}
-
-/* Keep text starting at top (so only the rail “moves”) */
-.home-content{
   align-self: start;
 }
 
-/* Ensure the rail can centre itself nicely */
+/* Right rail wrapper */
 .home-rail{
+  min-width: 0;
   align-self: center;
   position: relative;
 }
@@ -147,42 +107,74 @@ a:hover{
   .home-rail{ max-width: 320px; }
 }
 
-/* 75% orange "L-frame" — touching corner, brand-consistent weight */
+/* Remove default figure spacing */
+.home-figure{
+  margin: 0;
+}
+
+/* Images should behave consistently */
+.home-rail img{
+  width: 100%;
+  height: auto;
+  display: block; /* avoids baseline “gap” */
+}
+
+/* Square crops for single-tile materials images */
+.home-rail--square img{
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+}
+
+/* =========================
+   Orange 75% “corner frame”
+   We draw the frame on the rail, then inset the figure slightly
+   so the image corner sits inside the 90° angle and the lines remain visible.
+   ========================= */
+.home-rail--ruled{
+  /* space for the frame to show */
+  --frame-inset: 10px;                 /* tweak 8–14px to taste */
+  --frame-weight: var(--rule-thickness);/* keep consistent with header/footer rules */
+}
+
+/* inset the image away from the top/left frame */
+.home-rail--ruled .home-figure{
+  padding-top: var(--frame-inset);
+  padding-left: var(--frame-inset);
+}
+
+/* draw the frame at the rail’s true top-left */
 .home-rail--ruled::before,
 .home-rail--ruled::after{
   content: "";
   position: absolute;
+  top: 0;
+  left: 0;
   pointer-events: none;
   background: var(--sand-orange);
 }
 
 /* Top rule: 75% across from top-left */
 .home-rail--ruled::before{
-  top: 0;
-  left: 0;
-  height: 2px;     /* match container rules */
+  height: var(--frame-weight);
   width: 75%;
 }
 
 /* Left rule: 75% down from top-left */
 .home-rail--ruled::after{
-  top: 0;
-  left: 0;
-  width: 2px;      /* match container rules */
+  width: var(--frame-weight);
   height: 75%;
 }
 
-/* Mobile safety */
+/* Mobile collapse */
 @media (max-width: 900px){
-  .home-rail--ruled::before,
-  .home-rail--ruled::after{
-    top: 0;
-    left: 0;
+  .home-layout{
+    grid-template-columns: 1fr;
+  }
+  .home-rail{
+    order: 2; /* image below text */
+    max-width: none;
   }
 }
-
-
-
 
 /* =========================
    Header / Navigation
