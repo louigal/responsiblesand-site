@@ -555,3 +555,21 @@ footer a:hover{
 @media (max-width: 900px){
   .hero-intro{ white-space: normal; }
 }
+/* =========================
+   HERO STRAPLINE ALIGNMENT — with tiny HTML move
+   Add at END of styles.css
+   ========================= */
+
+.hero-wordmark .hero-intro{
+  margin: clamp(10px, 1.8vh, 16px) 0 0 0 !important;
+  padding: 0 !important;
+  white-space: nowrap;
+}
+
+/* Allow wrap on smaller screens */
+@media (max-width: 900px){
+  .hero-wordmark .hero-intro{
+    white-space: normal;
+    max-width: 52ch;
+  }
+}
