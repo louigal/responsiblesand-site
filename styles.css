@@ -152,7 +152,8 @@ section{
   display: grid;
   grid-template-columns: minmax(0, 1fr) var(--rail-width);
   gap: clamp(18px, 2.4vw, 30px);
-  align-items: center;
+- align-items: center;
++ align-items: start;
 }
 
 .grid-2__content,
