@@ -221,11 +221,6 @@ section{
   pointer-events: none;
   background: var(--sand-orange);
 }
-
-.home-rail--ruled::before{
-  height: var(--frame-weight);
-  width: 75%;
-}
 .home-rail--ruled::after{
   width: var(--frame-weight);
   height: 75%;
