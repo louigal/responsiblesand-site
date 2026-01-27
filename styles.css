@@ -606,7 +606,7 @@ footer a:hover{
   height: 2.1em; /* legible */
   width: auto;
   display: inline-block;
-  vertical-align: -0.14em;
+  vertical-align: -0.21em;
   margin-left: 18px;
   margin-right: 8px;
 }
@@ -626,7 +626,7 @@ footer a:hover{
 .footer-mark{
   position: absolute;
   right: 18px;
-  bottom: 14px;
+  top: calc(var(--rule-thickness) + 10px);
   width: 24px; /* locked: small mark */
   height: auto;
   opacity: 1;
