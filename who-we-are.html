@@ -7,7 +7,6 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <!-- Ensure true bold is available for <strong> -->
   <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,600;0,700;1,400&family=Barlow+Condensed:wght@700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="styles.css">
@@ -28,174 +27,224 @@
 
   <main>
 
-    <!-- PAGE TITLE -->
-    <section class="page-title">
+    <!-- MINI-HERO (distinct from Home; uses existing section veils + rail) -->
+    <section class="section section--band intro" id="page-hero">
       <div class="container">
-        <h1>Who we are</h1>
-        <p class="lead">
-          The Coalition for Responsible Sand and Silicates is a cross-sector platform. We connect companies, public-good actors and standard-setters to define responsibility, build practical guidance, and coordinate action.
-        </p>
+        <div class="home-layout">
+          <div class="home-content">
+            <div class="measure">
+              <h1>Who we are</h1>
+              <p class="lead">
+                The Coalition for Responsible Sand and Silicates is a cross-sector platform. We connect companies, public-good actors and standard-setters to define responsibility, build practical guidance, and coordinate action.
+              </p>
+              <p>
+                <a class="next-cta" href="why-join.html">Why join</a>
+              </p>
+            </div>
+          </div>
+
+          <aside class="home-rail home-rail--square home-rail--ruled" aria-label="Material image">
+            <figure class="home-figure">
+              <img src="assets/home/materials-feldspar.jpg" alt="Close-up view of feldspar material texture.">
+            </figure>
+          </aside>
+        </div>
       </div>
     </section>
 
-    <!-- OUR MEMBERS -->
-    <section class="home-section" id="our-members">
+    <!-- OUR MEMBERS (text-led; rail anchors page) -->
+    <section class="section" id="our-members">
       <div class="container">
         <div class="home-layout">
           <div class="home-content">
-            <h2>Our members</h2>
+            <div class="measure">
+              <h2>Our members</h2>
 
-            <p>
-              The Coalition brings together organisations that recognise the need for more responsible ways of working with sand and silicates.
-            </p>
+              <p>
+                The Coalition brings together organisations that recognise the need for more responsible ways of working with sand and silicates.
+              </p>
 
-            <p>
-              We start from a simple assumption: meaningful and legitimate change is collective. No single actor can address the challenges or seize the opportunities alone. That assumption shapes how we convene, design projects and make decisions.
-            </p>
+              <p>
+                We start from a simple assumption: meaningful and legitimate change is collective. No single actor can address the challenges or seize the opportunities alone. That assumption shapes how we convene, design projects and make decisions.
+              </p>
 
-            <p>Our strength lies in the mix of people and organisations involved, including:</p>
+              <p>Our strength lies in the mix of people and organisations involved, including:</p>
 
-            <ul class="home-list">
-              <li>companies willing to move beyond narrow compliance and help shape future practice;</li>
-              <li>civil-society and research organisations bringing social, environmental and governance perspectives; and</li>
-              <li>public agencies and development partners connecting local practice with national and international policy.</li>
-            </ul>
+              <ul class="home-list">
+                <li>companies willing to move beyond narrow compliance and help shape future practice;</li>
+                <li>civil-society and research organisations bringing social, environmental and governance perspectives; and</li>
+                <li>public agencies and development partners connecting local practice with national and international policy.</li>
+              </ul>
 
-            <p>
-              Together, these perspectives help ensure that solutions are practical, credible and grounded in real-world conditions.
-            </p>
-          </div>
-
-    </section>
-
-    <!-- FOUNDER / SUPPORTING -->
-    <section class="home-section" id="founder-members">
-      <div class="container">
-        <div class="home-layout">
-          <div class="home-content">
-            <h2>Founder members</h2>
-            <p>To be developed</p>
-            <p>[Logos to be added]</p>
-
-            <h2>Supporting organisations</h2>
-            <p>To be developed</p>
-            <p>[Logos to be added]</p>
-
-            <div class="home-cta">
-              <a class="btn" href="index.html">Home</a>
-              <a class="btn btn--ghost" href="why-join.html">Why join</a>
-              <a class="btn" href="get-involved.html">Get involved</a>
+              <p>
+                Together, these perspectives help ensure that solutions are practical, credible and grounded in real-world conditions.
+              </p>
             </div>
           </div>
 
-
+          <aside class="home-rail home-rail--square home-rail--ruled" aria-label="Material image">
+            <figure class="home-figure">
+              <img src="assets/home/materials-aggregates.jpg" alt="Close-up view of aggregates and sand.">
+            </figure>
+          </aside>
+        </div>
+      </div>
     </section>
 
-    <!-- WHERE WE ARE ON THE JOURNEY -->
-    <section class="home-section" id="journey">
+    <!-- FOUNDING / SUPPORT (distinct: cards-3 for logo placeholders) -->
+    <section class="section section--tight" id="founder-members">
+      <div class="container">
+        <h2>Founder members</h2>
+        <div class="cards-3" role="list" aria-label="Founder members">
+          <article class="card" role="listitem">
+            <h3>Founder member (placeholder)</h3>
+            <p>[Logo to be added]</p>
+          </article>
+          <article class="card" role="listitem">
+            <h3>Founder member (placeholder)</h3>
+            <p>[Logo to be added]</p>
+          </article>
+          <article class="card" role="listitem">
+            <h3>Founder member (placeholder)</h3>
+            <p>[Logo to be added]</p>
+          </article>
+        </div>
+
+        <h2>Supporting organisations</h2>
+        <div class="cards-3" role="list" aria-label="Supporting organisations">
+          <article class="card" role="listitem">
+            <h3>Supporting organisation (placeholder)</h3>
+            <p>[Logo to be added]</p>
+          </article>
+          <article class="card" role="listitem">
+            <h3>Supporting organisation (placeholder)</h3>
+            <p>[Logo to be added]</p>
+          </article>
+          <article class="card" role="listitem">
+            <h3>Supporting organisation (placeholder)</h3>
+            <p>[Logo to be added]</p>
+          </article>
+        </div>
+
+        <div class="cta-row">
+          <a class="btn btn--ghost" href="why-join.html">Why join</a>
+          <a class="btn" href="get-involved.html">Get involved</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- JOURNEY (distinct: timeline pattern) -->
+    <section class="section" id="journey">
       <div class="container">
         <div class="home-layout">
           <div class="home-content">
-            <h2>Where we are on the journey</h2>
+            <div class="measure">
+              <h2>Where we are on the journey</h2>
 
-            <p>
-              The Coalition grew out of more than two years of global dialogue, experimentation and co-design. This included an OECD baseline study and an Interim Council convened by the Global Centre for Mineral Security at the Sustainable Minerals Institute, University of Queensland.
-            </p>
+              <p>
+                The Coalition grew out of more than two years of global dialogue, experimentation and co-design. This included an OECD baseline study and an Interim Council convened by the Global Centre for Mineral Security at the Sustainable Minerals Institute, University of Queensland.
+              </p>
 
-            <p>Key moments include:</p>
+              <p><strong>Key moments include:</strong></p>
 
-            <ul class="home-list">
-              <li>
-                Asking the question — is it time to treat sand and silicates as part of responsible minerals supply? Research for the OECD confirmed that these materials belong on international agendas and exposed major gaps in existing standards and practice.
-              </li>
-              <li>
-                Co-designing what could be — a founder meeting in Barcelona in July 2025 shaped the Coalition’s purpose, scope and initial programme of work.
-              </li>
-              <li>
-                Formalising the transition — an Interim Council meeting in London in December 2025 endorsed the governance model, membership approach and identity, and supported the move to independence.
-              </li>
-            </ul>
+              <ul class="timeline">
+                <li>
+                  <strong>Asking the question</strong> — is it time to treat sand and silicates as part of responsible minerals supply? Research for the OECD confirmed that these materials belong on international agendas and exposed major gaps in existing standards and practice.
+                </li>
+                <li>
+                  <strong>Co-designing what could be</strong> — a founder meeting in Barcelona in July 2025 shaped the Coalition’s purpose, scope and initial programme of work.
+                </li>
+                <li>
+                  <strong>Formalising the transition</strong> — an Interim Council meeting in London in December 2025 endorsed the governance model, membership approach and identity, and supported the move to independence.
+                </li>
+              </ul>
 
-            <p>
-              We are now moving from project to organisation: from one-off studies to a standing platform designed to sustain collective action over time. We are preparing to open our doors to new members and host our public launch in mid- 2026. This launch will be backed will our first wave of guidance and news on the rest of our projects for 2026–2028.
-            </p>
+              <p>
+                We are now moving from project to organisation: from one-off studies to a standing platform designed to sustain collective action over time. We are preparing to open our doors to new members and host our public launch in mid-2026. This launch will be backed with our first wave of guidance and news on the rest of our projects for 2026–2028.
+              </p>
 
-            <div class="home-cta">
-              <a class="btn" href="index.html">Home</a>
-              <a class="btn btn--ghost" href="why-join.html">Why join</a>
-              <a class="btn" href="get-involved.html">Get involved</a>
+              <p>
+                <a class="next-cta" href="get-involved.html">Get involved</a>
+              </p>
             </div>
           </div>
 
+          <aside class="home-rail home-rail--square home-rail--ruled" aria-label="Material image">
+            <figure class="home-figure">
+              <img src="assets/home/materials-clay-body.jpg" alt="Close-up view of clay body material surface.">
+            </figure>
+          </aside>
+        </div>
+      </div>
     </section>
 
-    <!-- OUR GOVERNANCE -->
-    <section class="home-section" id="governance">
+    <!-- GOVERNANCE (distinct: cards + rail contacts) -->
+    <section class="section section--band" id="governance">
       <div class="container">
-        <div class="home-layout">
+        <h2>Our governance</h2>
+
+        <div class="cards-3" role="list" aria-label="Governance components">
+          <article class="card" role="listitem">
+            <h3>Board of Directors</h3>
+            <p>a Board of Directors with fiduciary responsibility;</p>
+          </article>
+          <article class="card" role="listitem">
+            <h3>Advisory Council</h3>
+            <p>a multi-stakeholder Advisory Council setting strategic direction and programme priorities; and</p>
+          </article>
+          <article class="card" role="listitem">
+            <h3>Secretariat</h3>
+            <p>a light secretariat coordinating day-to-day work with members and partners.</p>
+          </article>
+        </div>
+
+        <div class="home-layout" style="margin-top: 1.2rem;">
           <div class="home-content">
-            <h2>Our governance</h2>
+            <div class="measure">
+              <p>
+                To work credibly, we need both independence and accountability. The Coalition is being established as a public company limited by guarantee in Australia with a not-for-profit and public-benefit purpose.
+              </p>
 
-            <p>
-              To work credibly, we need both independence and accountability. The Coalition is being established as a public company limited by guarantee in Australia with a not-for-profit and public-benefit purpose.
-            </p>
+              <p>
+                This structure keeps the Coalition mission-driven, transparent and open to diverse forms of participation.
+              </p>
 
-            <p>Our governance includes:</p>
-
-            <ul class="home-list">
-              <li>a Board of Directors with fiduciary responsibility;</li>
-              <li>a multi-stakeholder Advisory Council setting strategic direction and programme priorities; and</li>
-              <li>a light secretariat coordinating day-to-day work with members and partners.</li>
-            </ul>
-
-            <p>
-              This structure keeps the Coalition mission-driven, transparent and open to diverse forms of participation.
-            </p>
-
-            <p>The secretariat keeps the core small, focused and nimble. Its role is to:</p>
-
-            <ul class="home-list">
-              <li>coordinate partnerships and hosting arrangements;</li>
-              <li>lead outreach, fundraising, reporting and community coordination;</li>
-              <li>develop the operational knowledge hub and technical resources;</li>
-              <li>manage communications, brand and digital platforms; and</li>
-              <li>ensure financial compliance and clear reporting.</li>
-            </ul>
-
-            <h3>Meet the team</h3>
-
-            <p>
-              The Coalition is supported by a light Secretariat. As a small team, we share responsibility across strategy, delivery and relationship-building. As the Coalition grows, this core team will be complemented by partners, secondees and member contributions.
-            </p>
-
-            <h3>Contacts</h3>
-
-            <ul class="home-list">
-              <li>
-                For partnerships and membership:<br>
-                Louise Gallagher — <a href="mailto:louise@responsiblesand.org">louise@responsiblesand.org</a>
-              </li>
-              <li>
-                For questions related to the Coalition’s transition from the University of Queensland and organisational set-up:<br>
-                Daniel Holm — <a href="mailto:daniel@responsiblesand.org">daniel@responsiblesand.org</a>
-              </li>
-              <li>
-                For enquiries related to defining responsible sand and silicates, including technical work planned for the first half of 2026:<br>
-                Elin Post — <a href="mailto:elin@responsiblesand.org">elin@responsiblesand.org</a>
-              </li>
-            </ul>
-
-            <p>
-              If you are unsure who to contact, start with Louise and we will guide you from there.
-            </p>
-
-            <div class="home-cta">
-              <a class="btn" href="index.html">Home</a>
-              <a class="btn btn--ghost" href="why-join.html">Why join</a>
-              <a class="btn" href="get-involved.html">Get involved</a>
+              <h3>Meet the team</h3>
+              <p>
+                The Coalition is supported by a light Secretariat. As a small team, we share responsibility across strategy, delivery and relationship-building. As the Coalition grows, this core team will be complemented by partners, secondees and member contributions.
+              </p>
             </div>
           </div>
 
+          <aside class="home-rail" aria-label="Contacts">
+            <div class="card">
+              <h3>Contacts</h3>
+              <ul class="home-list">
+                <li>
+                  <strong>Partnerships and membership</strong><br>
+                  Louise Gallagher — <a href="mailto:louise@responsiblesand.org">louise@responsiblesand.org</a>
+                </li>
+                <li>
+                  <strong>Transition from UQ and organisational set-up</strong><br>
+                  Daniel Holm — <a href="mailto:daniel@responsiblesand.org">daniel@responsiblesand.org</a>
+                </li>
+                <li>
+                  <strong>Technical work (first half of 2026)</strong><br>
+                  Elin Post — <a href="mailto:elin@responsiblesand.org">elin@responsiblesand.org</a>
+                </li>
+              </ul>
+              <p style="margin-bottom:0;">
+                If you are unsure who to contact, start with Louise and we will guide you from there.
+              </p>
+            </div>
+          </aside>
+        </div>
+
+        <div class="cta-row">
+          <a class="btn btn--ghost" href="why-join.html">Why join</a>
+          <a class="btn" href="get-involved.html">Get involved</a>
+        </div>
+      </div>
     </section>
 
   </main>
@@ -242,3 +291,4 @@
 
 </body>
 </html>
+
