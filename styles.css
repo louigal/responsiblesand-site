@@ -168,12 +168,23 @@ section{
   align-self: center;
   position: relative;
 }
+/* Rail-left variant: narrow column first, wide column second */
+.home-layout--rail-left{
+  grid-template-columns: var(--rail-width) minmax(0, 1fr);
+  align-items: start;
+}
+
+/* Mobile collapse */
+@media (max-width: 900px){
+  .home-layout--rail-left{
+    grid-template-columns: 1fr;
+  }
+}
 
 @media (min-width: 1200px){
   .home-rail{ max-width: var(--rail-width); }
 }
 
-/* Mobile collapse */
 @media (max-width: 900px){
   .grid-2,
   .home-layout{
