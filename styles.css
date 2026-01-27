@@ -424,7 +424,9 @@ section{
   align-items: center;
   justify-content: center;
 
-  padding: 12px 18px;
+padding: 10px 14px;
+font-size: 0.95rem;
+min-height: 44px;
   border: 1px solid var(--btn-border);
   background: var(--btn-bg);
   color: var(--deep-navy);
