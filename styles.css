@@ -603,10 +603,10 @@ footer a:hover{
 }
 
 .linkedin-icon{
-  height: 1.8em; /* legible */
+  height: 2.1em; /* legible */
   width: auto;
   display: inline-block;
-  vertical-align: -0.06em;
+  vertical-align: -0.14em;
   margin-left: 18px;
   margin-right: 8px;
 }
