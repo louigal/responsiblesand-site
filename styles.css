@@ -1,5 +1,5 @@
 /* =========================
-   Brand variables
+   Brand variables / tokens
    ========================= */
 :root{
   --sand-orange: #c65b1a;
@@ -16,6 +16,24 @@
 
   /* Surfaces */
   --surface-veil: rgba(255,255,255,0.45);
+  --surface-veil-strong: rgba(255,255,255,0.58);
+
+  /* Spacing */
+  --section-pad: 2rem;
+  --section-pad-tight: 1.35rem;
+
+  /* Type */
+  --base-font-size: 17px; /* slightly down, still readable */
+  --measure: 80ch;        /* less essay-like than 65ch */
+  --measure-narrow: 52ch;
+
+  /* Grids */
+  --rail-width: 320px;
+
+  /* Buttons */
+  --btn-border: rgba(1,30,45,0.35);
+  --btn-bg: rgba(255,255,255,0.35);
+  --btn-bg-hover: rgba(255,255,255,0.55);
 }
 
 /* =========================
@@ -28,9 +46,8 @@ body{
   font-family: "Barlow", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   color: var(--deep-navy);
   line-height: 1.65;
-  font-size: 17px; /* slightly down, still readable */
+  font-size: var(--base-font-size);
 
-  /* Page texture as direct background (robust) */
   background-color: #ffffff;
   background-image: url("assets/page-texture.svg");
   background-repeat: no-repeat;
@@ -57,19 +74,21 @@ h1, h2, h3, h4{
 p{
   margin-top: 0;
   margin-bottom: 1.05rem;
+  max-width: var(--measure);
 }
 
 strong{
-  font-weight: 700; /* make bold actually bold */
+  font-weight: 700;
+  color: var(--deep-navy);
+  letter-spacing: 0.01em;
 }
 
 a{
   color: var(--sand-orange);
   text-decoration: none;
 }
-a:hover{
-  text-decoration: underline;
-}
+a:hover{ text-decoration: underline; }
+
 /* Lead paragraph / standfirst */
 .lead{
   font-size: clamp(1.05rem, 1.15vw, 1.25rem);
@@ -89,68 +108,110 @@ a:hover{
   padding-right: var(--gutter);
 }
 
-/* Two-column editorial section pattern (text + right rail) */
-.home-layout{
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) 320px; /* scaled down from 360 */
-  gap: clamp(18px, 2.4vw, 30px);
-  align-items: center; /* centre the rail within the section */
+/* A simple readable wrapper for long text blocks */
+.measure{
+  max-width: var(--measure);
 }
 
-/* Keep text starting at top (only the rail centres) */
+/* =========================
+   Sections (building blocks)
+   ========================= */
+.section{
+  padding: var(--section-pad) 0;
+  background: var(--surface-veil);
+}
+
+.section--band{
+  padding: var(--section-pad) 0;
+  background: var(--surface-veil-strong);
+}
+
+.section--tight{
+  padding: var(--section-pad-tight) 0;
+  background: var(--surface-veil);
+}
+
+/* Backward-compatible: keep existing markup working */
+section{
+  padding: var(--section-pad) 0;
+  background: var(--surface-veil);
+}
+
+/* Optional subtle divider use */
+.intro{
+  border-top: 1px solid rgba(1,30,45,0.12);
+}
+
+/* =========================
+   Grids (building blocks)
+   ========================= */
+
+/* Two-column editorial pattern (text + right rail) */
+.grid-2,
+.home-layout{
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) var(--rail-width);
+  gap: clamp(18px, 2.4vw, 30px);
+  align-items: center;
+}
+
+.grid-2__content,
 .home-content{
   min-width: 0;
   align-self: start;
 }
 
-/* Right rail wrapper */
+.grid-2__rail,
 .home-rail{
   min-width: 0;
   align-self: center;
   position: relative;
 }
 
-/* Optional: cap rail width on very wide screens */
 @media (min-width: 1200px){
-  .home-rail{ max-width: 320px; }
+  .home-rail{ max-width: var(--rail-width); }
 }
 
-/* Remove default figure spacing */
-.home-figure{
-  margin: 0;
+/* Mobile collapse */
+@media (max-width: 900px){
+  .grid-2,
+  .home-layout{
+    grid-template-columns: 1fr;
+  }
+  .home-rail{
+    order: 2;
+    max-width: none;
+  }
 }
 
-/* Images should behave consistently */
+/* =========================
+   Rail / images
+   ========================= */
+.home-figure{ margin: 0; }
+
 .home-rail img{
   width: 100%;
   height: auto;
-  display: block; /* avoids baseline “gap” */
+  display: block;
 }
 
-/* Square crops for single-tile materials images */
 .home-rail--square img{
   aspect-ratio: 1 / 1;
   object-fit: cover;
 }
 
-/* =========================
-   Orange 75% “corner frame”
-   We draw the frame on the rail, then inset the figure slightly
-   so the image corner sits inside the 90° angle and the lines remain visible.
-   ========================= */
+/* Orange 75% “corner frame”
+   Draw frame on the rail, inset the image slightly so the corner sits inside. */
 .home-rail--ruled{
-  /* space for the frame to show */
-  --frame-inset: 10px;                 /* tweak 8–14px to taste */
-  --frame-weight: var(--rule-thickness);/* keep consistent with header/footer rules */
+  --frame-inset: 10px;
+  --frame-weight: var(--rule-thickness);
 }
 
-/* inset the image away from the top/left frame */
 .home-rail--ruled .home-figure{
   padding-top: var(--frame-inset);
   padding-left: var(--frame-inset);
 }
 
-/* draw the frame at the rail’s true top-left */
 .home-rail--ruled::before,
 .home-rail--ruled::after{
   content: "";
@@ -161,31 +222,17 @@ a:hover{
   background: var(--sand-orange);
 }
 
-/* Top rule: 75% across from top-left */
 .home-rail--ruled::before{
   height: var(--frame-weight);
   width: 75%;
 }
-
-/* Left rule: 75% down from top-left */
 .home-rail--ruled::after{
   width: var(--frame-weight);
   height: 75%;
 }
 
-/* Mobile collapse */
-@media (max-width: 900px){
-  .home-layout{
-    grid-template-columns: 1fr;
-  }
-  .home-rail{
-    order: 2; /* image below text */
-    max-width: none;
-  }
-}
-
 /* =========================
-   Header / Navigation
+   Header / Navigation (LOCKED)
    ========================= */
 .site-header{
   position: absolute;
@@ -197,7 +244,6 @@ a:hover{
   -webkit-backdrop-filter: blur(6px);
 }
 
-/* Header rule: bottom of header, left→right 75% */
 .site-header::after{
   content:"";
   position:absolute;
@@ -226,7 +272,6 @@ a:hover{
   opacity: 1;
 }
 
-/* Active page: underline only, no box */
 .site-nav a[aria-current="page"]{
   text-decoration: underline;
   text-decoration-thickness: 2px;
@@ -234,7 +279,7 @@ a:hover{
 }
 
 /* =========================
-   Hero
+   Home Hero (LOCKED)
    ========================= */
 .hero{
   position: relative;
@@ -251,7 +296,6 @@ a:hover{
   background-size: cover;
 }
 
-/* Subtle veil to support readability */
 .hero::after{
   content:"";
   position:absolute;
@@ -265,9 +309,7 @@ a:hover{
   z-index: 1;
 }
 
-/* =========================
-   Hero identity lock-up
-   ========================= */
+/* Identity lock-up */
 .hero-lockup{
   display: flex;
   align-items: flex-start;
@@ -275,10 +317,9 @@ a:hover{
   margin-top: clamp(28px, 6vh, 72px);
 }
 
-/* Icon + vertical rule */
 .hero-mark{
   position: relative;
-  display: inline-block; /* prevents rule drifting */
+  display: inline-block;
   padding-right: clamp(14px, 1.6vw, 20px);
 }
 
@@ -294,18 +335,13 @@ a:hover{
 }
 
 .hero-mark img{
-  height: clamp(62px, 6.8vw, 98px); /* slightly smaller than the earlier largest */
+  height: clamp(62px, 6.8vw, 98px);
   width: auto;
   display:block;
 }
 
-.hero-text{
-  min-width: 0;
-}
-
 .hero-wordmark{ line-height: 1.0; }
 
-/* ===== HERO TEXT ===== */
 .hero-org{
   font-family: "Barlow Condensed", system-ui, -apple-system, "Segoe UI", sans-serif;
   font-weight: 700;
@@ -337,42 +373,29 @@ a:hover{
 
   margin-top: clamp(10px, 1.8vh, 16px);
   margin-bottom: 0;
+  white-space: nowrap; /* desktop */
+}
 
-  white-space: nowrap; /* keep one line on desktop */
+@media (min-width: 901px){
+  .hero-name{ white-space: nowrap; }
 }
 
 @media (max-width: 900px){
   .hero-intro{
-    white-space: normal; /* allow wrap on smaller screens */
+    white-space: normal;
     max-width: 52ch;
   }
+  .hero-name{ white-space: normal; }
 }
 
 @media (max-width: 520px){
-  .hero-lockup{
-    gap: 14px;
-  }
-  .hero-mark{
-    padding-right: 12px;
-  }
+  .hero-lockup{ gap: 14px; }
+  .hero-mark{ padding-right: 12px; }
   .hero-mark::after{
-    /* keep brand rule on mobile (do NOT hide) */
     top: 8%;
     height: 84%;
-    width: 3px;
+    width: 3px; /* keep brand rule on mobile */
   }
-}
-
-/* =========================
-   Sections
-   ========================= */
-section{
-  padding: 2rem 0; /* already tightened */
-  background: var(--surface-veil);
-}
-
-.intro{
-  border-top: 1px solid rgba(1,30,45,0.12);
 }
 
 /* =========================
@@ -381,6 +404,7 @@ section{
 .home-list{
   margin: 0;
   padding-left: 1.1rem;
+  max-width: var(--measure);
 }
 
 .home-list li{
@@ -390,12 +414,13 @@ section{
 /* =========================
    Buttons / CTAs
    ========================= */
-.home-cta{
+.home-cta,
+.cta-row{
   display: flex;
   flex-wrap: wrap;
   gap: 10px 12px;
   margin-top: 1.15rem;
-  align-items: stretch; /* keep same height */
+  align-items: stretch;
 }
 
 .btn{
@@ -404,36 +429,120 @@ section{
   justify-content: center;
 
   padding: 12px 18px;
-  border: 1px solid rgba(1,30,45,0.35);
-  background: rgba(255,255,255,0.35);
+  border: 1px solid var(--btn-border);
+  background: var(--btn-bg);
   color: var(--deep-navy);
   text-decoration: none;
 
   font-family: "Barlow Condensed", system-ui, -apple-system, "Segoe UI", sans-serif;
-  font-weight: 700; /* bolder button label */
+  font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 
   line-height: 1;
-  border-radius: 0; /* hard corners */
+  border-radius: 0;
 }
 
 .btn:hover{
-  background: rgba(255,255,255,0.55);
+  background: var(--btn-bg-hover);
   text-decoration: none;
 }
 
-.btn--ghost{
-  background: transparent;
+.btn--ghost{ background: transparent; }
+
+/* “Next →” CTA styling (apply to the final CTA link in HTML) */
+.next-cta{
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: "Barlow Condensed", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--deep-navy);
+  text-decoration: none;
+  padding: 10px 0;
 }
 
-/* Final CTA spacing */
-.final-cta{
+.next-cta::after{
+  content: "→";
+  font-size: 1.05em;
+  line-height: 1;
+}
+
+.next-cta:hover{ text-decoration: underline; }
+
+/* =========================
+   Secondary page building blocks
+   ========================= */
+
+/* 3-up cards (secretariat / ways to partner) */
+.cards-3{
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(14px, 2vw, 22px);
+  margin-top: 1rem;
+}
+
+@media (max-width: 900px){
+  .cards-3{ grid-template-columns: 1fr; }
+}
+
+.card{
+  background: rgba(255,255,255,0.32);
+  border: 1px solid rgba(1,30,45,0.12);
+  padding: 1.1rem 1.1rem;
+}
+
+.card h3{ margin-top: 0; }
+
+/* Timeline (journey section) */
+.timeline{
   margin: 0;
+  padding: 0;
+  list-style: none;
+  max-width: var(--measure);
+  border-left: 2px solid rgba(198,91,26,0.35);
+  padding-left: 1rem;
+}
+
+.timeline li{
+  margin: 0 0 1rem 0;
+}
+
+.timeline li:last-child{ margin-bottom: 0; }
+
+/* Tables (fees) */
+.table-wrap{
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border: 1px solid rgba(1,30,45,0.12);
+  background: rgba(255,255,255,0.28);
+}
+
+.fees-table{
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 720px;
+}
+
+.fees-table th,
+.fees-table td{
+  text-align: left;
+  padding: 12px 12px;
+  border-bottom: 1px solid rgba(1,30,45,0.10);
+  vertical-align: top;
+}
+
+.fees-table th{
+  font-family: "Barlow Condensed", system-ui, -apple-system, "Segoe UI", sans-serif;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-weight: 700;
 }
 
 /* =========================
-   Footer
+   Footer (LOCKED)
    ========================= */
 footer{
   position: relative;
@@ -442,7 +551,6 @@ footer{
   color: var(--deep-navy);
 }
 
-/* Footer rule: top of footer, right→left 75% */
 footer::before{
   content:"";
   position:absolute;
@@ -453,7 +561,6 @@ footer::before{
   background: var(--sand-orange);
 }
 
-/* Footer layout */
 .footer-row{
   display: flex;
   flex-wrap: wrap;
@@ -461,7 +568,6 @@ footer::before{
   align-items: baseline;
 }
 
-/* Footer links */
 .footer-links a,
 footer a{
   color: var(--deep-navy);
@@ -475,10 +581,7 @@ footer a:hover{
   opacity: 1;
 }
 
-/* Follow line */
-.footer-follow{
-  margin: 0;
-}
+.footer-follow{ margin: 0; }
 
 .linkedin-link{
   display: inline-flex;
@@ -494,42 +597,37 @@ footer a:hover{
   text-decoration: underline;
 }
 
-/* The "LinkedIn" wordmark image wrapper */
 .linkedin-brand{
   display: inline-flex;
   align-items: baseline;
 }
 
-/* SVG icon (wordmark) */
 .linkedin-icon{
-  height: 1.2em; /* +20% for legibility */
+  height: 1.2em; /* legible */
   width: auto;
   display: inline-block;
   vertical-align: -0.08em;
-
-  /* confirmed spacing */
   margin-left: 18px;
   margin-right: 8px;
 }
 
-/* Optional separator you added in HTML */
 .footer-separator{
   opacity: 0.65;
   margin-right: 10px;
 }
 
-/* Footer legal line */
 .footer-legal{
   margin: 0.85rem 0 0;
-  opacity: 0.78;
-  font-size: 0.95rem;
+  opacity: 0.65;
+  font-size: 0.85rem;
+  line-height: 1.4;
 }
 
 .footer-mark{
   position: absolute;
   right: 18px;
   bottom: 14px;
-  width: 34px;        /* half of previous size */
+  width: 24px; /* locked: small mark */
   height: auto;
   opacity: 1;
   pointer-events: none;
@@ -537,100 +635,8 @@ footer a:hover{
 
 @media (max-width: 520px){
   .footer-mark{
-    width: 28px;
+    width: 22px;
     right: 14px;
     bottom: 12px;
   }
 }
-
-/* =========================
-   HERO STRAPLINE ALIGNMENT — CSS-only
-   Add at END of styles.css
-   ========================= */
-
-/* Force strapline to use the same left edge as the hero wordmark */
-.hero-intro{
-  margin-left: 0 !important;
-  padding-left: 0 !important;
-}
-
-/* Keep one line on desktop, allow wrapping on small screens */
-@media (min-width: 901px){
-  .hero-intro{ white-space: nowrap; }
-}
-@media (max-width: 900px){
-  .hero-intro{ white-space: normal; }
-}
-/* =========================
-   HERO STRAPLINE ALIGNMENT — with tiny HTML move
-   Add at END of styles.css
-   ========================= */
-
-.hero-wordmark .hero-intro{
-  margin: clamp(10px, 1.8vh, 16px) 0 0 0 !important;
-  padding: 0 !important;
-  white-space: nowrap;
-}
-
-/* Allow wrap on smaller screens */
-@media (max-width: 900px){
-  .hero-wordmark .hero-intro{
-    white-space: normal;
-    max-width: 52ch;
-  }
-}
-/* =========================
-   HERO NAME LINE CONTROL
-   ========================= */
-
-/* Keep hero name on one line on desktop */
-@media (min-width: 901px){
-  .hero-name{
-    white-space: nowrap;
-  }
-}
-
-/* Allow wrap on smaller screens */
-@media (max-width: 900px){
-  .hero-name{
-    white-space: normal;
-  }
-}
-/* =========================
-   RESTORE EMPHASIS FOR <strong>
-   ========================= */
-
-/* Ensure strong text is visibly distinct */
-strong{
-  font-weight: 700;
-  color: var(--deep-navy);
-}
-
-/* Optional: slightly tighter tracking for emphasis in body copy */
-p strong,
-li strong{
-  letter-spacing: 0.01em;
-}
-
-/* =========================
-   FOOTER LEGAL / COPYRIGHT
-   ========================= */
-
-.footer-legal{
-  font-size: 0.85rem;
-  line-height: 1.4;
-  margin-top: 0.9rem;
-  margin-bottom: 0;
-  color: var(--deep-navy);
-  opacity: 0.65;
-  max-width: none;
-}
-/* =========================
-   FOOTER SANDCASTLE — HARD OVERRIDE
-   ========================= */
-
-footer .footer-mark{
-  width: 24px !important;
-  height: auto !important;
-}
-
