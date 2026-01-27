@@ -585,8 +585,8 @@ footer a:hover{
 
 .linkedin-link{
   display: inline-flex;
-  align-items: baseline;
-  gap: 0;
+  align-items: center;   /* key: true centre alignment */
+  gap: 8px;              /* control spacing here */
   color: var(--deep-navy);
   opacity: 0.95;
   text-decoration: none;
@@ -599,16 +599,15 @@ footer a:hover{
 
 .linkedin-brand{
   display: inline-flex;
-  align-items: baseline;
+  align-items: center;
 }
 
 .linkedin-icon{
-  height: 2.1em; /* legible */
+  height: 2.1em;         /* keep your chosen size */
   width: auto;
-  display: inline-block;
-  vertical-align: -0.40em;
-  margin-left: 18px;
-  margin-right: 8px;
+  display: block;        /* prevents baseline weirdness */
+  margin: 0;             /* remove baseline-era margins */
+  transform: translateY(2px); /* small, predictable nudge */
 }
 
 .footer-separator{
