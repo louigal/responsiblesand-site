@@ -284,6 +284,10 @@ section{
   text-decoration-thickness: 2px;
   text-underline-offset: 6px;
 }
+/* Header nav alignment — right aligned, no other changes */
+.site-nav{
+  justify-content: flex-end;
+}
 
 /* =========================
    Home Hero (LOCKED)
