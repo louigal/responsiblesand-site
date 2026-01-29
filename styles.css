@@ -28,7 +28,12 @@
   --measure-narrow: 52ch;
 
   /* Grids */
- --rail-width: 420px;
+ --rail-width: 320px;
+
+   /* Larger rail for image-led sections */
+.home-rail--large{
+  max-width: 440px;
+}
 
   /* Buttons */
   --btn-border: rgba(1,30,45,0.35);
