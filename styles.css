@@ -28,12 +28,7 @@
   --measure-narrow: 52ch;
 
   /* Grids */
- --rail-width: 320px;
-
-   /* Larger rail for image-led sections */
-.home-rail--large{
-  max-width: 440px;
-}
+  --rail-width: 320px;
 
   /* Buttons */
   --btn-border: rgba(1,30,45,0.35);
@@ -157,8 +152,7 @@ section{
   display: grid;
   grid-template-columns: minmax(0, 1fr) var(--rail-width);
   gap: clamp(18px, 2.4vw, 30px);
-- align-items: center;
-+ align-items: start;
+  align-items: start;
 }
 
 .grid-2__content,
@@ -173,15 +167,31 @@ section{
   align-self: center;
   position: relative;
 }
+
 /* Rail-left variant: narrow column first, wide column second */
 .home-layout--rail-left{
   grid-template-columns: var(--rail-width) minmax(0, 1fr);
   align-items: start;
 }
 
-/* Mobile collapse */
+/* Large-rail layout: widen the rail column for selected sections */
+.home-layout--large-rail{
+  grid-template-columns: minmax(0, 1fr) 440px;
+  align-items: start;
+}
+
+/* Large-rail + rail-left variant */
+.home-layout--large-rail.home-layout--rail-left{
+  grid-template-columns: 440px minmax(0, 1fr);
+}
+
 @media (max-width: 900px){
   .home-layout--rail-left{
+    grid-template-columns: 1fr;
+  }
+
+  .home-layout--large-rail,
+  .home-layout--large-rail.home-layout--rail-left{
     grid-template-columns: 1fr;
   }
 }
@@ -215,6 +225,11 @@ section{
 .home-rail--square img{
   aspect-ratio: 1 / 1;
   object-fit: cover;
+}
+
+/* Optional larger rail cap (rarely needed if you use home-layout--large-rail) */
+.home-rail--large{
+  max-width: 440px;
 }
 
 /* Orange 75% “corner frame”
@@ -271,6 +286,7 @@ section{
   flex-wrap: wrap;
   gap: 0.75rem;
   padding: 1rem 0;
+  justify-content: flex-end; /* right aligned */
 }
 
 .site-nav a{
@@ -288,10 +304,6 @@ section{
   text-decoration: underline;
   text-decoration-thickness: 2px;
   text-underline-offset: 6px;
-}
-/* Header nav alignment — right aligned, no other changes */
-.site-nav{
-  justify-content: flex-end;
 }
 
 /* =========================
@@ -444,9 +456,10 @@ section{
   align-items: center;
   justify-content: center;
 
-padding: 10px 14px;
-font-size: 0.95rem;
-min-height: 44px;
+  padding: 10px 14px;
+  font-size: 0.95rem;
+  min-height: 44px;
+
   border: 1px solid var(--btn-border);
   background: var(--btn-bg);
   color: var(--deep-navy);
@@ -657,3 +670,4 @@ footer a:hover{
     bottom: 12px;
   }
 }
+
