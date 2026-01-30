@@ -70,6 +70,9 @@ body{
 /* =========================
    Typography
    ========================= */
+
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,600;0,700;1,400&family=Barlow+Condensed:wght@700&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
 h1, h2, h3, h4{
   font-family: "Barlow Condensed", system-ui, -apple-system, "Segoe UI", sans-serif;
   font-weight: 700;
@@ -104,15 +107,6 @@ a{
 }
 a:hover{ text-decoration: underline; }
 
-/* Lead paragraph / standfirst */
-.lead{
-  font-size: clamp(1.05rem, 1.15vw, 1.25rem);
-  line-height: 1.55;
-  font-weight: 400;
-  max-width: 42em;
-  margin-bottom: 1.4em;
-}
-
 /* Pull quote / reflective text */
 .pull-quote{
   position: relative;
@@ -134,7 +128,40 @@ a:hover{ text-decoration: underline; }
   font-size: 1.3em;
   line-height: 1;
 }
+.hero-statement{
+  background: rgba(255,255,255,0.22); /* lets texture breathe a touch */
+  padding: clamp(28px, 4vw, 54px) 0;
+  position: relative;
+}
 
+.hero-statement::before,
+.hero-statement::after{
+  content:"";
+  position:absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(980px, calc(100% - (2 * var(--gutter))));
+  height: var(--rule-thickness);
+  background: var(--sand-orange);
+  opacity: 0.9;
+}
+
+.hero-statement::before{ top: 0; }
+.hero-statement::after{ bottom: 0; }
+
+.hero-statement__text{
+  margin: 0 auto;
+  max-width: 44ch;
+
+  font-family: "Open Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-weight: 400;
+  font-size: clamp(1.45rem, 2.6vw, 2.05rem);
+  line-height: 1.35;
+
+  color: rgba(1,30,45,0.70);
+  text-align: center;
+  letter-spacing: 0.01em;
+}
 /* =========================
    Layout
    ========================= */
@@ -422,8 +449,9 @@ section{
   position: relative;
   overflow: hidden;
 
-  min-height: clamp(320px, 48vh, 520px);
-  padding: clamp(96px, 8vw, 132px) 0 clamp(48px, 6vw, 84px);
+  /* shorter hero – identity lock-up only */
+  min-height: clamp(240px, 34vh, 360px);
+  padding: clamp(84px, 7vw, 116px) 0 clamp(30px, 4vw, 48px);
 
   background-color: var(--off-white);
   background-image: url("assets/hero-texture.svg");
