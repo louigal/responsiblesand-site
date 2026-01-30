@@ -71,6 +71,14 @@ h1, h2, h3, h4{
   margin-bottom: 0.75rem;
 }
 
+h2{
+  font-size: clamp(2.1rem, 3.2vw, 2.8rem);
+  line-height: 1.15;
+  letter-spacing: 0.015em;
+  margin-top: 0;
+  margin-bottom: 1.6rem;
+}
+
 p{
   margin-top: 0;
   margin-bottom: 1.05rem;
@@ -97,7 +105,22 @@ a:hover{ text-decoration: underline; }
   max-width: 42em;
   margin-bottom: 1.4em;
 }
+.pull-quote{
+  font-size: clamp(1.15rem, 1.6vw, 1.4rem);
+  line-height: 1.45;
+  font-weight: 400;
+  color: rgba(1,30,45,0.85);
+  max-width: 36ch;
+}
 
+.pull-quote::before{
+  content: "“";
+  font-size: 2.2em;
+  line-height: 0;
+  vertical-align: -0.25em;
+  margin-right: 0.1em;
+  color: var(--sand-orange);
+}
 /* =========================
    Layout
    ========================= */
@@ -153,6 +176,30 @@ section{
   grid-template-columns: minmax(0, 1fr) var(--rail-width);
   gap: clamp(18px, 2.4vw, 30px);
   align-items: start;
+}
+
+/* Section split: left column for heading + CTAs, right column for copy */
+.section-split{
+  display: grid;
+  grid-template-columns: minmax(240px, 360px) minmax(0, 1fr);
+  gap: clamp(18px, 3vw, 44px);
+  align-items: start;
+}
+
+@media (max-width: 900px){
+  .section-split{
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Stack CTAs vertically when you want the “model” feel */
+.cta-stack{
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.cta-stack .btn{
+  width: fit-content;
 }
 
 .grid-2__content,
