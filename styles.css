@@ -23,8 +23,8 @@
   --section-pad-tight: 1.35rem;
 
   /* Type */
-  --base-font-size: 17px; /* slightly down, still readable */
-  --measure: 80ch;        /* less essay-like than 65ch */
+  --base-font-size: 17px;
+  --measure: 80ch;
   --measure-narrow: 52ch;
 
   /* Grids */
@@ -105,46 +105,29 @@ a:hover{ text-decoration: underline; }
   max-width: 42em;
   margin-bottom: 1.4em;
 }
-.pull-quote{
-  font-size: clamp(1.15rem, 1.6vw, 1.4rem);
-  line-height: 1.45;
-  font-weight: 400;
-  color: rgba(1,30,45,0.85);
-  max-width: 36ch;
-}
 
-/* =========================
-   Pull-quote / reflective text
-   ========================= */
-.pull-quote::before{
-  content: "“";
-  font-size: 2.2em;
-  line-height: 0;
-  vertical-align: -0.25em;
-  margin-right: 0.1em;
-  color: var(--sand-orange);
-}
-
+/* Pull quote / reflective text */
 .pull-quote{
+  position: relative;
+  margin: 0;
   font-family: "Barlow Condensed", system-ui, -apple-system, "Segoe UI", sans-serif;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  line-height: 1.35;
-
-  font-size: clamp(1.35rem, 2vw, 1.9rem);
+  font-weight: 700;
+  letter-spacing: 0.02em;
   color: var(--deep-navy);
-
-  max-width: 36ch;
+  font-size: clamp(1.6rem, 2.4vw, 2.15rem);
+  line-height: 1.25;
+  max-width: 30ch;
 }
-
 .pull-quote::before{
   content: "“";
-  display: inline-block;
-  margin-right: 0.25em;
+  position: absolute;
+  left: -0.55em;
+  top: -0.2em;
   color: var(--sand-orange);
-  font-size: 1.2em;
-  vertical-align: top;
+  font-size: 1.3em;
+  line-height: 1;
 }
+
 /* =========================
    Layout
    ========================= */
@@ -156,9 +139,7 @@ a:hover{ text-decoration: underline; }
 }
 
 /* A simple readable wrapper for long text blocks */
-.measure{
-  max-width: var(--measure);
-}
+.measure{ max-width: var(--measure); }
 
 /* =========================
    Sections (building blocks)
@@ -167,12 +148,10 @@ a:hover{ text-decoration: underline; }
   padding: var(--section-pad) 0;
   background: var(--surface-veil);
 }
-
 .section--band{
   padding: var(--section-pad) 0;
   background: var(--surface-veil-strong);
 }
-
 .section--tight{
   padding: var(--section-pad-tight) 0;
   background: var(--surface-veil);
@@ -184,7 +163,6 @@ section{
   background: var(--surface-veil);
 }
 
-/* Optional subtle divider use */
 .intro{
   border-top: 1px solid rgba(1,30,45,0.12);
 }
@@ -193,37 +171,13 @@ section{
    Grids (building blocks)
    ========================= */
 
-/* Two-column editorial pattern (text + right rail) */
+/* Two-column editorial pattern (content + right rail) */
 .grid-2,
 .home-layout{
   display: grid;
-  grid-template-columns: minmax(0, 680px) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1fr) var(--rail-width);
   gap: clamp(18px, 2.4vw, 30px);
   align-items: start;
-}
-
-/* Section split: left column for heading + CTAs, right column for copy */
-.section-split{
-  display: grid;
-  grid-template-columns: minmax(240px, 360px) minmax(0, 1fr);
-  gap: clamp(18px, 3vw, 44px);
-  align-items: start;
-}
-
-@media (max-width: 900px){
-  .section-split{
-    grid-template-columns: 1fr;
-  }
-}
-
-/* Stack CTAs vertically when you want the “model” feel */
-.cta-stack{
-  flex-direction: column;
-  align-items: flex-start;
-}
-
-.cta-stack .btn{
-  width: fit-content;
 }
 
 .grid-2__content,
@@ -239,7 +193,7 @@ section{
   position: relative;
 }
 
-/* Rail-left variant: narrow column first, wide column second */
+/* Rail-left variant */
 .home-layout--rail-left{
   grid-template-columns: var(--rail-width) minmax(0, 1fr);
   align-items: start;
@@ -250,30 +204,16 @@ section{
   grid-template-columns: minmax(0, 1fr) 440px;
   align-items: start;
 }
-
-/* Large-rail + rail-left variant */
 .home-layout--large-rail.home-layout--rail-left{
   grid-template-columns: 440px minmax(0, 1fr);
 }
 
 @media (max-width: 900px){
-  .home-layout--rail-left{
-    grid-template-columns: 1fr;
-  }
-
+  .grid-2,
+  .home-layout,
+  .home-layout--rail-left,
   .home-layout--large-rail,
   .home-layout--large-rail.home-layout--rail-left{
-    grid-template-columns: 1fr;
-  }
-}
-
-@media (min-width: 1200px){
-  .home-rail{ max-width: var(--rail-width); }
-}
-
-@media (max-width: 900px){
-  .grid-2,
-  .home-layout{
     grid-template-columns: 1fr;
   }
   .home-rail{
@@ -281,45 +221,11 @@ section{
     max-width: none;
   }
 }
-/* Image + quote break: dominant image, calm quote */
-.image-quote{
-  display: grid;
-  grid-template-columns: minmax(0, 620px) minmax(0, 480px);
-  gap: clamp(24px, 3.5vw, 56px);
-  align-items: center;
-}
-}
-@media (max-width: 900px){
-  .image-quote{
-    grid-template-columns: 1fr;
-  }
-}
-/* Heading + CTAs on left, body text on right (model-like) */
-.split-cta{
-  display: grid;
-  grid-template-columns: minmax(0, 520px) minmax(0, 520px);
-  gap: clamp(18px, 3.2vw, 56px);
-  align-items: start;
+
+@media (min-width: 1200px){
+  .home-rail{ max-width: var(--rail-width); }
 }
 
-/* Keep the left stack tight and readable */
-.split-cta__left h2{
-  margin-top: 0;
-}
-
-/* Prevent the right column from feeling like a long line */
-.split-cta__right{
-  max-width: 52ch;
-}
-
-@media (max-width: 900px){
-  .split-cta{
-    grid-template-columns: 1fr;
-  }
-  .split-cta__right{
-    max-width: none;
-  }
-}
 /* =========================
    Rail / images
    ========================= */
@@ -336,13 +242,10 @@ section{
   object-fit: cover;
 }
 
-/* Optional larger rail cap (rarely needed if you use home-layout--large-rail) */
-.home-rail--large{
-  max-width: 440px;
-}
+/* Optional larger rail cap */
+.home-rail--large{ max-width: 440px; }
 
-/* Orange 75% “corner frame”
-   Draw frame on the rail, inset the image slightly so the corner sits inside. */
+/* Orange “corner frame” */
 .home-rail--ruled{
   --frame-inset: 10px;
   --frame-weight: var(--rule-thickness);
@@ -366,16 +269,95 @@ section{
   width: var(--frame-weight);
   height: 75%;
 }
-/* Image-led section: larger, centered image with brand rule */
+
+/* Standalone image block (centred) */
 .image-block{
   max-width: 640px;
   margin: 0 auto;
 }
+@media (max-width: 900px){
+  .image-block{ max-width: 100%; }
+}
+
+/* =========================
+   Patch: bullets, split layouts, quote/image breaks
+   ========================= */
+
+/* Bullet list for “Scale / Risk / Governance gaps / Supply pressure” */
+.key-points{
+  margin: 0 0 1.2rem 0;
+  padding-left: 1.1rem;
+  max-width: var(--measure);
+}
+.key-points li{ margin: 0 0 0.75rem 0; }
+
+/* Image + quote break (dominant image, balanced quote)
+   Works with your current HTML (no extra wrapper classes needed). */
+.image-quote{
+  display: grid;
+  grid-template-columns: minmax(0, 680px) minmax(0, 1fr);
+  gap: clamp(24px, 3.5vw, 64px);
+  align-items: center;
+}
+
+/* Ensure the image can actually grow large (rail defaults would otherwise cap it) */
+.image-quote > .home-rail{
+  max-width: 680px;
+}
+
+/* Keep quote readable but not “stuck in the centre” */
+.image-quote > div:last-child{
+  max-width: 56ch;
+}
 
 @media (max-width: 900px){
-  .image-block{
-    max-width: 100%;
+  .image-quote{
+    grid-template-columns: 1fr;
   }
+  .image-quote > .home-rail{
+    max-width: none;
+  }
+  .image-quote > div:last-child{
+    max-width: none;
+  }
+}
+
+/* Heading + CTAs on left, body text on right (model-like) */
+.split-cta{
+  display: grid;
+  grid-template-columns: minmax(0, 420px) minmax(0, 1fr);
+  gap: clamp(18px, 3vw, 56px);
+  align-items: start;
+}
+.split-cta__left h2{ margin-top: 0; }
+
+/* IMPORTANT: let the right column reach the container edge */
+.split-cta__right p{ max-width: none; }
+
+@media (max-width: 900px){
+  .split-cta{
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Optional: stack CTAs vertically for the “model” feel */
+.cta-stack{
+  flex-direction: column;
+  align-items: flex-start;
+}
+.cta-stack .btn{ width: fit-content; }
+
+/* Final CTA + image split (if you use it) */
+.cta-split{
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 520px);
+  gap: clamp(18px, 3vw, 56px);
+  align-items: center;
+}
+.cta-split__image{ max-width: 520px; }
+@media (max-width: 900px){
+  .cta-split{ grid-template-columns: 1fr; }
+  .cta-split__image{ max-width: none; }
 }
 
 /* =========================
@@ -406,7 +388,7 @@ section{
   flex-wrap: wrap;
   gap: 0.75rem;
   padding: 1rem 0;
-  justify-content: flex-end; /* right aligned */
+  justify-content: flex-end;
 }
 
 .site-nav a{
@@ -433,7 +415,6 @@ section{
   position: relative;
   overflow: hidden;
 
-  /* reduced ~⅓ */
   min-height: clamp(320px, 48vh, 520px);
   padding: clamp(96px, 8vw, 132px) 0 clamp(48px, 6vw, 84px);
 
@@ -452,12 +433,8 @@ section{
   pointer-events:none;
 }
 
-.hero > *{
-  position: relative;
-  z-index: 1;
-}
+.hero > *{ position: relative; z-index: 1; }
 
-/* Identity lock-up */
 .hero-lockup{
   display: flex;
   align-items: flex-start;
@@ -521,7 +498,7 @@ section{
 
   margin-top: clamp(10px, 1.8vh, 16px);
   margin-bottom: 0;
-  white-space: nowrap; /* desktop */
+  white-space: nowrap;
 }
 
 @media (min-width: 901px){
@@ -542,7 +519,7 @@ section{
   .hero-mark::after{
     top: 8%;
     height: 84%;
-    width: 3px; /* keep brand rule on mobile */
+    width: 3px;
   }
 }
 
@@ -554,10 +531,7 @@ section{
   padding-left: 1.1rem;
   max-width: var(--measure);
 }
-
-.home-list li{
-  margin-bottom: 0.7rem;
-}
+.home-list li{ margin-bottom: 0.7rem; }
 
 /* =========================
    Buttons / CTAs
@@ -601,7 +575,7 @@ section{
 
 .btn--ghost{ background: transparent; }
 
-/* “Next →” CTA styling (apply to the final CTA link in HTML) */
+/* “Next →” CTA styling */
 .next-cta{
   display: inline-flex;
   align-items: center;
@@ -614,27 +588,22 @@ section{
   text-decoration: none;
   padding: 10px 0;
 }
-
 .next-cta::after{
   content: "→";
   font-size: 1.05em;
   line-height: 1;
 }
-
 .next-cta:hover{ text-decoration: underline; }
 
 /* =========================
    Secondary page building blocks
    ========================= */
-
-/* 3-up cards (secretariat / ways to partner) */
 .cards-3{
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: clamp(14px, 2vw, 22px);
   margin-top: 1rem;
 }
-
 @media (max-width: 900px){
   .cards-3{ grid-template-columns: 1fr; }
 }
@@ -644,10 +613,8 @@ section{
   border: 1px solid rgba(1,30,45,0.12);
   padding: 1.1rem 1.1rem;
 }
-
 .card h3{ margin-top: 0; }
 
-/* Timeline (journey section) */
 .timeline{
   margin: 0;
   padding: 0;
@@ -656,14 +623,9 @@ section{
   border-left: 2px solid rgba(198,91,26,0.35);
   padding-left: 1rem;
 }
-
-.timeline li{
-  margin: 0 0 1rem 0;
-}
-
+.timeline li{ margin: 0 0 1rem 0; }
 .timeline li:last-child{ margin-bottom: 0; }
 
-/* Tables (fees) */
 .table-wrap{
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
@@ -690,102 +652,6 @@ section{
   letter-spacing: 0.06em;
   text-transform: uppercase;
   font-weight: 700;
-}
-
-/* =========================================
-   Patch: bullets, split layouts, quote styling
-   ========================================= */
-
-/* Section 1 bullets (fixes your <li> inside <p> issue and styles it cleanly) */
-.key-points{
-  margin: 0 0 1.2rem 0;
-  padding-left: 1.1rem;
-  max-width: var(--measure);
-}
-.key-points li{
-  margin: 0 0 0.75rem 0;
-}
-
-/* Image + quote break: make the image genuinely larger */
-.image-quote{
-  display: grid;
-  grid-template-columns: minmax(0, 640px) minmax(0, 1fr);
-  gap: clamp(18px, 3vw, 56px);
-  align-items: center;
-}
-.image-quote__image{
-  max-width: 640px;   /* ensures it can grow beyond the default rail width */
-}
-.image-quote__text{
-  max-width: 56ch;
-}
-@media (max-width: 900px){
-  .image-quote{
-    grid-template-columns: 1fr;
-  }
-  .image-quote__image{
-    max-width: none;
-  }
-}
-
-/* Pull quote: clearly differentiated */
-.pull-quote{
-  position: relative;
-  margin: 0;
-  font-family: "Barlow Condensed", system-ui, -apple-system, "Segoe UI", sans-serif;
-  font-weight: 700;
-  letter-spacing: 0.02em;
-  color: var(--deep-navy);
-  font-size: clamp(1.6rem, 2.4vw, 2.15rem);
-  line-height: 1.25;
-  max-width: 28ch;
-}
-.pull-quote::before{
-  content: "“";
-  position: absolute;
-  left: -0.55em;
-  top: -0.2em;
-  color: var(--sand-orange);
-  font-size: 1.3em;
-  line-height: 1;
-}
-
-/* Why a Coalition: heading/CTAs left, text right — and let the right column breathe */
-.split-cta{
-  display: grid;
-  grid-template-columns: minmax(0, 420px) minmax(0, 1fr);
-  gap: clamp(18px, 3vw, 56px);
-  align-items: start;
-}
-.split-cta__right p{
-  max-width: none; /* IMPORTANT: removes the 80ch clamp so it reaches the container edge */
-}
-@media (max-width: 900px){
-  .split-cta{
-    grid-template-columns: 1fr;
-  }
-}
-
-/* Final CTA + image split */
-.cta-split{
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 520px);
-  gap: clamp(18px, 3vw, 56px);
-  align-items: center;
-}
-.cta-split__text .measure{
-  max-width: var(--measure);
-}
-.cta-split__image{
-  max-width: 520px;
-}
-@media (max-width: 900px){
-  .cta-split{
-    grid-template-columns: 1fr;
-  }
-  .cta-split__image{
-    max-width: none;
-  }
 }
 
 /* =========================
@@ -832,13 +698,12 @@ footer a:hover{
 
 .linkedin-link{
   display: inline-flex;
-  align-items: center;   /* key: true centre alignment */
-  gap: 8px;              /* control spacing here */
+  align-items: center;
+  gap: 8px;
   color: var(--deep-navy);
   opacity: 0.95;
   text-decoration: none;
 }
-
 .linkedin-link:hover{
   opacity: 1;
   text-decoration: underline;
@@ -850,11 +715,11 @@ footer a:hover{
 }
 
 .linkedin-icon{
-  height: 2.1em;         /* keep your chosen size */
+  height: 2.1em;
   width: auto;
-  display: block;        /* prevents baseline weirdness */
-  margin: 0;             /* remove baseline-era margins */
-  transform: translateY(2px); /* small, predictable nudge */
+  display: block;
+  margin: 0;
+  transform: translateY(2px);
 }
 
 .footer-separator{
@@ -873,7 +738,7 @@ footer a:hover{
   position: absolute;
   right: 18px;
   top: calc(var(--rule-thickness) + 10px);
-  width: 24px; /* locked: small mark */
+  width: 24px;
   height: auto;
   opacity: 1;
   pointer-events: none;
@@ -886,4 +751,3 @@ footer a:hover{
     bottom: 12px;
   }
 }
-
