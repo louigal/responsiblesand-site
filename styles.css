@@ -533,35 +533,43 @@ section{
    Hero statement on hero texture
    ========================= */
 
-/* Full-width veil INSIDE the container */
-.hero-veil{
-  margin-top: clamp(18px, 3.2vw, 36px);
+/* =========================
+   Hero statement — inside hero (harmonised)
+   ========================= */
 
-  /* full width of the container content area */
-  width: 100%;
-
-  /* veil look: not a “box”, but a deliberate band */
-  background: rgba(255,255,255,0.34);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
-
-  /* subtle edge definition (optional but helps it feel intentional) */
-  border-top: 1px solid rgba(1,30,45,0.10);
-  border-bottom: 1px solid rgba(1,30,45,0.10);
-
-  padding: clamp(14px, 2.2vw, 20px) clamp(14px, 2vw, 18px);
+.hero-statement{
+  /* sits under the lock-up */
+  margin-top: clamp(18px, 3vw, 30px);
 }
 
-/* Statement typography: Barlow, but shaped to feel like an “opening line” */
-.hero-veil__text{
+.hero-statement__veil{
+  /* veil spans the full width of the container */
+  width: 100%;
+  background: rgba(255,255,255,0.30); /* breathable but legible */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  /* no border / no box feel */
+  border: 0;
+
+  padding: clamp(16px, 2.2vw, 22px) clamp(18px, 2.6vw, 28px);
+}
+
+.hero-statement__text{
   margin: 0;
-  max-width: 60ch;          /* keeps it from feeling like a paragraph block */
-  text-align: left;         /* reads more like a declaration than a quote */
-  font-family: "Barlow", system-ui, -apple-system, "Segoe UI", sans-serif;
+  max-width: 62ch;
+
+  /* harmonise with hero-org / hero-name */
+  font-family: "Barlow Condensed", system-ui, -apple-system, "Segoe UI", sans-serif;
   font-weight: 600;
-  font-size: clamp(1.2rem, 1.55vw, 1.6rem);
-  line-height: 1.32;
+  font-size: clamp(1.55rem, 2.1vw, 2.05rem);
+  line-height: 1.15;
+
   color: rgba(1,30,45,0.88);
+  letter-spacing: 0.01em;
+
+  /* align with the wordmark (not centred) */
+  text-align: left;
 }
 
 /* Mobile: centre it if you prefer the calmer, poster-like read */
