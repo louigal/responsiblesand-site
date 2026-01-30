@@ -113,6 +113,9 @@ a:hover{ text-decoration: underline; }
   max-width: 36ch;
 }
 
+/* =========================
+   Pull-quote / reflective text
+   ========================= */
 .pull-quote::before{
   content: "“";
   font-size: 2.2em;
@@ -120,6 +123,27 @@ a:hover{ text-decoration: underline; }
   vertical-align: -0.25em;
   margin-right: 0.1em;
   color: var(--sand-orange);
+}
+
+.pull-quote{
+  font-family: "Barlow Condensed", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  line-height: 1.35;
+
+  font-size: clamp(1.35rem, 2vw, 1.9rem);
+  color: var(--deep-navy);
+
+  max-width: 36ch;
+}
+
+.pull-quote::before{
+  content: "“";
+  display: inline-block;
+  margin-right: 0.25em;
+  color: var(--sand-orange);
+  font-size: 1.2em;
+  vertical-align: top;
 }
 /* =========================
    Layout
