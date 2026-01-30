@@ -529,7 +529,31 @@ section{
     width: 3px;
   }
 }
+/* Hero message slab (model-inspired) */
+.hero-message{
+  margin-top: clamp(18px, 2.4vw, 28px);
+  max-width: 78ch;
+  padding: clamp(14px, 1.6vw, 18px) clamp(16px, 2vw, 22px);
+  background: rgba(255,255,255,0.58);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border: 1px solid rgba(1,30,45,0.10);
+}
 
+.hero-message__text{
+  margin: 0;
+  font-size: clamp(1.05rem, 1.25vw, 1.35rem);
+  line-height: 1.45;
+  color: rgba(1,30,45,0.88);
+  max-width: none; /* don’t re-clamp inside the slab */
+}
+
+/* centre it */
+.hero-message{
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
 /* =========================
    Lists
    ========================= */
