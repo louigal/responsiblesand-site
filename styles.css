@@ -529,20 +529,10 @@ section{
     width: 3px;
   }
 }
-/* Hero message slab — declarative opening */
+/* Hero thesis statement — unboxed, declarative */
 .hero-message{
-  margin-top: clamp(18px, 2.8vw, 34px);
-  max-width: 82ch;
-
-  padding: clamp(14px, 1.8vw, 20px) clamp(18px, 2.4vw, 26px);
-
-  background: rgba(255,255,255,0.42); /* ↓ opacity */
-  backdrop-filter: blur(10px);        /* ↑ blur does the work */
-  -webkit-backdrop-filter: blur(10px);
-
-  border: 1px solid rgba(1,30,45,0.08); /* lighter edge */
-  box-shadow: none;                     /* remove “card” feel */
-
+  margin-top: clamp(22px, 3vw, 36px);
+  max-width: 68ch;
   margin-left: auto;
   margin-right: auto;
   text-align: center;
@@ -551,16 +541,14 @@ section{
 .hero-message__text{
   margin: 0;
 
-  font-family: "Barlow Condensed", system-ui, -apple-system, "Segoe UI", sans-serif;
-  font-weight: 700;
+  /* TYPOGRAPHIC CONTRAST */
+  font-family: "Libre Baskerville", "Georgia", serif;
+  font-weight: 400;
 
-  font-size: clamp(1.35rem, 2.1vw, 1.85rem);
-  line-height: 1.25;
-  letter-spacing: 0.015em;
+  font-size: clamp(1.25rem, 1.9vw, 1.6rem);
+  line-height: 1.5;
 
-  color: var(--deep-navy);
-  max-width: none;
-}
+  color: rgba(1,30,45,0.92);
 }
 /* =========================
    Lists
