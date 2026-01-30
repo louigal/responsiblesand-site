@@ -294,6 +294,32 @@ section{
     grid-template-columns: 1fr;
   }
 }
+/* Heading + CTAs on left, body text on right (model-like) */
+.split-cta{
+  display: grid;
+  grid-template-columns: minmax(0, 520px) minmax(0, 520px);
+  gap: clamp(18px, 3.2vw, 56px);
+  align-items: start;
+}
+
+/* Keep the left stack tight and readable */
+.split-cta__left h2{
+  margin-top: 0;
+}
+
+/* Prevent the right column from feeling like a long line */
+.split-cta__right{
+  max-width: 52ch;
+}
+
+@media (max-width: 900px){
+  .split-cta{
+    grid-template-columns: 1fr;
+  }
+  .split-cta__right{
+    max-width: none;
+  }
+}
 /* =========================
    Rail / images
    ========================= */
