@@ -281,7 +281,19 @@ section{
     max-width: none;
   }
 }
+/* Image + quote break: wider image column, balanced quote column */
+.image-quote{
+  display: grid;
+  grid-template-columns: minmax(0, 520px) minmax(0, 1fr);
+  gap: clamp(18px, 2.8vw, 42px);
+  align-items: center;
+}
 
+@media (max-width: 900px){
+  .image-quote{
+    grid-template-columns: 1fr;
+  }
+}
 /* =========================
    Rail / images
    ========================= */
