@@ -227,7 +227,7 @@ a:hover{ text-decoration: underline; }
   margin-top: clamp(52px, 10vh, 108px);
 
   display: grid;
-  grid-template-columns: 58% 42%;
+  grid-template-columns: 50% 42%;
   column-gap: clamp(18px, 3vw, 38px);
 }
 
