@@ -14,16 +14,10 @@
   --rule-thickness: 2px;
   --rule-length: 75%;
 
-  /* Surfaces */
-:root{
-  --surface-veil: rgba(255,255,255,0.40);          /* keep your current-ish default */
-  --surface-veil-strong: rgba(255,255,255,0.52);   /* slightly lighter than now */
-  --surface-veil-light: rgba(255,255,255,0.26);    /* new: very breathable */
-}
-
-.section--light{
-  background: var(--surface-veil-light);
-}
+  /* Surfaces (veil map) */
+  --surface-veil: rgba(255,255,255,0.34);         /* breathable default */
+  --surface-veil-strong: rgba(255,255,255,0.46);  /* stronger band */
+  --surface-veil-light: rgba(255,255,255,0.26);   /* very light veil */
 
   /* Spacing */
   --section-pad: 2rem;
@@ -70,9 +64,6 @@ body{
 /* =========================
    Typography
    ========================= */
-
-<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Barlow+Condensed:wght@600;700&display=swap" rel="stylesheet">
-
 h1, h2, h3, h4{
   font-family: "Barlow Condensed", system-ui, -apple-system, "Segoe UI", sans-serif;
   font-weight: 700;
@@ -107,7 +98,16 @@ a{
 }
 a:hover{ text-decoration: underline; }
 
-/* Pull quote / reflective text */
+/* Lead paragraph / standfirst */
+.lead{
+  font-size: clamp(1.05rem, 1.15vw, 1.25rem);
+  line-height: 1.55;
+  font-weight: 400;
+  max-width: 42em;
+  margin-bottom: 1.4em;
+}
+
+/* Pull-quote / reflective text */
 .pull-quote{
   position: relative;
   margin: 0;
@@ -119,6 +119,7 @@ a:hover{ text-decoration: underline; }
   line-height: 1.25;
   max-width: 30ch;
 }
+
 .pull-quote::before{
   content: "“";
   position: absolute;
@@ -128,43 +129,7 @@ a:hover{ text-decoration: underline; }
   font-size: 1.3em;
   line-height: 1;
 }
-.hero-statement{
-  background: rgba(255,255,255,0.22); /* lets texture breathe a touch */
-  padding: clamp(28px, 4vw, 54px) 0;
-  position: relative;
-}
 
-.hero-statement::before,
-.hero-statement::after{
-  content:"";
-  position:absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  width: min(980px, calc(100% - (2 * var(--gutter))));
-  height: var(--rule-thickness);
-  background: var(--sand-orange);
-  opacity: 0.9;
-}
-
-.hero-statement::before{ top: 0; }
-.hero-statement::after{ bottom: 0; }
-
-.hero-statement__text{
-  margin: 0 auto;
-  max-width: 40ch;
-
-  font-family: "Barlow", system-ui, -apple-system, "Segoe UI", sans-serif;
-  font-weight: 700;
-
-  font-size: clamp(1.6rem, 2.8vw, 2.25rem);
-  line-height: 1.25;
-
-  letter-spacing: 0.005em; /* critical: tighter than body */
-  color: rgba(1,30,45,0.88);
-
-  text-align: center;
-}
-}
 /* =========================
    Layout
    ========================= */
@@ -178,42 +143,6 @@ a:hover{ text-decoration: underline; }
 /* A simple readable wrapper for long text blocks */
 .measure{ max-width: var(--measure); }
 
-/* hero-statement veil */
-.hero-statement{
-  background: rgba(255,255,255,0.22); /* lets texture breathe a touch */
-  padding: clamp(28px, 4vw, 54px) 0;
-  position: relative;
-}
-
-.hero-statement::before,
-.hero-statement::after{
-  content:"";
-  position:absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  width: min(980px, calc(100% - (2 * var(--gutter))));
-  height: var(--rule-thickness);
-  background: var(--sand-orange);
-  opacity: 0.9;
-}
-
-.hero-statement::before{ top: 0; }
-.hero-statement::after{ bottom: 0; }
-
-.hero-statement__text{
-  margin: 0 auto;
-  max-width: 44ch;
-
-  font-family: "Open Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
-  font-weight: 400;
-  font-size: clamp(1.45rem, 2.6vw, 2.05rem);
-  line-height: 1.35;
-
-  color: rgba(1,30,45,0.70);
-  text-align: center;
-  letter-spacing: 0.01em;
-}
-
 /* =========================
    Sections (building blocks)
    ========================= */
@@ -221,13 +150,20 @@ a:hover{ text-decoration: underline; }
   padding: var(--section-pad) 0;
   background: var(--surface-veil);
 }
+
 .section--band{
   padding: var(--section-pad) 0;
   background: var(--surface-veil-strong);
 }
+
 .section--tight{
   padding: var(--section-pad-tight) 0;
   background: var(--surface-veil);
+}
+
+.section--light{
+  padding: var(--section-pad) 0;
+  background: var(--surface-veil-light);
 }
 
 /* Backward-compatible: keep existing markup working */
@@ -236,6 +172,7 @@ section{
   background: var(--surface-veil);
 }
 
+/* Optional subtle divider use */
 .intro{
   border-top: 1px solid rgba(1,30,45,0.12);
 }
@@ -244,7 +181,7 @@ section{
    Grids (building blocks)
    ========================= */
 
-/* Two-column editorial pattern (content + right rail) */
+/* Two-column editorial pattern (text + right rail) */
 .grid-2,
 .home-layout{
   display: grid;
@@ -277,10 +214,12 @@ section{
   grid-template-columns: minmax(0, 1fr) 440px;
   align-items: start;
 }
+
 .home-layout--large-rail.home-layout--rail-left{
   grid-template-columns: 440px minmax(0, 1fr);
 }
 
+/* Mobile collapse */
 @media (max-width: 900px){
   .grid-2,
   .home-layout,
@@ -289,6 +228,7 @@ section{
   .home-layout--large-rail.home-layout--rail-left{
     grid-template-columns: 1fr;
   }
+
   .home-rail{
     order: 2;
     max-width: none;
@@ -297,6 +237,76 @@ section{
 
 @media (min-width: 1200px){
   .home-rail{ max-width: var(--rail-width); }
+}
+
+/* Section split: left column for heading + CTAs, right column for copy */
+.section-split{
+  display: grid;
+  grid-template-columns: minmax(240px, 360px) minmax(0, 1fr);
+  gap: clamp(18px, 3vw, 44px);
+  align-items: start;
+}
+
+@media (max-width: 900px){
+  .section-split{ grid-template-columns: 1fr; }
+}
+
+/* Heading + CTAs on left, body text on right (model-like) */
+.split-cta{
+  display: grid;
+  grid-template-columns: minmax(0, 420px) minmax(0, 1fr);
+  gap: clamp(18px, 3vw, 56px);
+  align-items: start;
+}
+
+.split-cta__left h2{ margin-top: 0; }
+
+/* IMPORTANT: let the right column run to container edge */
+.split-cta__right p{ max-width: none; }
+
+@media (max-width: 900px){
+  .split-cta{ grid-template-columns: 1fr; }
+}
+
+/* Stack CTAs vertically when wanted */
+.cta-stack{
+  flex-direction: column;
+  align-items: flex-start;
+}
+.cta-stack .btn{ width: fit-content; }
+
+/* Image + quote break: make image genuinely larger */
+.image-quote{
+  display: grid;
+  grid-template-columns: minmax(0, 640px) minmax(0, 1fr);
+  gap: clamp(18px, 3vw, 56px);
+  align-items: center;
+}
+
+.image-quote__image{ max-width: 640px; }
+.image-quote__text{ max-width: 56ch; }
+
+@media (max-width: 900px){
+  .image-quote{
+    grid-template-columns: 1fr;
+  }
+  .image-quote__image{ max-width: none; }
+  .image-quote__text{ max-width: none; }
+}
+
+/* Final CTA + image split */
+.cta-split{
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 520px);
+  gap: clamp(18px, 3vw, 56px);
+  align-items: center;
+}
+
+.cta-split__image{ max-width: 520px; }
+
+@media (max-width: 900px){
+  .cta-split{ grid-template-columns: 1fr; }
+  .cta-split__image{ max-width: none; }
 }
 
 /* =========================
@@ -338,99 +348,19 @@ section{
   pointer-events: none;
   background: var(--sand-orange);
 }
+
 .home-rail--ruled::after{
   width: var(--frame-weight);
   height: 75%;
 }
 
-/* Standalone image block (centred) */
+/* Image-led section block (if used) */
 .image-block{
   max-width: 640px;
   margin: 0 auto;
 }
 @media (max-width: 900px){
   .image-block{ max-width: 100%; }
-}
-
-/* =========================
-   Patch: bullets, split layouts, quote/image breaks
-   ========================= */
-
-/* Bullet list for “Scale / Risk / Governance gaps / Supply pressure” */
-.key-points{
-  margin: 0 0 1.2rem 0;
-  padding-left: 1.1rem;
-  max-width: var(--measure);
-}
-.key-points li{ margin: 0 0 0.75rem 0; }
-
-/* Image + quote break (dominant image, balanced quote)
-   Works with your current HTML (no extra wrapper classes needed). */
-.image-quote{
-  display: grid;
-  grid-template-columns: minmax(0, 680px) minmax(0, 1fr);
-  gap: clamp(24px, 3.5vw, 64px);
-  align-items: center;
-}
-
-/* Ensure the image can actually grow large (rail defaults would otherwise cap it) */
-.image-quote > .home-rail{
-  max-width: 680px;
-}
-
-/* Keep quote readable but not “stuck in the centre” */
-.image-quote > div:last-child{
-  max-width: 56ch;
-}
-
-@media (max-width: 900px){
-  .image-quote{
-    grid-template-columns: 1fr;
-  }
-  .image-quote > .home-rail{
-    max-width: none;
-  }
-  .image-quote > div:last-child{
-    max-width: none;
-  }
-}
-
-/* Heading + CTAs on left, body text on right (model-like) */
-.split-cta{
-  display: grid;
-  grid-template-columns: minmax(0, 420px) minmax(0, 1fr);
-  gap: clamp(18px, 3vw, 56px);
-  align-items: start;
-}
-.split-cta__left h2{ margin-top: 0; }
-
-/* IMPORTANT: let the right column reach the container edge */
-.split-cta__right p{ max-width: none; }
-
-@media (max-width: 900px){
-  .split-cta{
-    grid-template-columns: 1fr;
-  }
-}
-
-/* Optional: stack CTAs vertically for the “model” feel */
-.cta-stack{
-  flex-direction: column;
-  align-items: flex-start;
-}
-.cta-stack .btn{ width: fit-content; }
-
-/* Final CTA + image split (if you use it) */
-.cta-split{
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 520px);
-  gap: clamp(18px, 3vw, 56px);
-  align-items: center;
-}
-.cta-split__image{ max-width: 520px; }
-@media (max-width: 900px){
-  .cta-split{ grid-template-columns: 1fr; }
-  .cta-split__image{ max-width: none; }
 }
 
 /* =========================
@@ -488,9 +418,8 @@ section{
   position: relative;
   overflow: hidden;
 
-  /* shorter hero – identity lock-up only */
-  min-height: clamp(240px, 34vh, 360px);
-  padding: clamp(84px, 7vw, 116px) 0 clamp(30px, 4vw, 48px);
+  min-height: clamp(320px, 48vh, 520px);
+  padding: clamp(96px, 8vw, 132px) 0 clamp(48px, 6vw, 84px);
 
   background-color: var(--off-white);
   background-image: url("assets/hero-texture.svg");
@@ -507,8 +436,12 @@ section{
   pointer-events:none;
 }
 
-.hero > *{ position: relative; z-index: 1; }
+.hero > *{
+  position: relative;
+  z-index: 1;
+}
 
+/* Identity lock-up */
 .hero-lockup{
   display: flex;
   align-items: flex-start;
@@ -545,7 +478,7 @@ section{
   font-family: "Barlow Condensed", system-ui, -apple-system, "Segoe UI", sans-serif;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.15em;
   font-size: clamp(26px, 2.9vw, 38px);
   color: var(--sand-orange);
 }
@@ -554,7 +487,7 @@ section{
   font-family: "Barlow Condensed", system-ui, -apple-system, "Segoe UI", sans-serif;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.065em;
+  letter-spacing: 0.085em;
   font-size: clamp(2.8rem, 4.8vw, 4.1rem);
   color: var(--deep-navy);
   margin-top: 6px;
@@ -596,27 +529,28 @@ section{
     width: 3px;
   }
 }
-/* Hero thesis statement — unboxed, declarative */
-.hero-message{
-  margin-top: clamp(22px, 3vw, 36px);
-  max-width: 68ch;
-  margin-left: auto;
-  margin-right: auto;
+
+/* =========================
+   New hero statement band (NO orange lines)
+   ========================= */
+.hero-statement{
+  background: rgba(255,255,255,0.18);
+  padding: clamp(26px, 3.6vw, 46px) 0;
+}
+
+.hero-statement__text{
+  margin: 0 auto;
+  max-width: 46ch;
   text-align: center;
+
+  font-family: "Barlow", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-weight: 600;
+  font-size: clamp(1.35rem, 2.2vw, 1.95rem);
+  line-height: 1.28;
+  color: rgba(1,30,45,0.82);
+  letter-spacing: 0.01em;
 }
 
-.hero-message__text{
-  margin: 0;
-
-  /* TYPOGRAPHIC CONTRAST */
-  font-family: "Libre Baskerville", "Georgia", serif;
-  font-weight: 400;
-
-  font-size: clamp(1.25rem, 1.9vw, 1.6rem);
-  line-height: 1.5;
-
-  color: rgba(1,30,45,0.92);
-}
 /* =========================
    Lists
    ========================= */
@@ -625,7 +559,16 @@ section{
   padding-left: 1.1rem;
   max-width: var(--measure);
 }
+
 .home-list li{ margin-bottom: 0.7rem; }
+
+/* Key points bullets */
+.key-points{
+  margin: 0 0 1.2rem 0;
+  padding-left: 1.1rem;
+  max-width: var(--measure);
+}
+.key-points li{ margin: 0 0 0.75rem 0; }
 
 /* =========================
    Buttons / CTAs
@@ -682,22 +625,27 @@ section{
   text-decoration: none;
   padding: 10px 0;
 }
+
 .next-cta::after{
   content: "→";
   font-size: 1.05em;
   line-height: 1;
 }
+
 .next-cta:hover{ text-decoration: underline; }
 
 /* =========================
    Secondary page building blocks
    ========================= */
+
+/* 3-up cards */
 .cards-3{
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: clamp(14px, 2vw, 22px);
   margin-top: 1rem;
 }
+
 @media (max-width: 900px){
   .cards-3{ grid-template-columns: 1fr; }
 }
@@ -707,8 +655,10 @@ section{
   border: 1px solid rgba(1,30,45,0.12);
   padding: 1.1rem 1.1rem;
 }
+
 .card h3{ margin-top: 0; }
 
+/* Timeline */
 .timeline{
   margin: 0;
   padding: 0;
@@ -717,9 +667,11 @@ section{
   border-left: 2px solid rgba(198,91,26,0.35);
   padding-left: 1rem;
 }
+
 .timeline li{ margin: 0 0 1rem 0; }
 .timeline li:last-child{ margin-bottom: 0; }
 
+/* Tables */
 .table-wrap{
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
@@ -798,6 +750,7 @@ footer a:hover{
   opacity: 0.95;
   text-decoration: none;
 }
+
 .linkedin-link:hover{
   opacity: 1;
   text-decoration: underline;
