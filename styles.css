@@ -529,26 +529,47 @@ section{
     width: 3px;
   }
 }
-
 /* =========================
-   New hero statement band (NO orange lines)
+   Hero statement on hero texture
    ========================= */
-.hero-statement{
-  background: rgba(255,255,255,0.18);
-  padding: clamp(26px, 3.6vw, 46px) 0;
+
+/* Full-width veil INSIDE the container */
+.hero-veil{
+  margin-top: clamp(18px, 3.2vw, 36px);
+
+  /* full width of the container content area */
+  width: 100%;
+
+  /* veil look: not a “box”, but a deliberate band */
+  background: rgba(255,255,255,0.34);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+
+  /* subtle edge definition (optional but helps it feel intentional) */
+  border-top: 1px solid rgba(1,30,45,0.10);
+  border-bottom: 1px solid rgba(1,30,45,0.10);
+
+  padding: clamp(14px, 2.2vw, 20px) clamp(14px, 2vw, 18px);
 }
 
-.hero-statement__text{
-  margin: 0 auto;
-  max-width: 46ch;
-  text-align: center;
-
+/* Statement typography: Barlow, but shaped to feel like an “opening line” */
+.hero-veil__text{
+  margin: 0;
+  max-width: 60ch;          /* keeps it from feeling like a paragraph block */
+  text-align: left;         /* reads more like a declaration than a quote */
   font-family: "Barlow", system-ui, -apple-system, "Segoe UI", sans-serif;
   font-weight: 600;
-  font-size: clamp(1.35rem, 2.2vw, 1.95rem);
-  line-height: 1.28;
-  color: rgba(1,30,45,0.82);
-  letter-spacing: 0.01em;
+  font-size: clamp(1.2rem, 1.55vw, 1.6rem);
+  line-height: 1.32;
+  color: rgba(1,30,45,0.88);
+}
+
+/* Mobile: centre it if you prefer the calmer, poster-like read */
+@media (max-width: 700px){
+  .hero-veil__text{
+    text-align: center;
+    max-width: 46ch;
+  }
 }
 
 /* =========================
