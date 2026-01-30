@@ -15,8 +15,15 @@
   --rule-length: 75%;
 
   /* Surfaces */
-  --surface-veil: rgba(255,255,255,0.45);
-  --surface-veil-strong: rgba(255,255,255,0.58);
+:root{
+  --surface-veil: rgba(255,255,255,0.40);          /* keep your current-ish default */
+  --surface-veil-strong: rgba(255,255,255,0.52);   /* slightly lighter than now */
+  --surface-veil-light: rgba(255,255,255,0.26);    /* new: very breathable */
+}
+
+.section--light{
+  background: var(--surface-veil-light);
+}
 
   /* Spacing */
   --section-pad: 2rem;
