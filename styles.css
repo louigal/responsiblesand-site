@@ -692,6 +692,102 @@ section{
   font-weight: 700;
 }
 
+/* =========================================
+   Patch: bullets, split layouts, quote styling
+   ========================================= */
+
+/* Section 1 bullets (fixes your <li> inside <p> issue and styles it cleanly) */
+.key-points{
+  margin: 0 0 1.2rem 0;
+  padding-left: 1.1rem;
+  max-width: var(--measure);
+}
+.key-points li{
+  margin: 0 0 0.75rem 0;
+}
+
+/* Image + quote break: make the image genuinely larger */
+.image-quote{
+  display: grid;
+  grid-template-columns: minmax(0, 640px) minmax(0, 1fr);
+  gap: clamp(18px, 3vw, 56px);
+  align-items: center;
+}
+.image-quote__image{
+  max-width: 640px;   /* ensures it can grow beyond the default rail width */
+}
+.image-quote__text{
+  max-width: 56ch;
+}
+@media (max-width: 900px){
+  .image-quote{
+    grid-template-columns: 1fr;
+  }
+  .image-quote__image{
+    max-width: none;
+  }
+}
+
+/* Pull quote: clearly differentiated */
+.pull-quote{
+  position: relative;
+  margin: 0;
+  font-family: "Barlow Condensed", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--deep-navy);
+  font-size: clamp(1.6rem, 2.4vw, 2.15rem);
+  line-height: 1.25;
+  max-width: 28ch;
+}
+.pull-quote::before{
+  content: "“";
+  position: absolute;
+  left: -0.55em;
+  top: -0.2em;
+  color: var(--sand-orange);
+  font-size: 1.3em;
+  line-height: 1;
+}
+
+/* Why a Coalition: heading/CTAs left, text right — and let the right column breathe */
+.split-cta{
+  display: grid;
+  grid-template-columns: minmax(0, 420px) minmax(0, 1fr);
+  gap: clamp(18px, 3vw, 56px);
+  align-items: start;
+}
+.split-cta__right p{
+  max-width: none; /* IMPORTANT: removes the 80ch clamp so it reaches the container edge */
+}
+@media (max-width: 900px){
+  .split-cta{
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Final CTA + image split */
+.cta-split{
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 520px);
+  gap: clamp(18px, 3vw, 56px);
+  align-items: center;
+}
+.cta-split__text .measure{
+  max-width: var(--measure);
+}
+.cta-split__image{
+  max-width: 520px;
+}
+@media (max-width: 900px){
+  .cta-split{
+    grid-template-columns: 1fr;
+  }
+  .cta-split__image{
+    max-width: none;
+  }
+}
+
 /* =========================
    Footer (LOCKED)
    ========================= */
