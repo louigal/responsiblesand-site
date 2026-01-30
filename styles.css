@@ -257,6 +257,17 @@ section{
   width: var(--frame-weight);
   height: 75%;
 }
+/* Image-led section: larger, centered image with brand rule */
+.image-block{
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+@media (max-width: 900px){
+  .image-block{
+    max-width: 100%;
+  }
+}
 
 /* =========================
    Header / Navigation (LOCKED)
