@@ -61,11 +61,12 @@ body {
   font-size: var(--base-font-size);
   background-color: #ffffff;
   background-image: url("assets/page-texture.svg");
-  background-repeat: no-repeat;
+  background-repeat: repeat;
   background-position: center;
   background-size: cover;
   background-attachment: fixed;
   animation: fadeIn 0.4s ease-in;
+  min-height: 100vh;
 }
 
 @keyframes fadeIn {
@@ -609,20 +610,6 @@ section {
     width: 3px;
   }
 }
-
-/* ========================= 
-   HERO STATEMENT FIX - REVISED
-   
-   INSTRUCTIONS:
-   Find the .hero-statement section in your styles.css
-   Replace the existing .hero-statement and .hero-statement__text
-   rules with the code below
-   
-   CHANGES FROM ORIGINAL:
-   - Grid starts at 50% instead of 58%
-   - Text width adjusted to wrap to 3 lines
-   - Keeps original font weight (500) and size
-   ========================= */
 
 /* Hero statement — better grid balance, original text weight */
 .hero-statement {
