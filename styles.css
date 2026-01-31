@@ -1098,10 +1098,11 @@ footer a:hover {
 }
 
 .team-card__photo {
-  width: 100%;
-  aspect-ratio: 1 / 1;
+  width: 160px;
+  height: 160px;
+  margin: 0 auto 1rem;
   overflow: hidden;
-  margin-bottom: 1rem;
+  border-radius: 50%;
   background: var(--surface-veil-light);
   border: 1px solid rgba(1, 30, 45, 0.12);
 }
@@ -1141,6 +1142,78 @@ footer a:hover {
   text-decoration: underline;
 }
 
+/* Compact team grid - smaller headshots (#10) */
+.team-grid--compact {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.team-grid--compact .team-card__photo {
+  max-width: 180px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Founder image below text (#4) */
+.founder-split__image {
+  margin: 1.5rem 0 0;
+  width: 100%;
+  overflow: hidden;
+  border: 1px solid rgba(1, 30, 45, 0.12);
+}
+
+.founder-split__image img {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+  aspect-ratio: 16 / 9;
+}
+
+/* Timeline spacing - gap before closing sentence (#9) */
+.timeline + p {
+  margin-top: 2rem;
+}
+
+/* Centered CTA with large image (#11) */
+.cta-centered {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.cta-centered h2 {
+  margin-top: 0;
+}
+
+.cta-centered .lead {
+  max-width: 42em;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cta-centered__buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 2.5rem;
+}
+
+.cta-centered__image {
+  margin: 0;
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+  border: 1px solid rgba(1, 30, 45, 0.12);
+}
+
+.cta-centered__image img {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+  aspect-ratio: 16 / 7;
+}
+
 /* Logo Grid - Clean Placeholder (Responsive for many logos) */
 .logo-grid {
   display: grid;
@@ -1166,5 +1239,63 @@ footer a:hover {
 @media (max-width: 900px) {
   .logo-grid {
     grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Founder image - horizontal under text */
+.founder-split__image {
+  margin: 1.5rem 0 0;
+  overflow: hidden;
+  border: 1px solid rgba(1, 30, 45, 0.12);
+}
+
+.founder-split__image img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  display: block;
+}
+
+/* Timeline - spacing before closing sentence */
+.timeline__closing {
+  margin-top: 1.8rem;
+}
+
+/* Contact - Centred with large image */
+.contact-centered {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.contact-centered h2 {
+  margin-top: 0;
+}
+
+.contact-centered .lead {
+  max-width: 48em;
+  margin: 0 auto 1.5rem;
+}
+
+.contact-centered .cta-row {
+  justify-content: center;
+}
+
+.contact-centered__image {
+  margin: 2.5rem 0 0;
+  overflow: hidden;
+  border: 1px solid rgba(1, 30, 45, 0.12);
+}
+
+.contact-centered__image img {
+  width: 100%;
+  height: 360px;
+  object-fit: cover;
+  display: block;
+}
+
+@media (max-width: 900px) {
+  .contact-centered__image img {
+    height: 240px;
   }
 }
