@@ -1038,8 +1038,8 @@ footer a:hover {
 
 .founder-logo-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: clamp(16px, 2.5vw, 24px);
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: clamp(14px, 2vw, 20px);
 }
 
 @media (max-width: 900px) {
@@ -1123,15 +1123,29 @@ footer a:hover {
 .team-card__role {
   font-size: 0.95rem;
   color: rgba(1, 30, 45, 0.70);
-  margin: 0;
+  margin: 0 0 0.5rem 0;
   font-weight: 400;
 }
 
-/* Logo Grid - Clean Placeholder */
+.team-card__contact {
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.team-card__contact a {
+  color: var(--sand-orange);
+  text-decoration: none;
+}
+
+.team-card__contact a:hover {
+  text-decoration: underline;
+}
+
+/* Logo Grid - Clean Placeholder (Responsive for many logos) */
 .logo-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: clamp(16px, 2.5vw, 24px);
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: clamp(14px, 2vw, 20px);
   margin-top: 1.5rem;
 }
 
