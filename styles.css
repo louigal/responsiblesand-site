@@ -610,7 +610,7 @@ section {
   }
 }
 
-/* Hero statement â€” no box, staggered */
+/* Hero statement — no box, staggered */
 .hero-statement {
   margin-top: clamp(28px, 6vh, 56px);
   display: grid;
@@ -720,7 +720,7 @@ section {
   background: transparent;
 }
 
-/* "Next â†’" CTA styling */
+/* "Next →" CTA styling */
 .next-cta {
   display: inline-flex;
   align-items: center;
@@ -735,7 +735,7 @@ section {
 }
 
 .next-cta::after {
-  content: "â†’";
+  content: "→";
   font-size: 1.05em;
   line-height: 1;
 }
@@ -924,5 +924,57 @@ footer a:hover {
     width: 22px;
     right: 14px;
     bottom: 12px;
+  }
+}
+
+/* ========================= 
+   Texture Breathing Animation
+   ========================= */
+
+/* Breathing animation for page texture - subtle scale pulse */
+@media (min-width: 900px) {
+  body {
+    animation: textureBreath 12s ease-in-out infinite;
+  }
+}
+
+@keyframes textureBreath {
+  0%, 100% {
+    background-size: cover;
+  }
+  50% {
+    background-size: 102%;
+  }
+}
+
+/* Breathing animation for hero texture - slower, gentler */
+@media (min-width: 900px) {
+  .hero {
+    animation: heroBreath 16s ease-in-out infinite;
+  }
+}
+
+@keyframes heroBreath {
+  0%, 100% {
+    background-size: cover;
+  }
+  50% {
+    background-size: 103%;
+  }
+}
+
+/* CRITICAL: Respect user motion preferences for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  body,
+  .hero {
+    animation: none !important;
+  }
+}
+
+/* Optional: Pause animations when user isn't looking at the page */
+@media (min-width: 900px) {
+  body.page-hidden,
+  .hero.page-hidden {
+    animation-play-state: paused;
   }
 }
