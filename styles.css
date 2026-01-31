@@ -1367,3 +1367,234 @@ footer a:hover {
     height: 240px;
   }
 }
+/* =========================
+   WHY JOIN PAGE - Additional Styles
+   
+   Add these to the END of your styles.css file
+   ========================= */
+
+/* ─── 1. HERO — Split: image left, text right ─── */
+.join-hero {
+  padding: clamp(60px, 10vh, 100px) 0 clamp(60px, 10vh, 100px);
+}
+
+.join-hero__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(24px, 4vw, 56px);
+  align-items: center;
+}
+
+.join-hero__image {
+  position: relative;
+}
+
+.join-hero__image .home-figure img {
+  width: 100%;
+  display: block;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+}
+
+.join-hero__content h1 {
+  font-size: clamp(3.2rem, 5.5vw, 4.8rem);
+  font-family: "Barlow Condensed", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  margin: 0 0 clamp(20px, 3vh, 36px) 0;
+  color: var(--deep-navy);
+}
+
+.join-hero__content .page-hero__statement {
+  margin: 0;
+}
+
+@media (max-width: 900px) {
+  .join-hero__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .join-hero__image {
+    order: -1;
+  }
+}
+
+/* ─── 2. THE OPPORTUNITY — Centered ─── */
+.join-opportunity {
+  max-width: 640px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.join-opportunity h2 {
+  margin-top: 0;
+}
+
+.join-opportunity p {
+  max-width: none;
+}
+
+/* ─── 3. VALUE COLUMNS — Three columns with orange top rules ─── */
+.join-value-cols {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(24px, 3vw, 40px);
+}
+
+.join-value-col {
+  padding-top: 1.25rem;
+  border-top: var(--rule-thickness) solid var(--sand-orange);
+}
+
+.join-value-col h3 {
+  margin-top: 0;
+  font-size: clamp(1.15rem, 1.4vw, 1.35rem);
+  line-height: 1.25;
+  margin-bottom: 0.75rem;
+}
+
+.join-value-col p {
+  max-width: none;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 0;
+}
+
+@media (max-width: 900px) {
+  .join-value-cols {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+/* ─── 4. MONTAGE — Split: tall portrait left, text right ─── */
+.join-montage {
+  display: grid;
+  grid-template-columns: minmax(0, 420px) minmax(0, 1fr);
+  gap: clamp(24px, 4vw, 56px);
+  align-items: center;
+}
+
+.join-montage__image {
+  position: relative;
+}
+
+.join-montage__image .home-figure img {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+  /* Portrait montage: let it show at natural 1:2 ratio, capped in height */
+  max-height: 560px;
+  aspect-ratio: auto;
+}
+
+.join-montage__content h2 {
+  margin-top: 0;
+}
+
+.join-montage__content .lead {
+  max-width: none;
+}
+
+@media (max-width: 900px) {
+  .join-montage {
+    grid-template-columns: 1fr;
+  }
+
+  .join-montage__image .home-figure img {
+    max-height: 420px;
+  }
+}
+
+/* ─── 6. NUMBERED TIMELINE — Orange vertical connector ─── */
+.join-timeline {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  counter-reset: timeline;
+  position: relative;
+  padding-left: 2.4rem;
+}
+
+/* Vertical orange connector line */
+.join-timeline::before {
+  content: "";
+  position: absolute;
+  left: calc(1.2rem - 1px);
+  top: 0.9rem;
+  bottom: 0.9rem;
+  width: var(--rule-thickness);
+  background: var(--sand-orange);
+  opacity: 0.4;
+}
+
+.join-timeline li {
+  position: relative;
+  margin-bottom: 1.25rem;
+  counter-increment: timeline;
+}
+
+.join-timeline li:last-child {
+  margin-bottom: 0;
+}
+
+/* Orange circle with number */
+.join-timeline li::before {
+  content: counter(timeline);
+  position: absolute;
+  left: -2.4rem;
+  top: 0.15em;
+  width: 2rem;
+  height: 2rem;
+  line-height: 2rem;
+  text-align: center;
+  background: var(--sand-orange);
+  color: #ffffff;
+  font-family: "Barlow Condensed", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 0.02em;
+  border-radius: 50%;
+}
+
+/* ─── 7. WHO THIS IS FOR — Three columns ─── */
+.join-for__heading {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.join-for {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(24px, 3vw, 40px);
+}
+
+.join-for__col {
+  padding-top: 1.25rem;
+  border-top: var(--rule-thickness) solid var(--sand-orange);
+}
+
+.join-for__col h3 {
+  margin-top: 0;
+  font-size: clamp(1.15rem, 1.4vw, 1.35rem);
+  line-height: 1.25;
+  margin-bottom: 0.75rem;
+}
+
+.join-for__col p {
+  max-width: none;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 0;
+}
+
+@media (max-width: 900px) {
+  .join-for {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .join-for__heading {
+    text-align: left;
+  }
+}
