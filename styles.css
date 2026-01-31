@@ -611,21 +611,24 @@ section {
 }
 
 /* ========================= 
-   HERO STATEMENT FIX - Option 3
+   HERO STATEMENT FIX - REVISED
    
    INSTRUCTIONS:
    Find the .hero-statement section in your styles.css
-   (around line 92-96 in the original)
-   
    Replace the existing .hero-statement and .hero-statement__text
    rules with the code below
+   
+   CHANGES FROM ORIGINAL:
+   - Grid starts at 50% instead of 58%
+   - Text width adjusted to wrap to 3 lines
+   - Keeps original font weight (500) and size
    ========================= */
 
-/* Hero statement — refined grid and spacing */
+/* Hero statement — better grid balance, original text weight */
 .hero-statement {
-  margin-top: clamp(32px, 7vh, 64px);
+  margin-top: clamp(28px, 6vh, 56px);
   display: grid;
-  grid-template-columns: 52% 48%;
+  grid-template-columns: 50% 50%;
   column-gap: clamp(24px, 4vw, 48px);
   align-items: start;
 }
@@ -634,15 +637,15 @@ section {
   grid-column: 2;
   justify-self: start;
   margin: 0;
-  max-width: 34ch;
+  max-width: 36ch;
   font-family: "Barlow Condensed", system-ui, -apple-system, "Segoe UI", sans-serif;
-  font-weight: 400;
-  font-size: clamp(1.20rem, 1.5vw, 1.60rem);
-  line-height: 1.38;
-  letter-spacing: 0.015em;
-  color: rgba(1, 30, 45, 0.65);
+  font-weight: 500;
+  font-size: clamp(1.40rem, 1.75vw, 1.85rem);
+  line-height: 1.28;
+  letter-spacing: 0.012em;
+  color: rgba(1, 30, 45, 0.78);
   text-align: left;
-  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.3);
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.22);
 }
 
 @media (max-width: 900px) {
