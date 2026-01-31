@@ -928,38 +928,38 @@ footer a:hover {
 }
 
 /* ========================= 
-   Texture Breathing Animation
+   Texture Subtle Drift Animation
    ========================= */
 
-/* Breathing animation for page texture - subtle scale pulse */
+/* Subtle texture drift - only on desktop */
 @media (min-width: 900px) {
   body {
-    animation: textureBreath 12s ease-in-out infinite;
+    animation: subtleDrift 120s linear infinite;
   }
 }
 
-@keyframes textureBreath {
-  0%, 100% {
-    background-size: cover;
+@keyframes subtleDrift {
+  from {
+    background-position: center 0;
   }
-  50% {
-    background-size: 102%;
+  to {
+    background-position: center 200px;
   }
 }
 
-/* Breathing animation for hero texture - slower, gentler */
+/* Gentle float for hero texture */
 @media (min-width: 900px) {
   .hero {
-    animation: heroBreath 16s ease-in-out infinite;
+    animation: heroFloat 30s ease-in-out infinite;
   }
 }
 
-@keyframes heroBreath {
+@keyframes heroFloat {
   0%, 100% {
-    background-size: cover;
+    background-position: center 0;
   }
   50% {
-    background-size: 103%;
+    background-position: center 30px;
   }
 }
 
@@ -968,13 +968,5 @@ footer a:hover {
   body,
   .hero {
     animation: none !important;
-  }
-}
-
-/* Optional: Pause animations when user isn't looking at the page */
-@media (min-width: 900px) {
-  body.page-hidden,
-  .hero.page-hidden {
-    animation-play-state: paused;
   }
 }
