@@ -1555,6 +1555,56 @@ footer a:hover {
   border-radius: 50%;
 }
 
+/* ─── Testimonial quote ─── */
+.testimonial {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100%;
+}
+
+.testimonial__quote {
+  position: relative;
+  margin: 0;
+  font-family: "Barlow", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-style: italic;
+  font-weight: 400;
+  color: rgba(1, 30, 45, 0.75);
+  font-size: clamp(1.25rem, 1.7vw, 1.5rem);
+  line-height: 1.55;
+  max-width: 42ch;
+}
+
+/* Orange opening quote mark — block, above the text */
+.testimonial__quote::before {
+  content: "\201C";
+  display: block;
+  font-style: normal;
+  font-family: "Barlow Condensed", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-weight: 700;
+  color: var(--sand-orange);
+  font-size: 3.2rem;
+  line-height: 0.75;
+  margin-bottom: 0.6rem;
+}
+
+.testimonial__attribution {
+  display: block;
+  margin-top: 1.4rem;
+  font-style: normal;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--deep-navy);
+  letter-spacing: 0.01em;
+}
+
+.testimonial__role {
+  display: block;
+  font-weight: 400;
+  color: rgba(1, 30, 45, 0.55);
+  margin-top: 0.2rem;
+}
+
 /* ─── Material image zoom ─── */
 
 /* Clip zoomed rail images cleanly within their frames.
