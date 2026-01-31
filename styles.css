@@ -1101,10 +1101,30 @@ footer a:hover {
   width: 160px;
   height: 160px;
   margin: 0 auto 1rem;
-  overflow: hidden;
-  border-radius: 50%;
-  background: var(--surface-veil-light);
+  overflow: visible;
+  background: #ffffff;
   border: 1px solid rgba(1, 30, 45, 0.12);
+  position: relative;
+}
+
+.team-card__photo::before,
+.team-card__photo::after {
+  content: "";
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  pointer-events: none;
+  background: var(--sand-orange);
+}
+
+.team-card__photo::before {
+  height: var(--rule-thickness);
+  width: 75%;
+}
+
+.team-card__photo::after {
+  width: var(--rule-thickness);
+  height: 75%;
 }
 
 .team-card__photo img {
@@ -1112,6 +1132,7 @@ footer a:hover {
   height: 100%;
   object-fit: cover;
   display: block;
+  position: relative;
 }
 
 .team-card__name {
@@ -1154,12 +1175,34 @@ footer a:hover {
   margin-right: auto;
 }
 
-/* Founder image below text (#4) */
+/* Founder image below text (#4) - with orange corner frame */
 .founder-split__image {
   margin: 1.5rem 0 0;
   width: 100%;
-  overflow: hidden;
+  overflow: visible;
   border: 1px solid rgba(1, 30, 45, 0.12);
+  position: relative;
+}
+
+.founder-split__image::before,
+.founder-split__image::after {
+  content: "";
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  pointer-events: none;
+  background: var(--sand-orange);
+  z-index: 1;
+}
+
+.founder-split__image::before {
+  height: var(--rule-thickness);
+  width: 75%;
+}
+
+.founder-split__image::after {
+  width: var(--rule-thickness);
+  height: 75%;
 }
 
 .founder-split__image img {
@@ -1167,6 +1210,7 @@ footer a:hover {
   display: block;
   object-fit: cover;
   aspect-ratio: 16 / 9;
+  position: relative;
 }
 
 /* Timeline spacing - gap before closing sentence (#9) */
@@ -1203,8 +1247,30 @@ footer a:hover {
   margin: 0;
   width: 100%;
   max-width: 100%;
-  overflow: hidden;
+  overflow: visible;
   border: 1px solid rgba(1, 30, 45, 0.12);
+  position: relative;
+}
+
+.cta-centered__image::before,
+.cta-centered__image::after {
+  content: "";
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  pointer-events: none;
+  background: var(--sand-orange);
+  z-index: 1;
+}
+
+.cta-centered__image::before {
+  height: var(--rule-thickness);
+  width: 75%;
+}
+
+.cta-centered__image::after {
+  width: var(--rule-thickness);
+  height: 75%;
 }
 
 .cta-centered__image img {
@@ -1212,6 +1278,7 @@ footer a:hover {
   display: block;
   object-fit: cover;
   aspect-ratio: 16 / 7;
+  position: relative;
 }
 
 /* Logo Grid - Clean Placeholder (Responsive for many logos) */
@@ -1220,6 +1287,9 @@ footer a:hover {
   grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
   gap: clamp(12px, 1.5vw, 18px);
   margin-top: 1.5rem;
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .logo-placeholder {
