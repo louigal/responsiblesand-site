@@ -1382,7 +1382,7 @@ footer a:hover {
   display: grid;
   grid-template-columns: minmax(0, 55fr) minmax(0, 45fr);
   gap: clamp(24px, 4vw, 56px);
-  align-items: center;
+  align-items: stretch;
 }
 
 .join-hero__image {
@@ -1392,8 +1392,14 @@ footer a:hover {
 .join-hero__image .home-figure img {
   width: 100%;
   display: block;
-  aspect-ratio: 1 / 1;
+  aspect-ratio: 4 / 5;
   object-fit: cover;
+}
+
+.join-hero__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .join-hero__content h1 {
@@ -1419,22 +1425,12 @@ footer a:hover {
   }
 }
 
-/* ─── 2. THE OPPORTUNITY — Centered ─── */
-.join-opportunity {
-  max-width: 640px;
-  margin: 0 auto;
-  text-align: center;
-}
-
-.join-opportunity h2 {
-  margin-top: 0;
-}
-
-.join-opportunity p {
-  max-width: none;
-}
-
 /* ─── 3. VALUE COLUMNS — Three columns with orange top rules ─── */
+.join-value-cols__heading {
+  margin-top: 0;
+  margin-bottom: 2rem;
+}
+
 .join-value-cols {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
