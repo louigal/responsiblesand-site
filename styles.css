@@ -980,8 +980,6 @@ footer a:hover {
 /* Page Hero - Centered & Spacious */
 .page-hero {
   padding: clamp(120px, 18vh, 200px) 0 clamp(80px, 12vh, 140px);
-  background: var(--surface-veil);
-  border-bottom: 1px solid rgba(1, 30, 45, 0.12);
 }
 
 .page-hero__content {
