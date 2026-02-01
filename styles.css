@@ -208,7 +208,7 @@ a:hover {
 }
 
 /* Backward-compatible: keep existing markup working */
-section {
+section:not(.hero) {
   padding: var(--section-pad) 0;
   background: var(--surface-veil);
 }
