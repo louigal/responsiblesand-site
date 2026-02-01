@@ -666,7 +666,11 @@ section:not(.hero) {
 
 .hero-statement.home-rail--ruled::before,
 .hero-statement.home-rail--ruled::after {
-  left: calc(40% + clamp(24px, 4vw, 48px));
+  left: calc(40% + clamp(24px, 4vw, 48px) - 10px);
+}
+
+.hero-statement.home-rail--ruled::before {
+  width: calc(60% - clamp(24px, 4vw, 48px));
 }
 
 .hero-statement.home-rail--ruled::after {
