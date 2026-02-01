@@ -1066,6 +1066,26 @@ footer a:hover {
   }
 }
 
+/* Who We Are hero image — centred below text */
+.page-hero__image {
+  position: relative;
+  max-width: 640px;
+  margin: clamp(32px, 5vh, 56px) auto 0;
+}
+
+.page-hero__image .home-figure img {
+  width: 100%;
+  display: block;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+}
+
+@media (max-width: 900px) {
+  .page-hero__image {
+    max-width: 100%;
+  }
+}
+
 /* Founder Members Split - Elevated Layout */
 .founder-split {
   display: grid;
@@ -1433,6 +1453,64 @@ footer a:hover {
    ========================= */
 
 /* ─── 1. HERO — Split: image left, text right ─── */
+/* ─── GET INVOLVED hero — split: text left, image right ─── */
+.gi-hero {
+  padding: clamp(60px, 10vh, 100px) 0 clamp(40px, 6vh, 72px);
+}
+
+.gi-hero__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 55fr) minmax(0, 45fr);
+  gap: clamp(24px, 4vw, 56px);
+  align-items: stretch;
+}
+
+.gi-hero__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.gi-hero__content h1 {
+  font-size: clamp(3.2rem, 5.5vw, 4.8rem);
+  font-family: "Barlow Condensed", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  margin: 0 0 clamp(20px, 3vh, 36px) 0;
+  color: var(--deep-navy);
+}
+
+.gi-hero__statement {
+  font-size: clamp(1.25rem, 1.65vw, 1.55rem);
+  line-height: 1.5;
+  font-weight: 400;
+  color: rgba(1, 30, 45, 0.80);
+  margin: 0;
+}
+
+.gi-hero__image {
+  position: relative;
+  align-self: stretch;
+  max-width: none;
+}
+
+.gi-hero__image .home-figure img {
+  width: 100%;
+  display: block;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+}
+
+@media (max-width: 900px) {
+  .gi-hero__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .gi-hero__image {
+    order: -1;
+  }
+}
+
 .join-hero {
   padding: clamp(40px, 6vh, 72px) 0 clamp(40px, 6vh, 72px);
 }
