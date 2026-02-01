@@ -641,6 +641,7 @@ section:not(.hero) {
 
 /* Hero statement — better grid balance, original text weight */
 .hero-statement {
+  position: relative;
   margin-top: clamp(28px, 6vh, 56px);
   display: grid;
   grid-template-columns: 40% 60%;
