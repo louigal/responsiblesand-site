@@ -512,26 +512,52 @@ section {
 .hero {
   position: relative;
   overflow: hidden;
-  min-height: clamp(320px, 48vh, 520px);
-  padding: clamp(96px, 8vw, 132px) 0 clamp(76px, 7.5vw, 120px);
   background-color: var(--off-white);
-  background-image: url("assets/hero-texture.svg");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-}
-
-.hero::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(242, 244, 244, 0.22);
-  pointer-events: none;
 }
 
 .hero > * {
   position: relative;
   z-index: 1;
+}
+
+/* Ruled-frame container — holds bg image + content overlay */
+.hero-inner {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-inner__bg {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.hero-inner__bg img {
+  width: 100%;
+  display: block;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+/* Content floats over the image */
+.hero-inner__content {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(40px, 6vw, 80px) clamp(32px, 5vw, 64px);
+  z-index: 1;
+}
+
+/* Orange frame sits on top of image, not beside it */
+.hero-inner.home-rail--ruled .home-figure {
+  padding: 0;
+}
+
+.hero-inner.home-rail--ruled::before,
+.hero-inner.home-rail--ruled::after {
+  z-index: 2;
 }
 
 /* Identity lock-up */
@@ -586,14 +612,15 @@ section {
   font-size: clamp(2.8rem, 4.8vw, 4.1rem);
   color: var(--deep-navy);
   margin-top: 6px;
-  white-space: normal;
   line-height: 0.92;
+  max-width: 11ch;
 }
 
 /* Keep line breaks on desktop */
 @media (min-width: 901px) {
   .hero-name {
-    white-space: normal;
+    max-width: none;
+    white-space: nowrap;
   }
 }
 
@@ -632,7 +659,7 @@ section {
   font-size: clamp(1.60rem, 1.95vw, 2.05rem);
   line-height: 1.28;
   letter-spacing: 0.012em;
-  color: rgba(1, 30, 45, 0.78);
+  color: var(--deep-navy);
   text-align: left;
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.22);
 }
@@ -950,26 +977,9 @@ footer a:hover {
   }
 }
 
-/* Gentle float for hero texture */
-@media (min-width: 900px) {
-  .hero {
-    animation: heroFloat 30s ease-in-out infinite;
-  }
-}
-
-@keyframes heroFloat {
-  0%, 100% {
-    background-position: center 0;
-  }
-  50% {
-    background-position: center 30px;
-  }
-}
-
 /* CRITICAL: Respect user motion preferences for accessibility */
 @media (prefers-reduced-motion: reduce) {
-  body,
-  .hero {
+  body {
     animation: none !important;
   }
 }
@@ -979,35 +989,37 @@ footer a:hover {
    Add these to the END of your styles.css file
    ========================= */
 
-/* Page Hero - Split: text left, image right */
+/* Page Hero - Centered text, image below */
 .page-hero {
-  padding: clamp(40px, 6vh, 72px) 0 clamp(40px, 6vh, 72px);
-}
-
-.page-hero__grid {
-  display: grid;
-  grid-template-columns: minmax(0, 45fr) minmax(0, 55fr);
-  gap: clamp(24px, 4vw, 56px);
-  align-items: stretch;
+  padding: clamp(60px, 8vh, 100px) 0 clamp(40px, 6vh, 72px);
 }
 
 .page-hero__content {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
 }
 
 .page-hero__image {
+  margin: clamp(32px, 5vh, 56px) auto 0;
+  max-width: 65%;
   position: relative;
-  align-self: stretch;
-  max-width: none;
+}
+
+.page-hero__image .home-figure {
+  overflow: hidden;
 }
 
 .page-hero__image .home-figure img {
   width: 100%;
   display: block;
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 16 / 9;
   object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.page-hero__image:hover .home-figure img {
+  transform: scale(1.05);
 }
 
 .page-hero h1 {
@@ -1025,16 +1037,12 @@ footer a:hover {
   font-weight: 400;
   color: rgba(1, 30, 45, 0.80);
   max-width: 42em;
-  margin: 0;
+  margin: 0 auto;
 }
 
 @media (max-width: 900px) {
-  .page-hero__grid {
-    grid-template-columns: 1fr;
-  }
-
   .page-hero__image {
-    order: -1;
+    max-width: 100%;
   }
 }
 
