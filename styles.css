@@ -979,15 +979,35 @@ footer a:hover {
    Add these to the END of your styles.css file
    ========================= */
 
-/* Page Hero - Centered & Spacious */
+/* Page Hero - Split: text left, image right */
 .page-hero {
-  padding: clamp(120px, 18vh, 200px) 0 clamp(80px, 12vh, 140px);
+  padding: clamp(40px, 6vh, 72px) 0 clamp(40px, 6vh, 72px);
+}
+
+.page-hero__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 45fr) minmax(0, 55fr);
+  gap: clamp(24px, 4vw, 56px);
+  align-items: stretch;
 }
 
 .page-hero__content {
-  max-width: 800px;
-  margin: 0 auto;
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.page-hero__image {
+  position: relative;
+  align-self: stretch;
+  max-width: none;
+}
+
+.page-hero__image .home-figure img {
+  width: 100%;
+  display: block;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
 }
 
 .page-hero h1 {
@@ -995,7 +1015,7 @@ footer a:hover {
   font-family: "Barlow Condensed", system-ui, -apple-system, "Segoe UI", sans-serif;
   font-weight: 700;
   letter-spacing: 0.02em;
-  margin: 0 0 clamp(24px, 4vh, 40px) 0;
+  margin: 0 0 clamp(20px, 3vh, 36px) 0;
   color: var(--deep-navy);
 }
 
@@ -1005,16 +1025,16 @@ footer a:hover {
   font-weight: 400;
   color: rgba(1, 30, 45, 0.80);
   max-width: 42em;
-  margin: 0 auto;
+  margin: 0;
 }
 
 @media (max-width: 900px) {
-  .page-hero {
-    padding: clamp(100px, 15vh, 140px) 0 clamp(60px, 10vh, 100px);
+  .page-hero__grid {
+    grid-template-columns: 1fr;
   }
-  
-  .page-hero__content {
-    text-align: left;
+
+  .page-hero__image {
+    order: -1;
   }
 }
 
@@ -1279,6 +1299,15 @@ footer a:hover {
   object-fit: cover;
   aspect-ratio: 16 / 7;
   position: relative;
+  transition: transform 0.4s ease;
+}
+
+.cta-centered__image__crop {
+  overflow: hidden;
+}
+
+.cta-centered__image:hover img {
+  transform: scale(1.05);
 }
 
 /* Logo Grid - Clean Placeholder (Responsive for many logos) */
@@ -1678,4 +1707,155 @@ footer a:hover {
   .join-for__heading {
     text-align: left;
   }
+}
+/* =========================
+   GET INVOLVED PAGE
+   ========================= */
+
+/* ─── 1. HERO — Split: text left, image right (image-dominant) ─── */
+.gi-hero {
+  padding: clamp(40px, 6vh, 72px) 0 clamp(40px, 6vh, 72px);
+}
+
+.gi-hero__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 40fr) minmax(0, 60fr);
+  gap: clamp(24px, 4vw, 56px);
+  align-items: stretch;
+}
+
+.gi-hero__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.gi-hero__image {
+  position: relative;
+  align-self: stretch;
+  max-width: none;
+}
+
+.gi-hero__image .home-figure img {
+  width: 100%;
+  display: block;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+}
+
+.gi-hero__content h1 {
+  font-size: clamp(3.2rem, 5.5vw, 4.8rem);
+  font-family: "Barlow Condensed", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  margin: 0 0 clamp(16px, 2.5vh, 28px) 0;
+  color: var(--deep-navy);
+}
+
+.gi-hero__statement {
+  margin: 0;
+  font-size: clamp(1.15rem, 1.6vw, 1.35rem);
+  color: rgba(1, 30, 45, 0.7);
+  font-style: italic;
+}
+
+@media (max-width: 900px) {
+  .gi-hero__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .gi-hero__image {
+    order: -1;
+  }
+}
+
+/* ─── 2. THREE WAYS IN — orange-ruled columns ─── */
+.gi-ways__heading {
+  margin-top: 0;
+  margin-bottom: 2rem;
+}
+
+.gi-ways {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(24px, 3vw, 40px);
+}
+
+.gi-ways__col {
+  padding-top: 1.25rem;
+  border-top: var(--rule-thickness) solid var(--sand-orange);
+}
+
+.gi-ways__col h3 {
+  margin-top: 0;
+  font-size: clamp(1.15rem, 1.4vw, 1.35rem);
+  line-height: 1.25;
+  margin-bottom: 0.75rem;
+}
+
+.gi-ways__col p {
+  max-width: none;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 0;
+}
+
+@media (max-width: 900px) {
+  .gi-ways {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+/* ─── 4. FEE TABLE ─── */
+.gi-table-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin-bottom: 1.5rem;
+}
+
+.gi-fees-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.gi-fees-table thead th {
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: rgba(1, 30, 45, 0.55);
+  padding: 0 0 0.75rem 0;
+  border-bottom: var(--rule-thickness) solid var(--sand-orange);
+  white-space: nowrap;
+}
+
+.gi-fees-table tbody td {
+  padding: 0.9rem 1.5rem 0.9rem 0;
+  border-bottom: 1px solid rgba(1, 30, 45, 0.1);
+  vertical-align: top;
+  color: var(--deep-navy);
+}
+
+.gi-fees-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* Fee column — right-aligned, slightly muted */
+.gi-fees-table th:last-child,
+.gi-fees-table td:last-child {
+  text-align: right;
+  white-space: nowrap;
+  font-weight: 600;
+}
+
+.gi-fees-note {
+  font-size: 0.875rem;
+  color: rgba(1, 30, 45, 0.55);
+  max-width: 560px;
+  margin-top: 0;
+  margin-bottom: 0;
 }
