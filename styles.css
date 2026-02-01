@@ -664,6 +664,15 @@ section:not(.hero) {
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.22);
 }
 
+.hero-statement.home-rail--ruled::before,
+.hero-statement.home-rail--ruled::after {
+  left: calc(40% + clamp(24px, 4vw, 48px));
+}
+
+.hero-statement.home-rail--ruled::after {
+  height: 100%;
+}
+
 @media (max-width: 900px) {
   .hero-statement {
     grid-template-columns: 1fr;
@@ -673,6 +682,11 @@ section:not(.hero) {
   .hero-statement__text {
     grid-column: 1;
     max-width: 52ch;
+  }
+
+  .hero-statement.home-rail--ruled::before,
+  .hero-statement.home-rail--ruled::after {
+    left: 0;
   }
 }
 
