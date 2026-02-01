@@ -542,14 +542,14 @@ section {
 }
 
 @keyframes heroDrift {
-  0% {
-    transform: scale(1.04) translate(0, 0);
-  }
-  50% {
-    transform: scale(1.06) translate(-0.5%, 0.3%);
-  }
-  100% {
-    transform: scale(1.04) translate(0.4%, -0.2%);
+  0%   { transform: scale(1.04) translate(0, 0); }
+  50%  { transform: scale(1.06) translate(-0.5%, 0.3%); }
+  100% { transform: scale(1.04) translate(0.4%, -0.2%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-inner__bg img {
+    animation: none !important;
   }
 }
 
@@ -998,10 +998,741 @@ footer a:hover {
   }
 }
 
+/* Gentle float for hero texture */
+@media (min-width: 900px) {
+  .hero {
+    animation: heroFloat 30s ease-in-out infinite;
+  }
+}
+
+@keyframes heroFloat {
+  0%, 100% {
+    background-position: center 0;
+  }
+  50% {
+    background-position: center 30px;
+  }
+}
+
 /* CRITICAL: Respect user motion preferences for accessibility */
 @media (prefers-reduced-motion: reduce) {
   body,
-  .hero-inner__bg img {
+  .hero {
     animation: none !important;
+  }
+}
+/* ========================= 
+   WHO WE ARE PAGE - Additional Styles (UPDATED)
+   
+   Add these to the END of your styles.css file
+   ========================= */
+
+/* Page Hero - Centered & Spacious */
+.page-hero {
+  padding: clamp(120px, 18vh, 200px) 0 clamp(80px, 12vh, 140px);
+}
+
+.page-hero__content {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.page-hero h1 {
+  font-size: clamp(3.2rem, 5.5vw, 4.8rem);
+  font-family: "Barlow Condensed", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  margin: 0 0 clamp(24px, 4vh, 40px) 0;
+  color: var(--deep-navy);
+}
+
+.page-hero__statement {
+  font-size: clamp(1.25rem, 1.65vw, 1.55rem);
+  line-height: 1.5;
+  font-weight: 400;
+  color: rgba(1, 30, 45, 0.80);
+  max-width: 42em;
+  margin: 0 auto;
+}
+
+@media (max-width: 900px) {
+  .page-hero {
+    padding: clamp(100px, 15vh, 140px) 0 clamp(60px, 10vh, 100px);
+  }
+  
+  .page-hero__content {
+    text-align: left;
+  }
+}
+
+/* Founder Members Split - Elevated Layout */
+.founder-split {
+  display: grid;
+  grid-template-columns: minmax(0, 480px) minmax(0, 1fr);
+  gap: clamp(24px, 4vw, 56px);
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .founder-split {
+    grid-template-columns: 1fr;
+  }
+}
+
+.founder-split__content h2 {
+  margin-top: 0;
+}
+
+.founder-logo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: clamp(12px, 1.5vw, 18px);
+}
+
+@media (max-width: 900px) {
+  .founder-logo-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.founder-logo-card {
+  background: rgba(255, 255, 255, 0.45);
+  border: 1px solid rgba(1, 30, 45, 0.12);
+  padding: 1.2rem 1rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.founder-logo-card__logo {
+  aspect-ratio: 3 / 2;
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(1, 30, 45, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(1, 30, 45, 0.35);
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.founder-logo-card__name {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--deep-navy);
+  line-height: 1.3;
+}
+
+/* Team Grid - Three Column Cards */
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(18px, 3vw, 32px);
+  margin-bottom: 1.5rem;
+}
+
+@media (max-width: 900px) {
+  .team-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.team-card {
+  text-align: center;
+}
+
+.team-card__photo {
+  width: 160px;
+  height: 160px;
+  margin: 0 auto 1rem;
+  overflow: visible;
+  background: #ffffff;
+  border: 1px solid rgba(1, 30, 45, 0.12);
+  position: relative;
+}
+
+.team-card__photo::before,
+.team-card__photo::after {
+  content: "";
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  pointer-events: none;
+  background: var(--sand-orange);
+}
+
+.team-card__photo::before {
+  height: var(--rule-thickness);
+  width: 75%;
+}
+
+.team-card__photo::after {
+  width: var(--rule-thickness);
+  height: 75%;
+}
+
+.team-card__photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  position: relative;
+}
+
+.team-card__name {
+  font-size: clamp(1.2rem, 1.5vw, 1.4rem);
+  font-weight: 700;
+  margin: 0 0 0.35rem 0;
+  color: var(--deep-navy);
+}
+
+.team-card__role {
+  font-size: 0.95rem;
+  color: rgba(1, 30, 45, 0.70);
+  margin: 0 0 0.5rem 0;
+  font-weight: 400;
+}
+
+.team-card__contact {
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.team-card__contact a {
+  color: var(--sand-orange);
+  text-decoration: none;
+}
+
+.team-card__contact a:hover {
+  text-decoration: underline;
+}
+
+/* Compact team grid - smaller headshots (#10) */
+.team-grid--compact {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.team-grid--compact .team-card__photo {
+  max-width: 180px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Founder image below text (#4) - with orange corner frame */
+.founder-split__image {
+  margin: 1.5rem 0 0;
+  width: 100%;
+  overflow: visible;
+  border: 1px solid rgba(1, 30, 45, 0.12);
+  position: relative;
+}
+
+.founder-split__image::before,
+.founder-split__image::after {
+  content: "";
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  pointer-events: none;
+  background: var(--sand-orange);
+  z-index: 1;
+}
+
+.founder-split__image::before {
+  height: var(--rule-thickness);
+  width: 75%;
+}
+
+.founder-split__image::after {
+  width: var(--rule-thickness);
+  height: 75%;
+}
+
+.founder-split__image img {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+  aspect-ratio: 16 / 9;
+  position: relative;
+}
+
+/* Timeline spacing - gap before closing sentence (#9) */
+.timeline + p {
+  margin-top: 2rem;
+}
+
+/* Centered CTA with large image (#11) */
+.cta-centered {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.cta-centered h2 {
+  margin-top: 0;
+}
+
+.cta-centered .lead {
+  max-width: 42em;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cta-centered__buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 2.5rem;
+}
+
+.cta-centered__image {
+  margin: 0;
+  width: 100%;
+  max-width: 100%;
+  overflow: visible;
+  border: 1px solid rgba(1, 30, 45, 0.12);
+  position: relative;
+}
+
+.cta-centered__image::before,
+.cta-centered__image::after {
+  content: "";
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  pointer-events: none;
+  background: var(--sand-orange);
+  z-index: 1;
+}
+
+.cta-centered__image::before {
+  height: var(--rule-thickness);
+  width: 75%;
+}
+
+.cta-centered__image::after {
+  width: var(--rule-thickness);
+  height: 75%;
+}
+
+.cta-centered__image img {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+  aspect-ratio: 16 / 7;
+  position: relative;
+  transition: transform 0.4s ease;
+}
+
+.cta-centered__image__crop {
+  overflow: hidden;
+}
+
+.cta-centered__image:hover img {
+  transform: scale(1.05);
+}
+
+/* Logo Grid - Clean Placeholder (Responsive for many logos) */
+.logo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: clamp(12px, 1.5vw, 18px);
+  margin-top: 1.5rem;
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.logo-placeholder {
+  aspect-ratio: 3 / 2;
+  background: rgba(255, 255, 255, 0.28);
+  border: 1px solid rgba(1, 30, 45, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(1, 30, 45, 0.35);
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 900px) {
+  .logo-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Founder image - horizontal under text */
+.founder-split__image {
+  margin: 1.5rem 0 0;
+  overflow: hidden;
+  border: 1px solid rgba(1, 30, 45, 0.12);
+}
+
+.founder-split__image img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  display: block;
+}
+
+/* Timeline - spacing before closing sentence */
+.timeline__closing {
+  margin-top: 1.8rem;
+}
+
+/* Contact - Centred with large image */
+.contact-centered {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.contact-centered h2 {
+  margin-top: 0;
+}
+
+.contact-centered .lead {
+  max-width: 48em;
+  margin: 0 auto 1.5rem;
+}
+
+.contact-centered .cta-row {
+  justify-content: center;
+}
+
+.contact-centered__image {
+  margin: 2.5rem 0 0;
+  overflow: hidden;
+  border: 1px solid rgba(1, 30, 45, 0.12);
+}
+
+.contact-centered__image img {
+  width: 100%;
+  height: 360px;
+  object-fit: cover;
+  display: block;
+}
+
+@media (max-width: 900px) {
+  .contact-centered__image img {
+    height: 240px;
+  }
+}
+/* =========================
+   WHY JOIN PAGE - Additional Styles
+   
+   Add these to the END of your styles.css file
+   ========================= */
+
+/* ─── 1. HERO — Split: image left, text right ─── */
+.join-hero {
+  padding: clamp(40px, 6vh, 72px) 0 clamp(40px, 6vh, 72px);
+}
+
+.join-hero__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 55fr) minmax(0, 45fr);
+  gap: clamp(24px, 4vw, 56px);
+  align-items: stretch;
+}
+
+.join-hero__image {
+  position: relative;
+  align-self: stretch;
+  max-width: none;
+}
+
+.join-hero__image .home-figure img {
+  width: 100%;
+  display: block;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+}
+
+.join-hero__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.join-hero__content h1 {
+  font-size: clamp(3.2rem, 5.5vw, 4.8rem);
+  font-family: "Barlow Condensed", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  margin: 0 0 clamp(20px, 3vh, 36px) 0;
+  color: var(--deep-navy);
+}
+
+.join-hero__content .page-hero__statement {
+  margin: 0;
+}
+
+@media (max-width: 900px) {
+  .join-hero__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .join-hero__image {
+    order: -1;
+  }
+}
+
+/* ─── 3. VALUE COLUMNS — Three columns with orange top rules ─── */
+.join-value-cols__heading {
+  margin-top: 0;
+  margin-bottom: 2rem;
+}
+
+.join-value-cols {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(24px, 3vw, 40px);
+}
+
+.join-value-col {
+  padding-top: 1.25rem;
+  border-top: var(--rule-thickness) solid var(--sand-orange);
+}
+
+.join-value-col h3 {
+  margin-top: 0;
+  font-size: clamp(1.15rem, 1.4vw, 1.35rem);
+  line-height: 1.25;
+  margin-bottom: 0.75rem;
+}
+
+.join-value-col p {
+  max-width: none;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 0;
+}
+
+@media (max-width: 900px) {
+  .join-value-cols {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+/* ─── 4. MONTAGE — Split: tall portrait left, text right ─── */
+.join-montage {
+  display: grid;
+  grid-template-columns: minmax(0, 420px) minmax(0, 1fr);
+  gap: clamp(24px, 4vw, 56px);
+  align-items: center;
+}
+
+.join-montage__image {
+  position: relative;
+}
+
+.join-montage__image .home-figure img {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+  /* Portrait montage: let it show at natural 1:2 ratio, capped in height */
+  max-height: 560px;
+  aspect-ratio: auto;
+}
+
+.join-montage__content h2 {
+  margin-top: 0;
+}
+
+.join-montage__content .lead {
+  max-width: none;
+}
+
+@media (max-width: 900px) {
+  .join-montage {
+    grid-template-columns: 1fr;
+  }
+
+  .join-montage__image .home-figure img {
+    max-height: 420px;
+  }
+}
+
+/* ─── 6. NUMBERED TIMELINE — Orange vertical connector ─── */
+.join-timeline {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  counter-reset: timeline;
+  position: relative;
+  padding-left: 2.4rem;
+}
+
+/* Vertical orange connector line */
+.join-timeline::before {
+  content: "";
+  position: absolute;
+  left: calc(1.2rem - 1px);
+  top: 0.9rem;
+  bottom: 0.9rem;
+  width: var(--rule-thickness);
+  background: var(--sand-orange);
+  opacity: 0.4;
+}
+
+.join-timeline li {
+  position: relative;
+  margin-bottom: 1.25rem;
+  counter-increment: timeline;
+}
+
+.join-timeline li:last-child {
+  margin-bottom: 0;
+}
+
+/* Orange circle with number */
+.join-timeline li::before {
+  content: counter(timeline);
+  position: absolute;
+  left: -2.4rem;
+  top: 0.15em;
+  width: 2rem;
+  height: 2rem;
+  line-height: 2rem;
+  text-align: center;
+  background: var(--sand-orange);
+  color: #ffffff;
+  font-family: "Barlow Condensed", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 0.02em;
+  border-radius: 50%;
+}
+
+/* ─── Testimonial quote ─── */
+.testimonial {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100%;
+}
+
+.testimonial__quote {
+  position: relative;
+  margin: 0;
+  font-family: "Barlow", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-style: italic;
+  font-weight: 400;
+  color: rgba(1, 30, 45, 0.75);
+  font-size: clamp(1.25rem, 1.7vw, 1.5rem);
+  line-height: 1.55;
+  max-width: 42ch;
+}
+
+/* Orange opening quote mark — block, above the text */
+.testimonial__quote::before {
+  content: "\201C";
+  display: block;
+  font-style: normal;
+  font-family: "Barlow Condensed", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-weight: 700;
+  color: var(--sand-orange);
+  font-size: 3.2rem;
+  line-height: 0.75;
+  margin-bottom: 0.6rem;
+}
+
+.testimonial__attribution {
+  display: block;
+  margin-top: 1.4rem;
+  font-style: normal;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--deep-navy);
+  letter-spacing: 0.01em;
+}
+
+.testimonial__role {
+  display: block;
+  font-weight: 400;
+  color: rgba(1, 30, 45, 0.55);
+  margin-top: 0.2rem;
+}
+
+/* ─── Material image zoom ─── */
+
+/* Clip zoomed rail images cleanly within their frames.
+   Orange corner frames live on the parent .home-rail--ruled,
+   so overflow:hidden here doesn't affect them. */
+.home-figure {
+  overflow: hidden;
+}
+
+/* Boost the existing rail zoom — 1.02 is barely visible */
+.home-rail img {
+  transition: transform 0.4s ease;
+}
+
+.home-rail:hover img {
+  transform: scale(1.05);
+}
+
+/* CTA closing image zoom.
+   The orange frame pseudo-elements sit on .cta-centered__image at -4px offset,
+   so overflow:visible stays on the figure. The crop div clips the zoom. */
+.cta-centered__image__crop {
+  overflow: hidden;
+}
+
+.cta-centered__image img {
+  transition: transform 0.4s ease;
+}
+
+.cta-centered__image:hover img {
+  transform: scale(1.05);
+}
+.join-for__heading {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.join-for {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(24px, 3vw, 40px);
+}
+
+.join-for__col {
+  padding-top: 1.25rem;
+  border-top: var(--rule-thickness) solid var(--sand-orange);
+}
+
+.join-for__col h3 {
+  margin-top: 0;
+  font-size: clamp(1.15rem, 1.4vw, 1.35rem);
+  line-height: 1.25;
+  margin-bottom: 0.75rem;
+}
+
+.join-for__col p {
+  max-width: none;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 0;
+}
+
+@media (max-width: 900px) {
+  .join-for {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .join-for__heading {
+    text-align: left;
   }
 }
