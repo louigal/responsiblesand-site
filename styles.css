@@ -685,8 +685,10 @@ section:not(.hero) {
   text-align: left;
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.22);
   
-  /* Semi-transparent white background */
-  background: rgba(255, 255, 255, 0.88);
+  /* Match header background - softer translucent white with blur */
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
   padding: clamp(20px, 3vw, 32px);
   position: relative;
 }
