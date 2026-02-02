@@ -417,13 +417,35 @@ section:not(.hero) {
   --frame-weight: var(--rule-thickness);
 }
 
-.home-rail--ruled .home-figure {
+/* When ruled frame is on hero statement, apply to the text box */
+.hero-statement.home-rail--ruled .hero-statement__text::before,
+.hero-statement.home-rail--ruled .hero-statement__text::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  background: var(--sand-orange);
+}
+
+.hero-statement.home-rail--ruled .hero-statement__text::before {
+  height: var(--frame-weight);
+  width: 75%;
+}
+
+.hero-statement.home-rail--ruled .hero-statement__text::after {
+  width: var(--frame-weight);
+  height: 75%;
+}
+
+/* For other uses of ruled frame (images, etc) */
+.home-rail--ruled:not(.hero-statement) .home-figure {
   padding-top: var(--frame-inset);
   padding-left: var(--frame-inset);
 }
 
-.home-rail--ruled::before,
-.home-rail--ruled::after {
+.home-rail--ruled:not(.hero-statement)::before,
+.home-rail--ruled:not(.hero-statement)::after {
   content: "";
   position: absolute;
   top: 0;
@@ -433,12 +455,12 @@ section:not(.hero) {
 }
 
 /* IMPORTANT: both orange strokes exist */
-.home-rail--ruled::before {
+.home-rail--ruled:not(.hero-statement)::before {
   height: var(--frame-weight);
   width: 75%;
 }
 
-.home-rail--ruled::after {
+.home-rail--ruled:not(.hero-statement)::after {
   width: var(--frame-weight);
   height: 75%;
 }
@@ -662,6 +684,11 @@ section:not(.hero) {
   color: var(--deep-navy);
   text-align: left;
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.22);
+  
+  /* Semi-transparent white background */
+  background: rgba(255, 255, 255, 0.88);
+  padding: clamp(20px, 3vw, 32px);
+  position: relative;
 }
 
 @media (max-width: 900px) {
