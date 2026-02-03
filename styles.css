@@ -538,16 +538,29 @@ section:not(.hero) {
   background-image: url("assets/hero-texture.svg");
   background-repeat: no-repeat;
   background-position: center;
-  background-size: 104%;
+  background-size: cover;
   animation: heroDrift 40s ease-in-out infinite alternate;
   min-height: clamp(320px, 48vh, 520px);
   padding: clamp(96px, 8vw, 132px) 0 clamp(76px, 7.5vw, 120px);
 }
 
 @keyframes heroDrift {
-  0%   { background-size: 104%; background-position: center center; }
+  0%   { background-size: cover; background-position: center center; }
   50%  { background-size: 106%; background-position: 48% 52%; }
-  100% { background-size: 104%; background-position: 52% 48%; }
+  100% { background-size: cover; background-position: 52% 48%; }
+}
+
+/* Desktop: use larger background size for Ken Burns effect */
+@media (min-width: 900px) {
+  .hero {
+    background-size: 104%;
+  }
+  
+  @keyframes heroDrift {
+    0%   { background-size: 104%; background-position: center center; }
+    50%  { background-size: 106%; background-position: 48% 52%; }
+    100% { background-size: 104%; background-position: 52% 48%; }
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
