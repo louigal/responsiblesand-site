@@ -1,1893 +1,271 @@
-/* ========================= 
-   Brand Variables / Tokens 
-   ========================= */
-
-:root {
-  /* Brand colors */
-  --sand-orange: #c65b1a;
-  --deep-navy: #011e2d;
-  --off-white: #f2f4f4;
-  
-  /* Layout */
-  --max-width: 1100px;
-  --gutter: clamp(16px, 3vw, 32px);
-  
-  /* Texture / rules */
-  --page-texture-opacity: 0.30;
-  --rule-thickness: 2px;
-  --rule-length: 75%;
-  
-  /* Surfaces (veil map) */
-  --surface-veil: rgba(255, 255, 255, 0.34);
-  --surface-veil-strong: rgba(255, 255, 255, 0.46);
-  --surface-veil-light: rgba(255, 255, 255, 0.26);
-  
-  /* Spacing */
-  --section-pad: 2rem;
-  --section-pad-tight: 1.35rem;
-  
-  /* Typography */
-  --base-font-size: 17px;
-  --measure: 80ch;
-  --measure-narrow: 52ch;
-  
-  /* Grids */
-  --rail-width: 320px;
-  
-  /* Buttons */
-  --btn-border: rgba(1, 30, 45, 0.35);
-  --btn-bg: rgba(255, 255, 255, 0.35);
-  --btn-bg-hover: rgba(255, 255, 255, 0.55);
-}
-
-/* ========================= 
-   Base Styles
-   ========================= */
-
-html,
-body {
-  height: 100%;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  margin: 0;
-  font-family: "Barlow", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  color: var(--deep-navy);
-  line-height: 1.65;
-  font-size: var(--base-font-size);
-  background-color: #ffffff;
-  background-image: url("assets/page-texture.svg");
-  background-repeat: repeat;
-  background-position: center;
-  background-size: cover;
-  background-attachment: fixed;
-  animation: fadeIn 0.4s ease-in;
-  min-height: 100vh;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@media (max-width: 900px) {
-  body {
-    background-attachment: scroll;
-  }
-}
-
-/* ========================= 
-   Typography
-   ========================= */
-
-h1,
-h2,
-h3,
-h4 {
-  font-family: "Barlow Condensed", system-ui, -apple-system, "Segoe UI", sans-serif;
-  font-weight: 700;
-  letter-spacing: 0.02em;
-  margin-top: 1.5rem;
-  margin-bottom: 0.75rem;
-}
-
-h2 {
-  font-size: clamp(2.1rem, 3.2vw, 2.8rem);
-  line-height: 1.15;
-  letter-spacing: 0.015em;
-  margin-top: 0;
-  margin-bottom: 1.6rem;
-}
-
-p {
-  margin-top: 0;
-  margin-bottom: 1.05rem;
-  max-width: var(--measure);
-}
-
-strong {
-  font-weight: 700;
-  color: var(--deep-navy);
-  letter-spacing: 0.01em;
-}
-
-a {
-  color: var(--sand-orange);
-  text-decoration: none;
-  transition: color 0.15s ease, opacity 0.15s ease;
-}
-
-a:hover {
-  text-decoration: underline;
-}
-
-/* Lead paragraph / standfirst */
-.lead {
-  font-size: clamp(1.05rem, 1.15vw, 1.25rem);
-  line-height: 1.55;
-  font-weight: 400;
-  max-width: 42em;
-  margin-bottom: 1.4em;
-}
-
-.lead--no-top-margin {
-  margin-top: 0;
-}
-
-/* Pull-quote / reflective text */
-.pull-quote {
-  position: relative;
-  margin: 0;
-  font-family: "Barlow", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  font-style: italic;
-  font-weight: 400;
-  color: rgba(1, 30, 45, 0.75);
-  font-size: clamp(1.25rem, 1.7vw, 1.5rem);
-  line-height: 1.55;
-  max-width: 42ch;
-}
-
-.pull-quote::before {
-  content: "\201C";
-  display: block;
-  font-style: normal;
-  font-family: "Barlow Condensed", system-ui, -apple-system, "Segoe UI", sans-serif;
-  font-weight: 700;
-  color: var(--sand-orange);
-  font-size: 3.2rem;
-  line-height: 0.75;
-  margin-bottom: 0.6rem;
-}
-
-/* ========================= 
-   Layout Containers
-   ========================= */
-
-.container {
-  max-width: var(--max-width);
-  margin: 0 auto;
-  padding-left: var(--gutter);
-  padding-right: var(--gutter);
-}
-
-/* A simple readable wrapper for long text blocks */
-.measure {
-  max-width: var(--measure);
-}
-
-/* ========================= 
-   Sections (Building Blocks)
-   ========================= */
-
-.section {
-  padding: var(--section-pad) 0;
-  background: var(--surface-veil);
-}
-
-.section--band {
-  padding: var(--section-pad) 0;
-  background: var(--surface-veil-strong);
-}
-
-.section--tight {
-  padding: var(--section-pad-tight) 0;
-  background: var(--surface-veil);
-}
-
-.section--light {
-  padding: var(--section-pad) 0;
-  background: var(--surface-veil-light);
-}
-
-/* Backward-compatible: keep existing markup working */
-section:not(.hero) {
-  padding: var(--section-pad) 0;
-  background: var(--surface-veil);
-}
-
-/* Optional subtle divider use */
-.intro {
-  border-top: 1px solid rgba(1, 30, 45, 0.12);
-}
-
-/* ========================= 
-   Grid Layouts
-   ========================= */
-
-/* Two-column editorial pattern (text + right rail) */
-.grid-2,
-.home-layout {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) var(--rail-width);
-  gap: clamp(18px, 2.4vw, 30px);
-  align-items: start;
-}
-
-.grid-2__content,
-.home-content {
-  min-width: 0;
-  align-self: start;
-}
-
-.grid-2__rail,
-.home-rail {
-  min-width: 0;
-  align-self: center;
-  position: relative;
-}
-
-/* Rail-left variant */
-.home-layout--rail-left {
-  grid-template-columns: var(--rail-width) minmax(0, 1fr);
-  align-items: start;
-}
-
-/* Large-rail layout: widen the rail column for selected sections */
-.home-layout--large-rail {
-  grid-template-columns: minmax(0, 1fr) 440px;
-  align-items: start;
-}
-
-.home-layout--large-rail.home-layout--rail-left {
-  grid-template-columns: 440px minmax(0, 1fr);
-}
-
-/* Mobile collapse */
-@media (max-width: 900px) {
-  .grid-2,
-  .home-layout,
-  .home-layout--rail-left,
-  .home-layout--large-rail,
-  .home-layout--large-rail.home-layout--rail-left {
-    grid-template-columns: 1fr;
-  }
-
-  .home-rail {
-    order: 2;
-    max-width: none;
-  }
-}
-
-@media (min-width: 1200px) {
-  .home-rail {
-    max-width: var(--rail-width);
-  }
-}
-
-/* Section split: left column for heading + CTAs, right column for copy */
-.section-split {
-  display: grid;
-  grid-template-columns: minmax(240px, 360px) minmax(0, 1fr);
-  gap: clamp(18px, 3vw, 44px);
-  align-items: start;
-}
-
-@media (max-width: 900px) {
-  .section-split {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* Heading + CTAs on left, body text on right */
-.split-cta {
-  display: grid;
-  grid-template-columns: minmax(0, 420px) minmax(0, 1fr);
-  gap: clamp(18px, 3vw, 56px);
-  align-items: start;
-}
-
-.split-cta__left h2 {
-  margin-top: 0;
-}
-
-/* IMPORTANT: let the right column run to container edge */
-.split-cta__right p {
-  max-width: none;
-}
-
-@media (max-width: 900px) {
-  .split-cta {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* Stack CTAs vertically when wanted */
-.cta-stack {
-  flex-direction: column;
-  align-items: flex-start;
-}
-
-.cta-stack .btn {
-  width: fit-content;
-}
-
-/* Image + quote break: make image genuinely larger */
-.image-quote {
-  display: grid;
-  grid-template-columns: minmax(0, 640px) minmax(0, 1fr);
-  gap: clamp(18px, 3vw, 56px);
-  align-items: center;
-}
-
-.image-quote__image {
-  max-width: 640px;
-}
-
-.image-quote__text {
-  max-width: 56ch;
-}
-
-@media (max-width: 900px) {
-  .image-quote {
-    grid-template-columns: 1fr;
-  }
-
-  .image-quote__image {
-    max-width: none;
-  }
-
-  .image-quote__text {
-    max-width: none;
-  }
-}
-
-/* Final CTA + image split */
-.cta-split {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 520px);
-  gap: clamp(18px, 3vw, 56px);
-  align-items: center;
-}
-
-.cta-split__image {
-  max-width: 520px;
-}
-
-@media (max-width: 900px) {
-  .cta-split {
-    grid-template-columns: 1fr;
-  }
-
-  .cta-split__image {
-    max-width: none;
-  }
-}
-
-/* ========================= 
-   Rail / Images
-   ========================= */
-
-.home-figure {
-  margin: 0;
-}
-
-.home-rail img {
-  width: 100%;
-  height: auto;
-  display: block;
-  transition: transform 0.3s ease;
-}
-
-.home-rail:hover img {
-  transform: scale(1.02);
-}
-
-/* Ensure square rail crops correctly when used */
-.home-rail--square img {
-  aspect-ratio: 1 / 1;
-  object-fit: cover;
-}
-
-/* Optional larger rail cap */
-.home-rail--large {
-  max-width: 440px;
-}
-
-/* Orange "corner frame" */
-.home-rail--ruled {
-  --frame-inset: 10px;
-  --frame-weight: var(--rule-thickness);
-}
-
-/* When ruled frame is on hero statement, apply to the text box */
-.hero-statement.home-rail--ruled .hero-statement__text::before,
-.hero-statement.home-rail--ruled .hero-statement__text::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  pointer-events: none;
-  background: var(--sand-orange);
-}
-
-.hero-statement.home-rail--ruled .hero-statement__text::before {
-  height: var(--frame-weight);
-  width: 75%;
-}
-
-.hero-statement.home-rail--ruled .hero-statement__text::after {
-  width: var(--frame-weight);
-  height: 75%;
-}
-
-/* For other uses of ruled frame (images, etc) */
-.home-rail--ruled:not(.hero-statement) .home-figure {
-  padding-top: var(--frame-inset);
-  padding-left: var(--frame-inset);
-}
-
-.home-rail--ruled:not(.hero-statement)::before,
-.home-rail--ruled:not(.hero-statement)::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  pointer-events: none;
-  background: var(--sand-orange);
-}
-
-/* IMPORTANT: both orange strokes exist */
-.home-rail--ruled:not(.hero-statement)::before {
-  height: var(--frame-weight);
-  width: 75%;
-}
-
-.home-rail--ruled:not(.hero-statement)::after {
-  width: var(--frame-weight);
-  height: 75%;
-}
-
-/* Image-led section block (if used) */
-.image-block {
-  max-width: 640px;
-  margin: 0 auto;
-}
-
-@media (max-width: 900px) {
-  .image-block {
-    max-width: 100%;
-  }
-}
-
-/* ========================= 
-   Header / Navigation
-   ========================= */
-
-.site-header {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 10;
-  background: rgba(255, 255, 255, 0.55);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
-}
-
-.site-header::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  height: var(--rule-thickness);
-  width: var(--rule-length);
-  background: var(--sand-orange);
-}
-
-.site-nav {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-  padding: 1rem 0;
-  justify-content: flex-end;
-}
-
-.site-nav a {
-  color: var(--deep-navy);
-  opacity: 1;
-  padding: 6px 0;
-}
-
-.site-nav a:hover {
-  text-decoration: underline;
-  opacity: 1;
-}
-
-.site-nav a[aria-current="page"] {
-  text-decoration: underline;
-  text-decoration-thickness: 2px;
-  text-underline-offset: 6px;
-}
-
-/* ========================= 
-   Home Hero
-   ========================= */
-
-.hero {
-  position: relative;
-  overflow: hidden;
-  background-color: var(--off-white);
-  background-image: url("assets/hero-texture.svg");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  animation: heroDrift 40s ease-in-out infinite alternate;
-  min-height: clamp(320px, 48vh, 520px);
-  padding: clamp(96px, 8vw, 132px) 0 clamp(76px, 7.5vw, 120px);
-}
-
-@keyframes heroDrift {
-  0%   { background-size: cover; background-position: center center; }
-  50%  { background-size: 106%; background-position: 48% 52%; }
-  100% { background-size: cover; background-position: 52% 48%; }
-}
-
-/* Desktop: use larger background size for Ken Burns effect */
-@media (min-width: 900px) {
-  .hero {
-    background-size: 104%;
-  }
-  
-  @keyframes heroDrift {
-    0%   { background-size: 104%; background-position: center center; }
-    50%  { background-size: 106%; background-position: 48% 52%; }
-    100% { background-size: 104%; background-position: 52% 48%; }
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .hero {
-    animation: none !important;
-  }
-}
-
-.hero > * {
-  position: relative;
-  z-index: 1;
-}
-
-/* Orange lines anchor here — sits at container width */
-.hero-content {
-  position: relative;
-}
-
-/* Identity lock-up */
-.hero-lockup {
-  display: flex;
-  align-items: flex-start;
-  gap: clamp(16px, 2vw, 26px);
-  margin-top: clamp(28px, 6vh, 72px);
-}
-
-.hero-mark {
-  position: relative;
-  display: inline-block;
-  padding-right: clamp(14px, 1.6vw, 20px);
-}
-
-.hero-mark::after {
-  content: "";
-  position: absolute;
-  right: 0;
-  top: 6%;
-  height: 88%;
-  width: 3px;
-  background: var(--sand-orange);
-  border-radius: 2px;
-}
-
-.hero-mark img {
-  height: clamp(62px, 6.8vw, 98px);
-  width: auto;
-  display: block;
-}
-
-.hero-wordmark {
-  line-height: 1.0;
-}
-
-.hero-org {
-  font-family: "Barlow Condensed", system-ui, -apple-system, "Segoe UI", sans-serif;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-  font-size: clamp(26px, 2.9vw, 38px);
-  color: var(--sand-orange);
-}
-
-.hero-name {
-  font-family: "Barlow Condensed", system-ui, -apple-system, "Segoe UI", sans-serif;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.085em;
-  font-size: clamp(2.8rem, 4.8vw, 4.1rem);
-  color: var(--deep-navy);
-  margin-top: 6px;
-  line-height: 0.92;
-  max-width: 11ch;
-}
-
-/* Hide the desktop line-break on mobile — let max-width wrap naturally */
-.hero-name__break {
-  display: none;
-}
-
-/* Keep line breaks on desktop */
-@media (min-width: 901px) {
-  .hero-name {
-    max-width: none;
-  }
-  .hero-name__break {
-    display: inline;
-  }
-}
-
-@media (max-width: 520px) {
-  .hero-lockup {
-    gap: 14px;
-  }
-
-  .hero-mark {
-    padding-right: 12px;
-  }
-
-  .hero-mark::after {
-    top: 8%;
-    height: 84%;
-    width: 3px;
-  }
-
-  .hero-org {
-    font-size: 18px;
-  }
-
-  .hero-name {
-    font-size: 2.2rem;
-  }
-}
-
-/* Hero statement — better grid balance, original text weight */
-.hero-statement {
-  position: relative;
-  margin-top: clamp(28px, 6vh, 56px);
-  display: grid;
-  grid-template-columns: 40% 60%;
-  column-gap: clamp(24px, 4vw, 48px);
-  align-items: start;
-}
-
-.hero-statement__text {
-  grid-column: 2;
-  justify-self: start;
-  margin: 0;
-  max-width: 45ch;
-  font-family: "Barlow Condensed", system-ui, -apple-system, "Segoe UI", sans-serif;
-  font-weight: 700;
-  font-size: clamp(1.60rem, 1.95vw, 2.05rem);
-  line-height: 1.28;
-  letter-spacing: 0.012em;
-  color: var(--deep-navy);
-  text-align: left;
-  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.22);
-  
-  /* Match header background - softer translucent white with blur */
-  background: rgba(255, 255, 255, 0.55);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
-  padding: clamp(20px, 3vw, 32px);
-  position: relative;
-}
-
-@media (max-width: 900px) {
-  .hero-statement {
-    grid-template-columns: 1fr;
-    margin-top: clamp(18px, 4vh, 34px);
-  }
-
-  .hero-statement__text {
-    grid-column: 1;
-    max-width: 52ch;
-  }
-}
-
-/* ========================= 
-   Lists
-   ========================= */
-
-.home-list {
-  margin: 0;
-  padding-left: 1.1rem;
-  max-width: var(--measure);
-}
-
-.home-list li {
-  margin-bottom: 0.7rem;
-}
-
-/* Key points bullets */
-.key-points {
-  margin: 0 0 1.2rem 0;
-  padding-left: 1.1rem;
-  max-width: var(--measure);
-}
-
-.key-points li {
-  margin: 0 0 0.75rem 0;
-}
-
-/* ========================= 
-   Buttons / CTAs
-   ========================= */
-
-.home-cta,
-.cta-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px 12px;
-  margin-top: 1.15rem;
-  align-items: stretch;
-}
-
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 10px 14px;
-  font-size: 0.95rem;
-  min-height: 44px;
-  border: 1px solid var(--btn-border);
-  background: var(--btn-bg);
-  color: var(--deep-navy);
-  text-decoration: none;
-  font-family: "Barlow Condensed", system-ui, -apple-system, "Segoe UI", sans-serif;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  line-height: 1;
-  border-radius: 0;
-  transition: all 0.2s ease;
-}
-
-.btn:hover {
-  background: var(--btn-bg-hover);
-  text-decoration: none;
-  transform: translateY(-1px);
-  box-shadow: 0 2px 8px rgba(1, 30, 45, 0.15);
-}
-
-.btn:focus-visible {
-  outline: 2px solid var(--sand-orange);
-  outline-offset: 2px;
-}
-
-.btn--ghost {
-  background: transparent;
-}
-
-/* "Next →" CTA styling */
-.next-cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  font-family: "Barlow Condensed", system-ui, -apple-system, "Segoe UI", sans-serif;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--deep-navy);
-  text-decoration: none;
-  padding: 10px 0;
-}
-
-.next-cta::after {
-  content: "→";
-  font-size: 1.05em;
-  line-height: 1;
-}
-
-.next-cta:hover {
-  text-decoration: underline;
-}
-
-/* ========================= 
-   Secondary Page Components
-   ========================= */
-
-/* 3-up cards */
-.cards-3 {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: clamp(14px, 2vw, 22px);
-  margin-top: 1rem;
-}
-
-@media (max-width: 900px) {
-  .cards-3 {
-    grid-template-columns: 1fr;
-  }
-}
-
-.card {
-  background: rgba(255, 255, 255, 0.32);
-  border: 1px solid rgba(1, 30, 45, 0.12);
-  padding: 1.1rem 1.1rem;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(1, 30, 45, 0.1);
-}
-
-.card h3 {
-  margin-top: 0;
-}
-
-/* Timeline */
-.timeline {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  max-width: var(--measure);
-  border-left: 2px solid rgba(198, 91, 26, 0.35);
-  padding-left: 1rem;
-}
-
-.timeline li {
-  margin: 0 0 1rem 0;
-}
-
-.timeline li:last-child {
-  margin-bottom: 0;
-}
-
-/* Tables */
-.table-wrap {
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  border: 1px solid rgba(1, 30, 45, 0.12);
-  background: rgba(255, 255, 255, 0.28);
-}
-
-.fees-table {
-  width: 100%;
-  border-collapse: collapse;
-  min-width: 720px;
-}
-
-.fees-table th,
-.fees-table td {
-  text-align: left;
-  padding: 12px 12px;
-  border-bottom: 1px solid rgba(1, 30, 45, 0.10);
-  vertical-align: top;
-}
-
-.fees-table th {
-  font-family: "Barlow Condensed", system-ui, -apple-system, "Segoe UI", sans-serif;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  font-weight: 700;
-}
-
-/* Get Involved fees table */
-.gi-table-wrap {
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  border: 1px solid rgba(1, 30, 45, 0.12);
-  background: rgba(255, 255, 255, 0.28);
-  border-radius: 2px;
-}
-
-.gi-fees-table {
-  width: 100%;
-  border-collapse: collapse;
-  min-width: 580px;
-}
-
-.gi-fees-table th,
-.gi-fees-table td {
-  text-align: left;
-  padding: 14px 16px;
-  border-bottom: 1px solid rgba(1, 30, 45, 0.10);
-  vertical-align: top;
-}
-
-.gi-fees-table th {
-  font-family: "Barlow Condensed", system-ui, -apple-system, "Segoe UI", sans-serif;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  font-weight: 700;
-  font-size: 0.95rem;
-  background: rgba(1, 30, 45, 0.06);
-  color: var(--deep-navy);
-  border-bottom-width: 2px;
-}
-
-.gi-fees-table td {
-  font-size: 0.95rem;
-  color: rgba(1, 30, 45, 0.80);
-}
-
-.gi-fees-table tbody tr:last-child td {
-  border-bottom: none;
-}
-
-.gi-fees-note {
-  margin-top: 1rem;
-  font-size: 0.88rem;
-  color: rgba(1, 30, 45, 0.55);
-  max-width: 52ch;
-}
-
-/* ========================= 
-   Footer
-   ========================= */
-
-footer {
-  position: relative;
-  padding: 2.5rem 0;
-  background: var(--surface-veil);
-  color: var(--deep-navy);
-}
-
-footer::before {
-  content: "";
-  position: absolute;
-  right: 0;
-  top: 0;
-  height: var(--rule-thickness);
-  width: var(--rule-length);
-  background: var(--sand-orange);
-}
-
-.footer-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 14px 22px;
-  align-items: baseline;
-}
-
-.footer-links a,
-footer a {
-  color: var(--deep-navy);
-  opacity: 0.9;
-  text-decoration: none;
-}
-
-.footer-links a:hover,
-footer a:hover {
-  text-decoration: underline;
-  opacity: 1;
-}
-
-.footer-follow {
-  margin: 0;
-}
-
-.linkedin-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  color: var(--deep-navy);
-  opacity: 0.95;
-  text-decoration: none;
-}
-
-.linkedin-link:hover {
-  opacity: 1;
-  text-decoration: underline;
-}
-
-.linkedin-brand {
-  display: inline-flex;
-  align-items: center;
-}
-
-.linkedin-icon {
-  height: 2.1em;
-  width: auto;
-  display: block;
-  margin: 0;
-  transform: translateY(2px);
-}
-
-.footer-separator {
-  opacity: 0.65;
-  margin-right: 10px;
-}
-
-.footer-legal {
-  margin: 0.85rem 0 0;
-  opacity: 0.65;
-  font-size: 0.85rem;
-  line-height: 1.4;
-}
-
-.footer-mark {
-  position: absolute;
-  right: 18px;
-  top: calc(var(--rule-thickness) + 10px);
-  width: 32px;
-  height: auto;
-  opacity: 1;
-  pointer-events: none;
-}
-
-@media (max-width: 520px) {
-  .footer-mark {
-    width: 28px;
-    right: 14px;
-    bottom: 12px;
-  }
-}
-
-/* ========================= 
-   Texture Subtle Drift Animation
-   ========================= */
-
-/* Subtle texture drift - only on desktop */
-@media (min-width: 900px) {
-  body {
-    animation: subtleDrift 120s linear infinite;
-  }
-}
-
-@keyframes subtleDrift {
-  from {
-    background-position: center 0;
-  }
-  to {
-    background-position: center 200px;
-  }
-}
-
-/* Gentle float for hero texture */
-@media (min-width: 900px) {
-  .hero {
-    animation: heroFloat 30s ease-in-out infinite;
-  }
-}
-
-@keyframes heroFloat {
-  0%, 100% {
-    background-position: center 0;
-  }
-  50% {
-    background-position: center 30px;
-  }
-}
-
-/* CRITICAL: Respect user motion preferences for accessibility */
-@media (prefers-reduced-motion: reduce) {
-  body,
-  .hero {
-    animation: none !important;
-  }
-}
-/* ========================= 
-   WHO WE ARE PAGE - Additional Styles (UPDATED)
-   
-   Add these to the END of your styles.css file
-   ========================= */
-
-/* Page Hero - Centered & Spacious */
-.page-hero {
-  padding: clamp(120px, 18vh, 200px) 0 clamp(80px, 12vh, 140px);
-}
-
-.page-hero__content {
-  max-width: 800px;
-  margin: 0 auto;
-  text-align: center;
-}
-
-.page-hero h1 {
-  font-size: clamp(3.2rem, 5.5vw, 4.8rem);
-  font-family: "Barlow Condensed", system-ui, -apple-system, "Segoe UI", sans-serif;
-  font-weight: 700;
-  letter-spacing: 0.02em;
-  margin: clamp(20px, 3vh, 32px) 0 clamp(24px, 4vh, 40px) 0;
-  color: var(--deep-navy);
-}
-
-.page-hero__statement {
-  font-size: clamp(1.25rem, 1.65vw, 1.55rem);
-  line-height: 1.5;
-  font-weight: 400;
-  color: rgba(1, 30, 45, 0.80);
-  max-width: 42em;
-  margin: 0 auto;
-}
-
-@media (max-width: 900px) {
-  .page-hero {
-    padding: clamp(100px, 15vh, 140px) 0 clamp(60px, 10vh, 100px);
-  }
-  
-  .page-hero__content {
-    text-align: left;
-  }
-}
-
-/* Who We Are hero image — centred below text */
-.page-hero__image {
-  position: relative;
-  max-width: 640px;
-  margin: clamp(32px, 5vh, 56px) auto 0;
-}
-
-.page-hero__image .home-figure img {
-  width: 100%;
-  display: block;
-  aspect-ratio: 16 / 10;
-  object-fit: cover;
-}
-
-@media (max-width: 900px) {
-  .page-hero__image {
-    max-width: 100%;
-  }
-}
-
-/* Founder Members Split - Elevated Layout */
-.founder-split {
-  display: grid;
-  grid-template-columns: minmax(0, 480px) minmax(0, 1fr);
-  gap: clamp(24px, 4vw, 56px);
-  align-items: start;
-}
-
-@media (max-width: 900px) {
-  .founder-split {
-    grid-template-columns: 1fr;
-  }
-}
-
-.founder-split__content h2 {
-  margin-top: 0;
-}
-
-.founder-logo-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-  gap: clamp(12px, 1.5vw, 18px);
-}
-
-@media (max-width: 900px) {
-  .founder-logo-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-.founder-logo-card {
-  background: rgba(255, 255, 255, 0.45);
-  border: 1px solid rgba(1, 30, 45, 0.12);
-  padding: 1.2rem 1rem;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-}
-
-.founder-logo-card__logo {
-  aspect-ratio: 3 / 2;
-  background: rgba(255, 255, 255, 0.6);
-  border: 1px solid rgba(1, 30, 45, 0.08);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: rgba(1, 30, 45, 0.35);
-  font-size: 0.85rem;
-  font-weight: 500;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-}
-
-.founder-logo-card__name {
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: var(--deep-navy);
-  line-height: 1.3;
-}
-
-/* Team Grid - Three Column Cards */
-.team-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: clamp(18px, 3vw, 32px);
-  margin-bottom: 1.5rem;
-}
-
-@media (max-width: 900px) {
-  .team-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-.team-card {
-  text-align: center;
-}
-
-.team-card__photo {
-  width: 160px;
-  height: 160px;
-  margin: 0 auto 1rem;
-  overflow: visible;
-  background: #ffffff;
-  border: 1px solid rgba(1, 30, 45, 0.12);
-  position: relative;
-}
-
-.team-card__photo::before,
-.team-card__photo::after {
-  content: "";
-  position: absolute;
-  top: -4px;
-  left: -4px;
-  pointer-events: none;
-  background: var(--sand-orange);
-}
-
-.team-card__photo::before {
-  height: var(--rule-thickness);
-  width: 75%;
-}
-
-.team-card__photo::after {
-  width: var(--rule-thickness);
-  height: 75%;
-}
-
-.team-card__photo img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  position: relative;
-}
-
-.team-card__name {
-  font-size: clamp(1.2rem, 1.5vw, 1.4rem);
-  font-weight: 700;
-  margin: 0 0 0.35rem 0;
-  color: var(--deep-navy);
-}
-
-.team-card__role {
-  font-size: 0.95rem;
-  color: rgba(1, 30, 45, 0.70);
-  margin: 0 0 0.5rem 0;
-  font-weight: 400;
-}
-
-.team-card__contact {
-  font-size: 0.9rem;
-  margin: 0;
-}
-
-.team-card__contact a {
-  color: var(--sand-orange);
-  text-decoration: none;
-}
-
-.team-card__contact a:hover {
-  text-decoration: underline;
-}
-
-/* Compact team grid - smaller headshots (#10) */
-.team-grid--compact {
-  max-width: 720px;
-  margin: 0 auto;
-}
-
-.team-grid--compact .team-card__photo {
-  max-width: 180px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-/* Founder image below text (#4) - with orange corner frame */
-.founder-split__image {
-  margin: 1.5rem 0 0;
-  width: 100%;
-  overflow: visible;
-  border: 1px solid rgba(1, 30, 45, 0.12);
-  position: relative;
-}
-
-.founder-split__image::before,
-.founder-split__image::after {
-  content: "";
-  position: absolute;
-  top: -4px;
-  left: -4px;
-  pointer-events: none;
-  background: var(--sand-orange);
-  z-index: 1;
-}
-
-.founder-split__image::before {
-  height: var(--rule-thickness);
-  width: 75%;
-}
-
-.founder-split__image::after {
-  width: var(--rule-thickness);
-  height: 75%;
-}
-
-.founder-split__image img {
-  width: 100%;
-  display: block;
-  object-fit: cover;
-  aspect-ratio: 16 / 9;
-  position: relative;
-}
-
-/* Timeline spacing - gap before closing sentence (#9) */
-.timeline + p {
-  margin-top: 2rem;
-}
-
-/* Centered CTA with large image (#11) */
-.cta-centered {
-  text-align: center;
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-.cta-centered h2 {
-  margin-top: 0;
-}
-
-.cta-centered .lead {
-  max-width: 42em;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.cta-centered__buttons {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  flex-wrap: wrap;
-  margin-bottom: 2.5rem;
-}
-
-.cta-centered__image {
-  margin: 0;
-  width: 100%;
-  max-width: 100%;
-  overflow: visible;
-  border: 1px solid rgba(1, 30, 45, 0.12);
-  position: relative;
-}
-
-.cta-centered__image::before,
-.cta-centered__image::after {
-  content: "";
-  position: absolute;
-  top: -4px;
-  left: -4px;
-  pointer-events: none;
-  background: var(--sand-orange);
-  z-index: 1;
-}
-
-.cta-centered__image::before {
-  height: var(--rule-thickness);
-  width: 75%;
-}
-
-.cta-centered__image::after {
-  width: var(--rule-thickness);
-  height: 75%;
-}
-
-.cta-centered__image img {
-  width: 100%;
-  display: block;
-  object-fit: cover;
-  aspect-ratio: 16 / 7;
-  position: relative;
-  transition: transform 0.4s ease;
-}
-
-.cta-centered__image__crop {
-  overflow: hidden;
-}
-
-.cta-centered__image:hover img {
-  transform: scale(1.05);
-}
-
-/* Logo Grid - Clean Placeholder (Responsive for many logos) */
-.logo-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: clamp(12px, 1.5vw, 18px);
-  margin-top: 1.5rem;
-  max-width: 720px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.logo-placeholder {
-  aspect-ratio: 3 / 2;
-  background: rgba(255, 255, 255, 0.28);
-  border: 1px solid rgba(1, 30, 45, 0.12);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: rgba(1, 30, 45, 0.35);
-  font-size: 0.9rem;
-  font-weight: 500;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-}
-
-@media (max-width: 900px) {
-  .logo-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-/* Founder image - horizontal under text */
-.founder-split__image {
-  margin: 1.5rem 0 0;
-  overflow: hidden;
-  border: 1px solid rgba(1, 30, 45, 0.12);
-}
-
-.founder-split__image img {
-  width: 100%;
-  height: 220px;
-  object-fit: cover;
-  display: block;
-}
-
-/* Timeline - spacing before closing sentence */
-.timeline__closing {
-  margin-top: 1.8rem;
-}
-
-/* Contact - Centred with large image */
-.contact-centered {
-  text-align: center;
-  max-width: 720px;
-  margin: 0 auto;
-}
-
-.contact-centered h2 {
-  margin-top: 0;
-}
-
-.contact-centered .lead {
-  max-width: 48em;
-  margin: 0 auto 1.5rem;
-}
-
-.contact-centered .cta-row {
-  justify-content: center;
-}
-
-.contact-centered__image {
-  margin: 2.5rem 0 0;
-  overflow: hidden;
-  border: 1px solid rgba(1, 30, 45, 0.12);
-}
-
-.contact-centered__image img {
-  width: 100%;
-  height: 360px;
-  object-fit: cover;
-  display: block;
-}
-
-@media (max-width: 900px) {
-  .contact-centered__image img {
-    height: 240px;
-  }
-}
-/* =========================
-   WHY JOIN PAGE - Additional Styles
-   
-   Add these to the END of your styles.css file
-   ========================= */
-
-/* ─── 1. HERO — Split: image left, text right ─── */
-/* ─── GET INVOLVED hero — split: text left, image right ─── */
-.gi-hero {
-  padding: 0 0 clamp(40px, 6vh, 72px);
-}
-
-.gi-hero__grid {
-  display: grid;
-  grid-template-columns: minmax(0, 48fr) minmax(0, 52fr);
-  gap: clamp(24px, 4vw, 56px);
-  align-items: stretch;
-}
-
-.gi-hero__content {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding-top: clamp(48px, 8vh, 80px);
-}
-
-.gi-hero__content h1 {
-  font-size: clamp(3.2rem, 5.5vw, 4.8rem);
-  font-family: "Barlow Condensed", system-ui, -apple-system, "Segoe UI", sans-serif;
-  font-weight: 700;
-  letter-spacing: 0.02em;
-  margin: 0 0 clamp(20px, 3vh, 36px) 0;
-  color: var(--deep-navy);
-}
-
-.gi-hero__statement {
-  font-size: clamp(1.25rem, 1.65vw, 1.55rem);
-  line-height: 1.5;
-  font-weight: 400;
-  color: rgba(1, 30, 45, 0.80);
-  margin: 0;
-}
-
-.gi-hero__image {
-  position: relative;
-  align-self: stretch;
-  max-width: none;
-  height: 100%;
-}
-
-.gi-hero__image .home-figure {
-  height: 100%;
-}
-
-.gi-hero__image .home-figure img {
-  width: 100%;
-  height: 100%;
-  display: block;
-  object-fit: cover;
-  min-height: clamp(320px, 50vw, 520px);
-}
-
-@media (max-width: 900px) {
-  .gi-hero__grid {
-    grid-template-columns: 1fr;
-  }
-
-  .gi-hero__image {
-    order: -1;
-  }
-}
-
-.join-hero {
-  padding: clamp(40px, 6vh, 72px) 0 clamp(40px, 6vh, 72px);
-}
-
-.join-hero__grid {
-  display: grid;
-  grid-template-columns: minmax(0, 55fr) minmax(0, 45fr);
-  gap: clamp(24px, 4vw, 56px);
-  align-items: stretch;
-}
-
-.join-hero__image {
-  position: relative;
-  align-self: stretch;
-  max-width: none;
-}
-
-.join-hero__image .home-figure img {
-  width: 100%;
-  display: block;
-  aspect-ratio: 4 / 5;
-  object-fit: cover;
-}
-
-.join-hero__content {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.join-hero__content h1 {
-  font-size: clamp(3.2rem, 5.5vw, 4.8rem);
-  font-family: "Barlow Condensed", system-ui, -apple-system, "Segoe UI", sans-serif;
-  font-weight: 700;
-  letter-spacing: 0.02em;
-  margin: 0 0 clamp(20px, 3vh, 36px) 0;
-  color: var(--deep-navy);
-}
-
-.join-hero__content .page-hero__statement {
-  margin: 0;
-}
-
-@media (max-width: 900px) {
-  .join-hero__grid {
-    grid-template-columns: 1fr;
-  }
-
-  .join-hero__image {
-    order: -1;
-  }
-}
-
-/* ─── 3. VALUE COLUMNS — Three columns with orange top rules ─── */
-.join-value-cols__heading {
-  margin-top: 0;
-  margin-bottom: 2rem;
-}
-
-.join-value-cols {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: clamp(24px, 3vw, 40px);
-}
-
-.join-value-col {
-  padding-top: 1.25rem;
-  border-top: var(--rule-thickness) solid var(--sand-orange);
-}
-
-.join-value-col h3 {
-  margin-top: 0;
-  font-size: clamp(1.15rem, 1.4vw, 1.35rem);
-  line-height: 1.25;
-  margin-bottom: 0.75rem;
-}
-
-.join-value-col p {
-  max-width: none;
-  font-size: 0.95rem;
-  line-height: 1.6;
-  margin-bottom: 0;
-}
-
-@media (max-width: 900px) {
-  .join-value-cols {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-}
-
-/* ─── 4. MONTAGE — Split: tall portrait left, text right ─── */
-.join-montage {
-  display: grid;
-  grid-template-columns: minmax(0, 420px) minmax(0, 1fr);
-  gap: clamp(24px, 4vw, 56px);
-  align-items: center;
-}
-
-.join-montage__image {
-  position: relative;
-}
-
-.join-montage__image .home-figure img {
-  width: 100%;
-  display: block;
-  object-fit: cover;
-  /* Portrait montage: let it show at natural 1:2 ratio, capped in height */
-  max-height: 560px;
-  aspect-ratio: auto;
-}
-
-.join-montage__content h2 {
-  margin-top: 0;
-}
-
-.join-montage__content .lead {
-  max-width: none;
-}
-
-@media (max-width: 900px) {
-  .join-montage {
-    grid-template-columns: 1fr;
-  }
-
-  .join-montage__image .home-figure img {
-    max-height: 420px;
-  }
-}
-
-/* ─── 6. NUMBERED TIMELINE — Orange vertical connector ─── */
-.join-timeline {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  counter-reset: timeline;
-  position: relative;
-  padding-left: 2.4rem;
-}
-
-/* Vertical orange connector line */
-.join-timeline::before {
-  content: "";
-  position: absolute;
-  left: calc(1.2rem - 1px);
-  top: 0.9rem;
-  bottom: 0.9rem;
-  width: var(--rule-thickness);
-  background: var(--sand-orange);
-  opacity: 0.4;
-}
-
-.join-timeline li {
-  position: relative;
-  margin-bottom: 1.25rem;
-  counter-increment: timeline;
-}
-
-.join-timeline li:last-child {
-  margin-bottom: 0;
-}
-
-/* Orange numbered marker */
-.join-timeline li::before {
-  content: counter(timeline);
-  position: absolute;
-  left: -2.4rem;
-  top: 0.15em;
-  width: 2rem;
-  height: 2rem;
-  line-height: 2rem;
-  text-align: center;
-  background: var(--sand-orange);
-  color: #ffffff;
-  font-family: "Barlow Condensed", system-ui, -apple-system, "Segoe UI", sans-serif;
-  font-weight: 700;
-  font-size: 0.9rem;
-  letter-spacing: 0.02em;
-}
-
-/* ─── Testimonial quote ─── */
-.testimonial {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  min-height: 100%;
-}
-
-.testimonial__quote {
-  position: relative;
-  margin: 0;
-  font-family: "Barlow", system-ui, -apple-system, "Segoe UI", sans-serif;
-  font-style: italic;
-  font-weight: 400;
-  color: rgba(1, 30, 45, 0.75);
-  font-size: clamp(1.25rem, 1.7vw, 1.5rem);
-  line-height: 1.55;
-  max-width: 42ch;
-}
-
-/* Orange opening quote mark — block, above the text */
-.testimonial__quote::before {
-  content: "\201C";
-  display: block;
-  font-style: normal;
-  font-family: "Barlow Condensed", system-ui, -apple-system, "Segoe UI", sans-serif;
-  font-weight: 700;
-  color: var(--sand-orange);
-  font-size: 3.2rem;
-  line-height: 0.75;
-  margin-bottom: 0.6rem;
-}
-
-.testimonial__attribution {
-  display: block;
-  margin-top: 1.4rem;
-  font-style: normal;
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: var(--deep-navy);
-  letter-spacing: 0.01em;
-}
-
-.testimonial__role {
-  display: block;
-  font-weight: 400;
-  color: rgba(1, 30, 45, 0.55);
-  margin-top: 0.2rem;
-}
-
-/* ─── Material image zoom ─── */
-
-/* Clip zoomed rail images cleanly within their frames.
-   Orange corner frames live on the parent .home-rail--ruled,
-   so overflow:hidden here doesn't affect them. */
-.home-figure {
-  overflow: hidden;
-}
-
-/* Boost the existing rail zoom — 1.02 is barely visible */
-.home-rail img {
-  transition: transform 0.4s ease;
-}
-
-.home-rail:hover img {
-  transform: scale(1.05);
-}
-
-/* CTA closing image zoom.
-   The orange frame pseudo-elements sit on .cta-centered__image at -4px offset,
-   so overflow:visible stays on the figure. The crop div clips the zoom. */
-.cta-centered__image__crop {
-  overflow: hidden;
-}
-
-.cta-centered__image img {
-  transition: transform 0.4s ease;
-}
-
-.cta-centered__image:hover img {
-  transform: scale(1.05);
-}
-.join-for__heading {
-  text-align: center;
-  margin-bottom: 2rem;
-}
-
-.join-for {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: clamp(24px, 3vw, 40px);
-}
-
-.join-for__col {
-  padding-top: 1.25rem;
-  border-top: var(--rule-thickness) solid var(--sand-orange);
-}
-
-.join-for__col h3 {
-  margin-top: 0;
-  font-size: clamp(1.15rem, 1.4vw, 1.35rem);
-  line-height: 1.25;
-  margin-bottom: 0.75rem;
-}
-
-.join-for__col p {
-  max-width: none;
-  font-size: 0.95rem;
-  line-height: 1.6;
-  margin-bottom: 0;
-}
-
-@media (max-width: 900px) {
-  .join-for {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-
-  .join-for__heading {
-    text-align: left;
-  }
-}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Coalition for Responsible Sand and Silicates</title>
+ 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,600;0,700;1,400&family=Barlow+Condensed:wght@700&display=swap" rel="stylesheet">
+ 
+  <link rel="stylesheet" href="styles.css">
+</head>
+ 
+<body>
+ 
+  <header class="site-header">
+    <div class="container">
+      <nav class="site-nav" aria-label="Primary">
+        <a href="index.html" aria-current="page">Home</a>
+        <a href="about.html">About</a>
+        <a href="why-join.html">Why join</a>
+        <a href="get-involved.html">Get involved</a>
+      </nav>
+    </div>
+  </header>
+ 
+  <main>
+ 
+  <!-- HERO (LOCKED lock-up + statement inside hero) -->
+<section class="hero">
+  <div class="container">
+
+    <div class="hero-content">
+
+        <div class="hero-lockup">
+          <div class="hero-mark">
+            <img src="assets/logos/sandcastle-logo-orange.svg" alt="" aria-hidden="true">
+          </div>
+ 
+          <div class="hero-wordmark">
+            <div class="hero-org">The Coalition for</div>
+            <div class="hero-name">Responsible Sand<br class="hero-name__break"> and Silicates</div>
+          </div>
+        </div>
+ 
+        <!-- Statement -->
+        <div class="hero-statement home-rail--ruled" aria-label="Coalition statement">
+          <p class="hero-statement__text">
+            We are a next generation global platform bringing together stakeholders to build a future where sand and silicates are sourced, used and managed responsibly.
+          </p>
+        </div>
+
+    </div>
+
+  </div>
+</section>
+ 
+    <!-- WHY A COALITION -->
+    <section class="section" id="why-a-coalition">
+      <div class="container">
+ 
+        <div class="split-cta">
+          <div class="split-cta__left">
+            <h2>Why a Coalition for Responsible Sand and Silicates?</h2>
+ 
+        <div class="home-cta" aria-label="Next steps">
+          <a class="btn btn--ghost" href="about.html">About</a>
+          <a class="btn btn--ghost" href="why-join.html">Why join</a>
+          <a class="btn" href="get-involved.html">Get involved</a>
+            </div>
+          </div>
+ 
+          <div class="split-cta__right">
+            <p>
+              Attention to sand and silicates is increasing — driven by minerals policy, construction decarbonisation and supply-security debates. Expectations are changing. But standards, knowledge, business tools and innovation have yet to catch up.
+            </p>
+ 
+            <p>
+              No single actor can address these challenges alone. And those who want to act early to shape what responsibility looks like in practice need a shared place to do so — one that lets them move faster together.
+            </p>
+ 
+            <p>
+              The Coalition meets these needs, generating new practices, guidance and knowledge that ensures sand and silicates resources are sourced and managed in ways that create value for people and the planet.
+            </p>
+          </div>
+        </div>
+ 
+      </div>
+    </section>
+ 
+    <!-- IMAGE + QUOTE BREAK -->
+    <section class="section section--tight section--light" id="image-quote-seasand">
+      <div class="container">
+ 
+        <div class="image-quote">
+          <!-- Image -->
+          <div class="home-rail home-rail--ruled image-quote__image" aria-label="Light moving across shallow sand beneath water">
+            <figure class="home-figure">
+              <img
+                src="assets/home/materials-seasand-gold.jpg"
+                alt="Light moving across shallow sand beneath water.">
+            </figure>
+          </div>
+ 
+          <!-- Quote -->
+          <div class="image-quote__text">
+            <p class="pull-quote">
+              We need to restore regard for these materials.<br>
+              That begins by addressing their invisibility.
+            </p>
+          </div>
+        </div>
+ 
+      </div>
+    </section>
+ 
+  <!-- FOUNDER MEMBERS - THE STARS -->
+  <section class="section" id="founders">
+    <div class="container">
+      <div class="founder-split">
+        <div class="founder-split__content">
+          <h2>Our founder members</h2>
+          
+          <p class="lead">
+            This Coalition grew from the aspirations and exchanges of our founder members, and the insights of dozens of organisations who helped us shape the vision.
+          </p>
+          
+          <p>
+            These organisations co-designed this platform from the ground up. We are grateful to each of them and excited to see where we go next.
+          </p>
+          
+          <figure class="founder-split__image">
+            <img
+              src="assets/home/products-montage-mix3.jpg"
+              alt="Montage showing diverse products and materials connected to sand and silicates."
+              loading="lazy">
+          </figure>
+        </div>
+        
+        <div class="founder-split__logos">
+          <div class="founder-logo-grid">
+            <div class="founder-logo-card">
+              <div class="founder-logo-card__logo">Logo</div>
+              <div class="founder-logo-card__name">Organization Name</div>
+            </div>
+            <div class="founder-logo-card">
+              <div class="founder-logo-card__logo">Logo</div>
+              <div class="founder-logo-card__name">Organization Name</div>
+            </div>
+            <div class="founder-logo-card">
+              <div class="founder-logo-card__logo">Logo</div>
+              <div class="founder-logo-card__name">Organization Name</div>
+            </div>
+            <div class="founder-logo-card">
+              <div class="founder-logo-card__logo">Logo</div>
+              <div class="founder-logo-card__name">Organization Name</div>
+            </div>
+            <div class="founder-logo-card">
+              <div class="founder-logo-card__logo">Logo</div>
+              <div class="founder-logo-card__name">Organization Name</div>
+            </div>
+            <div class="founder-logo-card">
+              <div class="founder-logo-card__logo">Logo</div>
+              <div class="founder-logo-card__name">Organization Name</div>
+            </div>
+            <div class="founder-logo-card">
+              <div class="founder-logo-card__logo">Logo</div>
+              <div class="founder-logo-card__name">Organization Name</div>
+            </div>
+            <div class="founder-logo-card">
+              <div class="founder-logo-card__logo">Logo</div>
+              <div class="founder-logo-card__name">Organization Name</div>
+            </div>
+            <div class="founder-logo-card">
+              <div class="founder-logo-card__logo">Logo</div>
+              <div class="founder-logo-card__name">Organization Name</div>
+            </div>
+            <div class="founder-logo-card">
+              <div class="founder-logo-card__logo">Logo</div>
+              <div class="founder-logo-card__name">Organization Name</div>
+            </div>
+            <div class="founder-logo-card">
+              <div class="founder-logo-card__logo">Logo</div>
+              <div class="founder-logo-card__name">Organization Name</div>
+            </div>
+            <div class="founder-logo-card">
+              <div class="founder-logo-card__logo">Logo</div>
+              <div class="founder-logo-card__name">Organization Name</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+ 
+    <!-- FINAL CTA + IMAGE -->
+    <section class="section section--tight" id="join-us">
+      <div class="container">
+ 
+        <div class="cta-split">
+          <!-- Left: CTA -->
+          <div class="cta-split__text">
+            <h2>Join us</h2>
+ 
+            <p class="lead" style="margin-top:0;">
+              If you are navigating sourcing risks, due diligence expectations, decarbonisation pressures, biodiversity and social performance challenges, or emerging constraints on supply, we'd like to work with you.
+            </p>
+ 
+            <div class="home-cta" aria-label="Join us call to action">
+              <a class="btn" href="get-involved.html">Learn more</a>
+            </div>
+          </div>
+ 
+          <!-- Right: image -->
+          <div class="home-rail home-rail--ruled cta-split__image" aria-label="Material image">
+            <figure class="home-figure">
+              <img
+                src="assets/home/materials-clay-body.jpg"
+                alt="Close-up view of clay body material surface.">
+            </figure>
+          </div>
+        </div>
+ 
+      </div>
+    </section>
+ 
+  </main>
+ 
+  <footer>
+    <div class="container">
+      <div class="footer-row">
+        <div class="footer-links">
+          <a href="index.html">Home</a> ·
+          <a href="about.html">About</a> ·
+          <a href="why-join.html">Why join</a> ·
+          <a href="get-involved.html">Get involved</a>
+        </div>
+ 
+        <p class="footer-follow">
+          <a class="linkedin-link"
+             href="https://www.linkedin.com/company/110141953/"
+             target="_blank"
+             rel="noopener noreferrer">
+            <span class="footer-separator">| </span>
+            Follow us on
+            <span class="linkedin-brand">
+              <img
+                src="assets/icons/linkedin-mark.svg"
+                class="linkedin-icon"
+                alt="LinkedIn">
+            </span>
+            for updates
+          </a>
+        </p>
+      </div>
+ 
+      <p class="footer-legal">
+        © 2026 Coalition for Responsible Sand and Silicates. All rights reserved.
+      </p>
+ 
+      <img
+        src="assets/logos/sandcastle-logo-navy.svg"
+        class="footer-mark"
+        alt=""
+        aria-hidden="true">
+    </div>
+  </footer>
+ 
+</body>
+</html>
