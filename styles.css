@@ -1204,6 +1204,27 @@ footer a:hover {
   opacity: 0.85;
 }
 
+/* Individual logo size adjustments for visual balance */
+/* IKEA - make bigger */
+.founder-logo-grid .founder-logo:nth-child(2) {
+  max-height: 80px;
+}
+
+/* Roca - make bigger */
+.founder-logo-grid .founder-logo:nth-child(3) {
+  max-height: 75px;
+}
+
+/* PACT - make bigger */
+.founder-logo-grid .founder-logo:nth-child(5) {
+  max-height: 80px;
+}
+
+/* Silica Resources - make bigger */
+.founder-logo-grid .founder-logo:nth-child(7) {
+  max-height: 80px;
+}
+
 /* Placeholder for missing logos */
 .founder-logo-placeholder {
   aspect-ratio: 3 / 2;
