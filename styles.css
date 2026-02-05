@@ -1177,8 +1177,9 @@ footer a:hover {
 
 .founder-logo-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-  gap: clamp(12px, 1.5vw, 18px);
+  grid-template-columns: repeat(auto-fit, minmax(140px, 180px));
+  gap: clamp(18px, 2vw, 28px);
+  justify-content: start;
 }
 
 @media (max-width: 900px) {
@@ -1187,6 +1188,41 @@ footer a:hover {
   }
 }
 
+/* Actual founder member logos */
+.founder-logo {
+  width: 100%;
+  height: auto;
+  max-height: 100px;
+  object-fit: contain;
+  display: block;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+  background: rgba(255, 255, 255, 0.5);
+  padding: 1rem;
+  border: 1px solid rgba(1, 30, 45, 0.12);
+}
+
+.founder-logo:hover {
+  transform: scale(1.03);
+  opacity: 0.9;
+}
+
+/* Placeholder for missing logos */
+.founder-logo-placeholder {
+  aspect-ratio: 3 / 2;
+  background: rgba(255, 255, 255, 0.28);
+  border: 1px solid rgba(1, 30, 45, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(1, 30, 45, 0.35);
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 1rem;
+}
+
+/* Legacy card styles - keeping for backward compatibility */
 .founder-logo-card {
   background: rgba(255, 255, 255, 0.45);
   border: 1px solid rgba(1, 30, 45, 0.12);
@@ -1455,11 +1491,11 @@ footer a:hover {
 /* Logo Grid - Clean Placeholder (Responsive for many logos) */
 .logo-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: clamp(12px, 1.5vw, 18px);
+  grid-template-columns: repeat(auto-fit, minmax(160px, 200px));
+  gap: clamp(20px, 2vw, 32px);
   margin-top: 1.5rem;
   max-width: 720px;
-  margin-left: auto;
+  margin-left: 0;
   margin-right: auto;
 }
 
@@ -1487,10 +1523,21 @@ footer a:hover {
 .partner-logo {
   width: 100%;
   height: auto;
-  max-height: 80px;
+  max-height: 110px;
   object-fit: contain;
   display: block;
   margin: 0 auto;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.logo-grid a {
+  display: block;
+  text-decoration: none;
+}
+
+.logo-grid a:hover .partner-logo {
+  transform: scale(1.05);
+  opacity: 0.85;
 }
 
 /* Founder image - horizontal under text */
