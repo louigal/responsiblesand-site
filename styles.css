@@ -1483,6 +1483,16 @@ footer a:hover {
   }
 }
 
+/* Partner logos - maintain original colors and aspect ratio */
+.partner-logo {
+  width: 100%;
+  height: auto;
+  max-height: 80px;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+}
+
 /* Founder image - horizontal under text */
 .founder-split__image {
   margin: 1.5rem 0 0;
