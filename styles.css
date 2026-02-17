@@ -1391,10 +1391,10 @@ footer a:hover {
 /* Logo Grid - Clean Placeholder (Responsive for many logos) */
 .logo-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: clamp(12px, 1.5vw, 18px);
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: clamp(8px, 1vw, 12px);
   margin-top: 1.5rem;
-  max-width: 720px;
+  max-width: 800px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -1416,11 +1416,9 @@ footer a:hover {
 .partner-logo {
   width: 100%;
   height: auto;
-  max-height: 120px;
+  max-height: 80px;
   object-fit: contain;
-  padding: 0.75rem;
-  border: 1px solid rgba(1, 30, 45, 0.08);
-  border-radius: 4px;
+  padding: 0.5rem;
 }
 
 @media (max-width: 900px) {
