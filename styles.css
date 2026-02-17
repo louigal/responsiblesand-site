@@ -539,27 +539,14 @@ section:not(.hero) {
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  animation: heroDrift 40s ease-in-out infinite alternate;
   min-height: clamp(320px, 48vh, 520px);
   padding: clamp(96px, 8vw, 132px) 0 clamp(76px, 7.5vw, 120px);
 }
 
-@keyframes heroDrift {
-  0%   { background-size: cover; background-position: center center; }
-  50%  { background-size: 106%; background-position: 48% 52%; }
-  100% { background-size: cover; background-position: 52% 48%; }
-}
-
-/* Desktop: use larger background size for Ken Burns effect */
+/* Desktop: use larger background size */
 @media (min-width: 900px) {
   .hero {
     background-size: 104%;
-  }
-  
-  @keyframes heroDrift {
-    0%   { background-size: 104%; background-position: center center; }
-    50%  { background-size: 106%; background-position: 48% 52%; }
-    100% { background-size: 104%; background-position: 52% 48%; }
   }
 }
 
@@ -1053,43 +1040,14 @@ footer a:hover {
    Texture Subtle Drift Animation
    ========================= */
 
-/* Subtle texture drift - only on desktop */
-@media (min-width: 900px) {
-  body {
-    animation: subtleDrift 120s linear infinite;
-  }
-}
+/* Texture is now static - no drift animation */
 
-@keyframes subtleDrift {
-  from {
-    background-position: center 0;
-  }
-  to {
-    background-position: center 200px;
-  }
-}
-
-/* Gentle float for hero texture */
-@media (min-width: 900px) {
-  .hero {
-    animation: heroFloat 30s ease-in-out infinite;
-  }
-}
-
-@keyframes heroFloat {
-  0%, 100% {
-    background-position: center 0;
-  }
-  50% {
-    background-position: center 30px;
-  }
-}
-
-/* CRITICAL: Respect user motion preferences for accessibility */
+/* CRITICAL: Respect user motion preferences for accessibility 
+   All background animations have been removed to prevent motion sickness */
 @media (prefers-reduced-motion: reduce) {
-  body,
-  .hero {
+  * {
     animation: none !important;
+    transition: none !important;
   }
 }
 /* ========================= 
@@ -1177,9 +1135,8 @@ footer a:hover {
 
 .founder-logo-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(100px, 140px));
-  gap: clamp(14px, 1.5vw, 20px);
-  justify-content: start;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: clamp(12px, 1.5vw, 18px);
 }
 
 @media (max-width: 900px) {
@@ -1188,61 +1145,6 @@ footer a:hover {
   }
 }
 
-/* Actual founder member logos */
-.founder-logo {
-  width: 100%;
-  height: auto;
-  max-height: 65px;
-  object-fit: contain;
-  display: block;
-  transition: transform 0.25s ease, opacity 0.25s ease;
-  padding: 0.5rem;
-}
-
-.founder-logo:hover {
-  transform: scale(1.05);
-  opacity: 0.85;
-}
-
-/* Individual logo size adjustments for visual balance */
-/* IKEA - make bigger */
-.founder-logo-grid .founder-logo:nth-child(2) {
-  max-height: 80px;
-}
-
-/* Roca - make bigger */
-.founder-logo-grid .founder-logo:nth-child(3) {
-  max-height: 75px;
-}
-
-/* PACT - make bigger */
-.founder-logo-grid .founder-logo:nth-child(5) {
-  max-height: 80px;
-}
-
-/* Silica Resources - make bigger */
-.founder-logo-grid .founder-logo:nth-child(7) {
-  max-height: 80px;
-}
-
-/* Placeholder for missing logos */
-.founder-logo-placeholder {
-  aspect-ratio: 3 / 2;
-  background: rgba(255, 255, 255, 0.45);
-  border: 1px solid rgba(1, 30, 45, 0.12);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: rgba(1, 30, 45, 0.35);
-  font-size: 0.75rem;
-  font-weight: 500;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  padding: 0.75rem;
-  min-height: 65px;
-}
-
-/* Legacy card styles - keeping for backward compatibility */
 .founder-logo-card {
   background: rgba(255, 255, 255, 0.45);
   border: 1px solid rgba(1, 30, 45, 0.12);
@@ -1511,11 +1413,11 @@ footer a:hover {
 /* Logo Grid - Clean Placeholder (Responsive for many logos) */
 .logo-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 200px));
-  gap: clamp(20px, 2vw, 32px);
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: clamp(12px, 1.5vw, 18px);
   margin-top: 1.5rem;
   max-width: 720px;
-  margin-left: 0;
+  margin-left: auto;
   margin-right: auto;
 }
 
@@ -1533,31 +1435,20 @@ footer a:hover {
   text-transform: uppercase;
 }
 
+.partner-logo {
+  width: 100%;
+  height: auto;
+  max-height: 120px;
+  object-fit: contain;
+  padding: 0.75rem;
+  border: 1px solid rgba(1, 30, 45, 0.08);
+  border-radius: 4px;
+}
+
 @media (max-width: 900px) {
   .logo-grid {
     grid-template-columns: repeat(2, 1fr);
   }
-}
-
-/* Partner logos - maintain original colors and aspect ratio */
-.partner-logo {
-  width: 100%;
-  height: auto;
-  max-height: 110px;
-  object-fit: contain;
-  display: block;
-  margin: 0 auto;
-  transition: transform 0.25s ease, opacity 0.25s ease;
-}
-
-.logo-grid a {
-  display: block;
-  text-decoration: none;
-}
-
-.logo-grid a:hover .partner-logo {
-  transform: scale(1.05);
-  opacity: 0.85;
 }
 
 /* Founder image - horizontal under text */
