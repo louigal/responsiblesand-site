@@ -140,13 +140,54 @@
         
         <div class="founder-split__logos">
           <div class="founder-logo-grid">
-            <img src="assets/partner-logos/1_uq-logo.png" alt="The University of Queensland" class="founder-logo">
-            <img src="assets/partner-logos/2_ikea-logo.png" alt="IKEA" class="founder-logo">
-            <img src="assets/partner-logos/3_roca-logo.png" alt="Roca Group" class="founder-logo">
-            <div class="founder-logo-placeholder">Coming soon</div>
-            <img src="assets/partner-logos/5_pact-logo.png" alt="PACT - Building Local Promise" class="founder-logo">
-            <img src="assets/partner-logos/6_gilbane-logo.jpg" alt="Gilbane" class="founder-logo">
-            <img src="assets/partner-logos/7_sra-Logo.png" alt="Silica Resources Australia" class="founder-logo">
+            <div class="founder-logo-card">
+              <div class="founder-logo-card__logo">
+                <img src="assets/partner-logos/1_uq-logo.png" alt="University of Queensland">
+              </div>
+              <div class="founder-logo-card__name">University of Queensland</div>
+            </div>
+            <div class="founder-logo-card">
+              <div class="founder-logo-card__logo">
+                <img src="assets/partner-logos/2_ikea-logo.png" alt="IKEA">
+              </div>
+              <div class="founder-logo-card__name">IKEA</div>
+            </div>
+            <div class="founder-logo-card">
+              <div class="founder-logo-card__logo">
+                <img src="assets/partner-logos/3_roca-group-logo-black.png" alt="Roca Group">
+              </div>
+              <div class="founder-logo-card__name">Roca Group</div>
+            </div>
+            <div class="founder-logo-card">
+              <div class="founder-logo-card__logo">
+                <img src="assets/partner-logos/5_pact-logo.png" alt="PACT">
+              </div>
+              <div class="founder-logo-card__name">PACT</div>
+            </div>
+            <div class="founder-logo-card">
+              <div class="founder-logo-card__logo">
+                <img src="assets/partner-logos/6_sra-logo.png" alt="SRA">
+              </div>
+              <div class="founder-logo-card__name">SRA</div>
+            </div>
+            <div class="founder-logo-card">
+              <div class="founder-logo-card__logo">
+                <img src="assets/partner-logos/7_ria-stone-logo.png" alt="Ria Stone">
+              </div>
+              <div class="founder-logo-card__name">Ria Stone</div>
+            </div>
+            <div class="founder-logo-card">
+              <div class="founder-logo-card__logo">
+                <img src="assets/partner-logos/8_cary-group-logo.png" alt="Cary Group">
+              </div>
+              <div class="founder-logo-card__name">Cary Group</div>
+            </div>
+            <div class="founder-logo-card">
+              <div class="founder-logo-card__logo">
+                <img src="assets/partner-logos/9_gilbane-logo.jpg" alt="Gilbane">
+              </div>
+              <div class="founder-logo-card__name">Gilbane</div>
+            </div>
           </div>
         </div>
       </div>
@@ -215,7 +256,7 @@
       </div>
  
       <p class="footer-legal">
-        © 2026 Coalition for Responsible Sand and Silicates. All rights reserved.
+        © 2026<span id="copyright-year"></span> Coalition for Responsible Sand and Silicates. All rights reserved.
       </p>
  
       <img
@@ -226,5 +267,13 @@
     </div>
   </footer>
  
+  <script>
+    // Auto-update copyright year
+    const currentYear = new Date().getFullYear();
+    const copyrightYear = document.getElementById('copyright-year');
+    if (currentYear > 2026) {
+      copyrightYear.textContent = '–' + currentYear;
+    }
+  </script>
 </body>
 </html>
