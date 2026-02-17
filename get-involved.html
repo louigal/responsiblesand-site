@@ -118,7 +118,7 @@
       </p>
       
       <p>
-        <a class="next-cta" href="mailto:louise@responsiblesand.org">Get in touch about membership</a>
+        <a class="next-cta" href="/cdn-cgi/l/email-protection#b1dddec4d8c2d4f1c3d4c2c1dedfc2d8d3ddd4c2d0dfd59fdec3d6">Get in touch about membership</a>
       </p>
     </div>
   </section>
@@ -161,7 +161,7 @@
           Whether you're thinking about membership, a project, or something else entirely — get in touch and we'll work out the best way forward together.
         </p>
         <div class="cta-centered__buttons">
-          <a class="btn" href="mailto:louise@responsiblesand.org">louise@responsiblesand.org</a>
+          <a class="btn" href="/cdn-cgi/l/email-protection#6804071d011b0d281a0d1b1807061b010a040d1b09060c46071a0f"><span class="__cf_email__" data-cfemail="b9d5d6ccd0cadcf9cbdccac9d6d7cad0dbd5dccad8d7dd97d6cbde">[email&#160;protected]</span></a>
         </div>
         <figure class="cta-centered__image">
           <div class="cta-centered__image__crop">
@@ -187,11 +187,8 @@
           <a href="get-involved.html">Get involved</a>
         </div>
 
-        <p class="footer-follow">
-          <a class="linkedin-link"
-             href="https://www.linkedin.com/company/110141953/"
-             target="_blank"
-             rel="noopener noreferrer">
+        <p class="footer-linkedin">
+          <a href="https://www.linkedin.com/company/coalition-responsible-sand-silicates" target="_blank" rel="noopener noreferrer">
             <span class="footer-separator">| </span>
             Follow us on
             <span class="linkedin-brand">
@@ -206,4 +203,24 @@
       </div>
 
       <p class="footer-legal">
-        © 2026 Coalition
+        © 2026<span id="copyright-year"></span> Coalition for Responsible Sand and Silicates. All rights reserved.
+      </p>
+
+      <img
+        src="assets/logos/sandcastle-logo-navy.svg"
+        class="footer-mark"
+        alt=""
+        aria-hidden="true">
+    </div>
+  </footer>
+
+  <script>
+    // Auto-update copyright year
+    const currentYear = new Date().getFullYear();
+    const copyrightYear = document.getElementById('copyright-year');
+    if (currentYear > 2026) {
+      copyrightYear.textContent = '–' + currentYear;
+    }
+  </script>
+</body>
+</html>
