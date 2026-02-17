@@ -203,7 +203,7 @@
       </div>
  
       <p class="footer-legal">
-        © 2026 Coalition for Responsible Sand and Silicates. All rights reserved.
+        © 2026<span id="copyright-year"></span> Coalition for Responsible Sand and Silicates. All rights reserved.
       </p>
  
       <img
@@ -214,5 +214,13 @@
     </div>
   </footer>
  
+  <script>
+    // Auto-update copyright year
+    const currentYear = new Date().getFullYear();
+    const copyrightYear = document.getElementById('copyright-year');
+    if (currentYear > 2026) {
+      copyrightYear.textContent = '–' + currentYear;
+    }
+  </script>
 </body>
 </html>
