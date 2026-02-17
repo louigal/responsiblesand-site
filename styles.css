@@ -1397,6 +1397,7 @@ footer a:hover {
   max-width: 800px;
   margin-left: auto;
   margin-right: auto;
+  align-items: center;
 }
 
 .logo-placeholder {
