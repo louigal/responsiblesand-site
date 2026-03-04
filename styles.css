@@ -1392,10 +1392,6 @@ footer a:hover {
 .email-signup {
   max-width: 600px;
   margin: 3rem auto 2.5rem;
-  padding: 2rem 1.5rem;
-  background: rgba(255, 255, 255, 0.4);
-  border-top: 2px solid var(--coal-orange);
-  border-bottom: 2px solid var(--coal-orange);
 }
 
 .email-signup h3 {
