@@ -183,6 +183,14 @@ a:hover {
   max-width: var(--measure);
 }
 
+.measure h3 {
+  font-size: clamp(1.25rem, 3vw, 1.5rem);
+  color: var(--deep-navy);
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
 /* ========================= 
    Sections (Building Blocks)
    ========================= */
