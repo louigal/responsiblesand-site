@@ -1115,6 +1115,45 @@ footer a:hover {
   }
 }
 
+/* Theory of Change Call-out */
+.theory-callout {
+  margin-top: 2.5rem;
+  padding: 2rem;
+  background: rgba(242, 244, 244, 0.5);
+  border-left: 4px solid var(--bright-orange);
+  border-radius: 4px;
+}
+
+.theory-callout h3 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.5rem;
+  color: var(--deep-navy);
+}
+
+.theory-callout p {
+  margin: 0 0 1.25rem 0;
+  color: var(--deep-navy);
+}
+
+.theory-callout__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+}
+
+.theory-callout__coming-soon {
+  color: rgba(1, 30, 45, 0.5);
+  font-size: 0.9rem;
+  font-style: italic;
+}
+
+@media (max-width: 900px) {
+  .theory-callout {
+    padding: 1.5rem;
+  }
+}
+
 /* Founder Members Split - Elevated Layout */
 .founder-split {
   display: grid;
@@ -1341,6 +1380,73 @@ footer a:hover {
   margin-bottom: 2.5rem;
 }
 
+/* Email signup section */
+.email-signup {
+  max-width: 600px;
+  margin: 3rem auto 2.5rem;
+  padding: 2rem 1.5rem;
+  background: rgba(255, 255, 255, 0.4);
+  border-top: 2px solid var(--coal-orange);
+  border-bottom: 2px solid var(--coal-orange);
+}
+
+.email-signup h3 {
+  font-size: clamp(1.25rem, 3vw, 1.5rem);
+  color: var(--deep-navy);
+  margin-bottom: 0.75rem;
+  text-align: center;
+}
+
+.email-signup > p {
+  text-align: center;
+  color: var(--deep-navy);
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+}
+
+.email-signup__form {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.email-signup__input-group {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.email-signup__input {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  border: 1px solid rgba(1, 30, 45, 0.2);
+  border-radius: 4px;
+  font-size: 1rem;
+  font-family: inherit;
+  background: white;
+}
+
+.email-signup__input:focus {
+  outline: 2px solid var(--coal-orange);
+  outline-offset: 2px;
+}
+
+.email-signup__privacy {
+  font-size: 0.85rem;
+  color: rgba(1, 30, 45, 0.7);
+  text-align: center;
+  margin: 0;
+}
+
+@media (max-width: 600px) {
+  .email-signup__input-group {
+    flex-direction: column;
+  }
+  
+  .email-signup__input-group .btn {
+    width: 100%;
+  }
+}
+
 .cta-centered__image {
   margin: 0;
   width: 100%;
@@ -1420,6 +1526,19 @@ footer a:hover {
   max-height: 80px;
   object-fit: contain;
   padding: 0.5rem;
+}
+
+/* Size adjustments for specific logos */
+.partner-logo--small {
+  max-height: 50px;
+}
+
+.partner-logo--medium {
+  max-height: 65px;
+}
+
+.partner-logo--large {
+  max-height: 100px;
 }
 
 @media (max-width: 900px) {
