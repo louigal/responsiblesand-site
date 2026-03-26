@@ -558,11 +558,11 @@ section:not(.hero) {
   min-height: clamp(320px, 40vh, 480px);
 }
 
-/* Lockup: centred within the visible image area, vertically and horizontally */
+/* Lockup: centred within the image column */
 .hero-split__image .hero-lockup {
   position: absolute;
   top: 50%;
-  left: calc(50% + calc(50vw - 50%) / 2);
+  left: 50%;
   transform: translate(-50%, -50%);
   z-index: 2;
   display: flex;
