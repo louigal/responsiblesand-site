@@ -541,11 +541,12 @@ section:not(.hero) {
   align-items: stretch;
 }
 
-/* Left column: sand image fills to top-left corner */
+/* Left column: sand image fills to top-left corner of viewport */
 .hero-split__image {
   position: relative;
   overflow: hidden;
-  margin-left: calc(-1 * var(--gutter));
+  margin-left: calc(-50vw + 50%);
+  padding-left: calc(50vw - 50%);
   margin-top: calc(-1 * clamp(72px, 10vh, 110px));
 }
 
@@ -557,12 +558,12 @@ section:not(.hero) {
   min-height: clamp(320px, 40vh, 480px);
 }
 
-/* Lockup: vertically centred within the image panel */
+/* Lockup: centred within the visible image area, vertically and horizontally */
 .hero-split__image .hero-lockup {
   position: absolute;
   top: 50%;
-  left: var(--gutter);
-  transform: translateY(-50%);
+  left: calc(50% + calc(50vw - 50%) / 2);
+  transform: translate(-50%, -50%);
   z-index: 2;
   display: flex;
   align-items: flex-start;
@@ -587,7 +588,7 @@ section:not(.hero) {
 }
 
 .hero-split__image .hero-mark img {
-  height: clamp(48px, 5.5vw, 72px);
+  height: clamp(56px, 6.2vw, 82px);
   width: auto;
   display: block;
 }
@@ -601,7 +602,7 @@ section:not(.hero) {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.15em;
-  font-size: clamp(18px, 2.2vw, 28px);
+  font-size: clamp(22px, 2.6vw, 32px);
   color: var(--sand-orange);
 }
 
@@ -610,7 +611,7 @@ section:not(.hero) {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.085em;
-  font-size: clamp(2rem, 3.6vw, 3rem);
+  font-size: clamp(2.4rem, 4.2vw, 3.4rem);
   color: var(--deep-navy);
   margin-top: 5px;
   line-height: 0.92;
