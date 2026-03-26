@@ -523,7 +523,7 @@ section:not(.hero) {
 .hero {
   position: relative;
   overflow: hidden;
-  background: transparent;
+  background: var(--surface-veil);
 }
 
 .hero > .container {
@@ -586,7 +586,7 @@ section:not(.hero) {
 }
 
 .hero-split__image .hero-mark img {
-  height: clamp(62px, 6.8vw, 98px);
+  height: clamp(48px, 5.5vw, 72px);
   width: auto;
   display: block;
 }
@@ -600,7 +600,7 @@ section:not(.hero) {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.15em;
-  font-size: clamp(26px, 2.9vw, 38px);
+  font-size: clamp(18px, 2.2vw, 28px);
   color: var(--sand-orange);
 }
 
@@ -609,9 +609,9 @@ section:not(.hero) {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.085em;
-  font-size: clamp(2.8rem, 4.8vw, 4.1rem);
+  font-size: clamp(2rem, 3.6vw, 3rem);
   color: var(--deep-navy);
-  margin-top: 6px;
+  margin-top: 5px;
   line-height: 0.92;
   max-width: 11ch;
 }
