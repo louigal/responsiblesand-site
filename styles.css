@@ -524,10 +524,7 @@ section:not(.hero) {
   position: relative;
   overflow: hidden;
   background: var(--surface-veil);
-}
-
-.hero > .container {
-  padding-left: 0;
+  padding-top: clamp(60px, 8vh, 90px);
 }
 
 .hero > * {
@@ -535,11 +532,11 @@ section:not(.hero) {
   z-index: 1;
 }
 
-/* Split grid: 50/50 columns */
+/* Split grid: image takes 55%, statement 45% */
 .hero-split {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: clamp(18px, 3vw, 56px);
+  grid-template-columns: 55fr 45fr;
+  gap: clamp(24px, 4vw, 64px);
   align-items: stretch;
 }
 
@@ -560,7 +557,7 @@ section:not(.hero) {
 /* Lockup: positioned over the image, top-left — aligned with content below */
 .hero-split__image .hero-lockup {
   position: absolute;
-  top: clamp(28px, 6vh, 72px);
+  top: clamp(16px, 3vh, 40px);
   left: var(--gutter);
   z-index: 2;
   display: flex;
@@ -631,7 +628,7 @@ section:not(.hero) {
   line-height: 1.2;
   letter-spacing: 0.015em;
   color: var(--deep-navy);
-  max-width: 20ch;
+  max-width: 32ch;
   padding-top: clamp(16px, 2vw, 24px);
   border-top: var(--rule-thickness) solid var(--sand-orange);
 }
