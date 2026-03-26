@@ -528,8 +528,8 @@ section:not(.hero) {
   background-repeat: no-repeat;
   background-position: center 40%;
   background-size: cover;
-  min-height: clamp(320px, 48vh, 520px);
-  padding: clamp(96px, 8vw, 132px) 0 clamp(76px, 7.5vw, 120px);
+  min-height: clamp(240px, 36vh, 400px);
+  padding: clamp(80px, 7vw, 110px) 0 clamp(56px, 6vw, 88px);
 }
 
 /* Desktop: use larger background size */
@@ -687,6 +687,23 @@ section:not(.hero) {
     grid-column: 1;
     max-width: 52ch;
   }
+}
+
+/* Hero statement — standalone section below hero */
+.hero-statement-section {
+  padding: clamp(1.8rem, 3.5vw, 2.8rem) 0;
+  background: var(--surface-veil);
+}
+
+.hero-statement-standalone {
+  margin: 0;
+  max-width: 52ch;
+  font-family: "Barlow", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-weight: 400;
+  font-size: clamp(1.3rem, 1.65vw, 1.6rem);
+  line-height: 1.55;
+  letter-spacing: 0.01em;
+  color: var(--deep-navy);
 }
 
 /* ========================= 
