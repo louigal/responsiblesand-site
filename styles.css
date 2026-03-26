@@ -541,10 +541,12 @@ section:not(.hero) {
   align-items: stretch;
 }
 
-/* Left column: sand image with lockup overlaid */
+/* Left column: sand image fills to top-left corner */
 .hero-split__image {
   position: relative;
   overflow: hidden;
+  margin-left: calc(-1 * var(--gutter));
+  margin-top: calc(-1 * clamp(72px, 10vh, 110px));
 }
 
 .hero-split__photo {
