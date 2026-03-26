@@ -523,7 +523,11 @@ section:not(.hero) {
 .hero {
   position: relative;
   overflow: hidden;
-  background-color: var(--off-white);
+  background: transparent;
+}
+
+.hero > .container {
+  padding-left: 0;
 }
 
 .hero > * {
@@ -531,10 +535,10 @@ section:not(.hero) {
   z-index: 1;
 }
 
-/* Split grid: image column matches split-cta left (420px max) */
+/* Split grid: 50/50 columns */
 .hero-split {
   display: grid;
-  grid-template-columns: minmax(0, 420px) minmax(0, 1fr);
+  grid-template-columns: 1fr 1fr;
   gap: clamp(18px, 3vw, 56px);
   align-items: stretch;
 }
@@ -553,22 +557,21 @@ section:not(.hero) {
   min-height: clamp(320px, 40vh, 480px);
 }
 
-/* Lockup: positioned over the image, centred */
+/* Lockup: positioned over the image, top-left — aligned with content below */
 .hero-split__image .hero-lockup {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  top: clamp(28px, 6vh, 72px);
+  left: var(--gutter);
   z-index: 2;
   display: flex;
   align-items: flex-start;
-  gap: clamp(12px, 1.6vw, 20px);
+  gap: clamp(16px, 2vw, 26px);
 }
 
 .hero-split__image .hero-mark {
   position: relative;
   display: inline-block;
-  padding-right: clamp(10px, 1.2vw, 16px);
+  padding-right: clamp(14px, 1.6vw, 20px);
 }
 
 .hero-split__image .hero-mark::after {
@@ -583,7 +586,7 @@ section:not(.hero) {
 }
 
 .hero-split__image .hero-mark img {
-  height: clamp(44px, 5vw, 68px);
+  height: clamp(62px, 6.8vw, 98px);
   width: auto;
   display: block;
 }
@@ -597,7 +600,7 @@ section:not(.hero) {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.15em;
-  font-size: clamp(16px, 2vw, 24px);
+  font-size: clamp(26px, 2.9vw, 38px);
   color: var(--sand-orange);
 }
 
@@ -606,10 +609,11 @@ section:not(.hero) {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.085em;
-  font-size: clamp(1.8rem, 3.2vw, 2.6rem);
+  font-size: clamp(2.8rem, 4.8vw, 4.1rem);
   color: var(--deep-navy);
-  margin-top: 4px;
+  margin-top: 6px;
   line-height: 0.92;
+  max-width: 11ch;
 }
 
 /* Right column: statement on clean surface */
@@ -623,7 +627,7 @@ section:not(.hero) {
   margin: 0;
   font-family: "Barlow Condensed", system-ui, -apple-system, "Segoe UI", sans-serif;
   font-weight: 700;
-  font-size: clamp(2rem, 3.5vw, 3.2rem);
+  font-size: clamp(1.5rem, 2.4vw, 2.2rem);
   line-height: 1.2;
   letter-spacing: 0.015em;
   color: var(--deep-navy);
