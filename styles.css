@@ -425,26 +425,7 @@ section:not(.hero) {
   --frame-weight: var(--rule-thickness);
 }
 
-/* When ruled frame is on hero statement, apply to the text box */
-.hero-statement.home-rail--ruled .hero-statement__text::before,
-.hero-statement.home-rail--ruled .hero-statement__text::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  pointer-events: none;
-  background: var(--sand-orange);
-}
-
-.hero-statement.home-rail--ruled .hero-statement__text::before {
-  height: var(--frame-weight);
-  width: 75%;
-}
-
-.hero-statement.home-rail--ruled .hero-statement__text::after {
-  width: var(--frame-weight);
-  height: 75%;
-}
+/* Hero statement — orange corner frame removed; statement sits clean */
 
 /* For other uses of ruled frame (images, etc) */
 .home-rail--ruled:not(.hero-statement) .home-figure {
@@ -545,7 +526,7 @@ section:not(.hero) {
   background-color: var(--off-white);
   background-image: url("assets/hero-texture.svg");
   background-repeat: no-repeat;
-  background-position: center;
+  background-position: center 40%;
   background-size: cover;
   min-height: clamp(320px, 48vh, 520px);
   padding: clamp(96px, 8vw, 132px) 0 clamp(76px, 7.5vw, 120px);
@@ -684,20 +665,14 @@ section:not(.hero) {
   justify-self: start;
   margin: 0;
   max-width: 45ch;
-  font-family: "Barlow Condensed", system-ui, -apple-system, "Segoe UI", sans-serif;
-  font-weight: 700;
-  font-size: clamp(1.60rem, 1.95vw, 2.05rem);
-  line-height: 1.28;
-  letter-spacing: 0.012em;
+  font-family: "Barlow", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-weight: 400;
+  font-size: clamp(1.35rem, 1.7vw, 1.65rem);
+  line-height: 1.5;
+  letter-spacing: 0.01em;
   color: var(--deep-navy);
   text-align: left;
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.22);
-  
-  /* Match header background - softer translucent white with blur */
-  background: rgba(255, 255, 255, 0.55);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
-  padding: clamp(20px, 3vw, 32px);
   position: relative;
 }
 
