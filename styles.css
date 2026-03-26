@@ -555,11 +555,12 @@ section:not(.hero) {
   min-height: clamp(320px, 40vh, 480px);
 }
 
-/* Lockup: positioned over the image, top-left — aligned with content below */
+/* Lockup: vertically centred within the image panel */
 .hero-split__image .hero-lockup {
   position: absolute;
-  top: clamp(16px, 3vh, 40px);
+  top: 50%;
   left: var(--gutter);
+  transform: translateY(-50%);
   z-index: 2;
   display: flex;
   align-items: flex-start;
@@ -630,8 +631,7 @@ section:not(.hero) {
   letter-spacing: 0.015em;
   color: var(--deep-navy);
   max-width: 32ch;
-  padding-top: clamp(16px, 2vw, 24px);
-  border-top: var(--rule-thickness) solid var(--sand-orange);
+  padding-top: 0;
 }
 
 /* Mobile: stack vertically */
