@@ -152,7 +152,7 @@ a:hover {
   color: rgba(1, 30, 45, 0.75);
   font-size: clamp(1.7rem, 2.8vw, 2.4rem);
   line-height: 1.4;
-  max-width: 42ch;
+  max-width: none;
 }
 
 .pull-quote::before {
@@ -341,7 +341,7 @@ section:not(.hero) {
 .image-quote {
   display: grid;
   grid-template-columns: minmax(0, 640px) minmax(0, 1fr);
-  gap: clamp(18px, 3vw, 56px);
+  gap: clamp(32px, 5vw, 72px);
   align-items: center;
 }
 
@@ -350,7 +350,7 @@ section:not(.hero) {
 }
 
 .image-quote__text {
-  max-width: 56ch;
+  max-width: none;
 }
 
 @media (max-width: 900px) {
@@ -371,12 +371,13 @@ section:not(.hero) {
 .cta-split {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 520px);
-  gap: clamp(18px, 3vw, 56px);
+  gap: clamp(32px, 5vw, 72px);
   align-items: center;
 }
 
 .cta-split__image {
   max-width: 520px;
+  justify-self: end;
 }
 
 @media (max-width: 900px) {
@@ -524,7 +525,7 @@ section:not(.hero) {
   position: relative;
   overflow: hidden;
   background: var(--surface-veil);
-  padding-top: clamp(72px, 10vh, 110px);
+  padding-top: 0;
   padding-bottom: clamp(24px, 3vw, 40px);
 }
 
@@ -546,7 +547,6 @@ section:not(.hero) {
   position: relative;
   overflow: hidden;
   margin-left: calc(-50vw + 50%);
-  margin-top: calc(-1 * clamp(72px, 10vh, 110px));
 }
 
 .hero-split__photo {
@@ -614,7 +614,7 @@ section:not(.hero) {
   color: var(--deep-navy);
   margin-top: 5px;
   line-height: 0.92;
-  max-width: 11ch;
+  max-width: 16ch;
 }
 
 /* Right column: statement on clean surface */
@@ -622,6 +622,7 @@ section:not(.hero) {
   display: flex;
   align-items: center;
   padding: clamp(2rem, 4vw, 3.5rem) 0;
+  padding-left: var(--gutter);
 }
 
 .hero-split__text {
