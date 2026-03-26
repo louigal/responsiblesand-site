@@ -541,12 +541,11 @@ section:not(.hero) {
   align-items: stretch;
 }
 
-/* Left column: sand image fills to top-left corner of viewport */
+/* Left column: sand image fills to left edge of viewport */
 .hero-split__image {
   position: relative;
   overflow: hidden;
   margin-left: calc(-50vw + 50%);
-  padding-left: calc(50vw - 50%);
   margin-top: calc(-1 * clamp(72px, 10vh, 110px));
 }
 
@@ -558,12 +557,12 @@ section:not(.hero) {
   min-height: clamp(320px, 40vh, 480px);
 }
 
-/* Lockup: centred within the image column */
+/* Lockup: positioned from the right side of the image column, vertically centred */
 .hero-split__image .hero-lockup {
   position: absolute;
   top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  right: clamp(24px, 4vw, 64px);
+  transform: translateY(-50%);
   z-index: 2;
   display: flex;
   align-items: flex-start;
