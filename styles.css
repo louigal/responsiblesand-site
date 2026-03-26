@@ -337,16 +337,16 @@ section:not(.hero) {
   width: fit-content;
 }
 
-/* Image + quote break: make image genuinely larger */
+/* Image + quote break */
 .image-quote {
   display: grid;
-  grid-template-columns: minmax(0, 640px) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 520px) minmax(0, 1fr);
   gap: clamp(32px, 5vw, 72px);
   align-items: center;
 }
 
 .image-quote__image {
-  max-width: 640px;
+  max-width: 520px;
 }
 
 .image-quote__text {
