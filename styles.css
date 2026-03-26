@@ -524,7 +524,8 @@ section:not(.hero) {
   position: relative;
   overflow: hidden;
   background: var(--surface-veil);
-  padding-top: clamp(60px, 8vh, 90px);
+  padding-top: clamp(72px, 10vh, 110px);
+  padding-bottom: clamp(24px, 3vw, 40px);
 }
 
 .hero > * {
@@ -532,10 +533,10 @@ section:not(.hero) {
   z-index: 1;
 }
 
-/* Split grid: image takes 55%, statement 45% */
+/* Split grid: image ~60% to align with seasand image below, statement 40% */
 .hero-split {
   display: grid;
-  grid-template-columns: 55fr 45fr;
+  grid-template-columns: 60fr 40fr;
   gap: clamp(24px, 4vw, 64px);
   align-items: stretch;
 }
