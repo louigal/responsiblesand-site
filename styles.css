@@ -1,4 +1,4 @@
-/* ========================= 
+ /* ========================= 
    Brand Variables / Tokens 
    ========================= */
 
@@ -639,12 +639,30 @@ section:not(.hero) {
 
 /* Mobile: stack vertically */
 @media (max-width: 900px) {
+  .hero {
+    padding-top: clamp(56px, 8vh, 80px);
+  }
+
   .hero-split {
     grid-template-columns: 1fr;
   }
 
+  .hero-split__image {
+    margin-left: 0;
+  }
+
+  .hero-split__image .hero-lockup {
+    right: auto;
+    left: var(--gutter);
+    transform: translateY(-50%);
+  }
+
   .hero-split__photo {
     min-height: clamp(240px, 50vw, 360px);
+  }
+
+  .hero-split__statement {
+    padding-left: 0;
   }
 
   .hero-split__text {
