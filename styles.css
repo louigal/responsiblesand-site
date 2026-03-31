@@ -1,4 +1,4 @@
- /* ========================= 
+/* ========================= 
    Brand Variables / Tokens 
    ========================= */
 
@@ -518,15 +518,12 @@ section:not(.hero) {
 }
 
 /* ========================= 
-   Home Hero — Split layout
+   Home Hero — Full-width image with lockup
    ========================= */
 
 .hero {
   position: relative;
   overflow: hidden;
-  background: var(--surface-veil);
-  padding-top: 0;
-  padding-bottom: clamp(24px, 3vw, 40px);
 }
 
 .hero > * {
@@ -534,48 +531,35 @@ section:not(.hero) {
   z-index: 1;
 }
 
-/* Split grid: image ~60% to align with seasand image below, statement 40% */
-.hero-split {
-  display: grid;
-  grid-template-columns: 60fr 40fr;
-  gap: clamp(24px, 4vw, 64px);
-  align-items: stretch;
-}
-
-/* Left column: sand image fills to left edge of viewport */
-.hero-split__image {
+/* Full-width hero image */
+.hero-full {
   position: relative;
-  overflow: hidden;
-  margin-left: calc(-50vw + 50%);
 }
 
-.hero-split__photo {
+.hero-full__photo {
   width: 100%;
-  height: 100%;
   display: block;
   object-fit: cover;
-  min-height: clamp(320px, 40vh, 480px);
+  height: clamp(320px, 40vh, 480px);
 }
 
-/* Lockup: positioned from the right side of the image column, vertically centred */
-.hero-split__image .hero-lockup {
+/* Lockup: centred vertically within the hero image */
+.hero-full .hero-lockup {
   position: absolute;
   top: 50%;
-  right: clamp(24px, 4vw, 64px);
   transform: translateY(-50%);
-  z-index: 2;
   display: flex;
   align-items: flex-start;
   gap: clamp(16px, 2vw, 26px);
 }
 
-.hero-split__image .hero-mark {
+.hero-full .hero-mark {
   position: relative;
   display: inline-block;
   padding-right: clamp(14px, 1.6vw, 20px);
 }
 
-.hero-split__image .hero-mark::after {
+.hero-full .hero-mark::after {
   content: "";
   position: absolute;
   right: 0;
@@ -586,17 +570,17 @@ section:not(.hero) {
   border-radius: 2px;
 }
 
-.hero-split__image .hero-mark img {
+.hero-full .hero-mark img {
   height: clamp(56px, 6.2vw, 82px);
   width: auto;
   display: block;
 }
 
-.hero-split__image .hero-wordmark {
+.hero-full .hero-wordmark {
   line-height: 1.0;
 }
 
-.hero-split__image .hero-org {
+.hero-full .hero-org {
   font-family: "Barlow Condensed", system-ui, -apple-system, "Segoe UI", sans-serif;
   font-weight: 700;
   text-transform: uppercase;
@@ -605,7 +589,7 @@ section:not(.hero) {
   color: var(--sand-orange);
 }
 
-.hero-split__image .hero-name {
+.hero-full .hero-name {
   font-family: "Barlow Condensed", system-ui, -apple-system, "Segoe UI", sans-serif;
   font-weight: 700;
   text-transform: uppercase;
@@ -614,73 +598,29 @@ section:not(.hero) {
   color: var(--deep-navy);
   margin-top: 5px;
   line-height: 0.92;
-  max-width: 16ch;
 }
 
-/* Right column: statement on clean surface */
-.hero-split__statement {
-  display: flex;
-  align-items: center;
-  padding: clamp(2rem, 4vw, 3.5rem) 0;
-  padding-left: var(--gutter);
-}
-
-.hero-split__text {
-  margin: 0;
-  font-family: "Barlow Condensed", system-ui, -apple-system, "Segoe UI", sans-serif;
-  font-weight: 700;
-  font-size: clamp(1.5rem, 2.4vw, 2.2rem);
-  line-height: 1.2;
-  letter-spacing: 0.015em;
-  color: var(--deep-navy);
-  max-width: 32ch;
-  padding-top: 0;
-}
-
-/* Mobile: stack vertically */
-@media (max-width: 900px) {
-  .hero {
-    padding-top: clamp(56px, 8vh, 80px);
-  }
-
-  .hero-split {
-    grid-template-columns: 1fr;
-  }
-
-  .hero-split__image {
-    margin-left: 0;
-  }
-
-  .hero-split__image .hero-lockup {
-    right: auto;
-    left: var(--gutter);
-    transform: translateY(-50%);
-  }
-
-  .hero-split__photo {
-    min-height: clamp(240px, 50vw, 360px);
-  }
-
-  .hero-split__statement {
-    padding-left: 0;
-  }
-
-  .hero-split__text {
-    max-width: none;
-  }
+/* Hide the desktop line-break on mobile — let max-width wrap naturally */
+.hero-name__break {
+  display: none;
 }
 
 /* Desktop: keep line break in name */
 @media (min-width: 901px) {
-  .hero-split__image .hero-name {
-    max-width: none;
-  }
   .hero-name__break {
     display: inline;
   }
 }
 
-/* (Hero statement styles removed — statement now integrated in hero-split layout) */
+@media (max-width: 900px) {
+  .hero-full__photo {
+    height: clamp(240px, 50vw, 360px);
+  }
+
+  .hero-full .hero-name {
+    max-width: 11ch;
+  }
+}
 
 /* ========================= 
    Lists
