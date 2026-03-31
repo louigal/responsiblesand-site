@@ -543,6 +543,14 @@ section:not(.hero) {
   height: clamp(320px, 40vh, 480px);
 }
 
+.hero-full > .container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
 /* Lockup: centred vertically within the hero image */
 .hero-full .hero-lockup {
   position: absolute;
