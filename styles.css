@@ -540,7 +540,7 @@ section:not(.hero) {
   width: 100%;
   display: block;
   object-fit: cover;
-  height: clamp(360px, 48vh, 560px);
+  height: clamp(480px, 64vh, 745px);
 }
 
 .hero-full > .container {
@@ -551,20 +551,20 @@ section:not(.hero) {
   bottom: 0;
 }
 
-/* Lockup: centred vertically within the hero image */
+/* Lockup: positioned within the hero image with breathing room */
 .hero-full .hero-lockup {
   position: absolute;
-  top: 50%;
+  top: 55%;
   transform: translateY(-50%);
   display: flex;
   align-items: flex-start;
-  gap: clamp(16px, 2vw, 26px);
+  gap: clamp(18px, 2.4vw, 30px);
 }
 
 .hero-full .hero-mark {
   position: relative;
   display: inline-block;
-  padding-right: clamp(14px, 1.6vw, 20px);
+  padding-right: clamp(16px, 1.8vw, 24px);
 }
 
 .hero-full .hero-mark::after {
@@ -579,7 +579,7 @@ section:not(.hero) {
 }
 
 .hero-full .hero-mark img {
-  height: clamp(56px, 6.2vw, 82px);
+  height: clamp(68px, 7.5vw, 105px);
   width: auto;
   display: block;
 }
@@ -593,7 +593,7 @@ section:not(.hero) {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.15em;
-  font-size: clamp(22px, 2.6vw, 32px);
+  font-size: clamp(26px, 3.2vw, 40px);
   color: var(--sand-orange);
 }
 
@@ -602,9 +602,9 @@ section:not(.hero) {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.085em;
-  font-size: clamp(2.4rem, 4.2vw, 3.4rem);
+  font-size: clamp(2.8rem, 5vw, 4.2rem);
   color: var(--deep-navy);
-  margin-top: 5px;
+  margin-top: 6px;
   line-height: 0.92;
 }
 
@@ -622,32 +622,33 @@ section:not(.hero) {
 
 @media (max-width: 900px) {
   .hero-full__photo {
-    height: clamp(240px, 50vw, 360px);
+    height: clamp(300px, 55vw, 440px);
   }
 
   .hero-full {
     padding-top: clamp(48px, 7vh, 68px);
   }
 
-  .hero-full .hero-mark img {
-    height: clamp(40px, 8vw, 56px);
-  }
-
-  .hero-full .hero-org {
-    font-size: clamp(14px, 3.5vw, 20px);
-  }
-
-  .hero-full .hero-name {
-    font-size: clamp(1.6rem, 6vw, 2.4rem);
-    max-width: 11ch;
-  }
-
   .hero-full .hero-lockup {
-    gap: 12px;
+    top: 50%;
+    gap: 14px;
   }
 
   .hero-full .hero-mark {
-    padding-right: 10px;
+    padding-right: 12px;
+  }
+
+  .hero-full .hero-mark img {
+    height: clamp(44px, 9vw, 60px);
+  }
+
+  .hero-full .hero-org {
+    font-size: clamp(16px, 4vw, 22px);
+  }
+
+  .hero-full .hero-name {
+    font-size: clamp(1.8rem, 7vw, 2.6rem);
+    max-width: 11ch;
   }
 }
 
