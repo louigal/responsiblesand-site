@@ -540,7 +540,7 @@ section:not(.hero) {
   width: 100%;
   display: block;
   object-fit: cover;
-  height: clamp(320px, 40vh, 480px);
+  height: clamp(360px, 48vh, 560px);
 }
 
 .hero-full > .container {
