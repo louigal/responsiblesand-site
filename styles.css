@@ -617,8 +617,29 @@ section:not(.hero) {
     height: clamp(240px, 50vw, 360px);
   }
 
+  .hero-full {
+    padding-top: clamp(48px, 7vh, 68px);
+  }
+
+  .hero-full .hero-mark img {
+    height: clamp(40px, 8vw, 56px);
+  }
+
+  .hero-full .hero-org {
+    font-size: clamp(14px, 3.5vw, 20px);
+  }
+
   .hero-full .hero-name {
+    font-size: clamp(1.6rem, 6vw, 2.4rem);
     max-width: 11ch;
+  }
+
+  .hero-full .hero-lockup {
+    gap: 12px;
+  }
+
+  .hero-full .hero-mark {
+    padding-right: 10px;
   }
 }
 
