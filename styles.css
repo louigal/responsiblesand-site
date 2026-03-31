@@ -370,7 +370,7 @@ section:not(.hero) {
 /* Final CTA + image split */
 .cta-split {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 520px);
+  grid-template-columns: minmax(0, 520px) minmax(0, 1fr);
   gap: clamp(32px, 5vw, 72px);
   align-items: center;
 }
