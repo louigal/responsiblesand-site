@@ -961,13 +961,8 @@ footer a:hover {
    ========================= */
 
 .event-banner {
-  padding: clamp(0.5rem, 1.5vw, 1rem) 0;
+  padding: clamp(0.8rem, 1.5vw, 1.2rem) 0;
   background: var(--surface-veil);
-}
-
-/* Tighten the gap between the intro section and the event banner */
-#why-a-coalition + .event-banner {
-  margin-top: calc(-1 * var(--section-pad) + 0.5rem);
 }
 
 .event-banner__inner {
