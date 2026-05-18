@@ -962,7 +962,7 @@ footer a:hover {
 
 .event-banner {
   padding: clamp(0.5rem, 1.5vw, 1rem) 0;
-  background: transparent;
+  background: var(--surface-veil);
 }
 
 /* Tighten the gap between the intro section and the event banner */
