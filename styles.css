@@ -81,7 +81,8 @@ body {
 @media (max-width: 900px) {
   body {
     background-attachment: scroll;
-    background-size: auto;
+    background-size: 100vw auto;
+    background-position: top left;
   }
 }
 
