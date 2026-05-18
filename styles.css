@@ -957,63 +957,103 @@ footer a:hover {
 }
 
 /* ========================= 
-   Event Banner
+   Event Banner — Callout card
    ========================= */
 
 .event-banner {
-  padding: clamp(1.5rem, 3vw, 2.2rem) 0;
-  border-top: var(--rule-thickness) solid var(--sand-orange);
-  border-bottom: 1px solid rgba(1, 30, 45, 0.08);
+  padding: clamp(1rem, 2vw, 1.5rem) 0;
+  background: transparent;
 }
 
 .event-banner__inner {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
-  gap: clamp(18px, 3vw, 32px);
+  gap: clamp(24px, 4vw, 48px);
   align-items: center;
+  background: var(--deep-navy);
+  color: #ffffff;
+  padding: clamp(1.5rem, 3vw, 2.2rem) clamp(1.5rem, 3vw, 2.5rem);
+  position: relative;
+}
+
+/* Orange top-left corner frame on the card */
+.event-banner__inner::before,
+.event-banner__inner::after {
+  content: "";
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  pointer-events: none;
+  background: var(--sand-orange);
+}
+
+.event-banner__inner::before {
+  height: var(--rule-thickness);
+  width: 50%;
+}
+
+.event-banner__inner::after {
+  width: var(--rule-thickness);
+  height: 50%;
 }
 
 .event-banner__label {
   font-family: "Barlow Condensed", system-ui, -apple-system, "Segoe UI", sans-serif;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
-  font-size: 0.82rem;
+  letter-spacing: 0.12em;
+  font-size: 0.8rem;
   color: var(--sand-orange);
-  margin: 0 0 0.4rem 0;
+  margin: 0 0 0.5rem 0;
 }
 
 .event-banner__title {
-  font-size: clamp(1.25rem, 2vw, 1.6rem);
+  font-size: clamp(1.3rem, 2.2vw, 1.7rem);
   line-height: 1.25;
-  margin: 0 0 0.6rem 0;
-  color: var(--deep-navy);
+  margin: 0 0 0.7rem 0;
+  color: #ffffff;
 }
 
 .event-banner__detail {
-  font-size: 0.92rem;
+  font-size: 0.9rem;
   line-height: 1.55;
-  color: rgba(1, 30, 45, 0.75);
-  margin: 0 0 0.5rem 0;
-  max-width: 65ch;
+  color: rgba(255, 255, 255, 0.72);
+  margin: 0 0 0.6rem 0;
+  max-width: 60ch;
 }
 
 .event-banner__meta {
   font-family: "Barlow Condensed", system-ui, -apple-system, "Segoe UI", sans-serif;
   font-weight: 700;
-  font-size: 0.92rem;
-  letter-spacing: 0.02em;
-  color: var(--deep-navy);
+  font-size: 0.95rem;
+  letter-spacing: 0.03em;
+  color: var(--sand-orange);
   margin: 0;
 }
 
 .event-banner__action {
   align-self: center;
+  flex-shrink: 0;
+}
+
+.event-banner__action .btn {
+  background: var(--sand-orange);
+  color: #ffffff;
+  border-color: var(--sand-orange);
+  padding: 14px 28px;
+  font-size: 1rem;
+}
+
+.event-banner__action .btn:hover {
+  background: #d4672a;
+  border-color: #d4672a;
+  box-shadow: 0 4px 16px rgba(198, 91, 26, 0.35);
 }
 
 @media (max-width: 900px) {
   .event-banner__inner {
     grid-template-columns: 1fr;
+    gap: 1.2rem;
   }
 
   .event-banner__action {
