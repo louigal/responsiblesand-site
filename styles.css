@@ -957,6 +957,71 @@ footer a:hover {
 }
 
 /* ========================= 
+   Event Banner
+   ========================= */
+
+.event-banner {
+  padding: clamp(1.5rem, 3vw, 2.2rem) 0;
+  border-top: var(--rule-thickness) solid var(--sand-orange);
+  border-bottom: 1px solid rgba(1, 30, 45, 0.08);
+}
+
+.event-banner__inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: clamp(18px, 3vw, 32px);
+  align-items: center;
+}
+
+.event-banner__label {
+  font-family: "Barlow Condensed", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.82rem;
+  color: var(--sand-orange);
+  margin: 0 0 0.4rem 0;
+}
+
+.event-banner__title {
+  font-size: clamp(1.25rem, 2vw, 1.6rem);
+  line-height: 1.25;
+  margin: 0 0 0.6rem 0;
+  color: var(--deep-navy);
+}
+
+.event-banner__detail {
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: rgba(1, 30, 45, 0.75);
+  margin: 0 0 0.5rem 0;
+  max-width: 65ch;
+}
+
+.event-banner__meta {
+  font-family: "Barlow Condensed", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-weight: 700;
+  font-size: 0.92rem;
+  letter-spacing: 0.02em;
+  color: var(--deep-navy);
+  margin: 0;
+}
+
+.event-banner__action {
+  align-self: center;
+}
+
+@media (max-width: 900px) {
+  .event-banner__inner {
+    grid-template-columns: 1fr;
+  }
+
+  .event-banner__action {
+    justify-self: start;
+  }
+}
+
+/* ========================= 
    Accessibility
    ========================= */
 
