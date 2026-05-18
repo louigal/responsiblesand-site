@@ -182,7 +182,6 @@ a:hover {
   padding-right: var(--gutter);
 }
 
-/* A simple readable wrapper for long text blocks */
 .measure {
   max-width: var(--measure);
 }
@@ -219,13 +218,11 @@ a:hover {
   background: var(--surface-veil-light);
 }
 
-/* Backward-compatible: keep existing markup working */
 section:not(.hero) {
   padding: var(--section-pad) 0;
   background: var(--surface-veil);
 }
 
-/* Optional subtle divider use */
 .intro {
   border-top: 1px solid rgba(1, 30, 45, 0.12);
 }
@@ -234,7 +231,6 @@ section:not(.hero) {
    Grid Layouts
    ========================= */
 
-/* Two-column editorial pattern (text + right rail) */
 .grid-2,
 .home-layout {
   display: grid;
@@ -256,13 +252,11 @@ section:not(.hero) {
   position: relative;
 }
 
-/* Rail-left variant */
 .home-layout--rail-left {
   grid-template-columns: var(--rail-width) minmax(0, 1fr);
   align-items: start;
 }
 
-/* Large-rail layout: widen the rail column for selected sections */
 .home-layout--large-rail {
   grid-template-columns: minmax(0, 1fr) 440px;
   align-items: start;
@@ -272,7 +266,6 @@ section:not(.hero) {
   grid-template-columns: 440px minmax(0, 1fr);
 }
 
-/* Mobile collapse */
 @media (max-width: 900px) {
   .grid-2,
   .home-layout,
@@ -294,7 +287,6 @@ section:not(.hero) {
   }
 }
 
-/* Section split: left column for heading + CTAs, right column for copy */
 .section-split {
   display: grid;
   grid-template-columns: minmax(240px, 360px) minmax(0, 1fr);
@@ -308,7 +300,6 @@ section:not(.hero) {
   }
 }
 
-/* Heading + CTAs on left, body text on right */
 .split-cta {
   display: grid;
   grid-template-columns: minmax(0, 420px) minmax(0, 1fr);
@@ -320,7 +311,6 @@ section:not(.hero) {
   margin-top: 0;
 }
 
-/* IMPORTANT: let the right column run to container edge */
 .split-cta__right p {
   max-width: none;
 }
@@ -331,7 +321,6 @@ section:not(.hero) {
   }
 }
 
-/* Stack CTAs vertically when wanted */
 .cta-stack {
   flex-direction: column;
   align-items: flex-start;
@@ -341,7 +330,6 @@ section:not(.hero) {
   width: fit-content;
 }
 
-/* Image + quote break */
 .image-quote {
   display: grid;
   grid-template-columns: minmax(0, 520px) minmax(0, 1fr);
@@ -371,7 +359,6 @@ section:not(.hero) {
   }
 }
 
-/* Final CTA + image split */
 .cta-split {
   display: grid;
   grid-template-columns: minmax(0, 520px) minmax(0, 1fr);
@@ -413,26 +400,20 @@ section:not(.hero) {
   transform: scale(1.02);
 }
 
-/* Ensure square rail crops correctly when used */
 .home-rail--square img {
   aspect-ratio: 1 / 1;
   object-fit: cover;
 }
 
-/* Optional larger rail cap */
 .home-rail--large {
   max-width: 440px;
 }
 
-/* Orange "corner frame" */
 .home-rail--ruled {
   --frame-inset: 10px;
   --frame-weight: var(--rule-thickness);
 }
 
-/* Hero statement — orange corner frame removed; statement sits clean */
-
-/* For other uses of ruled frame (images, etc) */
 .home-rail--ruled:not(.hero-statement) .home-figure {
   padding-top: var(--frame-inset);
   padding-left: var(--frame-inset);
@@ -448,7 +429,6 @@ section:not(.hero) {
   background: var(--sand-orange);
 }
 
-/* IMPORTANT: both orange strokes exist */
 .home-rail--ruled:not(.hero-statement)::before {
   height: var(--frame-weight);
   width: 75%;
@@ -459,7 +439,6 @@ section:not(.hero) {
   height: 75%;
 }
 
-/* Image-led section block (if used) */
 .image-block {
   max-width: 640px;
   margin: 0 auto;
@@ -535,7 +514,6 @@ section:not(.hero) {
   z-index: 1;
 }
 
-/* Full-width hero image */
 .hero-full {
   position: relative;
 }
@@ -555,7 +533,6 @@ section:not(.hero) {
   bottom: 0;
 }
 
-/* Lockup: positioned within the hero image with breathing room */
 .hero-full .hero-lockup {
   position: absolute;
   top: 55%;
@@ -612,12 +589,10 @@ section:not(.hero) {
   line-height: 0.92;
 }
 
-/* Hide the desktop line-break on mobile — let max-width wrap naturally */
 .hero-name__break {
   display: none;
 }
 
-/* Desktop: keep line break in name */
 @media (min-width: 901px) {
   .hero-name__break {
     display: inline;
@@ -670,7 +645,6 @@ section:not(.hero) {
   margin-bottom: 0.7rem;
 }
 
-/* Key points bullets */
 .key-points {
   margin: 0 0 1.2rem 0;
   padding-left: 1.1rem;
@@ -730,7 +704,6 @@ section:not(.hero) {
   background: transparent;
 }
 
-/* "Next →" CTA styling */
 .next-cta {
   display: inline-flex;
   align-items: center;
@@ -758,7 +731,6 @@ section:not(.hero) {
    Secondary Page Components
    ========================= */
 
-/* 3-up cards */
 .cards-3 {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -788,7 +760,6 @@ section:not(.hero) {
   margin-top: 0;
 }
 
-/* Timeline */
 .timeline {
   margin: 0;
   padding: 0;
@@ -806,7 +777,6 @@ section:not(.hero) {
   margin-bottom: 0;
 }
 
-/* Tables */
 .table-wrap {
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
@@ -835,7 +805,6 @@ section:not(.hero) {
   font-weight: 700;
 }
 
-/* Get Involved fees table */
 .gi-table-wrap {
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
@@ -1002,7 +971,6 @@ footer a:hover {
    WHO WE ARE PAGE
    ========================= */
 
-/* Page Hero - Centered & Spacious */
 .page-hero {
   padding: clamp(120px, 18vh, 200px) 0 clamp(80px, 12vh, 140px);
 }
@@ -1060,7 +1028,6 @@ footer a:hover {
   }
 }
 
-/* Theory of Change Call-out */
 .theory-callout {
   margin-top: 2.5rem;
   padding: 2rem;
@@ -1117,34 +1084,37 @@ footer a:hover {
   margin-top: 0;
 }
 
-/* Founder logo grid — 3 columns, compact, all sizing in CSS */
+/* ========================= 
+   Founder Logo Grid
+   Always 3 columns, constrained width, uniform logo sizing.
+   On desktop it sits in the right column of founder-split.
+   On mobile it gets full width but is capped so logos stay compact.
+   ========================= */
 .founder-logo-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: clamp(12px, 2vw, 24px);
+  gap: 16px;
   align-items: center;
+  justify-items: center;
   margin-top: 1.5rem;
-  max-width: 440px;
+  max-width: 420px;
 }
 
 .founder-logo {
   width: 100%;
-  height: auto;
-  max-height: 60px;
+  height: 56px;
   object-fit: contain;
-  padding: 0.35rem;
+  display: block;
 }
 
-/* On mobile, cap the grid width so logos stay compact and visible */
 @media (max-width: 900px) {
   .founder-logo-grid {
-    max-width: 360px;
-    gap: 10px;
+    max-width: 340px;
+    gap: 14px;
   }
 
   .founder-logo {
-    max-height: 52px;
-    padding: 0.25rem;
+    height: 44px;
   }
 }
 
@@ -1266,7 +1236,6 @@ footer a:hover {
   margin-right: auto;
 }
 
-/* Founder image below text - with orange corner frame */
 .founder-split__image {
   margin: 1.5rem 0 0;
   width: 100%;
@@ -1308,7 +1277,6 @@ footer a:hover {
   margin-top: 2rem;
 }
 
-/* Centered CTA with large image */
 .cta-centered {
   text-align: center;
   max-width: 800px;
@@ -1333,7 +1301,6 @@ footer a:hover {
   margin-bottom: 2.5rem;
 }
 
-/* Email signup */
 .email-signup {
   max-width: 600px;
   margin: 3rem auto 2.5rem;
@@ -1443,7 +1410,6 @@ footer a:hover {
   transform: scale(1.05);
 }
 
-/* Logo Grid */
 .logo-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
@@ -1495,7 +1461,6 @@ footer a:hover {
   }
 }
 
-/* Founder image - horizontal under text */
 .founder-split__image {
   margin: 1.5rem 0 0;
   overflow: hidden;
@@ -1513,7 +1478,6 @@ footer a:hover {
   margin-top: 1.8rem;
 }
 
-/* Contact - Centred with large image */
 .contact-centered {
   text-align: center;
   max-width: 720px;
@@ -1556,7 +1520,6 @@ footer a:hover {
    WHY JOIN PAGE
    ========================= */
 
-/* GET INVOLVED hero */
 .gi-hero {
   padding: 0 0 clamp(40px, 6vh, 72px);
 }
@@ -1621,7 +1584,6 @@ footer a:hover {
   }
 }
 
-/* WHY JOIN hero */
 .join-hero {
   padding: clamp(40px, 6vh, 72px) 0 clamp(40px, 6vh, 72px);
 }
@@ -1675,7 +1637,6 @@ footer a:hover {
   }
 }
 
-/* Value columns */
 .join-value-cols__heading {
   margin-top: 0;
   margin-bottom: 2rem;
@@ -1713,7 +1674,6 @@ footer a:hover {
   }
 }
 
-/* Montage */
 .join-montage {
   display: grid;
   grid-template-columns: minmax(0, 420px) minmax(0, 1fr);
@@ -1751,7 +1711,6 @@ footer a:hover {
   }
 }
 
-/* Numbered timeline */
 .join-timeline {
   list-style: none;
   margin: 0;
@@ -1799,7 +1758,6 @@ footer a:hover {
   letter-spacing: 0.02em;
 }
 
-/* Testimonial */
 .testimonial {
   display: flex;
   flex-direction: column;
@@ -1873,7 +1831,6 @@ footer a:hover {
   transform: scale(1.05);
 }
 
-/* Built for you columns */
 .join-for__heading {
   text-align: center;
   margin-bottom: 2rem;
@@ -1915,7 +1872,6 @@ footer a:hover {
   }
 }
 
-/* Get Involved ways in */
 .gi-ways__heading {
   margin-top: 0;
   margin-bottom: 2rem;
