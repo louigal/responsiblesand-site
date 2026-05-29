@@ -1191,6 +1191,15 @@ footer a:hover {
   display: block;
 }
 
+/* Individual logo size adjustments */
+.founder-logo--shorter {
+  height: 42px;
+}
+
+.founder-logo--taller {
+  height: 68px;
+}
+
 @media (max-width: 900px) {
   .founder-logo-grid {
     max-width: 340px;
@@ -1199,6 +1208,14 @@ footer a:hover {
 
   .founder-logo {
     height: 44px;
+  }
+
+  .founder-logo--shorter {
+    height: 34px;
+  }
+
+  .founder-logo--taller {
+    height: 54px;
   }
 }
 
