@@ -1181,41 +1181,39 @@ footer a:hover {
   align-items: center;
   justify-items: center;
   margin-top: 1.5rem;
-  max-width: 420px;
 }
 
 .founder-logo {
   width: 100%;
-  height: 56px;
+  height: 68px;
   object-fit: contain;
   display: block;
 }
 
 /* Individual logo size adjustments */
 .founder-logo--shorter {
-  height: 42px;
+  height: 52px;
 }
 
 .founder-logo--taller {
-  height: 68px;
+  height: 80px;
 }
 
 @media (max-width: 900px) {
   .founder-logo-grid {
-    max-width: 340px;
     gap: 14px;
   }
 
   .founder-logo {
-    height: 44px;
+    height: 52px;
   }
 
   .founder-logo--shorter {
-    height: 34px;
+    height: 40px;
   }
 
   .founder-logo--taller {
-    height: 54px;
+    height: 62px;
   }
 }
 
