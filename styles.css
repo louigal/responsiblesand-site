@@ -957,26 +957,16 @@ footer a:hover {
 }
 
 /* ========================= 
-   Event Banner — Callout card
+   Video Section — Launch recording
    ========================= */
 
-.event-banner {
-  padding: clamp(0.8rem, 1.5vw, 1.2rem) 0;
-  background: var(--surface-veil);
-}
-
-.event-banner__inner {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  gap: clamp(24px, 4vw, 48px);
-  align-items: center;
+.video-section__inner {
   background: var(--deep-navy);
   color: #ffffff;
   padding: clamp(1.5rem, 3vw, 2.2rem) clamp(1.5rem, 3vw, 2.5rem);
-  position: relative;
 }
 
-.event-banner__label {
+.video-section__label {
   font-family: "Barlow Condensed", system-ui, -apple-system, "Segoe UI", sans-serif;
   font-weight: 700;
   text-transform: uppercase;
@@ -986,58 +976,34 @@ footer a:hover {
   margin: 0 0 0.5rem 0;
 }
 
-.event-banner__title {
+.video-section__title {
   font-size: clamp(1.3rem, 2.2vw, 1.7rem);
   line-height: 1.25;
   margin: 0 0 0.7rem 0;
   color: #ffffff;
 }
 
-.event-banner__detail {
+.video-section__detail {
   font-size: 0.9rem;
   line-height: 1.55;
   color: rgba(255, 255, 255, 0.72);
-  margin: 0 0 0.6rem 0;
+  margin: 0 0 1.5rem 0;
   max-width: 60ch;
 }
 
-.event-banner__meta {
-  font-family: "Barlow Condensed", system-ui, -apple-system, "Segoe UI", sans-serif;
-  font-weight: 700;
-  font-size: 0.95rem;
-  letter-spacing: 0.03em;
-  color: var(--sand-orange);
-  margin: 0;
+.video-section__embed {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
 }
 
-.event-banner__action {
-  align-self: center;
-  flex-shrink: 0;
-}
-
-.event-banner__action .btn {
-  background: var(--sand-orange);
-  color: #ffffff;
-  border-color: var(--sand-orange);
-  padding: 14px 28px;
-  font-size: 1rem;
-}
-
-.event-banner__action .btn:hover {
-  background: #d4672a;
-  border-color: #d4672a;
-  box-shadow: 0 4px 16px rgba(198, 91, 26, 0.35);
-}
-
-@media (max-width: 900px) {
-  .event-banner__inner {
-    grid-template-columns: 1fr;
-    gap: 1.2rem;
-  }
-
-  .event-banner__action {
-    justify-self: start;
-  }
+.video-section__embed iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 
 /* ========================= 
