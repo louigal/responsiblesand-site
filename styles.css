@@ -1156,14 +1156,18 @@ footer a:hover {
   display: block;
 }
 
-/* Individual logo size adjustments */
-.founder-logo--shorter {
-  height: 52px;
-}
-
-.founder-logo--taller {
-  height: 80px;
-}
+/* Individual logo size adjustments — desktop */
+.founder-logo--uq        { height: 72px; }
+.founder-logo--ikea       { height: 58px; }
+.founder-logo--roca       { height: 48px; }
+.founder-logo--mcs        { height: 58px; }
+.founder-logo--wwf        { height: 78px; }
+.founder-logo--pact       { height: 72px; }
+.founder-logo--sra        { height: 72px; }
+.founder-logo--cary       { height: 38px; }
+.founder-logo--gilbane    { height: 48px; }
+.founder-logo--agera      { height: 52px; }
+.founder-logo--gracefarms { height: 78px; }
 
 @media (max-width: 900px) {
   .founder-logo-grid {
@@ -1174,12 +1178,19 @@ footer a:hover {
     height: 52px;
   }
 
-  .founder-logo--shorter {
-    height: 40px;
-  }
-
-  .founder-logo--taller {
-    height: 62px;
+  .founder-logo--uq        { height: 52px; }
+  .founder-logo--ikea       { height: 42px; }
+  .founder-logo--roca       { height: 38px; }
+  .founder-logo--mcs        { height: 44px; }
+  .founder-logo--wwf        { height: 54px; }
+  .founder-logo--pact       { height: 52px; }
+  .founder-logo--sra        { height: 52px; }
+  .founder-logo--cary       { height: 32px; }
+  .founder-logo--gilbane    { height: 30px; }
+  .founder-logo--agera      { height: 42px; }
+  .founder-logo--gracefarms {
+    height: 48px;
+    grid-column: span 2;
   }
 }
 
