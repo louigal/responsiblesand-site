@@ -10,6 +10,68 @@
   <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,600;0,700;1,400&family=Barlow+Condensed:wght@700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="styles.css">
+
+  <!-- Get involved — membership components (scoped to this page) -->
+  <style>
+    .fee-summary { max-width: var(--measure); margin-top: 0.5rem; }
+    .fee-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 0.4rem 1.5rem;
+      align-items: baseline;
+      padding: 0.7rem 0;
+      border-top: 1px solid rgba(1, 30, 45, 0.12);
+    }
+    .fee-row:last-of-type { border-bottom: 1px solid rgba(1, 30, 45, 0.12); }
+    .fee-row__who { font-weight: 600; color: var(--deep-navy); }
+    .fee-row__who span {
+      display: block;
+      font-weight: 400;
+      font-size: 0.9rem;
+      color: rgba(1, 30, 45, 0.65);
+      margin-top: 0.15rem;
+    }
+    .fee-row__amount {
+      font-family: "Barlow Condensed", system-ui, sans-serif;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      font-size: 1.05rem;
+      color: var(--deep-navy);
+      white-space: nowrap;
+    }
+    .fee-note { font-size: 0.9rem; color: rgba(1, 30, 45, 0.7); margin-top: 1rem; }
+
+    .founder-callout {
+      background: var(--deep-navy);
+      color: #ffffff;
+      padding: clamp(1.5rem, 3vw, 2.2rem) clamp(1.5rem, 3vw, 2.5rem);
+      margin-top: 0.5rem;
+    }
+    .founder-callout__label {
+      font-family: "Barlow Condensed", system-ui, sans-serif;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 0.8rem;
+      color: var(--sand-orange);
+      margin: 0 0 0.5rem 0;
+    }
+    .founder-callout h3 { color: #ffffff; margin: 0 0 0.7rem 0; }
+    .founder-callout p { color: rgba(255, 255, 255, 0.78); max-width: 60ch; margin: 0 0 0.6rem 0; }
+    .founder-callout p:last-child { margin-bottom: 0; }
+
+    .rights-list { list-style: none; margin: 0.5rem 0 0 0; padding: 0; max-width: var(--measure); }
+    .rights-list li { position: relative; padding-left: 1.7rem; margin-bottom: 0.55rem; }
+    .rights-list li::before {
+      content: "\2713";
+      position: absolute;
+      left: 0;
+      color: var(--sand-orange);
+      font-weight: 700;
+    }
+
+    .gi-talk-first { margin-top: 1.6rem; }
+  </style>
 </head>
 
 <body>
@@ -27,7 +89,7 @@
 
   <main>
 
-  <!-- 1. HERO — Split: text left, image right (image-dominant) -->
+  <!-- 1. HERO -->
   <section class="gi-hero">
     <div class="container">
       <div class="gi-hero__grid">
@@ -49,7 +111,7 @@
     </div>
   </section>
 
-  <!-- 2. THREE WAYS IN — cards with orange top rules -->
+  <!-- 2. THREE WAYS IN -->
   <section class="section section--band" id="ways-in">
     <div class="container">
       <h2 class="gi-ways__heading">Three ways in</h2>
@@ -71,66 +133,62 @@
     </div>
   </section>
 
-  <!-- 3. WHAT MEMBERSHIP INVOLVES — rail right -->
+  <!-- 3. MEMBERSHIP — intro and types -->
   <section class="section" id="membership">
+    <div class="container measure">
+      <h2>Membership</h2>
+      <p class="lead">Joining the Coalition is how you make your commitment to advancing responsible sand and silicates visible.</p>
+      <p>Your organisation can join as a Voting Member or a Supporter. Voting Members hold a formal role in governance, including the right to vote at the General Meeting. Supporters take part fully in the Coalition's activities and benefits, without the formal governance role.</p>
+    </div>
+  </section>
+
+  <!-- 4. WHAT MEMBERSHIP OPENS -->
+  <section class="section section--band" id="member-benefits">
     <div class="container">
-      <div class="home-layout">
-        <div class="home-content">
-          <div class="measure">
-            <h2>What membership involves</h2>
-            <p>
-              Membership is open to organisations with a clear stake in how sand and silicates are sourced, used or governed. We ask that members support the Coalition's purpose and are willing to contribute constructively to shared work.
-            </p>
-            <p>
-              In practice, that means shared commitments to engagement, good practice and collective problem-solving. The details are set out in the membership agreement.
-            </p>
-            
-            <h3 id="fee-levels">Fee structure</h3>
-            
-            <p class="lead">
-              Aligned with our ways of working, we're co-designing the fee structure with our Founders.
-            </p>
-            
-            <p>
-              Fees will be structured around the size and nature of the organisation, and aligned with the level of claim that comes with being a member of the Coalition. We're working to ensure the approach is fair, transparent and supports the Coalition's long-term sustainability.
-            </p>
-            
-            <p>
-              The fee schedule will be shared once it's been finalised. If you have questions in the meantime, or want to talk through what membership might look like for your organisation, we're happy to have that conversation.
-            </p>
-            
-            <p>
-              <a class="next-cta" href="mailto:louise@responsiblesand.org">Get in touch about membership</a>
-            </p>
-          </div>
+      <h2 class="join-for__heading">What membership opens</h2>
+      <div class="join-for">
+        <div class="join-for__col">
+          <h3>A credible commitment signal</h3>
+          <p>The only commitment signal that exists for these materials, visible to clients, suppliers and regulators, with the right to use the Coalition logo.</p>
         </div>
-        <aside class="home-rail home-rail--square home-rail--ruled" aria-label="Material image">
-          <figure class="home-figure">
-            <img
-              src="assets/get/materials-carbonate-rock.jpg"
-              alt="Close-up of layered carbonate rock showing natural fracture lines."
-              loading="lazy">
-          </figure>
-        </aside>
+        <div class="join-for__col">
+          <h3>The responsibility framework</h3>
+          <p>Access to the only responsibility framework on this topic, to apply the Coalition's position and OECD-aligned approach across sourcing, use and production.</p>
+        </div>
+        <div class="join-for__col">
+          <h3>A seat at the table</h3>
+          <p>A hand in shaping what good looks like across the five materials groupings, from natural aggregates and stone to high-purity materials.</p>
+        </div>
+        <div class="join-for__col">
+          <h3>One knowledge hub</h3>
+          <p>Research, knowledge and practice drawn together from across our network of Founders, Members and partners.</p>
+        </div>
+        <div class="join-for__col">
+          <h3>Projects that close real gaps</h3>
+          <p>From construction sand and aggregates to industrial sands, clays for ceramics and a labelling scheme.</p>
+        </div>
+        <div class="join-for__col">
+          <h3>One platform, one voice</h3>
+          <p>A collective voice that raises awareness of these materials and replaces invisibility with regard.</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- 4. WHAT TO EXPECT 2026-2028 — Split: numbered timeline left, image right -->
+  <!-- 5. WHAT TO EXPECT 2026-2028 -->
   <section class="section" id="what-to-expect">
     <div class="container">
       <div class="home-layout">
         <div class="home-content">
           <div class="measure">
             <h2>2026–2028: What to expect</h2>
-            <p>Membership supports the Coalition's delivery of practical tools and demonstration projects. Over the first three years, members can expect us to:</p>
+            <p>Membership supports the Coalition's delivery of practical guidance, shared knowledge and demonstration projects. Over the coming years, Members can expect us to:</p>
             <ol class="join-timeline">
-              <li><strong>Complete our spin-out process</strong> from The University of Queensland, with legal registration and initial organisational setup completed by May 2026.</li>
-              <li><strong>Define what responsible sand and silicates means in practice</strong>, and turn it into usable guidance. We're running a Sprint process for our Founders from March to May 2026 to lay this foundation stone for Coalition members and clarify what claims can be made by being a member.</li>
-              <li><strong>Host our public launch</strong> at IKEA of Sweden in the week of 1 June, alongside our first formal advisory council meeting.</li>
-              <li><strong>Keep the conversation going at key events</strong> throughout the year. You can find us in person at: <a href="https://sustainable-construction.org/" target="_blank" rel="noopener noreferrer">Sustainable Buildings & Construction Summit</a> 20–22 April (Lausanne, Switzerland), The UQ-ICMM Tailings Innovation Summit 17–20 November (Brisbane, Australia). We'll update as events are confirmed.</li>
-              <li><strong>Consolidate all we're learning</strong> into accessible thought leadership, useful synthesis, and inspiring case material, and share these regularly on our LinkedIn channel.</li>
-              <li><strong>Scope demonstration projects</strong> in live settings, with materials-focused developments to test and adjust supply chain due diligence tools in select supply chains in 2027 and 2028.</li>
+              <li><strong>Build the Coalition as an independent member organisation.</strong> We are establishing governance across the Board of Directors, Advisory Council and Secretariat, and onboarding Founders and Members as the Coalition takes shape.</li>
+              <li><strong>Define what responsible means in practice.</strong> We deliver the first version of the responsible sourcing framework, the normative spine across the five materials groupings, built on the See, Secure, Share architecture and grounded in the OECD Due Diligence Guidance.</li>
+              <li><strong>Develop the materials-specific protocols.</strong> Focused working groups build a shared, evidence-based view of what good looks like for each grouping, from aggregates and industrial sands to natural stone, high-purity materials and alternatives, cross-referenced against existing standards.</li>
+              <li><strong>Take responsible practice into the field.</strong> We move from definition to demonstration, scoping and running pilots so responsible conduct is shown in real supply chains and not only set out on paper.</li>
+              <li><strong>Grow awareness and connect the community.</strong> Sustained outreach, thought leadership and member speaking materials, with the Coalition present at key industry and policy events through the year, including the OreSand Summit and our Advisory Council gathering.</li>
             </ol>
           </div>
         </div>
@@ -146,7 +204,127 @@
     </div>
   </section>
 
-  <!-- 5. CLOSE — turtle image, warm CTA -->
+  <!-- 6. WHAT MEMBERSHIP ASKS, AND WHAT IT ALLOWS -->
+  <section class="section section--band" id="criteria">
+    <div class="container measure">
+      <h2>What membership asks, and what it allows</h2>
+      <p>A Member is publicly committed to advancing the responsible sourcing, use and production of sand and silicates, and to helping build what that takes. Membership is a commitment, not a certification.</p>
+      <h3>To join, an organisation is willing to</h3>
+      <ol class="join-timeline">
+        <li><strong>Agree with our position.</strong> Accept the Coalition's position paper, What we mean when we say responsible sand and silicates, and the Code of Conduct.</li>
+        <li><strong>Pay the annual fee.</strong></li>
+        <li><strong>Take active part.</strong> Participate in Advisory Council meetings, General Meetings or working groups.</li>
+        <li><strong>Make a public commitment.</strong> Advance responsible sourcing, use and production, and report regularly through public channels of the organisation's choice.</li>
+        <li><strong>Reflect each year.</strong> Take part in at least one evaluative conversation a year with the Secretariat.</li>
+      </ol>
+      <h3>Members and Supporters may</h3>
+      <ul class="rights-list">
+        <li>State publicly that they are members of the Coalition for Responsible Sand and Silicates.</li>
+        <li>Report publicly on activities relating to their membership.</li>
+        <li>Use the Coalition name and logo in external communications, subject to the Coalition brand guidelines.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 7. FEE STRUCTURE (summary) -->
+  <section class="section" id="fees">
+    <div class="container measure">
+      <h2>Fee structure</h2>
+      <p>The Coalition is multistakeholder by design. Civil society, research and industry sit together and the seats carry equal weight. Fees are tiered to reflect the size and type of organisation, and public-good actors may be fee-free.</p>
+      <div class="fee-summary">
+        <div class="fee-row">
+          <div class="fee-row__who">Civil society and NGOs<span>By operating budget</span></div>
+          <div class="fee-row__amount">AUD 0 to 2,400</div>
+        </div>
+        <div class="fee-row">
+          <div class="fee-row__who">Research and academia<span>By operating budget</span></div>
+          <div class="fee-row__amount">AUD 0 to 2,400</div>
+        </div>
+        <div class="fee-row">
+          <div class="fee-row__who">Government and intergovernmental<span>National to multilateral</span></div>
+          <div class="fee-row__amount">AUD 0 to 8,000</div>
+        </div>
+        <div class="fee-row">
+          <div class="fee-row__who">Industry<span>Upstream, midstream and downstream, by turnover</span></div>
+          <div class="fee-row__amount">AUD 4,000 to 60,000</div>
+        </div>
+        <div class="fee-row">
+          <div class="fee-row__who">Subscriber<span>A non-member way in</span></div>
+          <div class="fee-row__amount">AUD 4,000</div>
+        </div>
+      </div>
+      <p class="fee-note">The full fee schedule is set out in the member prospectus. Fees are set by the Board of Directors with advice from the Advisory Council, and flexible payment is possible by instalments, half-yearly or quarterly.</p>
+    </div>
+  </section>
+
+  <!-- 8. FOUNDER -->
+  <section class="section section--band" id="founder">
+    <div class="container measure">
+      <div class="founder-callout">
+        <p class="founder-callout__label">Join in 2026</p>
+        <h3>Become a Founder</h3>
+        <p>Organisations that join during 2026 are registered as Founders, with a permanent seat at the Advisory Council and a direct hand in the Coalition's priorities.</p>
+        <p>Founders take first choice of the early demonstration projects and a say in scoping them, with recognition as a Founder and a credible claim to early action and leadership on responsible sand and silicates.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. HOW TO JOIN -->
+  <section class="section" id="how-to-join">
+    <div class="container measure">
+      <h2>How to join</h2>
+      <p>Membership is a commitment, not a transaction. What we look for is acceptance of the direction, not proof of current performance. The steps take you from first contact to an active part in the work.</p>
+      <ol class="join-timeline">
+        <li><strong>First contact and pack shared.</strong> You reach out, or we approach you, and we send the membership pack: the position paper and its declaration, the application form and the fee guide.</li>
+        <li><strong>The filter.</strong> The position paper sets out the directional commitments and says plainly who the Coalition is not for. You read it and signal that you accept the direction. A first call with the Secretariat gives both sides a sense of fit.</li>
+        <li><strong>Application.</strong> You complete the application form: preferred status, the details we need to invoice, organisation type and fee tier or a case for a reduced or zero fee, and the in-kind contributions you could make.</li>
+        <li><strong>Onboarding conversation.</strong> A short call, including at least one Founder, confirms status, agrees the fee and maps your engagement over the next 6 to 12 months.</li>
+        <li><strong>Decisions, agreements and invoice.</strong> Once alignment with the direction is clear, membership is approved. You accept the Code of Conduct and the data-sharing policy, and we raise the invoice.</li>
+        <li><strong>Welcome and integration.</strong> We welcome you into the community, introduce the member offering and connect you to the projects you chose, with an early check-in to confirm you are contributing.</li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- 10. READ AND APPLY -->
+  <section class="section section--band" id="documents">
+    <div class="container">
+      <h2>Read and apply</h2>
+      <p class="measure">Read the prospectus to understand what you are committing to, then download the application form, complete it and send it to <a href="mailto:membership@responsiblesand.org">membership@responsiblesand.org</a>.</p>
+      <div class="doc-grid">
+        <div class="doc-card">
+          <a class="doc-card__cover"
+             href="assets/documents/coalition-member-prospectus-2026.pdf"
+             target="_blank" rel="noopener noreferrer" aria-label="Open the member prospectus">
+            <span class="doc-card__crop">
+              <img src="assets/documents/covers/coalition-member-prospectus-2026.webp" alt="" onerror="this.remove()">
+            </span>
+          </a>
+          <p class="doc-card__kicker">Prospectus · PDF</p>
+          <p class="doc-card__title">Member prospectus 2026</p>
+          <p class="doc-card__desc">Who we are, what membership opens, the fee schedule and how to join.</p>
+          <a class="doc-card__link doc-card__link--down"
+             href="assets/documents/coalition-member-prospectus-2026.pdf" download>Download</a>
+        </div>
+        <div class="doc-card">
+          <a class="doc-card__cover"
+             href="assets/documents/coalition-membership-application.pdf"
+             aria-label="Download the application form">
+            <span class="doc-card__crop">
+              <img src="assets/documents/covers/coalition-membership-application.webp" alt="" onerror="this.remove()">
+            </span>
+          </a>
+          <p class="doc-card__kicker">Application · PDF</p>
+          <p class="doc-card__title">Application form</p>
+          <p class="doc-card__desc">An editable form. Complete it and send it to membership@responsiblesand.org.</p>
+          <a class="doc-card__link doc-card__link--down"
+             href="assets/documents/coalition-membership-application.pdf" download>Download</a>
+        </div>
+      </div>
+      <p class="measure gi-talk-first">Not ready to apply? The best way to find the right option for your organisation is a conversation. Contact the Secretariat at <a href="mailto:membership@responsiblesand.org">membership@responsiblesand.org</a> to arrange a call.</p>
+    </div>
+  </section>
+
+  <!-- 11. CLOSE -->
   <section class="section" id="contact">
     <div class="container">
       <div class="cta-centered">
@@ -155,45 +333,45 @@
           Whether you're thinking about membership, a project or something else entirely, get in touch and we'll work out the best way forward together.
         </p>
         <div class="cta-centered__buttons">
-          <a class="btn" href="mailto:louise@responsiblesand.org">louise@responsiblesand.org</a>
+          <a class="btn" href="mailto:membership@responsiblesand.org">membership@responsiblesand.org</a>
         </div>
-        
+
         <!-- Email signup section — Infomaniak newsletter -->
         <div class="email-signup">
           <h3>Get detailed progress updates</h3>
           <p>
             Receive the same in-depth updates our Founders and close partners get. More detailed than what we share on LinkedIn.
           </p>
-          
+
           <form method="post" action="https://newsletter.infomaniak.com/v3/api/1/newsletters/webforms/24288/submit" class="email-signup__form inf-form">
             <input type="email" name="email" style="display:none">
             <input type="hidden" name="key" value="eyJpdiI6IkxOaDgwNmlUNUVESUZVTUxoWlBmNVZnVkk2WEVBN1pZeEhkRUUyUWFmZW89IiwibWFjIjoiNDA4MGJhMjRjYmNjZGU3ZmZmNjdmMTM2MjQzNzA4ZTZmNTNhM2I3MGRhMTZjOTM4YmVkZWY3ZmE1ODI5MzY5YiIsInZhbHVlIjoidlJtR1BkNmJ6b282c0dBU0toNlU4NFJ4UFgwdURnNnFDelRLUDJYZGlwMD0ifQ==">
             <input type="hidden" name="webform_id" value="24288">
-            
+
             <div class="email-signup__input-group">
-              <input 
-                type="email" 
-                name="inf[1]" 
-                data-inf-meta="1" 
-                data-inf-error="" 
-                required="required" 
-                placeholder="Enter your email address" 
+              <input
+                type="email"
+                name="inf[1]"
+                data-inf-meta="1"
+                data-inf-error=""
+                required="required"
+                placeholder="Enter your email address"
                 class="email-signup__input"
                 aria-label="Email address">
               <button type="submit" class="btn">Subscribe</button>
             </div>
-            
+
             <script src="https://newsletter.infomaniak.com/v3/static/mcaptcha/altcha.min.js?v=1778479200" type="module"></script>
             <altcha-widget hidelogo hidefooter floating challengeurl="https://newsletter.infomaniak.com/v3/altcha-challenge"></altcha-widget>
             <script src="https://newsletter.infomaniak.com/v3/static/mcaptcha/altcha-index.js?v=1778479200" defer></script>
             <script src="https://newsletter.infomaniak.com/v3/static/webform_index.js?v=1778479200"></script>
-            
+
             <p class="email-signup__privacy">
               Your email address is only used to send you our newsletter and information about our activities. You can unsubscribe at any time.
             </p>
           </form>
         </div>
-        
+
         <figure class="cta-centered__image">
           <div class="cta-centered__image__crop">
             <img
@@ -215,7 +393,8 @@
           <a href="index.html">Home</a> ·
           <a href="about.html">About</a> ·
           <a href="why-join.html">Why join</a> ·
-          <a href="get-involved.html">Get involved</a>
+          <a href="get-involved.html">Get involved</a> ·
+          <a href="portal.html">Members</a>
         </div>
 
         <p class="footer-follow">
