@@ -1983,3 +1983,132 @@ footer a:hover {
     gap: 2rem;
   }
 }
+/* =========================
+   DOCUMENT CARDS (site-wide)
+   Framed document cover + caption, reusing the site's orange L-frame.
+   The cover image is optional: until a thumbnail exists, each cover
+   degrades to a navy panel carrying the Coalition mark.
+
+   Markup:
+     <div class="doc-card">                    (add doc-card--wide for slide decks)
+       <a class="doc-card__cover" href="FILE" target="_blank" rel="noopener noreferrer">
+         <span class="doc-card__crop">
+           <img src="COVER.png" alt="" onerror="this.remove()">
+         </span>
+       </a>
+       <p class="doc-card__kicker">PDF · 2 pages</p>
+       <p class="doc-card__title">Document title</p>
+       <p class="doc-card__desc">One line about it.</p>
+       <a class="doc-card__link" href="FILE" target="_blank" rel="noopener noreferrer">Open</a>
+     </div>
+
+   Use doc-card__link--down and label "Download" for files meant to be saved.
+   Wrap one or more cards in <div class="doc-grid"> ... </div>.
+   ========================= */
+
+.doc-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 250px));
+  justify-content: start;
+  gap: clamp(24px, 3vw, 44px);
+  margin-top: 0.5rem;
+}
+
+.doc-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.doc-card__cover {
+  position: relative;
+  display: block;
+  margin: 0 0 0.9rem 0;
+  border: 1px solid rgba(1, 30, 45, 0.12);
+  text-decoration: none;
+}
+
+/* orange L-frame, matching rail and CTA imagery */
+.doc-card__cover::before,
+.doc-card__cover::after {
+  content: "";
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  background: var(--sand-orange);
+  pointer-events: none;
+  z-index: 2;
+}
+.doc-card__cover::before { height: var(--rule-thickness); width: 62%; }
+.doc-card__cover::after  { width: var(--rule-thickness); height: 46%; }
+
+/* Cover area. Navy + Coalition mark shows until a thumbnail is dropped in. */
+.doc-card__crop {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  aspect-ratio: 3 / 4;
+  background: var(--deep-navy) url("assets/logos/sandcastle-logo-orange.svg") center / 60px auto no-repeat;
+}
+
+.doc-card--wide .doc-card__crop { aspect-ratio: 16 / 10; }
+
+.doc-card__crop img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+  transition: transform 0.4s ease;
+}
+.doc-card__cover:hover .doc-card__crop img { transform: scale(1.03); }
+
+.doc-card__kicker {
+  font-family: "Barlow Condensed", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.72rem;
+  color: var(--sand-orange);
+  margin: 0 0 0.35rem 0;
+}
+
+.doc-card__title {
+  font-family: "Barlow Condensed", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.015em;
+  font-size: clamp(1.15rem, 1.5vw, 1.35rem);
+  line-height: 1.2;
+  color: var(--deep-navy);
+  margin: 0 0 0.4rem 0;
+}
+
+.doc-card__desc {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: rgba(1, 30, 45, 0.72);
+  max-width: none;
+  margin: 0 0 0.9rem 0;
+}
+
+.doc-card__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: auto;
+  font-family: "Barlow Condensed", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  color: var(--deep-navy);
+  text-decoration: none;
+}
+.doc-card__link::after { content: "\2197"; font-size: 1.05em; line-height: 1; }
+.doc-card__link--down::after { content: "\2193"; }
+.doc-card__link:hover { color: var(--sand-orange); text-decoration: underline; }
+
+@media (max-width: 600px) {
+  .doc-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
+}
