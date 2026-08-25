@@ -350,13 +350,13 @@ section:not(.hero) {
 
 .image-quote {
   display: grid;
-  grid-template-columns: minmax(0, 520px) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 420px) minmax(0, 1fr);
   gap: clamp(32px, 5vw, 72px);
   align-items: center;
 }
 
 .image-quote__image {
-  max-width: 520px;
+  max-width: 420px;
 }
 
 .image-quote__text {
@@ -385,7 +385,7 @@ section:not(.hero) {
 }
 
 .cta-split__image {
-  max-width: 520px;
+  max-width: 420px;
   justify-self: end;
 }
 
@@ -519,7 +519,7 @@ section:not(.hero) {
 }
 
 /* ========================= 
-   Home Hero — Full-width image with lockup
+   Home Hero: full-width image with lockup
    ========================= */
 
 .hero {
@@ -540,7 +540,7 @@ section:not(.hero) {
   width: 100%;
   display: block;
   object-fit: cover;
-  height: clamp(480px, 64vh, 745px);
+  height: clamp(380px, 52vh, 600px);
 }
 
 .hero-full > .container {
@@ -578,7 +578,7 @@ section:not(.hero) {
 }
 
 .hero-full .hero-mark img {
-  height: clamp(68px, 7.5vw, 105px);
+  height: clamp(58px, 6.3vw, 88px);
   width: auto;
   display: block;
 }
@@ -619,7 +619,7 @@ section:not(.hero) {
 
 @media (max-width: 900px) {
   .hero-full__photo {
-    height: clamp(300px, 55vw, 440px);
+    height: clamp(260px, 46vw, 360px);
   }
 
   .hero-full {
@@ -636,7 +636,7 @@ section:not(.hero) {
   }
 
   .hero-full .hero-mark img {
-    height: clamp(44px, 9vw, 60px);
+    height: clamp(38px, 7.7vw, 52px);
   }
 
   .hero-full .hero-org {
@@ -979,7 +979,7 @@ footer a:hover {
 }
 
 /* ========================= 
-   Video Section — Launch recording
+   Video Section: launch recording
    ========================= */
 
 .video-section__inner {
@@ -1180,7 +1180,7 @@ footer a:hover {
   display: block;
 }
 
-/* Individual logo size adjustments — desktop
+/* Individual logo size adjustments, desktop
    Sized for optical balance rather than uniform height.
    Solid saturated marks (Gilbane, IKEA, MCS, PACT) sit lower
    than line-art marks, and wide wordmarks (Cary) sit lower
