@@ -3,6 +3,7 @@
    Revised August 2026: type scale only.
 
    Changed in this revision:
+   - Founder logo heights retuned for optical balance
    - Body 17px/1.65 to 16px/1.55
    - Measure 80ch to 68ch
    - Page titles, section headings and component headings
@@ -1179,16 +1180,21 @@ footer a:hover {
   display: block;
 }
 
-/* Individual logo size adjustments — desktop */
-.founder-logo--uq        { height: 72px; }
-.founder-logo--ikea       { height: 58px; }
-.founder-logo--roca       { height: 48px; }
-.founder-logo--mcs        { height: 58px; }
+/* Individual logo size adjustments — desktop
+   Sized for optical balance rather than uniform height.
+   Solid saturated marks (Gilbane, IKEA, MCS, PACT) sit lower
+   than line-art marks, and wide wordmarks (Cary) sit lower
+   than tall stacked ones, because both read larger at the
+   same height. */
+.founder-logo--uq        { height: 58px; }
+.founder-logo--ikea       { height: 46px; }
+.founder-logo--roca       { height: 54px; }
+.founder-logo--mcs        { height: 48px; }
 .founder-logo--wwf        { height: 78px; }
-.founder-logo--pact       { height: 72px; }
+.founder-logo--pact       { height: 62px; }
 .founder-logo--sra        { height: 72px; }
-.founder-logo--cary       { height: 38px; }
-.founder-logo--gilbane    { height: 48px; }
+.founder-logo--cary       { height: 32px; }
+.founder-logo--gilbane    { height: 34px; }
 .founder-logo--agera      { height: 52px; }
 .founder-logo--gracefarms { height: 78px; }
 
@@ -1201,15 +1207,15 @@ footer a:hover {
     height: 52px;
   }
 
-  .founder-logo--uq        { height: 52px; }
-  .founder-logo--ikea       { height: 42px; }
-  .founder-logo--roca       { height: 38px; }
-  .founder-logo--mcs        { height: 44px; }
+  .founder-logo--uq        { height: 42px; }
+  .founder-logo--ikea       { height: 33px; }
+  .founder-logo--roca       { height: 43px; }
+  .founder-logo--mcs        { height: 36px; }
   .founder-logo--wwf        { height: 54px; }
-  .founder-logo--pact       { height: 52px; }
+  .founder-logo--pact       { height: 45px; }
   .founder-logo--sra        { height: 52px; }
-  .founder-logo--cary       { height: 32px; }
-  .founder-logo--gilbane    { height: 30px; }
+  .founder-logo--cary       { height: 27px; }
+  .founder-logo--gilbane    { height: 21px; }
   .founder-logo--agera      { height: 42px; }
   .founder-logo--gracefarms {
     height: 48px;
