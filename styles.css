@@ -221,6 +221,16 @@ a:hover {
   max-width: none;
 }
 
+/* Stacked route blocks on Get involved.
+   Separated by space rather than by a rule. */
+.ways__item + .ways__item {
+  margin-top: clamp(40px, 6vh, 76px);
+}
+
+.ways__item h3 {
+  margin-top: 0;
+}
+
 .measure h3 {
   font-size: 1.2rem;
   line-height: 1.2;
@@ -1003,10 +1013,20 @@ footer a:hover {
 .video-section__inner {
   background: var(--deep-navy);
   color: #ffffff;
-  padding: clamp(1.25rem, 2.4vw, 1.8rem) clamp(1.25rem, 2.4vw, 2rem);
-  max-width: 560px;
-  margin-left: auto;
-  margin-right: auto;
+  padding: clamp(1rem, 1.8vw, 1.4rem) clamp(1rem, 1.8vw, 1.4rem);
+  margin-top: clamp(28px, 4vw, 44px);
+}
+
+.video-section__inner .video-section__title {
+  margin-bottom: 0.9rem;
+}
+
+.video-section__detail--last {
+  margin-bottom: 0;
+}
+
+.video-section__detail a {
+  color: var(--sand-orange);
 }
 
 .video-section__label {
@@ -1027,11 +1047,11 @@ footer a:hover {
 }
 
 .video-section__detail {
-  font-size: 0.875rem;
+  font-size: 0.8125rem;
   line-height: 1.5;
   color: rgba(255, 255, 255, 0.72);
-  margin: 0 0 1.5rem 0;
-  max-width: 60ch;
+  margin: 0.9rem 0 0 0;
+  max-width: none;
 }
 
 .video-section__embed {
