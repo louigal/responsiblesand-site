@@ -1012,6 +1012,7 @@ footer a:hover {
 
 .video-section__inner {
   margin-top: clamp(28px, 4vw, 44px);
+  max-width: 88%;
 }
 
 .video-section__inner .video-section__title {
