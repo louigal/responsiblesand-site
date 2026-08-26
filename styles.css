@@ -2235,7 +2235,8 @@ section.join-hero {
    at the top is the same device the print routes use.
    ========================= */
 .callout {
-  background: #FBF0E9;                    /* Amber 100 */
+  background: rgba(255, 255, 255, 0.32);
+  border: 1px solid rgba(1, 30, 45, 0.12);
   border-top: 2px solid var(--sand-orange);
   padding: clamp(18px, 2.2vw, 26px);
   align-self: start;
@@ -2287,4 +2288,30 @@ section.join-hero {
   .callout {
     margin-top: clamp(24px, 4vw, 36px);
   }
+}
+
+/* =========================
+   Key moments
+   A centred subsection sitting below a two-column pair, wider
+   than the reading column so it reads as a break in the page
+   rather than as a continuation of the left-hand text.
+   ========================= */
+.key-moments {
+  max-width: 820px;
+  margin: clamp(48px, 6vw, 84px) auto 0;
+}
+
+.key-moments h3 {
+  margin-top: 0;
+  margin-bottom: 1.1rem;
+  font-size: 1.2rem;
+  line-height: 1.2;
+}
+
+.key-moments .timeline {
+  max-width: none;
+}
+
+.key-moments .home-cta {
+  margin-top: clamp(24px, 3vw, 36px);
 }
