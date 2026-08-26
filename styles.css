@@ -19,11 +19,77 @@
    Brand Variables / Tokens 
    ========================= */
 
+/* =========================
+   Fonts
+   Self-hosted, Latin subset, woff2 only.
+   Not base64 embedded: that is right for the print render
+   pipeline and wrong here, where it bloats the stylesheet
+   and defeats caching.
+   ========================= */
+@font-face {
+  font-family: "Barlow";
+  src: url("assets/fonts/barlow-latin-400.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Barlow";
+  src: url("assets/fonts/barlow-latin-400-italic.woff2") format("woff2");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Barlow";
+  src: url("assets/fonts/barlow-latin-600.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Barlow Condensed";
+  src: url("assets/fonts/barlow-condensed-latin-700.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
-  /* Brand colors */
-  --sand-orange: #c65b1a;
-  --deep-navy: #011e2d;
-  --off-white: #f2f4f4;
+  /* Obsidian: structure and text */
+  --obsidian-100: #DDE2E2;
+  --obsidian-200: #B0BBBD;
+  --obsidian-400: #7A8489;
+  --obsidian-500: #5F6F76;
+  --obsidian-600: #495358;
+  --obsidian-800: #2C3B43;
+  --obsidian-900: #011E2D;
+
+  /* Amber: emphasis */
+  --amber-100: #FBF0E9;
+  --amber-200: #EB8242;
+  --amber-500: #C65B1A;
+  --amber-700: #B95011;
+  --amber-900: #8B3B0A;
+
+  /* Zircon: material */
+  --zircon-100: #EDB06B;
+  --zircon-200: #DAA05C;
+  --zircon-300: #B87941;
+  --zircon-700: #69461F;
+
+  /* Feldspar: the softer warm, and the dividers */
+  --feldspar-100: #E0A8A1;
+  --feldspar-200: #C79893;
+  --feldspar-300: #AE807C;
+  --feldspar-700: #715854;
+
+  /* Grounds */
+  --flint: #F2F4F4;
+  --kaolin: #E9E0B8;
   
   /* Layout */
   --max-width: 1100px;
@@ -55,7 +121,7 @@
   --rail-width: 320px;
   
   /* Buttons */
-  --btn-border: rgba(1, 30, 45, 0.35);
+  --btn-border: var(--obsidian-100);
   --btn-bg: rgba(255, 255, 255, 0.35);
   --btn-bg-hover: rgba(255, 255, 255, 0.55);
 }
@@ -77,27 +143,17 @@ html {
 body {
   margin: 0;
   font-family: "Barlow", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  color: var(--deep-navy);
+  color: var(--obsidian-800);
   line-height: 1.55;
   font-size: var(--base-font-size);
-  background-color: var(--deep-navy);
+  background-color: var(--obsidian-900);
   background-image: url("assets/page-texture.svg");
   background-repeat: repeat;
   background-position: center;
   background-size: cover;
   background-attachment: fixed;
-  animation: fadeIn 0.4s ease-in;
   min-height: 100vh;
   overflow-x: hidden;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
 }
 
 @media (max-width: 900px) {
@@ -122,6 +178,7 @@ h3,
 h4 {
   font-family: "Barlow Condensed", system-ui, -apple-system, "Segoe UI", sans-serif;
   font-weight: 700;
+  color: var(--obsidian-900);
   letter-spacing: 0;
   margin-top: 1.35rem;
   margin-bottom: 0.65rem;
@@ -141,20 +198,31 @@ p {
   max-width: var(--measure);
 }
 
-strong {
-  font-weight: 700;
-  color: var(--deep-navy);
+/* Barlow 700 is not among the self-hosted weights, so bold body
+   text takes 600. Without this the browser synthesises a fake
+   bold, which is heavier and cruder than the real 600. */
+strong,
+b {
+  font-weight: 600;
+  color: var(--obsidian-900);
   letter-spacing: 0.01em;
 }
 
 a {
-  color: var(--sand-orange);
-  text-decoration: none;
-  transition: color 0.15s ease, opacity 0.15s ease;
+  color: var(--amber-700);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+  transition: color 0.15s ease;
 }
 
 a:hover {
-  text-decoration: underline;
+  color: var(--amber-500);
+}
+
+:where(a, button, input, select, textarea, [tabindex]):focus-visible {
+  outline: 2px solid var(--amber-500);
+  outline-offset: 2px;
 }
 
 /* Lead paragraph / standfirst */
@@ -177,7 +245,7 @@ a:hover {
   font-family: "Barlow", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   font-style: italic;
   font-weight: 400;
-  color: rgba(1, 30, 45, 0.75);
+  color: var(--obsidian-600);
   font-size: clamp(1.4rem, 2.2vw, 1.9rem);
   line-height: 1.35;
   max-width: none;
@@ -189,7 +257,7 @@ a:hover {
   font-style: normal;
   font-family: "Barlow Condensed", system-ui, -apple-system, "Segoe UI", sans-serif;
   font-weight: 700;
-  color: var(--sand-orange);
+  color: var(--amber-500);
   font-size: 2.6rem;
   line-height: 0.75;
   margin-bottom: 0.5rem;
@@ -234,7 +302,7 @@ a:hover {
 .measure h3 {
   font-size: 1.2rem;
   line-height: 1.2;
-  color: var(--deep-navy);
+  color: var(--obsidian-900);
   margin-top: 2rem;
   margin-bottom: 0.75rem;
   font-weight: 700;
@@ -270,7 +338,7 @@ section:not(.hero):not(.page-hero):not(.gi-hero):not(.join-hero) {
 }
 
 .intro {
-  border-top: 1px solid rgba(1, 30, 45, 0.12);
+  border-top: 1px solid var(--obsidian-100);
 }
 
 /* ========================= 
@@ -433,17 +501,13 @@ section:not(.hero):not(.page-hero):not(.gi-hero):not(.join-hero) {
 
 .home-figure {
   margin: 0;
+  overflow: hidden;
 }
 
 .home-rail img {
   width: 100%;
   height: auto;
   display: block;
-  transition: transform 0.3s ease;
-}
-
-.home-rail:hover img {
-  transform: scale(1.02);
 }
 
 .home-rail--square img {
@@ -472,7 +536,7 @@ section:not(.hero):not(.page-hero):not(.gi-hero):not(.join-hero) {
   top: 0;
   left: 0;
   pointer-events: none;
-  background: var(--sand-orange);
+  background: var(--amber-500);
 }
 
 .home-rail--ruled:not(.hero-statement)::before {
@@ -518,7 +582,7 @@ section:not(.hero):not(.page-hero):not(.gi-hero):not(.join-hero) {
   bottom: 0;
   height: var(--rule-thickness);
   width: var(--rule-length);
-  background: var(--sand-orange);
+  background: var(--amber-500);
 }
 
 .site-nav {
@@ -530,7 +594,7 @@ section:not(.hero):not(.page-hero):not(.gi-hero):not(.join-hero) {
 }
 
 .site-nav a {
-  color: var(--deep-navy);
+  color: var(--obsidian-900);
   opacity: 1;
   padding: 6px 0;
 }
@@ -601,8 +665,7 @@ section:not(.hero):not(.page-hero):not(.gi-hero):not(.join-hero) {
   top: 6%;
   height: 88%;
   width: 3px;
-  background: var(--sand-orange);
-  border-radius: 2px;
+  background: var(--amber-500);
 }
 
 .hero-full .hero-mark img {
@@ -619,9 +682,9 @@ section:not(.hero):not(.page-hero):not(.gi-hero):not(.join-hero) {
   font-family: "Barlow Condensed", system-ui, -apple-system, "Segoe UI", sans-serif;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.14em;
   font-size: clamp(22px, 2.7vw, 33px);
-  color: var(--sand-orange);
+  color: var(--amber-500);
 }
 
 .hero-full .hero-name {
@@ -630,8 +693,8 @@ section:not(.hero):not(.page-hero):not(.gi-hero):not(.join-hero) {
   text-transform: uppercase;
   letter-spacing: 0.085em;
   font-size: clamp(2.4rem, 4.2vw, 3.5rem);
-  color: var(--deep-navy);
-  margin-top: 6px;
+  color: var(--obsidian-900);
+  margin: 6px 0 0;
   line-height: 0.92;
 }
 
@@ -723,7 +786,7 @@ section:not(.hero):not(.page-hero):not(.gi-hero):not(.join-hero) {
   min-height: 40px;
   border: 1px solid var(--btn-border);
   background: var(--btn-bg);
-  color: var(--deep-navy);
+  color: var(--obsidian-900);
   text-decoration: none;
   font-family: "Barlow Condensed", system-ui, -apple-system, "Segoe UI", sans-serif;
   font-weight: 700;
@@ -737,12 +800,10 @@ section:not(.hero):not(.page-hero):not(.gi-hero):not(.join-hero) {
 .btn:hover {
   background: var(--btn-bg-hover);
   text-decoration: none;
-  transform: translateY(-1px);
-  box-shadow: 0 2px 8px rgba(1, 30, 45, 0.15);
 }
 
 .btn:focus-visible {
-  outline: 2px solid var(--sand-orange);
+  outline: 2px solid var(--amber-500);
   outline-offset: 2px;
 }
 
@@ -758,7 +819,7 @@ section:not(.hero):not(.page-hero):not(.gi-hero):not(.join-hero) {
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--deep-navy);
+  color: var(--obsidian-900);
   text-decoration: none;
   font-size: 0.85rem;
   padding: 10px 0;
@@ -793,14 +854,11 @@ section:not(.hero):not(.page-hero):not(.gi-hero):not(.join-hero) {
 
 .card {
   background: rgba(255, 255, 255, 0.32);
-  border: 1px solid rgba(1, 30, 45, 0.12);
+  border: 1px solid var(--obsidian-100);
   padding: 1.1rem 1.1rem;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(1, 30, 45, 0.1);
 }
 
 .card h3 {
@@ -815,7 +873,7 @@ section:not(.hero):not(.page-hero):not(.gi-hero):not(.join-hero) {
   padding: 0;
   list-style: none;
   max-width: var(--measure);
-  border-left: 2px solid rgba(198, 91, 26, 0.35);
+  border-left: 2px solid var(--feldspar-300);
   padding-left: 1rem;
 }
 
@@ -830,7 +888,7 @@ section:not(.hero):not(.page-hero):not(.gi-hero):not(.join-hero) {
 .table-wrap {
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
-  border: 1px solid rgba(1, 30, 45, 0.12);
+  border: 1px solid var(--obsidian-100);
   background: rgba(255, 255, 255, 0.28);
 }
 
@@ -844,7 +902,7 @@ section:not(.hero):not(.page-hero):not(.gi-hero):not(.join-hero) {
 .fees-table td {
   text-align: left;
   padding: 12px 12px;
-  border-bottom: 1px solid rgba(1, 30, 45, 0.10);
+  border-bottom: 1px solid var(--obsidian-100);
   vertical-align: top;
 }
 
@@ -858,9 +916,8 @@ section:not(.hero):not(.page-hero):not(.gi-hero):not(.join-hero) {
 .gi-table-wrap {
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
-  border: 1px solid rgba(1, 30, 45, 0.12);
+  border: 1px solid var(--obsidian-100);
   background: rgba(255, 255, 255, 0.28);
-  border-radius: 2px;
 }
 
 .gi-fees-table {
@@ -873,7 +930,7 @@ section:not(.hero):not(.page-hero):not(.gi-hero):not(.join-hero) {
 .gi-fees-table td {
   text-align: left;
   padding: 14px 16px;
-  border-bottom: 1px solid rgba(1, 30, 45, 0.10);
+  border-bottom: 1px solid var(--obsidian-100);
   vertical-align: top;
 }
 
@@ -883,14 +940,14 @@ section:not(.hero):not(.page-hero):not(.gi-hero):not(.join-hero) {
   text-transform: uppercase;
   font-weight: 700;
   font-size: 0.95rem;
-  background: rgba(1, 30, 45, 0.06);
-  color: var(--deep-navy);
+  background: var(--obsidian-100);
+  color: var(--obsidian-900);
   border-bottom-width: 2px;
 }
 
 .gi-fees-table td {
   font-size: 0.95rem;
-  color: rgba(1, 30, 45, 0.80);
+  color: var(--obsidian-800);
 }
 
 .gi-fees-table tbody tr:last-child td {
@@ -900,7 +957,7 @@ section:not(.hero):not(.page-hero):not(.gi-hero):not(.join-hero) {
 .gi-fees-note {
   margin-top: 1rem;
   font-size: 0.8125rem;
-  color: rgba(1, 30, 45, 0.55);
+  color: var(--obsidian-500);
   max-width: 52ch;
 }
 
@@ -912,7 +969,7 @@ footer {
   position: relative;
   padding: 2.5rem 0;
   background: var(--surface-veil);
-  color: var(--deep-navy);
+  color: var(--obsidian-900);
 }
 
 footer::before {
@@ -922,7 +979,7 @@ footer::before {
   top: 0;
   height: var(--rule-thickness);
   width: var(--rule-length);
-  background: var(--sand-orange);
+  background: var(--amber-500);
 }
 
 .footer-row {
@@ -934,7 +991,7 @@ footer::before {
 
 .footer-links a,
 footer a {
-  color: var(--deep-navy);
+  color: var(--obsidian-900);
   opacity: 0.9;
   text-decoration: none;
 }
@@ -953,7 +1010,7 @@ footer a:hover {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  color: var(--deep-navy);
+  color: var(--obsidian-900);
   opacity: 0.95;
   text-decoration: none;
 }
@@ -1024,7 +1081,7 @@ footer a:hover {
 }
 
 .video-section__detail a {
-  color: var(--sand-orange);
+  color: var(--amber-700);
 }
 
 .video-section__label {
@@ -1033,7 +1090,7 @@ footer a:hover {
   text-transform: uppercase;
   letter-spacing: 0.12em;
   font-size: 0.75rem;
-  color: var(--sand-orange);
+  color: var(--amber-500);
   margin: 0 0 0.5rem 0;
 }
 
@@ -1041,13 +1098,13 @@ footer a:hover {
   font-size: clamp(1.05rem, 1.6vw, 1.25rem);
   line-height: 1.25;
   margin: 0 0 0.7rem 0;
-  color: var(--deep-navy);
+  color: var(--obsidian-900);
 }
 
 .video-section__detail {
   font-size: 0.8125rem;
   line-height: 1.5;
-  color: rgba(1, 30, 45, 0.65);
+  color: var(--obsidian-500);
   margin: 0.9rem 0 0 0;
   max-width: none;
 }
@@ -1072,6 +1129,10 @@ footer a:hover {
    ========================= */
 
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
   * {
     animation: none !important;
     transition: none !important;
@@ -1099,14 +1160,14 @@ section.page-hero {
   font-weight: 700;
   letter-spacing: 0;
   margin: clamp(20px, 3vh, 32px) 0 clamp(24px, 4vh, 40px) 0;
-  color: var(--deep-navy);
+  color: var(--obsidian-900);
 }
 
 .page-hero__statement {
   font-size: clamp(1.1rem, 1.35vw, 1.3rem);
   line-height: 1.5;
   font-weight: 400;
-  color: rgba(1, 30, 45, 0.80);
+  color: var(--obsidian-800);
   max-width: 42em;
   margin: 0 auto;
 }
@@ -1144,20 +1205,19 @@ section.page-hero {
   margin-top: 2.5rem;
   padding: 2rem;
   background: rgba(242, 244, 244, 0.5);
-  border-left: 4px solid var(--sand-orange);
-  border-radius: 4px;
+  border-left: 4px solid var(--amber-500);
 }
 
 .theory-callout h3 {
   margin: 0 0 0.5rem 0;
   font-size: 1.3rem;
   line-height: 1.2;
-  color: var(--deep-navy);
+  color: var(--obsidian-900);
 }
 
 .theory-callout p {
   margin: 0 0 1.25rem 0;
-  color: var(--deep-navy);
+  color: var(--obsidian-900);
 }
 
 .theory-callout__links {
@@ -1168,7 +1228,7 @@ section.page-hero {
 }
 
 .theory-callout__coming-soon {
-  color: rgba(1, 30, 45, 0.5);
+  color: var(--obsidian-500);
   font-size: 0.8125rem;
   font-style: italic;
 }
@@ -1285,8 +1345,8 @@ section.page-hero {
   height: 160px;
   margin: 0 auto 1rem;
   overflow: visible;
-  background: #ffffff;
-  border: 1px solid rgba(1, 30, 45, 0.12);
+  background: var(--flint);
+  border: 1px solid var(--obsidian-100);
   position: relative;
 }
 
@@ -1297,7 +1357,7 @@ section.page-hero {
   top: -4px;
   left: -4px;
   pointer-events: none;
-  background: var(--sand-orange);
+  background: var(--amber-500);
 }
 
 .team-card__photo::before {
@@ -1322,7 +1382,7 @@ section.page-hero {
   font-size: clamp(1.05rem, 1.3vw, 1.2rem);
   font-weight: 700;
   margin: 0 0 0.35rem 0;
-  color: var(--deep-navy);
+  color: var(--obsidian-900);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1347,7 +1407,7 @@ section.page-hero {
 
 .team-card__role {
   font-size: 0.875rem;
-  color: rgba(1, 30, 45, 0.70);
+  color: var(--obsidian-600);
   margin: 0 0 0.5rem 0;
   font-weight: 400;
 }
@@ -1358,7 +1418,7 @@ section.page-hero {
 }
 
 .team-card__contact a {
-  color: var(--sand-orange);
+  color: var(--amber-700);
   text-decoration: none;
 }
 
@@ -1369,7 +1429,7 @@ section.page-hero {
 .team-card__bio {
   font-size: 0.875rem;
   line-height: 1.55;
-  color: var(--text-primary);
+  color: var(--obsidian-800);
   text-align: left;
   margin: 0;
 }
@@ -1384,7 +1444,7 @@ section.page-hero {
   margin: 1.5rem 0 0;
   width: 100%;
   overflow: visible;
-  border: 1px solid rgba(1, 30, 45, 0.12);
+  border: 1px solid var(--obsidian-100);
   position: relative;
 }
 
@@ -1395,7 +1455,7 @@ section.page-hero {
   top: -4px;
   left: -4px;
   pointer-events: none;
-  background: var(--sand-orange);
+  background: var(--amber-500);
   z-index: 1;
 }
 
@@ -1452,14 +1512,14 @@ section.page-hero {
 
 .email-signup h3 {
   font-size: clamp(1.15rem, 2.4vw, 1.3rem);
-  color: var(--deep-navy);
+  color: var(--obsidian-900);
   margin-bottom: 0.75rem;
   text-align: center;
 }
 
 .email-signup > p {
   text-align: center;
-  color: var(--deep-navy);
+  color: var(--obsidian-900);
   margin-bottom: 1.5rem;
   line-height: 1.5;
 }
@@ -1478,21 +1538,20 @@ section.page-hero {
 .email-signup__input {
   flex: 1;
   padding: 0.75rem 1rem;
-  border: 1px solid rgba(1, 30, 45, 0.2);
-  border-radius: 4px;
+  border: 1px solid var(--obsidian-100);
   font-size: 0.9375rem;
   font-family: inherit;
-  background: white;
+  background: var(--flint);
 }
 
-.email-signup__input:focus {
-  outline: 2px solid var(--sand-orange);
+.email-signup__input:focus-visible {
+  outline: 2px solid var(--amber-500);
   outline-offset: 2px;
 }
 
 .email-signup__privacy {
   font-size: 0.8125rem;
-  color: rgba(1, 30, 45, 0.7);
+  color: var(--obsidian-600);
   text-align: center;
   margin: 0;
 }
@@ -1512,7 +1571,7 @@ section.page-hero {
   width: 100%;
   max-width: 100%;
   overflow: visible;
-  border: 1px solid rgba(1, 30, 45, 0.12);
+  border: 1px solid var(--obsidian-100);
   position: relative;
 }
 
@@ -1523,7 +1582,7 @@ section.page-hero {
   top: -4px;
   left: -4px;
   pointer-events: none;
-  background: var(--sand-orange);
+  background: var(--amber-500);
   z-index: 1;
 }
 
@@ -1550,10 +1609,6 @@ section.page-hero {
   overflow: hidden;
 }
 
-.cta-centered__image:hover img {
-  transform: scale(1.05);
-}
-
 .logo-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
@@ -1568,11 +1623,11 @@ section.page-hero {
 .logo-placeholder {
   aspect-ratio: 3 / 2;
   background: rgba(255, 255, 255, 0.28);
-  border: 1px solid rgba(1, 30, 45, 0.12);
+  border: 1px solid var(--obsidian-100);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: rgba(1, 30, 45, 0.35);
+  color: var(--obsidian-400);
   font-size: 0.9rem;
   font-weight: 500;
   letter-spacing: 0.05em;
@@ -1649,19 +1704,6 @@ section.page-hero {
   }
 }
 
-.founder-split__image {
-  margin: 1.5rem 0 0;
-  overflow: hidden;
-  border: 1px solid rgba(1, 30, 45, 0.12);
-}
-
-.founder-split__image img {
-  width: 100%;
-  height: 220px;
-  object-fit: cover;
-  display: block;
-}
-
 .timeline__closing {
   margin-top: 1.8rem;
 }
@@ -1688,7 +1730,7 @@ section.page-hero {
 .contact-centered__image {
   margin: 2.5rem 0 0;
   overflow: hidden;
-  border: 1px solid rgba(1, 30, 45, 0.12);
+  border: 1px solid var(--obsidian-100);
 }
 
 .contact-centered__image img {
@@ -1733,14 +1775,14 @@ section.gi-hero {
   font-weight: 700;
   letter-spacing: 0;
   margin: 0 0 clamp(20px, 3vh, 36px) 0;
-  color: var(--deep-navy);
+  color: var(--obsidian-900);
 }
 
 .gi-hero__statement {
   font-size: clamp(1.1rem, 1.35vw, 1.3rem);
   line-height: 1.5;
   font-weight: 400;
-  color: rgba(1, 30, 45, 0.80);
+  color: var(--obsidian-800);
   margin: 0;
 }
 
@@ -1810,7 +1852,7 @@ section.join-hero {
   font-weight: 700;
   letter-spacing: 0;
   margin: 0 0 clamp(20px, 3vh, 36px) 0;
-  color: var(--deep-navy);
+  color: var(--obsidian-900);
 }
 
 .join-hero__content .page-hero__statement {
@@ -1840,7 +1882,7 @@ section.join-hero {
 
 .join-value-col {
   padding-top: 1.25rem;
-  border-top: var(--rule-thickness) solid var(--sand-orange);
+  border-top: var(--rule-thickness) solid var(--amber-500);
 }
 
 .join-value-col h3 {
@@ -1917,8 +1959,7 @@ section.join-hero {
   top: 0.9rem;
   bottom: 0.9rem;
   width: var(--rule-thickness);
-  background: var(--sand-orange);
-  opacity: 0.4;
+  background: var(--feldspar-300);
 }
 
 .join-timeline li {
@@ -1940,8 +1981,8 @@ section.join-hero {
   height: 2rem;
   line-height: 2rem;
   text-align: center;
-  background: var(--sand-orange);
-  color: #ffffff;
+  background: var(--obsidian-900);
+  color: var(--flint);
   font-family: "Barlow Condensed", system-ui, -apple-system, "Segoe UI", sans-serif;
   font-weight: 700;
   font-size: 0.9rem;
@@ -1961,7 +2002,7 @@ section.join-hero {
   font-family: "Barlow", system-ui, -apple-system, "Segoe UI", sans-serif;
   font-style: italic;
   font-weight: 400;
-  color: rgba(1, 30, 45, 0.75);
+  color: var(--obsidian-600);
   font-size: clamp(1.1rem, 1.45vw, 1.3rem);
   line-height: 1.5;
   max-width: 42ch;
@@ -1973,7 +2014,7 @@ section.join-hero {
   font-style: normal;
   font-family: "Barlow Condensed", system-ui, -apple-system, "Segoe UI", sans-serif;
   font-weight: 700;
-  color: var(--sand-orange);
+  color: var(--amber-500);
   font-size: 2.6rem;
   line-height: 0.75;
   margin-bottom: 0.5rem;
@@ -1985,40 +2026,24 @@ section.join-hero {
   font-style: normal;
   font-size: 0.8125rem;
   font-weight: 600;
-  color: var(--deep-navy);
+  color: var(--obsidian-900);
   letter-spacing: 0.01em;
 }
 
 .testimonial__role {
   display: block;
   font-weight: 400;
-  color: rgba(1, 30, 45, 0.55);
+  color: var(--obsidian-500);
   margin-top: 0.2rem;
 }
 
 /* Material image zoom */
-.home-figure {
-  overflow: hidden;
-}
-
-.home-rail img {
-  transition: transform 0.4s ease;
-}
-
-.home-rail:hover img {
-  transform: scale(1.05);
-}
-
 .cta-centered__image__crop {
   overflow: hidden;
 }
 
 .cta-centered__image img {
   transition: transform 0.4s ease;
-}
-
-.cta-centered__image:hover img {
-  transform: scale(1.05);
 }
 
 .join-for__heading {
@@ -2034,7 +2059,7 @@ section.join-hero {
 
 .join-for__col {
   padding-top: 1.25rem;
-  border-top: var(--rule-thickness) solid var(--sand-orange);
+  border-top: var(--rule-thickness) solid var(--amber-500);
 }
 
 .join-for__col h3 {
@@ -2075,7 +2100,7 @@ section.join-hero {
 
 .gi-ways__col {
   padding-top: 1.25rem;
-  border-top: var(--rule-thickness) solid var(--sand-orange);
+  border-top: var(--rule-thickness) solid var(--amber-500);
 }
 
 .gi-ways__col h3 {
@@ -2137,7 +2162,7 @@ section.join-hero {
   position: relative;
   display: block;
   margin: 0 0 0.9rem 0;
-  border: 1px solid rgba(1, 30, 45, 0.12);
+  border: 1px solid var(--obsidian-100);
   text-decoration: none;
 }
 
@@ -2148,7 +2173,7 @@ section.join-hero {
   position: absolute;
   top: -4px;
   left: -4px;
-  background: var(--sand-orange);
+  background: var(--amber-500);
   pointer-events: none;
   z-index: 2;
 }
@@ -2161,7 +2186,7 @@ section.join-hero {
   display: block;
   overflow: hidden;
   aspect-ratio: 3 / 4;
-  background: var(--deep-navy) url("assets/logos/sandcastle-logo-orange.svg") center / 60px auto no-repeat;
+  background: var(--obsidian-900) url("assets/logos/sandcastle-logo-orange.svg") center / 60px auto no-repeat;
 }
 
 .doc-card--wide .doc-card__crop { aspect-ratio: 16 / 10; }
@@ -2176,7 +2201,6 @@ section.join-hero {
   display: block;
   transition: transform 0.4s ease;
 }
-.doc-card__cover:hover .doc-card__crop img { transform: scale(1.03); }
 
 .doc-card__kicker {
   font-family: "Barlow Condensed", system-ui, -apple-system, "Segoe UI", sans-serif;
@@ -2184,7 +2208,7 @@ section.join-hero {
   text-transform: uppercase;
   letter-spacing: 0.12em;
   font-size: 0.72rem;
-  color: var(--sand-orange);
+  color: var(--amber-500);
   margin: 0 0 0.35rem 0;
 }
 
@@ -2194,14 +2218,14 @@ section.join-hero {
   letter-spacing: 0.015em;
   font-size: clamp(1.15rem, 1.5vw, 1.35rem);
   line-height: 1.2;
-  color: var(--deep-navy);
+  color: var(--obsidian-900);
   margin: 0 0 0.4rem 0;
 }
 
 .doc-card__desc {
   font-size: 0.9rem;
   line-height: 1.5;
-  color: rgba(1, 30, 45, 0.72);
+  color: var(--obsidian-600);
   max-width: none;
   margin: 0 0 0.9rem 0;
 }
@@ -2216,12 +2240,12 @@ section.join-hero {
   letter-spacing: 0.08em;
   text-transform: uppercase;
   font-size: 0.9rem;
-  color: var(--deep-navy);
+  color: var(--obsidian-900);
   text-decoration: none;
 }
 .doc-card__link::after { content: "\2197"; font-size: 1.05em; line-height: 1; }
 .doc-card__link--down::after { content: "\2193"; }
-.doc-card__link:hover { color: var(--sand-orange); text-decoration: underline; }
+.doc-card__link:hover { color: var(--amber-500); text-decoration: underline; }
 
 @media (max-width: 600px) {
   .doc-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
@@ -2236,8 +2260,8 @@ section.join-hero {
    ========================= */
 .callout {
   background: rgba(255, 255, 255, 0.32);
-  border: 1px solid rgba(1, 30, 45, 0.12);
-  border-top: 2px solid var(--sand-orange);
+  border: 1px solid var(--obsidian-100);
+  border-top: 2px solid var(--amber-500);
   padding: clamp(18px, 2.2vw, 26px);
   align-self: start;
 }
@@ -2248,7 +2272,7 @@ section.join-hero {
   text-transform: uppercase;
   letter-spacing: 0.12em;
   font-size: 0.75rem;
-  color: var(--sand-orange);
+  color: var(--amber-500);
   margin: 0 0 0.6rem 0;
   max-width: none;
 }
