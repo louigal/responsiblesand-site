@@ -1,403 +1,2317 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>About the Coalition for Responsible Sand and Silicates</title>
- 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,600;0,700;1,400&family=Barlow+Condensed:wght@700&display=swap" rel="stylesheet">
- 
-  <link rel="stylesheet" href="styles.css">
-</head>
- 
-<body>
- 
-  <header class="site-header">
-    <div class="container">
-      <nav class="site-nav" aria-label="Primary">
-        <a href="index.html">Home</a>
-        <a href="about.html" aria-current="page">About</a>
-        <a href="get-involved.html">Get involved</a>
-      </nav>
-    </div>
-  </header>
- 
-  <main>
- 
-  <!-- PAGE HERO - Split: text left, image right -->
-  <section class="page-hero">
-    <div class="container">
-      <div class="page-hero__grid">
-        <div class="page-hero__content">
-          <h1>About</h1>
-          <p class="page-hero__statement">
-            We are building practical frameworks for responsible sourcing and production of sand and silicates. Defining better practices, testing solutions in real supply chains and creating the tools that turn commitment into action.
-          </p>
-        </div>
-        <div class="page-hero__image home-rail home-rail--ruled">
-          <figure class="home-figure">
-            <img
-              src="assets/about/feldspar.png"
-              alt="Close-up of feldspar mineral surface showing natural crystalline texture."
-              loading="eager">
-          </figure>
-        </div>
-      </div>
-    </div>
-  </section>
- 
-    <!-- WHY IT MATTERS -->
-    <section class="section section--band" id="why-it-matters">
-      <div class="container">
- 
-        <div class="home-layout">
-          <div class="home-content">
-            <h2>Why it matters</h2>
- 
-            <p>
-              Sand and silicates are <strong>the most extracted solid materials on Earth</strong> and the foundation of modern life. Each year, tens of billions of tonnes are used worldwide to build homes, infrastructure, electronics and energy systems. Aggregates, clays, industrial sands, natural stone and high-purity silica and quartz are often treated as <strong>freely abundant and low risk</strong>. These assumptions no longer hold.
-            </p>
- 
-            <ul class="key-points" aria-label="Why assumptions no longer hold">
-              <li><strong>Scale.</strong> Demand is now large enough to shape ecosystems, landscapes and markets across the world.</li>
-              <li><strong>Risk.</strong> Environmental, social and human-rights risks and impacts are observed in extraction and use in many different contexts.</li>
-              <li><strong>Governance gaps.</strong> Responsibility frameworks have failed to keep pace with reality. Sand and silicates still sit largely outside established practices for responsible minerals sourcing and use. Public governance is often fragmented.</li>
-              <li><strong>Supply pressure.</strong> In some markets, getting these materials already costs more, takes longer and can stop a project going ahead.</li>
-            </ul>
- 
-            <p>
-              When materials are taken for granted, questions of origin, management and accountability fade. The consequences of this invisibility are linked to human-rights, environmental and systemic risks, including growing pressure on secure supply.
-            </p>
- 
-            <p>
-              Responsible public governance and business conduct are now expected. Responsibility for sand and silicates remains weakly defined, which leaves room to lead. The means to do that is what the Coalition is building.
-            </p>
-          </div>
- 
-          <aside class="home-rail home-rail--square home-rail--ruled" aria-label="Material image">
-            <figure class="home-figure">
-              <img
-                src="assets/join/materials-quartz-vein.jpg"
-                alt="Close-up of quartz vein showing crystalline structure within rock."
-                loading="lazy">
-            </figure>
-          </aside>
-        </div>
- 
-      </div>
-    </section>
- 
-    <!-- WHAT WE DO -->
-    <section class="section" id="what-we-do">
-      <div class="container prose-wide">
-        <h2>What we do</h2>
- 
-        <p style="margin-top:0;">
-          The Coalition is a cross-sector platform focused on three actions. We are not a standards body. We are the dedicated knowledge and practice platform for this material family, built to work with the people who source, produce, regulate and depend on these materials every day.
-        </p>
- 
-        <div class="cards-3" role="list" aria-label="Three actions">
-          <article class="card" role="listitem">
-            <h3>A credible commitment</h3>
-            <p>
-              Shaping clear norms and guidance, practical tools and shared red lines and green flags. Grounded in the OECD Due Diligence Guidelines and extending into positive contributions that go beyond risk avoidance.
-            </p>
-          </article>
- 
-          <article class="card" role="listitem">
-            <h3>Shared knowledge and practice</h3>
-            <p>
-              Building the evidence base, testing due diligence approaches in real supply chains and making data and insights actionable so learning travels beyond individual pilots.
-            </p>
-          </article>
- 
-          <article class="card" role="listitem">
-            <h3>A bridge to standards</h3>
-            <p>
-              Working with standards bodies as a connector, critical friend and resource. Helping them bring sand and silicates into their frameworks so that responsible action is recognised.
-            </p>
-          </article>
-        </div>
+/* =========================================================
+   responsiblesand.org site stylesheet
+   Revised August 2026: type scale only.
 
+   Changed in this revision:
+   - Founder logo heights retuned for optical balance
+   - Body 17px/1.65 to 16px/1.55
+   - Measure 80ch to 68ch
+   - Page titles, section headings and component headings
+     reduced, headings further than body
+   - Heading letter-spacing set to 0 per the design system
+   - Home hero lockup reduced in step with the page
 
-        <div class="home-cta" aria-label="Next steps">
-          <a class="btn" href="get-involved.html">Get involved</a>
-        </div>
-      </div>
-    </section>
+   Not changed: colour, spacing, layout, grids, components,
+   document cards.
+   ========================================================= */
 
-    <!-- OUR APPROACH: theory of change and the evidence it rests on -->
-    <section class="section section--band" id="our-approach">
-      <div class="container">
-        <div class="home-layout">
-          <div class="home-content">
-            <div class="measure">
-              <h2>Our approach</h2>
+/* ========================= 
+   Brand Variables / Tokens 
+   ========================= */
 
-              <p>
-                Supply chain responsibility practice is shaped by the OECD's Responsible Business Conduct work and its Due Diligence Guidance. That work is only beginning to treat sand and silicates as a field of application.
-              </p>
+:root {
+  /* Brand colors */
+  --sand-orange: #c65b1a;
+  --deep-navy: #011e2d;
+  --off-white: #f2f4f4;
+  
+  /* Layout */
+  --max-width: 1100px;
+  --gutter: clamp(16px, 3vw, 32px);
+  
+  /* Texture / rules */
+  --page-texture-opacity: 0.30;
+  --rule-thickness: 2px;
+  --rule-length: 75%;
+  
+  /* Surfaces (veil map) */
+  --surface-veil: rgba(255, 255, 255, 0.34);
+  --surface-veil-strong: rgba(255, 255, 255, 0.46);
+  --surface-veil-light: rgba(255, 255, 255, 0.26);
+  
+  /* Spacing */
+  --section-pad: 2rem;
+  --section-pad-tight: 1.35rem;
+  
+  /* Header */
+  --header-height: 76px;
 
-              <p>
-                <strong>Integration, not a parallel system.</strong> We bring these materials into the system that already exists, rather than building something separate alongside it.
-              </p>
+  /* Typography */
+  --base-font-size: 16px;
+  --measure: 68ch;
+  --measure-narrow: 52ch;
+  
+  /* Grids */
+  --rail-width: 320px;
+  
+  /* Buttons */
+  --btn-border: rgba(1, 30, 45, 0.35);
+  --btn-bg: rgba(255, 255, 255, 0.35);
+  --btn-bg-hover: rgba(255, 255, 255, 0.55);
+}
 
-              <p>
-                <strong>Adaptation where the materials require it.</strong> The five step process holds. What changes is what it asks for in supply chains this diffuse, this local and this lightly documented.
-              </p>
+/* ========================= 
+   Base Styles
+   ========================= */
 
-              <p>
-                <strong>Common ground as the end point.</strong> Shared definitions, frameworks and practices let companies demonstrate responsibility against a global benchmark, and send a clearer signal about risk and opportunity into the market.
-              </p>
+html,
+body {
+  height: 100%;
+}
 
-              <p>
-                The Coalition's knowledge base rests on years of foundational work by its Members and Secretariat staff. Coalition Members contributed to <a href="https://unepgrid.ch/en/sand" target="_blank" rel="noopener noreferrer">UNEP's work on sand and sustainability</a>, establishing the case for global sand governance. Two recent studies led by The University of Queensland then set out the case for responsible sourcing of these materials.
-              </p>
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
 
-              <p>
-                <a href="https://www.oecd.org/en/publications/due-diligence-for-responsible-sand-and-silicate-supply-chains_7be0093e-en.html" target="_blank" rel="noopener noreferrer">An OECD study on due diligence for sand and silicates supply chains</a>, published in 2026, confirms these materials belong on international responsible-minerals agendas. A second study, commissioned by GIZ and due for publication, examines raw materials in semiconductor supply chains. It situates sand within wider debates on supply security and industrial policy.
-              </p>
+body {
+  margin: 0;
+  font-family: "Barlow", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: var(--deep-navy);
+  line-height: 1.55;
+  font-size: var(--base-font-size);
+  background-color: var(--deep-navy);
+  background-image: url("assets/page-texture.svg");
+  background-repeat: repeat;
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+  animation: fadeIn 0.4s ease-in;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
 
-              <div class="home-cta" aria-label="Theory of change" style="margin-top: 1.5rem;">
-                <a class="btn btn--ghost" href="assets/documents/theory-of-change-v022026.pdf" target="_blank">Our theory of systemic change and action</a>
-              </div>
-            </div>
-          </div>
-          <aside class="home-rail home-rail--square home-rail--ruled" aria-label="Material image">
-            <figure class="home-figure">
-              <img
-                src="assets/about/materials-earth-bricks.jpg"
-                alt="Earth bricks laid in traditional pattern."
-                loading="lazy">
-            </figure>
-          </aside>
-        </div>
-      </div>
-    </section>
- 
-  <!-- GOVERNANCE - Simplified -->
-  <section class="section" id="governance">
-    <div class="container prose-wide">
-      <h2>Our governance</h2>
-      
-      <p>
-        The Coalition for Responsible Sand and Silicates is a not-for-profit, public company limited by guarantee, incorporated in Australia. The Board took up its work in July 2026. The Directors are Daniel Holm, Anne Pleash and Kai Eberspaecher.
-      </p>
-      
-      <div class="cards-3" role="list" aria-label="Governance structure">
-        <article class="card" role="listitem">
-          <h3>Board of Directors</h3>
-          <p>Holds fiduciary responsibility for the Coalition and is ultimately responsible for managing it. Directors are nominated and elected by Members, serve three year terms and are not remunerated.</p>
-        </article>
-        
-        <article class="card" role="listitem">
-          <h3>Advisory Council</h3>
-          <p>Advises the Directors on strategic direction, the annual programme of work and the budget, and recommends the membership criteria and the annual fee. Every Founder Member and Founder Supporter appoints a participant, and decisions are reached by consensus wherever possible.</p>
-        </article>
-        
-        <article class="card" role="listitem">
-          <h3>Secretariat</h3>
-          <p>Runs the Coalition day to day, coordinating Members, partners and the programme of work. It prepares the deliverables the Advisory Council reviews and the Board decides on.</p>
-        </article>
-      </div>
-      
-      <p>
-        The Constitution was adopted on incorporation as a starting framework. Members will review it at the first Annual General Meeting, scheduled for November 2026.
-      </p>
-      
-      <div class="home-cta" aria-label="View constitution" style="margin-top: 1.5rem;">
-        <a class="btn btn--ghost" href="assets/documents/Constitution_-_Coalition_for_Responsible_Sand_and_Silicates_v1_1.pdf" target="_blank" rel="noopener noreferrer">Our constitution</a>
-      </div>
-    </div>
-  </section>
- 
-  <!-- JOURNEY - How We Got Here -->
-  <section class="section section--band" id="journey">
-    <div class="container">
-      <div class="home-layout">
-        <div class="home-content">
-          <h2>How we got here</h2>
-          
-          <p>
-            The Coalition for Responsible Sand and Silicates was incubated at the University of Queensland's Sustainable Minerals Institute, through the Global Centre for Mineral Security. The Centre created the conditions for collaboration across industry, civil society and research groups. The development and spin-out were funded by The University of Queensland through its Resourcing Decarbonisation and Trailblazer initiatives. Inter IKEA, Roca Group and MCS Group also funded the work, and we are grateful to each of them.
-          </p>
-          
-          <p><strong>Key moments</strong></p>
-          
-          <ul class="timeline">
-            <li>
-              <strong>Asking the question.</strong> Is it time to treat sand and silicates as part of responsible minerals supply? Research conducted at the Global Centre for Mineral Security for Inter IKEA and the OECD, between 2022 and 2024, confirmed these materials belong on international agendas. It also exposed major gaps in existing standards.
-            </li>
-            <li>
-              <strong>Co-designing what could be.</strong> A Founders meeting in Barcelona in July 2025 shaped the Coalition's purpose, scope and initial programme of work. We are grateful to Roca Group for hosting us.
-            </li>
-            <li>
-              <strong>Formalising the transition.</strong> An Interim Council meeting in London in December 2025 endorsed the governance model, membership approach and identity and supported the move to independence.
-            </li>
-            <li>
-              <strong>Becoming independent.</strong> The Coalition for Responsible Sand and Silicates Ltd was registered with ASIC on 26 June 2026 as a public company limited by guarantee. Membership is open and the first wave of guidance and projects runs from 2026 to 2028.
-            </li>
-          </ul>
-          
-          <p>
-            <a class="next-cta" href="get-involved.html">Get involved</a>
-          </p>
-        </div>
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
 
-        <aside class="callout" aria-labelledby="thanks-heading">
-          <p class="callout__eyebrow" id="thanks-heading">With thanks</p>
-          <p>
-            Many people and organisations have been part of this work, giving us support and guidance along the way.
-          </p>
+@media (max-width: 900px) {
+  :root {
+    --header-height: 64px;
+  }
 
-          <div class="friends-logo-row">
-            <img src="assets/friends-logos/1_oecd-logo.png" alt="OECD" class="friends-logo friends-logo--oecd">
-            <img src="assets/friends-logos/2_csc-logo.png" alt="CSC, the Concrete Sustainability Council" class="friends-logo friends-logo--csc">
-            <img src="assets/partner-logos/7_ria-stone-logo.png" alt="Ria Stone" class="friends-logo friends-logo--riastone">
-            <img src="assets/friends-logos/3_hm-logo.png" alt="H&M" class="friends-logo friends-logo--hm">
-            <img src="assets/friends-logos/4_ba-logo.png" alt="BA Glass" class="friends-logo friends-logo--baglass">
-            <img src="assets/friends-logos/8_Logo_Infineon_RGB.png" alt="Infineon" class="friends-logo friends-logo--infineon" onerror="this.remove()">
-          </div>
-        </aside>
-      </div>
-    </div>
-  </section>
- 
-  <!-- CONTACTS -->
-  <section class="section" id="team">
-    <div class="container prose-wide">
-      <h2>Contacts</h2>
-      
-      <p>
-        The Secretariat's role is to serve the Coalition's Members: coordinating partnerships, managing operations and ensuring the work gets done. As a small team, we share responsibility across strategy, delivery and relationship-building.
-      </p>
-      
-      <div class="team-grid team-grid--compact">
-        <div class="team-card">
-          <div class="team-card__photo">
-            <img src="assets/about/louise.jpg" alt="Louise Gallagher">
-          </div>
-          <h3 class="team-card__name">
-            Louise Gallagher
-            <a href="https://www.linkedin.com/in/louisegallagher/" target="_blank" rel="noopener noreferrer" class="team-card__linkedin" aria-label="Louise Gallagher's LinkedIn profile">
-              <img src="assets/icons/linkedinprofile.jpg" alt="LinkedIn" class="linkedin-icon-small">
-            </a>
-          </h3>
-          <p class="team-card__contact">
-            <a href="mailto:louise@responsiblesand.org">louise@responsiblesand.org</a>
-          </p>
-          <p class="team-card__bio">
-            Louise leads knowledge co-production, partnership development and strategic engagement. With a background in environmental social science and governance, she designs collaborative processes that bring diverse stakeholders together to address complex sustainability challenges. Her research and network-building help establish foundations for the Coalition's work.
-          </p>
-        </div>
-        
-        <div class="team-card">
-          <div class="team-card__photo">
-            <img src="assets/about/daniel.jpg" alt="Daniel Holm">
-          </div>
-          <h3 class="team-card__name">
-            Daniel Holm
-            <a href="https://www.linkedin.com/in/larsdanielholm/" target="_blank" rel="noopener noreferrer" class="team-card__linkedin" aria-label="Daniel Holm's LinkedIn profile">
-              <img src="assets/icons/linkedinprofile.jpg" alt="LinkedIn" class="linkedin-icon-small">
-            </a>
-          </h3>
-          <p class="team-card__contact">
-            <a href="mailto:daniel@responsiblesand.org">daniel@responsiblesand.org</a>
-          </p>
-          <p class="team-card__bio">
-            Daniel leads organisational design and governance systems. With expertise in responsible minerals sourcing and social performance assessment, and experience running his own businesses, he builds the operational models and strategic frameworks that enable effective collaboration. Daniel is guiding the Coalition's transition from a research initiative to an independent, mission-driven organisation.
-          </p>
-        </div>
-        
-        <div class="team-card">
-          <div class="team-card__photo">
-            <img src="assets/about/elin.jpg" alt="Elin Post">
-          </div>
-          <h3 class="team-card__name">
-            Elin Post
-            <a href="https://www.linkedin.com/in/elin-post-20730939/" target="_blank" rel="noopener noreferrer" class="team-card__linkedin" aria-label="Elin Post's LinkedIn profile">
-              <img src="assets/icons/linkedinprofile.jpg" alt="LinkedIn" class="linkedin-icon-small">
-            </a>
-          </h3>
-          <p class="team-card__contact">
-            <a href="mailto:elin@responsiblesand.org">elin@responsiblesand.org</a>
-          </p>
-          <p class="team-card__bio">
-            Elin manages Member onboarding and the Coalition community, and contributes technical expertise across the programme of work. A former Materials & Innovation Manager at H&M Group, she brings downstream industry experience to the Coalition. After contributing as a Founder, she joined the Secretariat to help translate the Coalition's approach into practice across supply chains.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
- 
-  <!-- GET IN TOUCH - Centered with large image -->
-  <section class="section section--band" id="contact">
-    <div class="container">
-      <div class="cta-centered">
-        <h2>Get in touch</h2>
-        <p class="lead">
-          If you are interested in learning more about our work, we would like to hear from you. Get in touch with Elin and she will guide you from there.
-        </p>
-        
-        <div class="cta-centered__buttons">
-          <a class="btn" href="get-involved.html">Get involved</a>
-        </div>
-        
-        <figure class="cta-centered__image">
-          <div class="cta-centered__image__crop">
-            <img
-              src="assets/about/materials-stone-fossils.jpg"
-              alt="Close-up of stone surface showing natural fossil formations."
-              loading="lazy">
-          </div>
-        </figure>
-      </div>
-    </div>
-  </section>
- 
-  </main>
+  body {
+    background-attachment: scroll;
+    background-size: 100vw auto;
+    background-position: top left;
+  }
+}
 
-  <footer>
-    <div class="container">
-      <div class="footer-row">
-        <div class="footer-links">
-          <a href="index.html">Home</a> ·
-          <a href="about.html">About</a> ·
-          <a href="get-involved.html">Get involved</a> ·
-          <a href="membership.html">Membership</a><span class="footer-separator" style="margin: 0 10px 0 22px;">|</span><a href="portal.html">Members Portal</a>
-        </div>
+/* ========================= 
+   Typography
+   ========================= */
 
-        <p class="footer-follow">
-          <a class="linkedin-link"
-             href="https://www.linkedin.com/company/responsible-sand-and-silicates/"
-             target="_blank"
-             rel="noopener noreferrer">
-            <span class="footer-separator">| </span>
-            Follow us on
-            <span class="linkedin-brand">
-              <img
-                src="assets/icons/linkedin-mark.svg"
-                class="linkedin-icon"
-                alt="LinkedIn">
-            </span>
-            for updates
-          </a>
-        </p>
-      </div>
+h1,
+h2,
+h3,
+h4 {
+  font-family: "Barlow Condensed", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-weight: 700;
+  letter-spacing: 0;
+  margin-top: 1.35rem;
+  margin-bottom: 0.65rem;
+}
 
-      <p class="footer-legal">
-        © 2026 The Coalition for Responsible Sand and Silicates. All rights reserved.
-      </p>
+h2 {
+  font-size: clamp(1.65rem, 2.5vw, 2.15rem);
+  line-height: 1.12;
+  letter-spacing: 0;
+  margin-top: 0;
+  margin-bottom: 1.25rem;
+}
 
-      <img
-        src="assets/logos/sandcastle-logo-navy.svg"
-        class="footer-mark"
-        alt=""
-        aria-hidden="true">
-    </div>
-  </footer>
+p {
+  margin-top: 0;
+  margin-bottom: 0.95rem;
+  max-width: var(--measure);
+}
 
-</body>
-</html>
+strong {
+  font-weight: 700;
+  color: var(--deep-navy);
+  letter-spacing: 0.01em;
+}
+
+a {
+  color: var(--sand-orange);
+  text-decoration: none;
+  transition: color 0.15s ease, opacity 0.15s ease;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Lead paragraph / standfirst */
+.lead {
+  font-size: 1.0625rem;
+  line-height: 1.5;
+  font-weight: 400;
+  max-width: var(--measure-narrow);
+  margin-bottom: 1.25rem;
+}
+
+.lead--no-top-margin {
+  margin-top: 0;
+}
+
+/* Pull-quote / reflective text */
+.pull-quote {
+  position: relative;
+  margin: 0;
+  font-family: "Barlow", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-style: italic;
+  font-weight: 400;
+  color: rgba(1, 30, 45, 0.75);
+  font-size: clamp(1.4rem, 2.2vw, 1.9rem);
+  line-height: 1.35;
+  max-width: none;
+}
+
+.pull-quote::before {
+  content: "\201C";
+  display: block;
+  font-style: normal;
+  font-family: "Barlow Condensed", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-weight: 700;
+  color: var(--sand-orange);
+  font-size: 2.6rem;
+  line-height: 0.75;
+  margin-bottom: 0.5rem;
+}
+
+/* ========================= 
+   Layout Containers
+   ========================= */
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding-left: var(--gutter);
+  padding-right: var(--gutter);
+}
+
+.measure {
+  max-width: var(--measure);
+}
+
+/* Full-width prose.
+   Paragraphs and list items are capped at --measure by default,
+   which is right for reading copy. Add "prose-wide" to a
+   container where the text should run the full container width
+   instead, for example a short section sitting above full-width
+   cards. */
+.prose-wide p,
+.prose-wide li {
+  max-width: none;
+}
+
+/* Stacked route blocks on Get involved.
+   Separated by space rather than by a rule. */
+.ways__item + .ways__item {
+  margin-top: clamp(40px, 6vh, 76px);
+}
+
+.ways__item h3 {
+  margin-top: 0;
+}
+
+.measure h3 {
+  font-size: 1.2rem;
+  line-height: 1.2;
+  color: var(--deep-navy);
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+  font-weight: 700;
+}
+
+/* ========================= 
+   Sections (Building Blocks)
+   ========================= */
+
+.section {
+  padding: var(--section-pad) 0;
+  background: var(--surface-veil);
+}
+
+.section--band {
+  padding: var(--section-pad) 0;
+  background: var(--surface-veil-strong);
+}
+
+.section--tight {
+  padding: var(--section-pad-tight) 0;
+  background: var(--surface-veil);
+}
+
+.section--light {
+  padding: var(--section-pad) 0;
+  background: var(--surface-veil-light);
+}
+
+section:not(.hero):not(.page-hero):not(.gi-hero):not(.join-hero) {
+  padding: var(--section-pad) 0;
+  background: var(--surface-veil);
+}
+
+.intro {
+  border-top: 1px solid rgba(1, 30, 45, 0.12);
+}
+
+/* ========================= 
+   Grid Layouts
+   ========================= */
+
+.grid-2,
+.home-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) var(--rail-width);
+  gap: clamp(18px, 2.4vw, 30px);
+  align-items: start;
+}
+
+.grid-2__content,
+.home-content {
+  min-width: 0;
+  align-self: start;
+}
+
+.grid-2__rail,
+.home-rail {
+  min-width: 0;
+  align-self: center;
+  position: relative;
+}
+
+.home-layout--rail-left {
+  grid-template-columns: var(--rail-width) minmax(0, 1fr);
+  align-items: start;
+}
+
+.home-layout--large-rail {
+  grid-template-columns: minmax(0, 1fr) 440px;
+  align-items: start;
+}
+
+.home-layout--large-rail.home-layout--rail-left {
+  grid-template-columns: 440px minmax(0, 1fr);
+}
+
+@media (max-width: 900px) {
+  .grid-2,
+  .home-layout,
+  .home-layout--rail-left,
+  .home-layout--large-rail,
+  .home-layout--large-rail.home-layout--rail-left {
+    grid-template-columns: 1fr;
+  }
+
+  .home-rail {
+    order: 2;
+    max-width: none;
+  }
+}
+
+@media (min-width: 1200px) {
+  .home-rail {
+    max-width: var(--rail-width);
+  }
+}
+
+.section-split {
+  display: grid;
+  grid-template-columns: minmax(240px, 360px) minmax(0, 1fr);
+  gap: clamp(18px, 3vw, 44px);
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .section-split {
+    grid-template-columns: 1fr;
+  }
+}
+
+.split-cta {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(18px, 3vw, 56px);
+  align-items: start;
+}
+
+.split-cta__left h2 {
+  margin-top: 0;
+}
+
+.split-cta__right p {
+  max-width: none;
+}
+
+@media (max-width: 900px) {
+  .split-cta {
+    grid-template-columns: 1fr;
+  }
+}
+
+.cta-stack {
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.cta-stack .btn {
+  width: fit-content;
+}
+
+.image-quote {
+  display: grid;
+  grid-template-columns: minmax(0, 420px) minmax(0, 1fr);
+  gap: clamp(32px, 5vw, 72px);
+  align-items: center;
+}
+
+.image-quote__image {
+  max-width: 420px;
+}
+
+.image-quote__text {
+  max-width: none;
+}
+
+@media (max-width: 900px) {
+  .image-quote {
+    grid-template-columns: 1fr;
+  }
+
+  .image-quote__image {
+    max-width: none;
+  }
+
+  .image-quote__text {
+    max-width: none;
+  }
+}
+
+.cta-split {
+  display: grid;
+  grid-template-columns: minmax(0, 520px) minmax(0, 1fr);
+  gap: clamp(32px, 5vw, 72px);
+  align-items: center;
+}
+
+.cta-split__image {
+  max-width: 420px;
+  justify-self: end;
+}
+
+@media (max-width: 900px) {
+  .cta-split {
+    grid-template-columns: 1fr;
+  }
+
+  .cta-split__image {
+    max-width: none;
+  }
+}
+
+/* ========================= 
+   Rail / Images
+   ========================= */
+
+.home-figure {
+  margin: 0;
+}
+
+.home-rail img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.home-rail:hover img {
+  transform: scale(1.02);
+}
+
+.home-rail--square img {
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+}
+
+.home-rail--large {
+  max-width: 440px;
+}
+
+.home-rail--ruled {
+  --frame-inset: 10px;
+  --frame-weight: var(--rule-thickness);
+}
+
+.home-rail--ruled:not(.hero-statement) .home-figure {
+  padding-top: var(--frame-inset);
+  padding-left: var(--frame-inset);
+}
+
+.home-rail--ruled:not(.hero-statement)::before,
+.home-rail--ruled:not(.hero-statement)::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  background: var(--sand-orange);
+}
+
+.home-rail--ruled:not(.hero-statement)::before {
+  height: var(--frame-weight);
+  width: 75%;
+}
+
+.home-rail--ruled:not(.hero-statement)::after {
+  width: var(--frame-weight);
+  height: 75%;
+}
+
+.image-block {
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+@media (max-width: 900px) {
+  .image-block {
+    max-width: 100%;
+  }
+}
+
+/* ========================= 
+   Header / Navigation
+   ========================= */
+
+.site-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.site-header::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: var(--rule-thickness);
+  width: var(--rule-length);
+  background: var(--sand-orange);
+}
+
+.site-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  padding: 1rem 0;
+  justify-content: flex-end;
+}
+
+.site-nav a {
+  color: var(--deep-navy);
+  opacity: 1;
+  padding: 6px 0;
+}
+
+.site-nav a:hover {
+  text-decoration: underline;
+  opacity: 1;
+}
+
+.site-nav a[aria-current="page"] {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 6px;
+}
+
+/* ========================= 
+   Home Hero: full-width image with lockup
+   ========================= */
+
+.hero {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero > * {
+  position: relative;
+  z-index: 1;
+}
+
+.hero-full {
+  position: relative;
+}
+
+.hero-full__photo {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+  height: clamp(380px, 52vh, 600px);
+}
+
+.hero-full > .container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.hero-full .hero-lockup {
+  position: absolute;
+  top: 55%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: flex-start;
+  gap: clamp(18px, 2.4vw, 30px);
+}
+
+.hero-full .hero-mark {
+  position: relative;
+  display: inline-block;
+  padding-right: clamp(16px, 1.8vw, 24px);
+}
+
+.hero-full .hero-mark::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 6%;
+  height: 88%;
+  width: 3px;
+  background: var(--sand-orange);
+  border-radius: 2px;
+}
+
+.hero-full .hero-mark img {
+  height: clamp(58px, 6.3vw, 88px);
+  width: auto;
+  display: block;
+}
+
+.hero-full .hero-wordmark {
+  line-height: 1.0;
+}
+
+.hero-full .hero-org {
+  font-family: "Barlow Condensed", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-size: clamp(22px, 2.7vw, 33px);
+  color: var(--sand-orange);
+}
+
+.hero-full .hero-name {
+  font-family: "Barlow Condensed", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.085em;
+  font-size: clamp(2.4rem, 4.2vw, 3.5rem);
+  color: var(--deep-navy);
+  margin-top: 6px;
+  line-height: 0.92;
+}
+
+.hero-name__break {
+  display: none;
+}
+
+@media (min-width: 901px) {
+  .hero-name__break {
+    display: inline;
+  }
+}
+
+@media (max-width: 900px) {
+  .hero-full__photo {
+    height: clamp(260px, 46vw, 360px);
+  }
+
+  .hero-full {
+    padding-top: clamp(48px, 7vh, 68px);
+  }
+
+  .hero-full .hero-lockup {
+    top: 50%;
+    gap: 14px;
+  }
+
+  .hero-full .hero-mark {
+    padding-right: 12px;
+  }
+
+  .hero-full .hero-mark img {
+    height: clamp(38px, 7.7vw, 52px);
+  }
+
+  .hero-full .hero-org {
+    font-size: clamp(14px, 3.4vw, 19px);
+  }
+
+  .hero-full .hero-name {
+    font-size: clamp(1.6rem, 6vw, 2.2rem);
+    max-width: 11ch;
+  }
+}
+
+/* ========================= 
+   Lists
+   ========================= */
+
+.home-list {
+  margin: 0;
+  padding-left: 1.1rem;
+  max-width: var(--measure);
+}
+
+.home-list li {
+  margin-bottom: 0.7rem;
+}
+
+.key-points {
+  margin: 0 0 1.2rem 0;
+  padding-left: 1.1rem;
+  max-width: var(--measure);
+}
+
+.key-points li {
+  margin: 0 0 0.75rem 0;
+}
+
+/* ========================= 
+   Buttons / CTAs
+   ========================= */
+
+.home-cta,
+.cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 12px;
+  margin-top: 1.15rem;
+  align-items: stretch;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 9px 13px;
+  font-size: 0.85rem;
+  min-height: 40px;
+  border: 1px solid var(--btn-border);
+  background: var(--btn-bg);
+  color: var(--deep-navy);
+  text-decoration: none;
+  font-family: "Barlow Condensed", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  line-height: 1;
+  border-radius: 0;
+  transition: all 0.2s ease;
+}
+
+.btn:hover {
+  background: var(--btn-bg-hover);
+  text-decoration: none;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(1, 30, 45, 0.15);
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--sand-orange);
+  outline-offset: 2px;
+}
+
+.btn--ghost {
+  background: transparent;
+}
+
+.next-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: "Barlow Condensed", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--deep-navy);
+  text-decoration: none;
+  font-size: 0.85rem;
+  padding: 10px 0;
+}
+
+.next-cta::after {
+  content: "→";
+  font-size: 1.05em;
+  line-height: 1;
+}
+
+.next-cta:hover {
+  text-decoration: underline;
+}
+
+/* ========================= 
+   Secondary Page Components
+   ========================= */
+
+.cards-3 {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(14px, 2vw, 22px);
+  margin-top: 1rem;
+}
+
+@media (max-width: 900px) {
+  .cards-3 {
+    grid-template-columns: 1fr;
+  }
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.32);
+  border: 1px solid rgba(1, 30, 45, 0.12);
+  padding: 1.1rem 1.1rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(1, 30, 45, 0.1);
+}
+
+.card h3 {
+  margin-top: 0;
+  font-size: 1.125rem;
+  line-height: 1.2;
+  margin-bottom: 0.5rem;
+}
+
+.timeline {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  max-width: var(--measure);
+  border-left: 2px solid rgba(198, 91, 26, 0.35);
+  padding-left: 1rem;
+}
+
+.timeline li {
+  margin: 0 0 1rem 0;
+}
+
+.timeline li:last-child {
+  margin-bottom: 0;
+}
+
+.table-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border: 1px solid rgba(1, 30, 45, 0.12);
+  background: rgba(255, 255, 255, 0.28);
+}
+
+.fees-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 720px;
+}
+
+.fees-table th,
+.fees-table td {
+  text-align: left;
+  padding: 12px 12px;
+  border-bottom: 1px solid rgba(1, 30, 45, 0.10);
+  vertical-align: top;
+}
+
+.fees-table th {
+  font-family: "Barlow Condensed", system-ui, -apple-system, "Segoe UI", sans-serif;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.gi-table-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border: 1px solid rgba(1, 30, 45, 0.12);
+  background: rgba(255, 255, 255, 0.28);
+  border-radius: 2px;
+}
+
+.gi-fees-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 580px;
+}
+
+.gi-fees-table th,
+.gi-fees-table td {
+  text-align: left;
+  padding: 14px 16px;
+  border-bottom: 1px solid rgba(1, 30, 45, 0.10);
+  vertical-align: top;
+}
+
+.gi-fees-table th {
+  font-family: "Barlow Condensed", system-ui, -apple-system, "Segoe UI", sans-serif;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 0.95rem;
+  background: rgba(1, 30, 45, 0.06);
+  color: var(--deep-navy);
+  border-bottom-width: 2px;
+}
+
+.gi-fees-table td {
+  font-size: 0.95rem;
+  color: rgba(1, 30, 45, 0.80);
+}
+
+.gi-fees-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.gi-fees-note {
+  margin-top: 1rem;
+  font-size: 0.8125rem;
+  color: rgba(1, 30, 45, 0.55);
+  max-width: 52ch;
+}
+
+/* ========================= 
+   Footer
+   ========================= */
+
+footer {
+  position: relative;
+  padding: 2.5rem 0;
+  background: var(--surface-veil);
+  color: var(--deep-navy);
+}
+
+footer::before {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: var(--rule-thickness);
+  width: var(--rule-length);
+  background: var(--sand-orange);
+}
+
+.footer-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px 22px;
+  align-items: baseline;
+}
+
+.footer-links a,
+footer a {
+  color: var(--deep-navy);
+  opacity: 0.9;
+  text-decoration: none;
+}
+
+.footer-links a:hover,
+footer a:hover {
+  text-decoration: underline;
+  opacity: 1;
+}
+
+.footer-follow {
+  margin: 0;
+}
+
+.linkedin-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--deep-navy);
+  opacity: 0.95;
+  text-decoration: none;
+}
+
+.linkedin-link:hover {
+  opacity: 1;
+  text-decoration: underline;
+}
+
+.linkedin-brand {
+  display: inline-flex;
+  align-items: center;
+}
+
+.linkedin-icon {
+  height: 2.1em;
+  width: auto;
+  display: block;
+  margin: 0;
+  transform: translateY(2px);
+}
+
+.footer-separator {
+  opacity: 0.65;
+  margin-right: 10px;
+}
+
+.footer-legal {
+  margin: 0.85rem 0 0;
+  opacity: 0.65;
+  font-size: 0.8125rem;
+  line-height: 1.45;
+}
+
+.footer-mark {
+  position: absolute;
+  right: 18px;
+  top: calc(var(--rule-thickness) + 10px);
+  width: 32px;
+  height: auto;
+  opacity: 1;
+  pointer-events: none;
+}
+
+@media (max-width: 520px) {
+  .footer-mark {
+    width: 28px;
+    right: 14px;
+    bottom: 12px;
+  }
+}
+
+/* ========================= 
+   Video Section: launch recording
+   ========================= */
+
+.video-section__inner {
+  margin-top: clamp(28px, 4vw, 44px);
+  max-width: 88%;
+}
+
+.video-section__inner .video-section__title {
+  margin-bottom: 0.9rem;
+}
+
+.video-section__detail--last {
+  margin-bottom: 0;
+}
+
+.video-section__detail a {
+  color: var(--sand-orange);
+}
+
+.video-section__label {
+  font-family: "Barlow Condensed", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.75rem;
+  color: var(--sand-orange);
+  margin: 0 0 0.5rem 0;
+}
+
+.video-section__title {
+  font-size: clamp(1.05rem, 1.6vw, 1.25rem);
+  line-height: 1.25;
+  margin: 0 0 0.7rem 0;
+  color: var(--deep-navy);
+}
+
+.video-section__detail {
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: rgba(1, 30, 45, 0.65);
+  margin: 0.9rem 0 0 0;
+  max-width: none;
+}
+
+.video-section__embed {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+}
+
+.video-section__embed iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* ========================= 
+   Accessibility
+   ========================= */
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* ========================= 
+   WHO WE ARE PAGE
+   ========================= */
+
+section.page-hero {
+  padding: calc(var(--header-height) + clamp(40px, 8vh, 90px)) 0 clamp(80px, 12vh, 140px);
+}
+
+.page-hero__content {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.page-hero h1 {
+  font-size: clamp(2.5rem, 4.2vw, 3.6rem);
+  line-height: 1.02;
+  font-family: "Barlow Condensed", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-weight: 700;
+  letter-spacing: 0;
+  margin: clamp(20px, 3vh, 32px) 0 clamp(24px, 4vh, 40px) 0;
+  color: var(--deep-navy);
+}
+
+.page-hero__statement {
+  font-size: clamp(1.1rem, 1.35vw, 1.3rem);
+  line-height: 1.5;
+  font-weight: 400;
+  color: rgba(1, 30, 45, 0.80);
+  max-width: 42em;
+  margin: 0 auto;
+}
+
+@media (max-width: 900px) {
+  section.page-hero {
+    padding: calc(var(--header-height) + clamp(28px, 5vh, 56px)) 0 clamp(60px, 10vh, 100px);
+  }
+  
+  .page-hero__content {
+    text-align: left;
+  }
+}
+
+.page-hero__image {
+  position: relative;
+  max-width: 640px;
+  margin: clamp(32px, 5vh, 56px) auto 0;
+}
+
+.page-hero__image .home-figure img {
+  width: 100%;
+  display: block;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+}
+
+@media (max-width: 900px) {
+  .page-hero__image {
+    max-width: 100%;
+  }
+}
+
+.theory-callout {
+  margin-top: 2.5rem;
+  padding: 2rem;
+  background: rgba(242, 244, 244, 0.5);
+  border-left: 4px solid var(--sand-orange);
+  border-radius: 4px;
+}
+
+.theory-callout h3 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.3rem;
+  line-height: 1.2;
+  color: var(--deep-navy);
+}
+
+.theory-callout p {
+  margin: 0 0 1.25rem 0;
+  color: var(--deep-navy);
+}
+
+.theory-callout__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+}
+
+.theory-callout__coming-soon {
+  color: rgba(1, 30, 45, 0.5);
+  font-size: 0.8125rem;
+  font-style: italic;
+}
+
+@media (max-width: 900px) {
+  .theory-callout {
+    padding: 1.5rem;
+  }
+}
+
+/* Founder Members Split */
+.founder-split {
+  display: grid;
+  grid-template-columns: minmax(0, 480px) minmax(0, 1fr);
+  gap: clamp(24px, 4vw, 56px);
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .founder-split {
+    grid-template-columns: 1fr;
+  }
+}
+
+.founder-split__content h2 {
+  margin-top: 0;
+}
+
+/* ========================= 
+   Founder Logo Grid
+   Always 3 columns, constrained width, uniform logo sizing.
+   On desktop it sits in the right column of founder-split.
+   On mobile it gets full width but is capped so logos stay compact.
+   ========================= */
+.founder-logo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  align-items: center;
+  justify-items: center;
+  margin-top: 1.5rem;
+}
+
+.founder-logo {
+  width: 100%;
+  height: 68px;
+  object-fit: contain;
+  display: block;
+}
+
+/* Individual logo size adjustments, desktop
+   Sized for optical balance rather than uniform height.
+   Solid saturated marks (Gilbane, IKEA, MCS, PACT) sit lower
+   than line-art marks, and wide wordmarks (Cary) sit lower
+   than tall stacked ones, because both read larger at the
+   same height. */
+.founder-logo--uq        { height: 58px; }
+.founder-logo--ikea       { height: 46px; }
+.founder-logo--roca       { height: 54px; }
+.founder-logo--mcs        { height: 48px; }
+.founder-logo--wwf        { height: 78px; }
+.founder-logo--pact       { height: 62px; }
+.founder-logo--sra        { height: 72px; }
+.founder-logo--cary       { height: 32px; }
+.founder-logo--gilbane    { height: 34px; }
+.founder-logo--agera      { height: 52px; }
+.founder-logo--gracefarms { height: 78px; }
+
+@media (max-width: 900px) {
+  .founder-logo-grid {
+    gap: 14px;
+  }
+
+  .founder-logo {
+    height: 52px;
+  }
+
+  .founder-logo--uq        { height: 42px; }
+  .founder-logo--ikea       { height: 33px; }
+  .founder-logo--roca       { height: 43px; }
+  .founder-logo--mcs        { height: 36px; }
+  .founder-logo--wwf        { height: 54px; }
+  .founder-logo--pact       { height: 45px; }
+  .founder-logo--sra        { height: 52px; }
+  .founder-logo--cary       { height: 27px; }
+  .founder-logo--gilbane    { height: 21px; }
+  .founder-logo--agera      { height: 42px; }
+  .founder-logo--gracefarms {
+    height: 48px;
+    grid-column: span 2;
+  }
+}
+
+/* Team Grid */
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(32px, 5vw, 48px);
+  margin-bottom: 1.5rem;
+}
+
+@media (max-width: 900px) {
+  .team-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.team-card {
+  text-align: center;
+}
+
+.team-card__photo {
+  width: 160px;
+  height: 160px;
+  margin: 0 auto 1rem;
+  overflow: visible;
+  background: #ffffff;
+  border: 1px solid rgba(1, 30, 45, 0.12);
+  position: relative;
+}
+
+.team-card__photo::before,
+.team-card__photo::after {
+  content: "";
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  pointer-events: none;
+  background: var(--sand-orange);
+}
+
+.team-card__photo::before {
+  height: var(--rule-thickness);
+  width: 75%;
+}
+
+.team-card__photo::after {
+  width: var(--rule-thickness);
+  height: 75%;
+}
+
+.team-card__photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  position: relative;
+}
+
+.team-card__name {
+  font-size: clamp(1.05rem, 1.3vw, 1.2rem);
+  font-weight: 700;
+  margin: 0 0 0.35rem 0;
+  color: var(--deep-navy);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.team-card__linkedin {
+  display: inline-flex;
+  align-items: center;
+  transition: opacity 0.2s ease;
+}
+
+.team-card__linkedin:hover {
+  opacity: 0.7;
+}
+
+.linkedin-icon-small {
+  width: 20px;
+  height: 20px;
+  display: block;
+}
+
+.team-card__role {
+  font-size: 0.875rem;
+  color: rgba(1, 30, 45, 0.70);
+  margin: 0 0 0.5rem 0;
+  font-weight: 400;
+}
+
+.team-card__contact {
+  font-size: 0.875rem;
+  margin: 0 0 1rem 0;
+}
+
+.team-card__contact a {
+  color: var(--sand-orange);
+  text-decoration: none;
+}
+
+.team-card__contact a:hover {
+  text-decoration: underline;
+}
+
+.team-card__bio {
+  font-size: 0.875rem;
+  line-height: 1.55;
+  color: var(--text-primary);
+  text-align: left;
+  margin: 0;
+}
+
+.team-grid--compact .team-card__photo {
+  max-width: 180px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.founder-split__image {
+  margin: 1.5rem 0 0;
+  width: 100%;
+  overflow: visible;
+  border: 1px solid rgba(1, 30, 45, 0.12);
+  position: relative;
+}
+
+.founder-split__image::before,
+.founder-split__image::after {
+  content: "";
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  pointer-events: none;
+  background: var(--sand-orange);
+  z-index: 1;
+}
+
+.founder-split__image::before {
+  height: var(--rule-thickness);
+  width: 75%;
+}
+
+.founder-split__image::after {
+  width: var(--rule-thickness);
+  height: 75%;
+}
+
+.founder-split__image img {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+  aspect-ratio: 16 / 9;
+  position: relative;
+}
+
+.timeline + p {
+  margin-top: 2rem;
+}
+
+.cta-centered {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.cta-centered h2 {
+  margin-top: 0;
+}
+
+.cta-centered .lead {
+  max-width: 42em;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cta-centered__buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 2.5rem;
+}
+
+.email-signup {
+  max-width: 600px;
+  margin: 3rem auto 2.5rem;
+}
+
+.email-signup h3 {
+  font-size: clamp(1.15rem, 2.4vw, 1.3rem);
+  color: var(--deep-navy);
+  margin-bottom: 0.75rem;
+  text-align: center;
+}
+
+.email-signup > p {
+  text-align: center;
+  color: var(--deep-navy);
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+}
+
+.email-signup__form {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.email-signup__input-group {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.email-signup__input {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  border: 1px solid rgba(1, 30, 45, 0.2);
+  border-radius: 4px;
+  font-size: 0.9375rem;
+  font-family: inherit;
+  background: white;
+}
+
+.email-signup__input:focus {
+  outline: 2px solid var(--sand-orange);
+  outline-offset: 2px;
+}
+
+.email-signup__privacy {
+  font-size: 0.8125rem;
+  color: rgba(1, 30, 45, 0.7);
+  text-align: center;
+  margin: 0;
+}
+
+@media (max-width: 600px) {
+  .email-signup__input-group {
+    flex-direction: column;
+  }
+  
+  .email-signup__input-group .btn {
+    width: 100%;
+  }
+}
+
+.cta-centered__image {
+  margin: 0;
+  width: 100%;
+  max-width: 100%;
+  overflow: visible;
+  border: 1px solid rgba(1, 30, 45, 0.12);
+  position: relative;
+}
+
+.cta-centered__image::before,
+.cta-centered__image::after {
+  content: "";
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  pointer-events: none;
+  background: var(--sand-orange);
+  z-index: 1;
+}
+
+.cta-centered__image::before {
+  height: var(--rule-thickness);
+  width: 75%;
+}
+
+.cta-centered__image::after {
+  width: var(--rule-thickness);
+  height: 75%;
+}
+
+.cta-centered__image img {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+  aspect-ratio: 16 / 7;
+  position: relative;
+  transition: transform 0.4s ease;
+}
+
+.cta-centered__image__crop {
+  overflow: hidden;
+}
+
+.cta-centered__image:hover img {
+  transform: scale(1.05);
+}
+
+.logo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: clamp(8px, 1vw, 12px);
+  margin-top: 1.5rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  align-items: center;
+}
+
+.logo-placeholder {
+  aspect-ratio: 3 / 2;
+  background: rgba(255, 255, 255, 0.28);
+  border: 1px solid rgba(1, 30, 45, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(1, 30, 45, 0.35);
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.partner-logo {
+  width: 100%;
+  height: auto;
+  max-height: 80px;
+  object-fit: contain;
+  padding: 0.5rem;
+}
+
+.partner-logo--small {
+  max-height: 50px;
+}
+
+.partner-logo--medium {
+  max-height: 65px;
+}
+
+.partner-logo--large {
+  max-height: 100px;
+}
+
+/* =========================
+   Friends and partners logo row
+   A flex row, so it reflows as logos are added.
+   Heights are set per logo for optical balance, the same
+   principle as the Founder grid. To add one: drop the file
+   in assets/friends-logos, add an img with class
+   "friends-logo friends-logo--name", then add a height here.
+   ========================= */
+.friends-logo-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: clamp(20px, 2.4vw, 34px);
+  margin: 1.5rem 0;
+}
+
+.friends-logo {
+  width: auto;
+  object-fit: contain;
+  display: block;
+}
+
+.friends-logo--oecd      { height: 40px; }
+.friends-logo--csc       { height: 46px; }
+.friends-logo--riastone  { height: 24px; }
+.friends-logo--hm        { height: 40px; }
+.friends-logo--baglass   { height: 46px; }
+.friends-logo--infineon  { height: 34px; }
+.friends-logo--responsibleglass { height: 40px; }
+
+@media (max-width: 900px) {
+  .friends-logo-row {
+    gap: 18px;
+  }
+
+  .friends-logo--oecd      { height: 32px; }
+  .friends-logo--csc       { height: 36px; }
+  .friends-logo--riastone  { height: 19px; }
+  .friends-logo--hm        { height: 32px; }
+  .friends-logo--baglass   { height: 36px; }
+  .friends-logo--infineon  { height: 24px; }
+  .friends-logo--responsibleglass { height: 32px; }
+}
+
+@media (max-width: 900px) {
+  .logo-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.founder-split__image {
+  margin: 1.5rem 0 0;
+  overflow: hidden;
+  border: 1px solid rgba(1, 30, 45, 0.12);
+}
+
+.founder-split__image img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  display: block;
+}
+
+.timeline__closing {
+  margin-top: 1.8rem;
+}
+
+.contact-centered {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.contact-centered h2 {
+  margin-top: 0;
+}
+
+.contact-centered .lead {
+  max-width: 48em;
+  margin: 0 auto 1.5rem;
+}
+
+.contact-centered .cta-row {
+  justify-content: center;
+}
+
+.contact-centered__image {
+  margin: 2.5rem 0 0;
+  overflow: hidden;
+  border: 1px solid rgba(1, 30, 45, 0.12);
+}
+
+.contact-centered__image img {
+  width: 100%;
+  height: 360px;
+  object-fit: cover;
+  display: block;
+}
+
+@media (max-width: 900px) {
+  .contact-centered__image img {
+    height: 240px;
+  }
+}
+
+/* =========================
+   WHY JOIN PAGE
+   ========================= */
+
+section.gi-hero {
+  padding: calc(var(--header-height) + clamp(20px, 3vh, 40px)) 0 clamp(40px, 6vh, 72px);
+}
+
+.gi-hero__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 48fr) minmax(0, 52fr);
+  gap: clamp(24px, 4vw, 56px);
+  align-items: stretch;
+}
+
+.gi-hero__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: clamp(8px, 2vh, 24px);
+}
+
+.gi-hero__content h1 {
+  font-size: clamp(2.5rem, 4.2vw, 3.6rem);
+  line-height: 1.02;
+  font-family: "Barlow Condensed", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-weight: 700;
+  letter-spacing: 0;
+  margin: 0 0 clamp(20px, 3vh, 36px) 0;
+  color: var(--deep-navy);
+}
+
+.gi-hero__statement {
+  font-size: clamp(1.1rem, 1.35vw, 1.3rem);
+  line-height: 1.5;
+  font-weight: 400;
+  color: rgba(1, 30, 45, 0.80);
+  margin: 0;
+}
+
+.gi-hero__image {
+  position: relative;
+  align-self: stretch;
+  max-width: none;
+  height: 100%;
+}
+
+.gi-hero__image .home-figure {
+  height: 100%;
+}
+
+.gi-hero__image .home-figure img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  min-height: clamp(320px, 50vw, 520px);
+}
+
+@media (max-width: 900px) {
+  .gi-hero__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .gi-hero__image {
+    order: -1;
+  }
+}
+
+section.join-hero {
+  padding: calc(var(--header-height) + clamp(24px, 4vh, 48px)) 0 clamp(40px, 6vh, 72px);
+}
+
+.join-hero__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 55fr) minmax(0, 45fr);
+  gap: clamp(24px, 4vw, 56px);
+  align-items: stretch;
+}
+
+.join-hero__image {
+  position: relative;
+  align-self: stretch;
+  max-width: none;
+}
+
+.join-hero__image .home-figure img {
+  width: 100%;
+  display: block;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+}
+
+.join-hero__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.join-hero__content h1 {
+  font-size: clamp(2.5rem, 4.2vw, 3.6rem);
+  line-height: 1.02;
+  font-family: "Barlow Condensed", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-weight: 700;
+  letter-spacing: 0;
+  margin: 0 0 clamp(20px, 3vh, 36px) 0;
+  color: var(--deep-navy);
+}
+
+.join-hero__content .page-hero__statement {
+  margin: 0;
+}
+
+@media (max-width: 900px) {
+  .join-hero__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .join-hero__image {
+    order: -1;
+  }
+}
+
+.join-value-cols__heading {
+  margin-top: 0;
+  margin-bottom: 2rem;
+}
+
+.join-value-cols {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(24px, 3vw, 40px);
+}
+
+.join-value-col {
+  padding-top: 1.25rem;
+  border-top: var(--rule-thickness) solid var(--sand-orange);
+}
+
+.join-value-col h3 {
+  margin-top: 0;
+  font-size: 1.125rem;
+  line-height: 1.25;
+  margin-bottom: 0.6rem;
+}
+
+.join-value-col p {
+  max-width: none;
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  margin-bottom: 0;
+}
+
+@media (max-width: 900px) {
+  .join-value-cols {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+.join-montage {
+  display: grid;
+  grid-template-columns: minmax(0, 420px) minmax(0, 1fr);
+  gap: clamp(24px, 4vw, 56px);
+  align-items: center;
+}
+
+.join-montage__image {
+  position: relative;
+}
+
+.join-montage__image .home-figure img {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+  max-height: 560px;
+  aspect-ratio: auto;
+}
+
+.join-montage__content h2 {
+  margin-top: 0;
+}
+
+.join-montage__content .lead {
+  max-width: none;
+}
+
+@media (max-width: 900px) {
+  .join-montage {
+    grid-template-columns: 1fr;
+  }
+
+  .join-montage__image .home-figure img {
+    max-height: 420px;
+  }
+}
+
+.join-timeline {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  counter-reset: timeline;
+  position: relative;
+  padding-left: 2.4rem;
+}
+
+.join-timeline::before {
+  content: "";
+  position: absolute;
+  left: calc(1.2rem - 1px);
+  top: 0.9rem;
+  bottom: 0.9rem;
+  width: var(--rule-thickness);
+  background: var(--sand-orange);
+  opacity: 0.4;
+}
+
+.join-timeline li {
+  position: relative;
+  margin-bottom: 1.25rem;
+  counter-increment: timeline;
+}
+
+.join-timeline li:last-child {
+  margin-bottom: 0;
+}
+
+.join-timeline li::before {
+  content: counter(timeline);
+  position: absolute;
+  left: -2.4rem;
+  top: 0.15em;
+  width: 2rem;
+  height: 2rem;
+  line-height: 2rem;
+  text-align: center;
+  background: var(--sand-orange);
+  color: #ffffff;
+  font-family: "Barlow Condensed", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 0.02em;
+}
+
+.testimonial {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100%;
+}
+
+.testimonial__quote {
+  position: relative;
+  margin: 0;
+  font-family: "Barlow", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-style: italic;
+  font-weight: 400;
+  color: rgba(1, 30, 45, 0.75);
+  font-size: clamp(1.1rem, 1.45vw, 1.3rem);
+  line-height: 1.5;
+  max-width: 42ch;
+}
+
+.testimonial__quote::before {
+  content: "\201C";
+  display: block;
+  font-style: normal;
+  font-family: "Barlow Condensed", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-weight: 700;
+  color: var(--sand-orange);
+  font-size: 2.6rem;
+  line-height: 0.75;
+  margin-bottom: 0.5rem;
+}
+
+.testimonial__attribution {
+  display: block;
+  margin-top: 1.4rem;
+  font-style: normal;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--deep-navy);
+  letter-spacing: 0.01em;
+}
+
+.testimonial__role {
+  display: block;
+  font-weight: 400;
+  color: rgba(1, 30, 45, 0.55);
+  margin-top: 0.2rem;
+}
+
+/* Material image zoom */
+.home-figure {
+  overflow: hidden;
+}
+
+.home-rail img {
+  transition: transform 0.4s ease;
+}
+
+.home-rail:hover img {
+  transform: scale(1.05);
+}
+
+.cta-centered__image__crop {
+  overflow: hidden;
+}
+
+.cta-centered__image img {
+  transition: transform 0.4s ease;
+}
+
+.cta-centered__image:hover img {
+  transform: scale(1.05);
+}
+
+.join-for__heading {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.join-for {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(24px, 3vw, 40px);
+}
+
+.join-for__col {
+  padding-top: 1.25rem;
+  border-top: var(--rule-thickness) solid var(--sand-orange);
+}
+
+.join-for__col h3 {
+  margin-top: 0;
+  font-size: 1.125rem;
+  line-height: 1.25;
+  margin-bottom: 0.6rem;
+}
+
+.join-for__col p {
+  max-width: none;
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  margin-bottom: 0;
+}
+
+@media (max-width: 900px) {
+  .join-for {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .join-for__heading {
+    text-align: left;
+  }
+}
+
+.gi-ways__heading {
+  margin-top: 0;
+  margin-bottom: 2rem;
+}
+
+.gi-ways {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(24px, 3vw, 40px);
+}
+
+.gi-ways__col {
+  padding-top: 1.25rem;
+  border-top: var(--rule-thickness) solid var(--sand-orange);
+}
+
+.gi-ways__col h3 {
+  margin-top: 0;
+  font-size: 1.125rem;
+  line-height: 1.25;
+  margin-bottom: 0.6rem;
+}
+
+.gi-ways__col p {
+  max-width: none;
+  font-size: 0.9375rem;
+  line-height: 1.55;
+}
+
+@media (max-width: 900px) {
+  .gi-ways {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+/* =========================
+   DOCUMENT CARDS (site-wide)
+   Framed document cover + caption, reusing the site's orange L-frame.
+   The cover image is optional: until a thumbnail exists, each cover
+   degrades to a navy panel carrying the Coalition mark.
+
+   Markup:
+     <div class="doc-card">                    (add doc-card--wide for slide decks)
+       <a class="doc-card__cover" href="FILE" target="_blank" rel="noopener noreferrer">
+         <span class="doc-card__crop">
+           <img src="COVER.png" alt="" onerror="this.remove()">
+         </span>
+       </a>
+       <p class="doc-card__kicker">PDF · 2 pages</p>
+       <p class="doc-card__title">Document title</p>
+       <p class="doc-card__desc">One line about it.</p>
+       <a class="doc-card__link" href="FILE" target="_blank" rel="noopener noreferrer">Open</a>
+     </div>
+
+   Use doc-card__link--down and label "Download" for files meant to be saved.
+   Wrap one or more cards in <div class="doc-grid"> ... </div>.
+   ========================= */
+
+.doc-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 250px));
+  justify-content: start;
+  gap: clamp(24px, 3vw, 44px);
+  margin-top: 0.5rem;
+}
+
+.doc-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.doc-card__cover {
+  position: relative;
+  display: block;
+  margin: 0 0 0.9rem 0;
+  border: 1px solid rgba(1, 30, 45, 0.12);
+  text-decoration: none;
+}
+
+/* orange L-frame, matching rail and CTA imagery */
+.doc-card__cover::before,
+.doc-card__cover::after {
+  content: "";
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  background: var(--sand-orange);
+  pointer-events: none;
+  z-index: 2;
+}
+.doc-card__cover::before { height: var(--rule-thickness); width: 62%; }
+.doc-card__cover::after  { width: var(--rule-thickness); height: 46%; }
+
+/* Cover area. Navy + Coalition mark shows until a thumbnail is dropped in. */
+.doc-card__crop {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  aspect-ratio: 3 / 4;
+  background: var(--deep-navy) url("assets/logos/sandcastle-logo-orange.svg") center / 60px auto no-repeat;
+}
+
+.doc-card--wide .doc-card__crop { aspect-ratio: 16 / 10; }
+
+.doc-card__crop img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+  transition: transform 0.4s ease;
+}
+.doc-card__cover:hover .doc-card__crop img { transform: scale(1.03); }
+
+.doc-card__kicker {
+  font-family: "Barlow Condensed", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.72rem;
+  color: var(--sand-orange);
+  margin: 0 0 0.35rem 0;
+}
+
+.doc-card__title {
+  font-family: "Barlow Condensed", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.015em;
+  font-size: clamp(1.15rem, 1.5vw, 1.35rem);
+  line-height: 1.2;
+  color: var(--deep-navy);
+  margin: 0 0 0.4rem 0;
+}
+
+.doc-card__desc {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: rgba(1, 30, 45, 0.72);
+  max-width: none;
+  margin: 0 0 0.9rem 0;
+}
+
+.doc-card__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: auto;
+  font-family: "Barlow Condensed", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  color: var(--deep-navy);
+  text-decoration: none;
+}
+.doc-card__link::after { content: "\2197"; font-size: 1.05em; line-height: 1; }
+.doc-card__link--down::after { content: "\2193"; }
+.doc-card__link:hover { color: var(--sand-orange); text-decoration: underline; }
+
+@media (max-width: 600px) {
+  .doc-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
+}
+
+/* =========================
+   Callout
+   A framed aside for material that supports a section without
+   belonging to its argument: thanks, a case study, a note.
+   Square corners and no shadow, per the master. The Amber rule
+   at the top is the same device the print routes use.
+   ========================= */
+.callout {
+  background: rgba(255, 255, 255, 0.32);
+  border: 1px solid rgba(1, 30, 45, 0.12);
+  border-top: 2px solid var(--sand-orange);
+  padding: clamp(18px, 2.2vw, 26px);
+  align-self: start;
+}
+
+.callout__eyebrow {
+  font-family: "Barlow Condensed", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.75rem;
+  color: var(--sand-orange);
+  margin: 0 0 0.6rem 0;
+  max-width: none;
+}
+
+.callout p {
+  font-size: 0.875rem;
+  line-height: 1.55;
+  max-width: none;
+  margin-bottom: 1.1rem;
+}
+
+.callout p:last-child {
+  margin-bottom: 0;
+}
+
+/* The logo row sits in a narrow column here, so it runs smaller.
+   Wide wordmarks are capped by width as well as height, or a
+   single very wide mark takes the whole panel. */
+.callout .friends-logo-row {
+  gap: 16px 20px;
+  margin: 0;
+}
+
+.callout .friends-logo {
+  max-width: 100%;
+}
+
+.callout .friends-logo--oecd      { height: 30px; }
+.callout .friends-logo--csc       { height: 34px; }
+.callout .friends-logo--riastone  { height: 18px; }
+.callout .friends-logo--hm        { height: 30px; }
+.callout .friends-logo--baglass   { height: 34px; }
+.callout .friends-logo--infineon  { height: 26px; }
+.callout .friends-logo--responsibleglass { height: 30px; }
+
+@media (max-width: 900px) {
+  .callout {
+    margin-top: clamp(24px, 4vw, 36px);
+  }
+}
+
+/* =========================
+   Key moments
+   A centred subsection sitting below a two-column pair, wider
+   than the reading column so it reads as a break in the page
+   rather than as a continuation of the left-hand text.
+   ========================= */
+.key-moments {
+  max-width: 820px;
+  margin: clamp(48px, 6vw, 84px) auto 0;
+}
+
+.key-moments h3 {
+  margin-top: 0;
+  margin-bottom: 1.1rem;
+  font-size: 1.2rem;
+  line-height: 1.2;
+}
+
+.key-moments .timeline {
+  max-width: none;
+}
+
+.key-moments .home-cta {
+  margin-top: clamp(24px, 3vw, 36px);
+}
