@@ -264,7 +264,7 @@ a:hover {
   background: var(--surface-veil-light);
 }
 
-section:not(.hero) {
+section:not(.hero):not(.page-hero):not(.gi-hero):not(.join-hero) {
   padding: var(--section-pad) 0;
   background: var(--surface-veil);
 }
@@ -1082,7 +1082,7 @@ footer a:hover {
    WHO WE ARE PAGE
    ========================= */
 
-.page-hero {
+section.page-hero {
   padding: calc(var(--header-height) + clamp(40px, 8vh, 90px)) 0 clamp(80px, 12vh, 140px);
 }
 
@@ -1112,7 +1112,7 @@ footer a:hover {
 }
 
 @media (max-width: 900px) {
-  .page-hero {
+  section.page-hero {
     padding: calc(var(--header-height) + clamp(28px, 5vh, 56px)) 0 clamp(60px, 10vh, 100px);
   }
   
@@ -1708,7 +1708,7 @@ footer a:hover {
    WHY JOIN PAGE
    ========================= */
 
-.gi-hero {
+section.gi-hero {
   padding: calc(var(--header-height) + clamp(20px, 3vh, 40px)) 0 clamp(40px, 6vh, 72px);
 }
 
@@ -1773,7 +1773,7 @@ footer a:hover {
   }
 }
 
-.join-hero {
+section.join-hero {
   padding: calc(var(--header-height) + clamp(24px, 4vh, 48px)) 0 clamp(40px, 6vh, 72px);
 }
 
