@@ -863,9 +863,16 @@ section:not(.hero):not(.page-hero):not(.gi-hero):not(.join-hero) {
 
 .card h3 {
   margin-top: 0;
-  font-size: 1.125rem;
-  line-height: 1.2;
+  font-size: 1.0625rem;
+  line-height: 1.25;
   margin-bottom: 0.5rem;
+}
+
+.card p {
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  max-width: none;
+  margin-bottom: 0;
 }
 
 .timeline {
@@ -1887,7 +1894,7 @@ section.join-hero {
 
 .join-value-col h3 {
   margin-top: 0;
-  font-size: 1.125rem;
+  font-size: 1.0625rem;
   line-height: 1.25;
   margin-bottom: 0.6rem;
 }
@@ -2064,7 +2071,7 @@ section.join-hero {
 
 .join-for__col h3 {
   margin-top: 0;
-  font-size: 1.125rem;
+  font-size: 1.0625rem;
   line-height: 1.25;
   margin-bottom: 0.6rem;
 }
@@ -2105,7 +2112,7 @@ section.join-hero {
 
 .gi-ways__col h3 {
   margin-top: 0;
-  font-size: 1.125rem;
+  font-size: 1.0625rem;
   line-height: 1.25;
   margin-bottom: 0.6rem;
 }
