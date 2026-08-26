@@ -525,26 +525,16 @@ section:not(.hero):not(.page-hero):not(.gi-hero):not(.join-hero) {
 }
 
 .home-rail--ruled:not(.hero-statement) .home-figure {
-  padding-top: var(--frame-inset);
   padding-left: var(--frame-inset);
 }
 
-.home-rail--ruled:not(.hero-statement)::before,
 .home-rail--ruled:not(.hero-statement)::after {
   content: "";
   position: absolute;
   top: 0;
   left: 0;
   pointer-events: none;
-  background: var(--amber-500);
-}
-
-.home-rail--ruled:not(.hero-statement)::before {
-  height: var(--frame-weight);
-  width: 75%;
-}
-
-.home-rail--ruled:not(.hero-statement)::after {
+  background: var(--feldspar-300);
   width: var(--frame-weight);
   height: 75%;
 }
@@ -754,14 +744,34 @@ section:not(.hero):not(.page-hero):not(.gi-hero):not(.join-hero) {
   margin-bottom: 0.7rem;
 }
 
+/* Bold label, full stop, sentence. The house convention for a set
+   of parallel points that would otherwise want headings. Markers
+   are Amber, which is Amber's job per the master. */
 .key-points {
   margin: 0 0 1.2rem 0;
-  padding-left: 1.1rem;
+  padding-left: 0;
+  list-style: none;
   max-width: var(--measure);
 }
 
 .key-points li {
-  margin: 0 0 0.75rem 0;
+  position: relative;
+  padding-left: 1.15rem;
+  margin: 0 0 0.85rem 0;
+}
+
+.key-points li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.62em;
+  width: 6px;
+  height: 6px;
+  background: var(--amber-500);
+}
+
+.key-points li:last-child {
+  margin-bottom: 0;
 }
 
 /* ========================= 
@@ -869,8 +879,9 @@ section:not(.hero):not(.page-hero):not(.gi-hero):not(.join-hero) {
 }
 
 .card p {
-  font-size: 0.9375rem;
-  line-height: 1.55;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--obsidian-600);
   max-width: none;
   margin-bottom: 0;
 }
@@ -1357,19 +1368,13 @@ section.page-hero {
   position: relative;
 }
 
-.team-card__photo::before,
 .team-card__photo::after {
   content: "";
   position: absolute;
   top: -4px;
   left: -4px;
   pointer-events: none;
-  background: var(--amber-500);
-}
-
-.team-card__photo::before {
-  height: var(--rule-thickness);
-  width: 75%;
+  background: var(--feldspar-300);
 }
 
 .team-card__photo::after {
@@ -1435,9 +1440,9 @@ section.page-hero {
 }
 
 .team-card__bio {
-  font-size: 0.9375rem;
-  line-height: 1.55;
-  color: var(--obsidian-800);
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--obsidian-600);
   text-align: left;
   margin: 0;
 }
@@ -1456,20 +1461,14 @@ section.page-hero {
   position: relative;
 }
 
-.founder-split__image::before,
 .founder-split__image::after {
   content: "";
   position: absolute;
   top: -4px;
   left: -4px;
   pointer-events: none;
-  background: var(--amber-500);
+  background: var(--feldspar-300);
   z-index: 1;
-}
-
-.founder-split__image::before {
-  height: var(--rule-thickness);
-  width: 75%;
 }
 
 .founder-split__image::after {
@@ -1583,20 +1582,14 @@ section.page-hero {
   position: relative;
 }
 
-.cta-centered__image::before,
 .cta-centered__image::after {
   content: "";
   position: absolute;
   top: -4px;
   left: -4px;
   pointer-events: none;
-  background: var(--amber-500);
+  background: var(--feldspar-300);
   z-index: 1;
-}
-
-.cta-centered__image::before {
-  height: var(--rule-thickness);
-  width: 75%;
 }
 
 .cta-centered__image::after {
@@ -1902,8 +1895,9 @@ section.join-hero {
 
 .join-value-col p {
   max-width: none;
-  font-size: 0.9375rem;
-  line-height: 1.55;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--obsidian-600);
   margin-bottom: 0;
 }
 
@@ -2079,8 +2073,9 @@ section.join-hero {
 
 .join-for__col p {
   max-width: none;
-  font-size: 0.9375rem;
-  line-height: 1.55;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--obsidian-600);
   margin-bottom: 0;
 }
 
@@ -2120,8 +2115,9 @@ section.join-hero {
 
 .gi-ways__col p {
   max-width: none;
-  font-size: 0.9375rem;
-  line-height: 1.55;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--obsidian-600);
 }
 
 @media (max-width: 900px) {
@@ -2175,17 +2171,15 @@ section.join-hero {
 }
 
 /* orange L-frame, matching rail and CTA imagery */
-.doc-card__cover::before,
 .doc-card__cover::after {
   content: "";
   position: absolute;
   top: -4px;
   left: -4px;
-  background: var(--amber-500);
+  background: var(--feldspar-300);
   pointer-events: none;
   z-index: 2;
 }
-.doc-card__cover::before { height: var(--rule-thickness); width: 62%; }
 .doc-card__cover::after  { width: var(--rule-thickness); height: 46%; }
 
 /* Cover area. Navy + Coalition mark shows until a thumbnail is dropped in. */
@@ -2231,7 +2225,7 @@ section.join-hero {
 }
 
 .doc-card__desc {
-  font-size: 0.9rem;
+  font-size: 0.875rem;
   line-height: 1.5;
   color: var(--obsidian-600);
   max-width: none;
@@ -2287,7 +2281,8 @@ section.join-hero {
 
 .callout p {
   font-size: 0.875rem;
-  line-height: 1.55;
+  line-height: 1.5;
+  color: var(--obsidian-600);
   max-width: none;
   margin-bottom: 1.1rem;
 }
