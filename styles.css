@@ -1626,7 +1626,7 @@ section.page-hero {
 .friends-logo--riastone  { height: 24px; }
 .friends-logo--hm        { height: 40px; }
 .friends-logo--baglass   { height: 46px; }
-.friends-logo--infineon  { height: 30px; }
+.friends-logo--infineon  { height: 34px; }
 .friends-logo--responsibleglass { height: 40px; }
 
 @media (max-width: 900px) {
@@ -2225,4 +2225,66 @@ section.join-hero {
 
 @media (max-width: 600px) {
   .doc-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
+}
+
+/* =========================
+   Callout
+   A framed aside for material that supports a section without
+   belonging to its argument: thanks, a case study, a note.
+   Square corners and no shadow, per the master. The Amber rule
+   at the top is the same device the print routes use.
+   ========================= */
+.callout {
+  background: #FBF0E9;                    /* Amber 100 */
+  border-top: 2px solid var(--sand-orange);
+  padding: clamp(18px, 2.2vw, 26px);
+  align-self: start;
+}
+
+.callout__eyebrow {
+  font-family: "Barlow Condensed", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.75rem;
+  color: var(--sand-orange);
+  margin: 0 0 0.6rem 0;
+  max-width: none;
+}
+
+.callout p {
+  font-size: 0.875rem;
+  line-height: 1.55;
+  max-width: none;
+  margin-bottom: 1.1rem;
+}
+
+.callout p:last-child {
+  margin-bottom: 0;
+}
+
+/* The logo row sits in a narrow column here, so it runs smaller.
+   Wide wordmarks are capped by width as well as height, or a
+   single very wide mark takes the whole panel. */
+.callout .friends-logo-row {
+  gap: 16px 20px;
+  margin: 0;
+}
+
+.callout .friends-logo {
+  max-width: 100%;
+}
+
+.callout .friends-logo--oecd      { height: 30px; }
+.callout .friends-logo--csc       { height: 34px; }
+.callout .friends-logo--riastone  { height: 18px; }
+.callout .friends-logo--hm        { height: 30px; }
+.callout .friends-logo--baglass   { height: 34px; }
+.callout .friends-logo--infineon  { height: 26px; }
+.callout .friends-logo--responsibleglass { height: 30px; }
+
+@media (max-width: 900px) {
+  .callout {
+    margin-top: clamp(24px, 4vw, 36px);
+  }
 }
