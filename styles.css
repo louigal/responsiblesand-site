@@ -110,7 +110,7 @@
   --section-pad-tight: 1.35rem;
   
   /* Header */
-  --header-height: 64px;
+  --header-height: 68px;
 
   /* Typography */
   --base-font-size: 16px;
@@ -158,7 +158,25 @@ body {
 
 @media (max-width: 900px) {
   :root {
-    --header-height: 56px;
+    --header-height: 0px;
+  }
+
+  /* The base rule sits later in this file, so these must win on
+     specificity rather than on order. See the header note in the
+     website design system at 4.1. */
+  header.site-header {
+    position: relative;
+    background: rgba(255, 255, 255, 0.75);
+  }
+
+  header.site-header .site-header__inner {
+    flex-wrap: wrap;
+    row-gap: 8px;
+  }
+
+  header.site-header .site-nav {
+    justify-content: flex-start;
+    padding: 0.6rem 0 0.9rem;
   }
 
   body {
@@ -573,6 +591,42 @@ section:not(.hero):not(.page-hero):not(.gi-hero):not(.join-hero) {
   height: var(--rule-thickness);
   width: var(--rule-length);
   background: var(--amber-500);
+}
+
+.site-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: clamp(16px, 3vw, 48px);
+}
+
+/* The mark sits top left on every page but Home, where the hero
+   lockup carries it. Home's header is nav only and the gap stays. */
+.site-mark {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  line-height: 0;
+}
+
+.site-mark img {
+  height: 34px;
+  width: auto;
+  display: block;
+}
+
+/* The Portal is a door rather than a page, so it sits apart from
+   the nav as a block. */
+.site-nav__portal {
+  background: var(--obsidian-900);
+  color: var(--flint) !important;
+  padding: 8px 12px !important;
+  margin-left: clamp(4px, 1vw, 14px);
+}
+
+.site-nav__portal:hover {
+  background: var(--obsidian-800);
+  text-decoration: none !important;
 }
 
 .site-nav {
@@ -1019,6 +1073,36 @@ footer::before {
   flex-wrap: wrap;
   gap: 14px 22px;
   align-items: baseline;
+}
+
+/* Footer navigation takes the same label treatment as the header,
+   so the two read as one system. */
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: clamp(16px, 2.2vw, 32px);
+}
+
+.footer-links a {
+  font-family: "Barlow Condensed", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  line-height: 1.2;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+}
+
+.footer-links__portal {
+  background: var(--obsidian-900);
+  color: var(--flint) !important;
+  padding: 8px 12px;
+}
+
+.footer-links__portal:hover {
+  background: var(--obsidian-800);
+  text-decoration: none !important;
 }
 
 .footer-links a,
@@ -2355,4 +2439,34 @@ section.join-hero {
 
 .key-moments .home-cta {
   margin-top: clamp(24px, 3vw, 36px);
+}
+
+/* =========================
+   Footer company block
+   ========================= */
+.footer-org {
+  margin-top: clamp(20px, 3vw, 32px);
+}
+
+.footer-org p {
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: var(--obsidian-600);
+  max-width: none;
+  margin: 0;
+}
+
+.footer-org__name {
+  color: var(--obsidian-900) !important;
+  font-weight: 600;
+}
+
+@media (max-width: 900px) {
+  .site-mark img {
+    height: 28px;
+  }
+
+  .site-header__inner {
+    gap: 12px;
+  }
 }
