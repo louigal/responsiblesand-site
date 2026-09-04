@@ -175,7 +175,7 @@ body {
   }
 
   header.site-header .site-nav {
-    justify-content: flex-start;
+    justify-content: flex-end;
     padding: 0.6rem 0 0.9rem;
   }
 
@@ -613,6 +613,13 @@ section:not(.hero):not(.page-hero):not(.gi-hero):not(.join-hero) {
   height: 34px;
   width: auto;
   display: block;
+}
+
+/* The full lockup runs about 4.4 to 1, so at header height it is
+   roughly 150px wide. It carries its own internal margin, so no
+   padding is added around it. */
+.site-mark--lockup img {
+  height: 38px;
 }
 
 /* The Portal is a door rather than a page, so it sits apart from
@@ -2464,6 +2471,10 @@ section.join-hero {
 @media (max-width: 900px) {
   .site-mark img {
     height: 28px;
+  }
+
+  .site-mark--lockup img {
+    height: 30px;
   }
 
   .site-header__inner {
