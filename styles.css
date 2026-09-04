@@ -643,6 +643,10 @@ section:not(.hero):not(.page-hero):not(.gi-hero):not(.join-hero) {
   padding: 1.15rem 0;
   justify-content: flex-end;
   align-items: center;
+  /* Home has no mark, so the nav is the only child of the header
+     inner and space-between would leave it at the start. This
+     pushes it right whether or not the mark is present. */
+  margin-left: auto;
 }
 
 /* Navigation is a label, not prose. Barlow Condensed uppercase,
@@ -1408,8 +1412,8 @@ section.page-hero {
    than line-art marks, and wide wordmarks (Cary) sit lower
    than tall stacked ones, because both read larger at the
    same height. */
-.founder-logo--uq        { height: 58px; }
-.founder-logo--ikea       { height: 46px; }
+.founder-logo--uq        { height: 50px; }
+.founder-logo--ikea       { height: 54px; }
 .founder-logo--roca       { height: 54px; }
 .founder-logo--mcs        { height: 48px; }
 .founder-logo--wwf        { height: 78px; }
@@ -1429,8 +1433,8 @@ section.page-hero {
     height: 52px;
   }
 
-  .founder-logo--uq        { height: 42px; }
-  .founder-logo--ikea       { height: 33px; }
+  .founder-logo--uq        { height: 36px; }
+  .founder-logo--ikea       { height: 39px; }
   .founder-logo--roca       { height: 43px; }
   .founder-logo--mcs        { height: 36px; }
   .founder-logo--wwf        { height: 54px; }
