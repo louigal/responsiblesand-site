@@ -118,7 +118,7 @@
   --measure-narrow: 52ch;
   
   /* Grids */
-  --rail-width: 214px;
+  --rail-width: 262px;
   
   /* Buttons */
   --btn-border: var(--obsidian-100);
@@ -464,13 +464,13 @@ section:not(.hero):not(.page-hero):not(.gi-hero):not(.join-hero) {
 
 .image-quote {
   display: grid;
-  grid-template-columns: minmax(0, 280px) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 344px) minmax(0, 1fr);
   gap: clamp(32px, 5vw, 72px);
   align-items: center;
 }
 
 .image-quote__image {
-  max-width: 280px;
+  max-width: 344px;
 }
 
 .image-quote__text {
@@ -499,7 +499,7 @@ section:not(.hero):not(.page-hero):not(.gi-hero):not(.join-hero) {
 }
 
 .cta-split__image {
-  max-width: 280px;
+  max-width: 344px;
   justify-self: end;
 }
 
@@ -701,7 +701,7 @@ section:not(.hero):not(.page-hero):not(.gi-hero):not(.join-hero) {
   width: 100%;
   display: block;
   object-fit: cover;
-  height: clamp(254px, 35vh, 400px);
+  height: clamp(312px, 43vh, 492px);
 }
 
 .hero-full > .container {
@@ -779,7 +779,7 @@ section:not(.hero):not(.page-hero):not(.gi-hero):not(.join-hero) {
 
 @media (max-width: 900px) {
   .hero-full__photo {
-    height: clamp(174px, 31vw, 240px);
+    height: clamp(213px, 38vw, 295px);
   }
 
   .hero-full {
@@ -1311,7 +1311,7 @@ section.page-hero {
 
 .page-hero__image {
   position: relative;
-  max-width: 428px;
+  max-width: 525px;
   margin: clamp(32px, 5vh, 56px) auto 0;
 }
 
@@ -1686,7 +1686,7 @@ section.page-hero {
 .cta-centered__image {
   margin: 0 auto;
   width: 100%;
-  max-width: 534px;
+  max-width: 656px;
   overflow: visible;
   border: 1px solid var(--obsidian-100);
   position: relative;
@@ -1913,7 +1913,7 @@ section.gi-hero {
   height: 100%;
   display: block;
   object-fit: cover;
-  min-height: clamp(320px, 50vw, 520px);
+  min-height: clamp(262px, 41vw, 426px);
 }
 
 @media (max-width: 900px) {
