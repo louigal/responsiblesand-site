@@ -491,16 +491,20 @@ section:not(.hero):not(.page-hero):not(.gi-hero):not(.join-hero) {
   }
 }
 
+/* The tracks size to their content and the pair centres in the
+   container, so the text and the image sit together rather than
+   at opposite edges with a void between them. */
 .cta-split {
   display: grid;
-  grid-template-columns: minmax(0, 520px) minmax(0, 1fr);
-  gap: clamp(32px, 5vw, 72px);
+  grid-template-columns: minmax(0, 480px) auto;
+  gap: clamp(28px, 4vw, 56px);
   align-items: center;
+  justify-content: center;
 }
 
 .cta-split__image {
   max-width: 344px;
-  justify-self: end;
+  justify-self: start;
 }
 
 @media (max-width: 900px) {
@@ -2261,7 +2265,7 @@ section.join-hero {
 
 .doc-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(210px, 250px));
+  grid-template-columns: repeat(auto-fill, minmax(160px, 190px));
   justify-content: start;
   gap: clamp(24px, 3vw, 44px);
   margin-top: 0.5rem;
@@ -2298,7 +2302,7 @@ section.join-hero {
   display: block;
   overflow: hidden;
   aspect-ratio: 3 / 4;
-  background: var(--obsidian-900) url("assets/logos/sandcastle-logo-orange.svg") center / 60px auto no-repeat;
+  background: var(--obsidian-900) url("assets/logos/sandcastle-logo-orange.svg") center / 46px auto no-repeat;
 }
 
 .doc-card--wide .doc-card__crop { aspect-ratio: 16 / 10; }
@@ -2360,7 +2364,7 @@ section.join-hero {
 .doc-card__link:hover { color: var(--amber-500); text-decoration: underline; }
 
 @media (max-width: 600px) {
-  .doc-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
+  .doc-grid { grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); }
 }
 
 /* =========================
