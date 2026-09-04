@@ -118,7 +118,7 @@
   --measure-narrow: 52ch;
   
   /* Grids */
-  --rail-width: 320px;
+  --rail-width: 214px;
   
   /* Buttons */
   --btn-border: var(--obsidian-100);
@@ -464,13 +464,13 @@ section:not(.hero):not(.page-hero):not(.gi-hero):not(.join-hero) {
 
 .image-quote {
   display: grid;
-  grid-template-columns: minmax(0, 420px) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 280px) minmax(0, 1fr);
   gap: clamp(32px, 5vw, 72px);
   align-items: center;
 }
 
 .image-quote__image {
-  max-width: 420px;
+  max-width: 280px;
 }
 
 .image-quote__text {
@@ -499,7 +499,7 @@ section:not(.hero):not(.page-hero):not(.gi-hero):not(.join-hero) {
 }
 
 .cta-split__image {
-  max-width: 420px;
+  max-width: 280px;
   justify-self: end;
 }
 
@@ -701,7 +701,7 @@ section:not(.hero):not(.page-hero):not(.gi-hero):not(.join-hero) {
   width: 100%;
   display: block;
   object-fit: cover;
-  height: clamp(380px, 52vh, 600px);
+  height: clamp(254px, 35vh, 400px);
 }
 
 .hero-full > .container {
@@ -779,7 +779,7 @@ section:not(.hero):not(.page-hero):not(.gi-hero):not(.join-hero) {
 
 @media (max-width: 900px) {
   .hero-full__photo {
-    height: clamp(260px, 46vw, 360px);
+    height: clamp(174px, 31vw, 240px);
   }
 
   .hero-full {
@@ -1311,7 +1311,7 @@ section.page-hero {
 
 .page-hero__image {
   position: relative;
-  max-width: 640px;
+  max-width: 428px;
   margin: clamp(32px, 5vh, 56px) auto 0;
 }
 
@@ -1603,6 +1603,7 @@ section.page-hero {
   margin: 0 auto;
 }
 
+
 .cta-centered h2 {
   margin-top: 0;
 }
@@ -1683,9 +1684,9 @@ section.page-hero {
 }
 
 .cta-centered__image {
-  margin: 0;
+  margin: 0 auto;
   width: 100%;
-  max-width: 100%;
+  max-width: 534px;
   overflow: visible;
   border: 1px solid var(--obsidian-100);
   position: relative;
