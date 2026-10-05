@@ -44,14 +44,18 @@
     }
     .fee-note { font-size: 0.9rem; color: var(--obsidian-600); margin-top: 1rem; }
     .fee-group {
-      font-family: "Barlow Condensed", system-ui, sans-serif;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      font-size: 0.75rem;
-      color: var(--amber-500);
-      margin: 1.6rem 0 0.4rem;
+      font-weight: 600;
+      color: var(--obsidian-900);
+      border-top: 1px solid var(--obsidian-100);
+      padding: 0.7rem 0 0.1rem;
+      margin: 0;
       max-width: none;
+    }
+    .fee-row--sub { border-top: none; padding: 0.25rem 0; }
+    .fee-row--sub .fee-row__who {
+      font-weight: 400;
+      font-size: 0.9rem;
+      color: var(--obsidian-500);
     }
 
     .founder-callout {
@@ -188,21 +192,21 @@
           <div class="fee-row__who">Government and intergovernmental<span>National to multilateral</span></div>
           <div class="fee-row__amount">AUD 0 to 8,000</div>
         </div>
-        <p class="fee-group">Industry, by annual turnover</p>
-        <div class="fee-row">
-          <div class="fee-row__who">Under AUD 5 million</div>
+        <p class="fee-group">Industry</p>
+        <div class="fee-row fee-row--sub">
+          <div class="fee-row__who">Under AUD 5 million annual turnover</div>
           <div class="fee-row__amount">AUD 5,000</div>
         </div>
-        <div class="fee-row">
-          <div class="fee-row__who">AUD 5 million to 50 million</div>
+        <div class="fee-row fee-row--sub">
+          <div class="fee-row__who">AUD 5 million to 50 million annual turnover</div>
           <div class="fee-row__amount">AUD 10,000</div>
         </div>
-        <div class="fee-row">
-          <div class="fee-row__who">AUD 50 million to 1 billion</div>
+        <div class="fee-row fee-row--sub">
+          <div class="fee-row__who">AUD 50 million to 1 billion annual turnover</div>
           <div class="fee-row__amount">AUD 20,000</div>
         </div>
-        <div class="fee-row">
-          <div class="fee-row__who">Over AUD 1 billion</div>
+        <div class="fee-row fee-row--sub">
+          <div class="fee-row__who">Over AUD 1 billion annual turnover</div>
           <div class="fee-row__amount">AUD 30,000</div>
         </div>
       </div>
